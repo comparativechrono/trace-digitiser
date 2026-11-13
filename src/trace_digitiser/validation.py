@@ -227,11 +227,13 @@ def render_figure(
         (``left``, ``right``, ``top``, ``bottom``; pixel centres at
         integers), the axis limits, and each trace's data.
     """
+    # Drawn with matplotlib's object interface straight to its raster
+    # renderer, so that nothing here changes how the caller's own plots are
+    # displayed (as selecting a backend through pyplot would in a notebook).
     import matplotlib
-
-    matplotlib.use("Agg", force=False)
-    import matplotlib.pyplot as plt
+    from matplotlib.backends.backend_agg import FigureCanvasAgg
     from matplotlib.colors import to_rgb
+    from matplotlib.figure import Figure
     from PIL import Image, ImageFilter
 
     out_dir = Path(out_dir)
@@ -243,8 +245,9 @@ def render_figure(
     W = ml + spec.cols * spec.panel_w_px + (spec.cols - 1) * gap_x + mr
     H = mt + spec.rows * spec.panel_h_px + (spec.rows - 1) * gap_y + mb
 
-    with plt.rc_context({"font.family": spec.font}):
-        fig = plt.figure(figsize=(W / dpi, H / dpi), dpi=dpi)
+    with matplotlib.rc_context({"font.family": spec.font}):
+        fig = Figure(figsize=(W / dpi, H / dpi), dpi=dpi)
+        canvas = FigureCanvasAgg(fig)
         panels = []
         for r in range(spec.rows):
             for c in range(spec.cols):
@@ -298,7 +301,7 @@ def render_figure(
                     ax.set_ylabel("Activity (cm/sec)", fontsize=fs - 1)
                 elif spec.style != "box":
                     raise ValueError(f"unknown style {spec.style!r}")
-                fig.canvas.draw()
+                canvas.draw()
                 bb = ax.get_window_extent()
                 panels.append(
                     {
@@ -312,7 +315,6 @@ def render_figure(
                 )
         png = out_dir / f"{spec.name}.png"
         fig.savefig(png, dpi=dpi, facecolor="white")
-        plt.close(fig)
 
     img = Image.open(png).convert("RGB")
     if img.size != (W, H):

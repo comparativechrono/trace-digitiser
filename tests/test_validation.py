@@ -154,6 +154,19 @@ class TestSuite:
         assert np.isnan(total["median_rmse_pct"])
 
 
+def test_rendering_leaves_the_plotting_backend_alone(tmp_path):
+    """Drawing a test figure must not change how the caller's own plots are shown (in a notebook, say)."""
+    import matplotlib
+
+    before = matplotlib.get_backend()
+    try:
+        matplotlib.use("svg")
+        render_figure(FigureSpec("backend_check"), tmp_path)
+        assert matplotlib.get_backend().lower() == "svg"
+    finally:
+        matplotlib.use(before)
+
+
 class TestAxisReading:
     def test_cases(self):
         cases = axis_cases()

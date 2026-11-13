@@ -327,16 +327,21 @@ def _contains(outer: Frame, inner: Frame, margin: float = 3.0) -> bool:
     )
 
 
-def _iou(a: Frame, b: Frame) -> float:
+def _overlap(a: Frame, b: Frame) -> float:
+    """Area that two frames have in common."""
     ix = max(0.0, min(a.right, b.right) - max(a.left, b.left))
     iy = max(0.0, min(a.bottom, b.bottom) - max(a.top, b.top))
-    inter = ix * iy
+    return ix * iy
+
+
+def _iou(a: Frame, b: Frame) -> float:
+    inter = _overlap(a, b)
     union = a.area + b.area - inter
     return inter / union if union > 0 else 0.0
 
 
 def _filter_frames(frames: list[Frame], image_w: int, image_h: int) -> list[Frame]:
-    """Drop tiny frames, duplicates, borders drawn around a plot, and insets."""
+    """Drop tiny frames, duplicates, borders drawn around a plot, insets, and stray frames across a plot."""
     min_w = max(30.0, 0.06 * image_w)
     min_h = max(30.0, 0.06 * image_h)
     frames = [f for f in frames if f.width >= min_w and f.height >= min_h]
@@ -358,6 +363,14 @@ def _filter_frames(frames: list[Frame], image_w: int, image_h: int) -> list[Fram
     kept = [
         f for f in kept
         if not any(g is not f and _contains(g, f) and f.area < 0.2 * g.area for g in kept)
+    ]
+    # Plot areas do not overlap.  A frame with lines on only two or three
+    # sides that cuts across a complete one is an accident of stray lines -
+    # what is left of a border drawn round the figure, say.
+    boxes = [f for f in kept if f.kind == "box"]
+    kept = [
+        f for f in kept
+        if f.kind == "box" or not any(_overlap(f, g) > 0.25 * min(f.area, g.area) for g in boxes)
     ]
     return _reading_order(kept)
 

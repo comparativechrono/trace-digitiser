@@ -129,6 +129,19 @@ class TestFindFrames:
         assert len(frames) == 1
         assert abs(frames[0].left - 60) <= 0.5 and abs(frames[0].bottom - 240) <= 0.5
 
+    def test_remains_of_a_border_across_a_plot_are_not_a_plot(self):
+        """Three sides of a box drawn round the figure, cutting across the real plot area, are dropped."""
+        img = np.full((320, 420, 3), 255, dtype=np.uint8)
+        a, b, c, d = 60, 40, 360, 240  # the plot: a complete frame
+        img[b, a : c + 1] = img[d, a : c + 1] = 0
+        img[b : d + 1, a] = img[b : d + 1, c] = 0
+        # What is left of a border: its bottom and the lower parts of its sides.
+        img[290, 8:412] = 0
+        img[120:291, 8] = img[120:291, 411] = 0
+        frames = find_frames(img)
+        assert len(frames) == 1
+        assert frames[0].kind == "box" and abs(frames[0].left - a) <= 0.5 and abs(frames[0].bottom - d) <= 0.5
+
     def test_coloured_lines_are_not_axes(self):
         """A long flat coloured line is a trace, not an axis."""
         img = np.full((200, 300, 3), 255, dtype=np.uint8)

@@ -11,7 +11,6 @@ import numpy as np
 import pytesseract
 from pytesseract import Output
 
-
 # ===================================================================
 # Preprocessing
 # ===================================================================
@@ -245,16 +244,16 @@ def _fix_ocr_confusions(labels: list[dict]) -> list[dict]:
         return None
 
     # Check how many labels match <digits><letters> pattern.
-    n_match = sum(1 for l in labels if _split_digit_alpha(l["text"]) is not None)
+    n_match = sum(1 for label in labels if _split_digit_alpha(label["text"]) is not None)
 
     if n_match < len(labels) * 0.6:
         return labels  # Pattern not dominant enough to apply corrections.
 
     corrected: list[dict] = []
-    for l in labels:
-        text = l["text"]
+    for label in labels:
+        text = label["text"]
         if _split_digit_alpha(text) is not None:
-            corrected.append(l)
+            corrected.append(label)
             continue
 
         # Try substituting leading letters that look like digits.
@@ -272,9 +271,9 @@ def _fix_ocr_confusions(labels: list[dict]) -> list[dict]:
         if changed:
             fixed = "".join(new_text)
             if _split_digit_alpha(fixed) is not None:
-                l = dict(l)
-                l["text"] = fixed
-        corrected.append(l)
+                label = dict(label)
+                label["text"] = fixed
+        corrected.append(label)
 
     return corrected
 

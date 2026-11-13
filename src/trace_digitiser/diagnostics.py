@@ -7,6 +7,7 @@ displayed inline via matplotlib (for notebook / interactive use).
 
 from __future__ import annotations
 
+import ast
 from pathlib import Path
 from typing import Optional
 
@@ -121,8 +122,8 @@ def draw_digitised_trace(
 def print_panel_summary(panels: list[dict], h_lines: list[dict], v_lines: list[dict], layout_mode: str) -> None:
     """Print a text summary of panel detection results."""
     # Count lines from primary detector only.
-    legacy_h = [l for l in h_lines if l.get("source") == "legacy_row_projection_segmented"]
-    axis_h = [l for l in h_lines if l.get("source") == "axis_low_saturation"]
+    legacy_h = [line for line in h_lines if line.get("source") == "legacy_row_projection_segmented"]
+    axis_h = [line for line in h_lines if line.get("source") == "axis_low_saturation"]
 
     print(f"Detected {len(legacy_h)} primary horizontal lines")
     print(f"Detected {len(axis_h)} axis-like horizontal lines")
@@ -153,6 +154,7 @@ def plot_traces(
     figsize: Optional[tuple[float, float]] = None,
     title: Optional[str] = None,
     x_label: Optional[str] = None,
+    y_label: str = "Digitised value",
 ) -> Optional[plt.Figure]:
     """Plot digitised traces, recreating the original figure layout.
 
@@ -179,6 +181,8 @@ def plot_traces(
     x_label : str, optional
         Override the x-axis label (e.g. ``"Time (hours)"``).
         If None, auto-detected from the data.
+    y_label : str
+        The y-axis label.
 
     Returns
     -------
@@ -206,11 +210,11 @@ def plot_traces(
         panel_traces = trace_data[trace_data["panel_id"] == pid]
 
         for tid, sub in panel_traces.groupby("trace_id"):
-            # Choose x-axis: prefer x_value (days) if available.
+            # Choose x-axis: prefer calibrated x values if available.
             if "x_value" in sub.columns and sub["x_value"].notna().any():
                 x = sub["x_value"].values
                 if x_label is None:
-                    x_label = "Time (days)"
+                    x_label = "x value"
             else:
                 x = sub["x_norm_0_to_1"].values
                 if x_label is None:
@@ -221,9 +225,9 @@ def plot_traces(
             # Use detected trace colour.
             rgb_str = sub["trace_median_rgb"].iloc[0]
             try:
-                rgb_vals = eval(rgb_str) if isinstance(rgb_str, str) else rgb_str
-                colour = tuple(v / 255.0 for v in rgb_vals[:3])
-            except Exception:
+                rgb_vals = ast.literal_eval(rgb_str) if isinstance(rgb_str, str) else rgb_str
+                colour = tuple(float(v) / 255.0 for v in rgb_vals[:3])
+            except (ValueError, SyntaxError, TypeError):
                 colour = None
 
             ax.plot(x, y, linewidth=0.9, alpha=0.9, color=colour, label=f"Trace {tid}")
@@ -233,34 +237,22 @@ def plot_traces(
                 lower = sub["lower_envelope"].values
                 ax.fill_between(x, lower, upper, alpha=0.15, color=colour)
 
-        # Add x-tick labels from OCR if available.
+        # Label the x axis with the tick labels read from the figure, if any.
         p = panel_lookup.get(pid)
-        if p is not None:
+        if p is not None and "x_value" in panel_traces.columns:
             x_labels = p.x_labels if hasattr(p, "x_labels") else p.get("x_labels", [])
-            if x_labels and "x_value" in panel_traces.columns:
-                x_cal = None
-                if hasattr(p, "calibration"):
-                    # It's a Panel dataclass — check for x_calibration in the raw dict
-                    pass
-                # Try to get x_calibration from trace data to map label pixel positions
-                sub0 = panel_traces.iloc[0:1]
-                if "x_value" in sub0.columns:
-                    # Map label x-pixel to x_value using linear interpolation
-                    all_xpix = panel_traces["x_pixel"].values
-                    all_xval = panel_traces["x_value"].values
-                    label_texts = []
-                    label_positions = []
-                    for lab in x_labels:
-                        lx = lab.x if hasattr(lab, "x") else lab.get("x")
-                        lt = lab.text if hasattr(lab, "text") else lab.get("text")
-                        xval = np.interp(lx, all_xpix, all_xval)
-                        label_texts.append(lt)
-                        label_positions.append(xval)
-                    if label_texts:
-                        ax.set_xticks(label_positions)
-                        ax.set_xticklabels(label_texts, fontsize=7)
+            # One row per pixel column, in order, so that positions can be interpolated.
+            columns = panel_traces[panel_traces["x_value"].notna()].drop_duplicates("x_pixel").sort_values("x_pixel")
+            if x_labels and len(columns) >= 2:
+                positions, texts = [], []
+                for lab in x_labels:
+                    lx = lab.x if hasattr(lab, "x") else lab.get("x")
+                    positions.append(float(np.interp(lx, columns["x_pixel"], columns["x_value"])))
+                    texts.append(lab.text if hasattr(lab, "text") else lab.get("text"))
+                ax.set_xticks(positions)
+                ax.set_xticklabels(texts, fontsize=7)
 
-        ax.set_ylabel("Activity")
+        ax.set_ylabel(y_label)
         ax.set_title(f"Panel {pid}", fontsize=10)
         ax.grid(True, alpha=0.3)
 
@@ -281,3 +273,156 @@ def plot_traces(
         plt.close(fig)
 
     return fig
+
+
+# ---------------------------------------------------------------------------
+# Result overlay: the digitised traces drawn back onto the figure
+# ---------------------------------------------------------------------------
+
+def _get(obj, name, default=None):
+    """Read a field from a Panel dataclass or a panel dict."""
+    if isinstance(obj, dict):
+        return obj.get(name, default)
+    return getattr(obj, name, default)
+
+
+def _y_calibration(panel):
+    """Return ``(a, b, is_log)`` for a Panel dataclass or panel dict, or None."""
+    cal = _get(panel, "calibration")
+    if cal is None:
+        cal = _get(panel, "y_calibration")
+    if cal is None:
+        return None
+    a, b = _get(cal, "a"), _get(cal, "b")
+    return float(a), float(b), str(_get(cal, "scale_type", "")).startswith("log")
+
+
+def draw_result_overlay(
+    rgb: np.ndarray,
+    panels: list,
+    trace_data: pd.DataFrame,
+    output_path: Optional[Path] = None,
+    show: bool = False,
+    min_long_side: int = 1400,
+) -> np.ndarray:
+    """Draw what was digitised on top of the original figure.
+
+    The overlay shows, for each panel, the plot area that was used (green
+    box), the tick labels the y calibration rests on (magenta marks with
+    the value read), and for each trace its centre estimate (a solid line)
+    with the upper and lower envelopes (thin lines).  Columns where the
+    trace was not seen and the values were interpolated are drawn in grey.
+
+    If the digitisation is right, every drawn line lies on the trace it
+    belongs to.  Small figures are enlarged (without smoothing) so that
+    single pixels can be checked.
+
+    Returns the overlay as an RGB array, and writes it to *output_path* if
+    one is given.
+    """
+    h, w = rgb.shape[:2]
+    scale = int(np.clip(np.ceil(min_long_side / max(h, w)), 1, 6))
+    canvas = cv2.resize(rgb, (w * scale, h * scale), interpolation=cv2.INTER_NEAREST)
+    shift = 4  # sub-pixel precision for OpenCV drawing
+    one = 1 << shift
+
+    def to_canvas(x, y) -> np.ndarray:
+        """Image coordinates (pixel centres at integers) to fixed-point canvas coordinates."""
+        xs = (np.asarray(x, dtype=float) + 0.5) * scale - 0.5
+        ys = (np.asarray(y, dtype=float) + 0.5) * scale - 0.5
+        return np.round(np.stack([xs, ys], axis=-1) * one).astype(np.int32)
+
+    def polyline(xs, ys, colour, thickness) -> None:
+        ok = np.isfinite(xs) & np.isfinite(ys)
+        # Draw each unbroken stretch separately.
+        idx = np.flatnonzero(ok)
+        if idx.size < 2:
+            return
+        for run in np.split(idx, np.flatnonzero(np.diff(idx) > 1) + 1):
+            if run.size >= 2:
+                cv2.polylines(canvas, [to_canvas(xs[run], ys[run])], False, colour, thickness, cv2.LINE_AA, shift)
+
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    font_scale = max(0.4, 0.38 * scale * max(0.6, min(1.0, max(h, w) / 800)))
+    thick = max(1, int(round(scale * 0.5)))
+
+    for panel in panels:
+        pid = _get(panel, "panel_id")
+        edges = _get(panel, "edges") or {
+            "left": _get(panel, "x0"), "right": _get(panel, "x1"),
+            "top": _get(panel, "y_top"), "bottom": _get(panel, "y_bottom"),
+        }
+        corners = to_canvas(
+            [edges["left"], edges["right"], edges["right"], edges["left"]],
+            [edges["top"], edges["top"], edges["bottom"], edges["bottom"]],
+        )
+        cv2.polylines(canvas, [corners], True, (0, 170, 0), thick, cv2.LINE_AA, shift)
+        text = f"panel {pid}"
+        (text_w, text_h), _ = cv2.getTextSize(text, font, font_scale, max(1, thick))
+        origin = (
+            int((edges["right"] + 0.5) * scale) - text_w - 2 * scale,
+            int((edges["top"] + 0.5) * scale) - 2 * scale,
+        )
+        cv2.putText(canvas, text, origin, font, font_scale, (0, 120, 0), max(1, thick), cv2.LINE_AA)
+
+        cal = _get(panel, "calibration") or _get(panel, "y_calibration")
+        for row, value in (_get(cal, "inliers", []) if cal is not None else []):
+            a_pt = to_canvas(edges["left"] - 6, row)
+            b_pt = to_canvas(edges["left"] + 6, row)
+            cv2.line(
+                canvas,
+                tuple(int(v) for v in a_pt),
+                tuple(int(v) for v in b_pt),
+                (200, 0, 200),
+                thick,
+                cv2.LINE_AA,
+                shift,
+            )
+            cv2.putText(
+                canvas, f"{value:g}",
+                (int((edges["left"] + 8) * scale), int((row + 0.5) * scale) + int(4 * font_scale)),
+                font, font_scale * 0.85, (200, 0, 200), max(1, thick), cv2.LINE_AA,
+            )
+
+        ycal = _y_calibration(panel)
+        if ycal is None or trace_data.empty:
+            continue
+        a, b, is_log = ycal
+        sub_panel = trace_data[trace_data["panel_id"] == pid]
+        for _, sub in sub_panel.groupby("trace_id"):
+            sub = sub.sort_values("x_pixel")
+            xs = sub["x_pixel"].to_numpy(dtype=float)
+
+            def rows(column: str, sub=sub, a=a, b=b, is_log=is_log) -> np.ndarray:
+                """Image rows at which the values in *column* were read."""
+                v = sub[column].to_numpy(dtype=float)
+                if is_log:
+                    with np.errstate(divide="ignore", invalid="ignore"):
+                        v = np.log10(v)
+                return (v - b) / a
+
+            try:
+                r, g, bl = ast.literal_eval(str(sub["trace_median_rgb"].iloc[0]))[:3]
+                dark_trace = (max(r, g, bl) - min(r, g, bl) < 40) and (r + g + bl) / 3 < 140
+            except (ValueError, SyntaxError, TypeError):
+                dark_trace = False
+            main = (255, 90, 0) if dark_trace else (0, 0, 0)
+            seen = ~sub["interpolated"].to_numpy(dtype=bool) if "interpolated" in sub else np.ones(len(sub), bool)
+            centre = rows("center_estimate")
+            upper, lower = rows("upper_envelope"), rows("lower_envelope")
+            polyline(xs, np.where(seen, upper, np.nan), (255, 0, 255), max(1, thick // 2))
+            polyline(xs, np.where(seen, lower, np.nan), (0, 200, 255), max(1, thick // 2))
+            polyline(xs, centre, (150, 150, 150), thick)
+            polyline(xs, np.where(seen, centre, np.nan), main, thick)
+
+    if output_path is not None:
+        from PIL import Image
+
+        Image.fromarray(canvas).save(str(output_path))
+    if show:
+        plt.figure(figsize=(12, 12 * h / max(1, w)))
+        plt.imshow(canvas)
+        plt.axis("off")
+        plt.title("Digitised traces drawn on the original figure")
+        plt.show()
+    return canvas

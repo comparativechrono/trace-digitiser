@@ -10,7 +10,6 @@ Includes quantitative accuracy metrics against synthetic ground truth:
 import shutil
 
 import numpy as np
-import pandas as pd
 import pytest
 
 pytestmark = pytest.mark.skipif(
@@ -230,6 +229,55 @@ class TestTraceAccuracy:
                 f"Panel {panel_id} RMSE={rmse:.1f} is too high "
                 f"(scale_type={scale})"
             )
+
+
+# ===================================================================
+# No hints at all
+# ===================================================================
+
+LEGACY_FIGURES = {
+    "vertical_2_panels": 2,
+    "horizontal_3_panels": 3,
+    "grid_2x2_panels": 4,
+    "wide_colours_2x3": 6,
+}
+
+
+class TestFullyAutomatic:
+    """The example figures with nothing but the file name given."""
+
+    @pytest.mark.parametrize("name", sorted(LEGACY_FIGURES))
+    @pytest.mark.parametrize("suffix", ["noisy.jpg", "clean.png"])
+    def test_panels_traces_scale_and_values(self, test_figures_dir, ground_truth, name, suffix):
+        from trace_digitiser import digitise
+        from trace_digitiser.validation import drawn_envelope
+
+        result = digitise(test_figures_dir / f"{name}_{suffix}", write_outputs=False)
+
+        assert len(result.panels) == LEGACY_FIGURES[name]
+        gt = ground_truth[ground_truth["example"] == name]
+        line_px = 1.15 * 170 / 72  # the figures are drawn with 1.15 pt lines at 170 dpi
+        for panel in result.panels:
+            # The y axis runs from 0 to 300 and is read from its labels (or, failing that,
+            # taken from the panel at the start of the row).
+            cal = panel.calibration
+            assert cal.scale_type == "ocr_value" or cal.scale_type.startswith("propagated"), (
+                f"panel {panel.panel_id}: {cal.scale_type}"
+            )
+            assert abs(float(cal.y_to_value(panel.edges["bottom"]))) < 3.0
+            assert abs(float(cal.y_to_value(panel.edges["top"])) - 300.0) < 3.0
+
+            traces = result.trace_data[result.trace_data["panel_id"] == panel.panel_id]
+            assert traces["trace_id"].nunique() == 1, f"panel {panel.panel_id}: one curve was drawn"
+
+            # Compare with what was drawn: the middle of the line's extent in each pixel column.
+            truth = gt[gt["panel_expected"] == panel.panel_id]
+            x = truth["x"].to_numpy() / 14.0
+            half = (0.5 + 0.5 * line_px) / (panel.edges["right"] - panel.edges["left"])
+            lower, upper, _ = drawn_envelope(x, truth["y"].to_numpy(), traces["x_norm_0_to_1"].to_numpy(), half)
+            error = traces["center_estimate"].to_numpy() - 0.5 * (lower + upper)
+            rmse = float(np.sqrt(np.nanmean(error ** 2)))
+            assert rmse < 7.5, f"panel {panel.panel_id}: RMSE {rmse:.1f} on a 0-300 axis"  # 2.5 %
 
 
 # ===================================================================

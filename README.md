@@ -1,162 +1,256 @@
 # trace-digitiser
 
-Template-free computer-vision digitisation pipeline for raster scientific line plots.
+Get the numbers back out of a line plot when the figure is all that survives — on your own computer.
 
-Given a raster image of a scientific figure (PNG, JPEG, etc.), this tool detects plot panels, reads y-axis tick labels via OCR, segments coloured traces, and exports digitised data as CSV files — all without requiring manual calibration points, known trace colours, or panel coordinates. The user supplies only a high-level layout hint (e.g. "stacked", "horizontal", "grid").
+`trace-digitiser` takes an image of a figure (a scan of an old paper, a figure saved from a PDF),
+finds the plot area, follows each trace, and writes the values to a CSV file. It is ordinary image
+processing, written to be read and checked.
 
-## Installation
+**Nothing is uploaded and no AI model is involved.** The only other program it runs is
+[Tesseract](https://github.com/tesseract-ocr/tesseract), also on your machine and optional, to read
+the numbers printed beside the axes. A figure that you are not free to pass to an online service
+can therefore still be digitised. (Whether the values in a published figure may be *reused* is a
+matter for the licence of the source and the law where you work; no tool can settle that for you.)
 
-Requires Python 3.10+ and [Tesseract OCR](https://github.com/tesseract-ocr/tesseract).
+A worked example with pictures is in
+[`examples/walkthrough.ipynb`](https://github.com/comparativechrono/trace-digitiser/blob/main/examples/walkthrough.ipynb).
+
+## Install
 
 ```bash
-# Install Tesseract (Ubuntu/Debian)
-sudo apt-get install tesseract-ocr
-
-# Install Tesseract (macOS)
-brew install tesseract
-
-# Install the package from PyPI
 pip install trace-digitiser
 ```
 
-To work on the code, clone the repository and install it in editable mode:
+Python 3.10 or later. To have axis values read from the figure, also install Tesseract
+(`sudo apt-get install tesseract-ocr`, `brew install tesseract`, or the
+[Windows installer](https://github.com/UB-Mannheim/tesseract/wiki)). Without it everything else
+works, and you type in the axis limits yourself — which is the better practice anyway.
+
+## Use
+
+From the command line:
+
+```bash
+trace-digitiser figure.png --y-min 0 --y-max 300 --x-min 0 --x-max 7 --overlay -o results/
+```
+
+or from Python:
+
+```python
+from trace_digitiser import digitise
+
+result = digitise("figure.png", y_min=0, y_max=300, x_min=0, x_max=7,
+                  output_dir="results", save_overlay=True)
+
+result.trace_data      # one row per pixel column of each trace
+result.warnings        # anything you should check
+result.overlay_path    # the digitised traces drawn over the figure
+```
+
+`y_min` and `y_max` are the values at the bottom and top axis lines, `x_min` and `x_max` those at
+the left and right. Nothing else is needed for most figures: the plot areas (any number of panels)
+and the traces (coloured, black or grey) are found automatically, and a scan that lies a few
+degrees askew is straightened first.
+
+Leave the limits out and the scale is read from the tick labels instead:
+
+```bash
+trace-digitiser figure.png --overlay -o results/
+```
+
+```
+  Panels: 2, Traces: 2
+    panel 1: y 0.31 to 299, read from tick labels (medium confidence); x not calibrated
+  CHECK: Panel 1: the y-axis scale was read from 7 of 7 tick labels (300, 250, 200, 150, 100, 50, 0);
+         the print is only 6 pixels high. Confidence in it is medium: check those values against
+         the figure, or give y_min and y_max.
+```
+
+A scale read from labels always comes with a statement of how far to trust it and, unless that is
+"high", of the labels it rests on. If too few labels can be read to agree on a scale, the axis is
+left uncalibrated (values from 0 to 1) and you are told so: the aim is never to pass off a wrong
+scale as a good one ([how well that is met](#how-accurate-is-it)).
+
+## Check the result
+
+1. **Look at the overlay** (`--overlay`). It shows the plot area that was found, the centre and
+   envelope of each digitised trace drawn over the original, and the positions of the axis values.
+   If the lines sit on the traces, the digitisation is right; if they do not, you can see where.
+2. **Read the messages.** Everything the program is unsure of is printed as a `CHECK:` line
+   (in Python: `result.warnings`, also raised as `DigitiserWarning`). A clean run prints none.
+3. **Keep the provenance file.** `<name>_automated_provenance.json` records the version, the
+   SHA-256 of the image, every setting, what was detected and all messages, so that a digitisation
+   can be reported and repeated exactly.
+
+## Output
+
+| File | Contents |
+|------|----------|
+| `<name>_automated_digitised_trace_by_column.csv` | One row per pixel column per trace (below). |
+| `<name>_automated_panel_metadata.csv` | Where each plot area is, its axis calibrations and how they were obtained. |
+| `<name>_automated_digitised_summary_by_label.csv` | Means per labelled interval, when the x axis carries interval names (`1N`, `1D`, …). |
+| `<name>_automated_provenance.json` | Everything needed to report and repeat the run. |
+| `<name>_automated_overlay.png` | With `--overlay`: the result drawn over the figure. |
+| `<name>_automated_straightened.png` | Only if the figure was tilted: the image turned upright, which is what pixel positions in the other files refer to. |
+
+Columns of the trace file:
+
+| Column | Meaning |
+|--------|---------|
+| `panel_id`, `trace_id` | Panels are numbered row by row from the top left; traces within a panel from 1. |
+| `x_pixel`, `x_norm_0_to_1` | The pixel column, and its position between the left (0) and right (1) axis lines. |
+| `x_value` | The x value, if the x axis is calibrated. |
+| `center_estimate` | Middle of the trace's ink in this column (median of its pixels). |
+| `mean_estimate` | Mean of the trace's pixels in this column. |
+| `upper_envelope`, `lower_envelope` | Top and bottom of the trace's ink in this column. |
+| `n_pixels`, `interpolated` | How many pixels the trace has in this column; `True` if it has none and the values were interpolated from its neighbours. |
+| `scale_type` | Where the y values come from: `user_supplied`, `ocr_value`, `normalised_0_to_1`, … |
+| `trace_median_rgb`, `trace_pixel_count` | The trace's colour and size, for identifying it. |
+
+`result.resample(...)` and `--sampling-interval` put the trace on an even grid in x.
+
+## What the values are — and are not
+
+A digitiser recovers what was **drawn**, not what was measured.
+
+* For an ordinary curve — a thin line with at most a few samples per pixel column —
+  `center_estimate` is the plotted value, to within a fraction of a pixel.
+* For a **dense record**, where many samples share each pixel column and the trace is drawn as a
+  solid band (an activity record of several days in a small figure, for instance), the drawing
+  shows only the *range* of the samples in each column. `upper_envelope` and `lower_envelope`
+  recover that range; `center_estimate` is its middle. **None of them is the mean of the samples**,
+  and for spiky data the middle of the range can be far from the mean. The timing of the rhythm
+  survives; the level does not.
+
+How much this matters for a particular kind of data and size of figure can be measured rather than
+guessed: see [Test it on data you know](#test-it-on-data-you-know).
+
+Positions cannot be better than the image. In a plot area 350 pixels wide showing seven days, one
+pixel is half an hour.
+
+## When something is not found
+
+Each automatic step can be replaced by telling the program the answer. Pixel positions count from
+the top-left corner of the image, starting at 0; any image viewer shows them.
+
+| Problem | Option | Python |
+|---------|--------|--------|
+| The figure is tilted and was not straightened, or was turned when it should not have been | `--straighten DEGREES` (its anticlockwise tilt), `--straighten never` | `straighten=1.3`, `straighten=False` |
+| The plot area is wrong or not found | `--plot-area LEFT,TOP,RIGHT,BOTTOM` (repeat per panel) | `plot_area=(l, t, r, b)` |
+| The wrong number of panels | `--layout`, `--rows`, `--cols`, `--panels` | `layout_mode`, `expected_rows`, … |
+| The axis continues beyond its last tick, or has no line at the top or right | `--y-ref ROW:VALUE` twice or more (also `--x-ref`) | `y_ref=[(row, value), …]` |
+| A logarithmic axis, with limits given | `--y-scale log` | `y_scale="log"` |
+| A trace is missed, or two are merged | `--trace-colour RRGGBB` (repeat per trace) | `trace_colours=["#578dd2", …]` |
+| A legend or annotation is taken for a trace | `--exclude LEFT,TOP,RIGHT,BOTTOM` | `exclude=(l, t, r, b)` |
+| A black trace is invented or ignored | `--achromatic never` / `always` | `achromatic="never"` |
+| No Tesseract, or it should not be used | `--no-ocr` | `ocr=False` |
+
+## How accurate is it?
+
+The package carries its own tests against known answers, and you can rerun them.
+
+**Traces.** `trace-digitiser --validate results/` draws 44 figures (57 traces) from known data —
+different axis styles, twelve colours including black and grey, 60 to 300 dpi, JPEG compression,
+noise and blur, line widths, multi-panel layouts, several traces per panel, a logarithmic axis,
+jagged and dense records, tilted scans — digitises them, and compares. Errors are in percent of the
+height of the plot. A trace counts as *recovered* if its panel and curve were found with no
+spurious extra trace, x positions are within 1 % and the RMS error in y is within 2 %.
+
+| | found | recovered | median error | time per figure¹ |
+|---|---|---|---|---|
+| **2.0, nothing supplied** | 57 of 57 | 55 | 0.13 % | 0.5 s |
+| **2.0, axis limits supplied** | 57 of 57 | 55 | 0.09 % | 0.3 s |
+| 1.2.0, panel layout supplied | 48 of 57 | 20 | 0.49 % | 20 s |
+| 1.2.0, panel layout and axis limits supplied | 48 of 57 | 13 | 1.39 % | 0.3 s |
+
+¹ On a two-core machine.
+
+The two traces that 2.0 does not recover are dense records in low-resolution figures (errors of
+2.3 % and 4.3 %), for the reason given [above](#what-the-values-are--and-are-not). Of the traces
+that 1.2.0 found but did not recover, most came with a spurious second trace.
+
+**Axis scales.** Reading a scale from tick labels is the one step that depends on OCR, and OCR of
+small print is unreliable, so it is tested separately:
+`python -m trace_digitiser.validation results/ --axes` reads 750 axes (whole numbers, decimals,
+negative values, thousands, clock and angle steps, logarithmic; print from 5 to 24 pixels high;
+three typefaces; JPEG compression and blur).
+
+| Height of the labels | axes | read correctly | declined | read wrongly, with a warning | read wrongly, no warning |
+|---|---|---|---|---|---|
+| 8 pixels or more | 477 | 464 | 13 | 0 | 0 |
+| under 8 pixels | 273 | 257 (all with a warning to check them) | 15 | 1 | 0 |
+
+*Declined* means that no scale was offered. All of those at 8 pixels or more are logarithmic axes
+whose raised exponents are too small to read, though the rest of the label is not. The outcome for small
+print depends on how the text was rasterised: with the test figures drawn by matplotlib 3.7, which
+renders small print more softly than current versions, 236 of 292 axes under 8 pixels were read
+correctly, 46 declined and 10 read wrongly with a warning — and still none without.
+
+Labels under 8 pixels high are never given high confidence, however well they agree, because print
+that small is misread in consistent ways — the decimal point dropped from every label, say. If
+your figure has such labels, enlarging the image does not help; typing in two numbers does.
+
+### Test it on data you know
+
+The best test of a digitisation is one on data like yours. `round_trip` draws a known series as a
+figure of whatever size and style you choose, digitises the drawing, and reports the errors:
+
+```python
+from trace_digitiser.validation import round_trip
+
+check = round_trip(t, y, "check/", xlim=(0, 7), ylim=(0, 300),
+                   panel_px=(347, 137), dpi=72, linewidth=0.8, fmt="jpg")
+check["metrics"]     # errors of centre and envelopes, correlation with the mean per column, …
+check["overlay"]     # the picture to look at
+```
+
+[`examples/validate_with_known_data.py`](https://github.com/comparativechrono/trace-digitiser/blob/main/examples/validate_with_known_data.py)
+does this for a week of minute-by-minute activity drawn at the size of a small journal figure.
+
+## Limits
+
+* The plot must have at least a left and a bottom axis line, drawn in black or grey. A figure
+  that is askew is straightened automatically if the tilt is under five degrees; beyond that,
+  or for a photograph taken at an angle (where the axes are no longer parallel), correct the
+  image first.
+* One trace per colour per panel. Two traces of the same colour, dashed or dotted lines, and
+  traces that are only markers are not separated or joined up.
+* Where traces cross or overlap, the one drawn underneath is hidden and its values there are
+  interpolated (`interpolated` is `True`).
+* Axis scales are read only from numeric labels on linear or logarithmic axes; dates, broken axes
+  and a second y axis are not understood. Limits typed in are assumed to be at the axis lines
+  unless `y_ref` / `x_ref` say otherwise.
+* Error bars, shaded bands, bars and scatter plots are not digitised.
+
+## Development
 
 ```bash
 git clone https://github.com/comparativechrono/trace-digitiser.git
 cd trace-digitiser
 pip install -e ".[dev]"
+pytest                      # the tests that need Tesseract are skipped without it
+ruff check src tests
 ```
 
-## Quick start
+`src/trace_digitiser/` in the order the work is done:
 
-### Python API
+| Module | Does |
+|--------|------|
+| `straighten.py` | Measures the tilt of a scan and turns it upright. |
+| `frames.py`, `panel_detection.py` | Finds axis lines and assembles them into plot areas. |
+| `axis_labels.py`, `calibration.py`, `x_calibration.py` | Locates and reads tick labels, fits the scale, rates its confidence; or takes the limits given. |
+| `trace_detection.py` | Separates the traces from gridlines, axes and text. |
+| `digitise.py` | Converts each trace to values, column by column. |
+| `ocr.py`, `summarise.py` | Interval labels along the x axis, and means per interval. |
+| `diagnostics.py`, `provenance.py`, `io.py` | Overlay, record of the run, files. |
+| `validation.py`, `synthetic.py` | Figures drawn from known data, and the comparisons. |
+| `cli.py` | The command line. |
 
-```python
-from trace_digitiser import digitise
+Changes are listed in [CHANGELOG.md](https://github.com/comparativechrono/trace-digitiser/blob/main/CHANGELOG.md);
+making a release is described in
+[RELEASING.md](https://github.com/comparativechrono/trace-digitiser/blob/main/RELEASING.md).
 
-result = digitise(
-    "figure.jpg",
-    layout_mode="stacked",
-    expected_rows=2,
-    expected_cols=1,
-    output_dir="outputs",
-)
+## Licence
 
-# Digitised traces as a DataFrame
-print(result.trace_data.head())
-
-# Panel metadata
-for panel in result.panels:
-    print(f"Panel {panel.panel_id}: {panel.width}×{panel.height}px, "
-          f"calibration={panel.calibration.scale_type}")
-```
-
-### Command line
-
-```bash
-# Single image
-trace-digitiser figure.jpg --layout stacked --rows 2 --cols 1 -o outputs/
-
-# Batch processing
-trace-digitiser figures/*.jpg --layout auto -o results/
-
-# Generate synthetic test figures
-trace-digitiser --generate-test-figures -o test_figures/
-```
-
-### Layout modes
-
-| Mode | Use case | Example |
-|------|----------|---------|
-| `single` | One plot panel | `--layout single` |
-| `stacked` | Vertically stacked panels | `--layout stacked --rows 2 --cols 1` |
-| `horizontal` | Side-by-side panels | `--layout horizontal --rows 1 --cols 3` |
-| `grid` | Row×column subplot grid | `--layout grid --rows 2 --cols 2` |
-| `auto` | Unconstrained detection | `--layout auto` |
-
-## Output files
-
-For input `figure.jpg` with default settings:
-
-| File | Description |
-|------|-------------|
-| `figure_automated_digitised_trace_by_column.csv` | One row per x-pixel column per trace, with `center_estimate`, `upper_envelope`, `lower_envelope` |
-| `figure_automated_panel_metadata.csv` | Panel coordinates, calibration parameters, detected x-labels |
-| `figure_automated_digitised_summary_by_label.csv` | Summary statistics per detected x-label interval (written only if labels are found) |
-
-## Project structure
-
-```
-trace_digitiser/
-├── pyproject.toml
-├── src/trace_digitiser/
-│   ├── __init__.py          # Public API: digitise()
-│   ├── models.py            # Dataclasses: Panel, Calibration, Trace, DigitiserResult
-│   ├── io.py                # Image loading, CSV output
-│   ├── geometry.py          # Box area/IoU/containment helpers
-│   ├── line_detection.py    # Horizontal and vertical line detectors
-│   ├── panel_detection.py   # Candidate generation, deduplication, layout selection
-│   ├── calibration.py       # Y-axis OCR calibration (linear + log) and cross-row propagation
-│   ├── x_calibration.py     # X-axis OCR calibration (numeric ticks)
-│   ├── ocr.py               # Tesseract OCR wrappers for tick and x-label reading
-│   ├── trace_detection.py   # HSV/CIELAB colour segmentation + achromatic trace detection
-│   ├── digitise.py          # Column-by-column trace digitisation
-│   ├── summarise.py         # Interval-label summarisation
-│   ├── diagnostics.py       # Debug overlays and diagnostic file output
-│   ├── synthetic.py         # Synthetic test-figure generation
-│   └── cli.py               # Command-line interface
-└── tests/
-    ├── conftest.py           # Shared fixtures (synthetic images)
-    ├── test_geometry.py
-    ├── test_panel_detection.py
-    ├── test_trace_detection.py
-    └── test_integration.py   # Panel count, calibration quality, trace RMSE
-```
-
-## Development
-
-```bash
-# Run tests
-pytest
-
-# Run tests with coverage
-pytest --cov=trace_digitiser
-
-# Lint
-ruff check src/ tests/
-```
-
-## Limitations
-
-This tool digitises visible pixels from raster images. It does not recover original raw data. Key limitations:
-
-- **Linear and log y-axes supported** — broken, dual, and other nonlinear axes are not supported yet.
-- **X-axis calibration is best-effort** — numeric x-ticks are OCR'd when possible; otherwise x-values are normalised 0–1 or labelled by interval.
-- **Black/grey traces partially supported** — achromatic trace detection is available but works best when traces have enough contrast against the background.
-- **Requires visible structure** — axes, borders, or gridlines must be present for panel detection.
-- **OCR fragility** — small, rotated, or low-contrast tick labels may fail.
-
-## Changelog
-
-### v0.1.0
-
-**Refactored from notebook to installable package** with 15 modules, dataclasses, CLI, and test suite.
-
-**Panel detection improvements:**
-- Hint-aware `split_y_clusters` — uses the user's `expected_rows` to split evenly-spaced gridlines at the largest gaps, even when the inter-panel gap is only marginally wider than intra-panel gaps.
-- Post-hoc panel subdivision — `apply_layout_hint` can split oversized candidates at their gridlines when initial detection yields fewer panels than expected.
-- Improved grid detection — properly cross-matches row/column structure.
-
-**Trace detection improvements:**
-- CIELAB clustering mode (`use_lab=True`) — clusters non-background pixels in perceptually uniform colour space using mini-batch k-means.
-- Achromatic trace detection — a separate pass detects black/grey traces by looking for low-saturation, horizontally continuous structures distinct from grid/axis lines.
-
-**Calibration improvements:**
-- Log-scale y-axis detection — when OCR'd tick values are better explained by `log10(y_value) = a * y_pixel + b`, the calibration uses log scale automatically.
-- X-axis calibration — OCRs numeric x-axis ticks, fits `x_value = a * x_pixel + b`, and adds `x_value` column to the trace CSV.
-
-**Infrastructure:**
-- Diagnostic overlays save to files via `save_diagnostics=True`.
-- Tesseract error handling — graceful recovery from OCR crashes on degenerate crops.
-- No Colab dependency.
-- Quantitative test suite with panel count, calibration quality, and trace RMSE metrics against synthetic ground truth.
+MIT; see `LICENSE`. The example figure has its own licence and attribution, given in
+[`examples/README.md`](https://github.com/comparativechrono/trace-digitiser/blob/main/examples/README.md).

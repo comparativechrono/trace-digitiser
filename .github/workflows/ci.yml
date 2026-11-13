@@ -1,0 +1,80 @@
+# Runs the test suite and the linter on every push to main and every pull request.
+#
+# The tests need Tesseract only for the parts that read axis labels; one job
+# runs without it to make sure everything else works (and is tested) on its own.
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+      - run: python -m pip install "ruff>=0.4"
+      - run: ruff check src tests examples
+
+  test:
+    name: Python ${{ matrix.python }}${{ matrix.oldest && ', oldest dependencies' || '' }}${{ !matrix.tesseract && ', no Tesseract' || '' }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.10", "3.11", "3.12", "3.13", "3.14"]
+        oldest: [false]
+        tesseract: [true]
+        include:
+          # The oldest versions of the dependencies that pyproject.toml allows.
+          - python: "3.10"
+            oldest: true
+            tesseract: true
+          # Without Tesseract: the OCR tests are skipped, the rest must pass.
+          - python: "3.13"
+            oldest: false
+            tesseract: false
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Install Tesseract
+        if: matrix.tesseract
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends tesseract-ocr
+          tesseract --version
+
+      - name: Install the package
+        if: ${{ !matrix.oldest }}
+        run: python -m pip install -e ".[dev]"
+
+      - name: Install the package with the oldest allowed dependencies
+        if: matrix.oldest
+        run: |
+          python -m pip install uv
+          uv pip install --system --resolution lowest-direct -e ".[dev]"
+
+      - name: Versions
+        run: python -c "import numpy, pandas, cv2, matplotlib, PIL; print('numpy', numpy.__version__, '| pandas', pandas.__version__, '| opencv', cv2.__version__, '| matplotlib', matplotlib.__version__, '| pillow', PIL.__version__)"
+
+      - name: Run the tests
+        run: python -m pytest -q -W "ignore::trace_digitiser.DigitiserWarning"

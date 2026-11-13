@@ -4,8 +4,9 @@
 # password is stored in this repository. Before the first automated release the
 # project owner must register this workflow on PyPI once - see RELEASING.md.
 #
-# "Run workflow" (manual dispatch) only builds and checks the distributions; it
-# never uploads anything.
+# Nothing is uploaded unless the distributions build and the tests pass.
+# "Run workflow" (manual dispatch) only builds, checks and tests; it never
+# uploads anything.
 name: Publish to PyPI
 
 on:
@@ -57,9 +58,29 @@ jobs:
           path: dist/
           if-no-files-found: error
 
+  test:
+    name: Test before release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.13"
+
+      - name: Install Tesseract
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends tesseract-ocr
+
+      - name: Run the tests
+        run: |
+          python -m pip install -e ".[dev]"
+          python -m pytest -q -W "ignore::trace_digitiser.DigitiserWarning"
+
   publish:
     name: Upload to PyPI
-    needs: build
+    needs: [build, test]
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
     permissions:

@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "trace-digitiser"
-version = "1.2.0"
-description = "Template-free computer-vision digitisation pipeline for raster scientific line plots."
+version = "2.0.0"
+description = "Recover the data from line plots in figure images, on your own computer: no uploads, no AI model."
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -15,16 +15,23 @@ keywords = [
     "plot digitizer",
     "graph digitiser",
     "data extraction",
+    "data rescue",
     "computer vision",
     "time series",
     "circadian",
     "actigraphy",
 ]
 classifiers = [
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
     "Topic :: Scientific/Engineering",
     "Topic :: Scientific/Engineering :: Image Processing",
 ]
@@ -39,6 +46,11 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
+# Only for detect_trace_masks(..., use_lab=True), an alternative way of
+# separating trace colours.
+lab = [
+    "scikit-learn>=1.2",
+]
 dev = [
     "pytest>=7.4",
     "pytest-cov>=4.1",
@@ -64,3 +76,12 @@ addopts = "-v --tb=short"
 [tool.ruff]
 line-length = 120
 target-version = "py310"
+
+[tool.ruff.lint]
+# Stated in full so that the result does not change with ruff's defaults.
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = [
+    "B905",   # zip() without strict=: the lengths are equal by construction
+    "UP007",  # Optional[...] and Union[...] are used throughout
+    "UP045",
+]

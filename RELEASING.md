@@ -39,22 +39,27 @@ the repository is public (or on a paid plan):
 
 ## Making a release
 
-1. Update `version` in `pyproject.toml` (PyPI never accepts the same version
+1. Set `version` in `pyproject.toml` (PyPI never accepts the same version
    twice; the last published version is 1.2.0).
-2. Move the entries under *Unreleased* in `CHANGELOG.md` to a new heading for
-   the version.
-3. Merge to `main`.
+2. In `CHANGELOG.md`, give the section for the version its date in place of
+   "not yet released".
+3. Merge to `main` and wait for the *Tests* workflow to pass.
 4. On GitHub: *Releases -> Draft a new release*, create the tag `vX.Y.Z`
    (matching the version exactly, with a leading `v`) on `main`, and publish.
 
 Publishing the release starts the workflow. It checks that the tag matches the
-version, builds the sdist and wheel, validates them, and uploads them to PyPI.
-If the tag and version disagree the run stops before anything is uploaded.
+version, builds the sdist and wheel, validates them, runs the tests, and
+uploads to PyPI. If the tag and version disagree, or a test fails, the run
+stops before anything is uploaded.
+
+The README is shown on PyPI as it is in the release. Its links to files in
+this repository are absolute, so they work there only once the repository is
+public.
 
 ## Checking a build without releasing
 
 *Actions -> Publish to PyPI -> Run workflow* builds and validates the
-distributions but never uploads them. Locally:
+distributions and runs the tests, but never uploads anything. Locally:
 
 ```bash
 python -m pip install build twine

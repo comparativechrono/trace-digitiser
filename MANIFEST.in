@@ -1,0 +1,4 @@
+# Ship the complete test suite in the source distribution.
+# (Without this, setuptools includes tests/test_*.py but not conftest.py,
+# so the tests in the sdist cannot run.)
+recursive-include tests *.py

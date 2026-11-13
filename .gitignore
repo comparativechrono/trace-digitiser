@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Test / lint caches
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Editors / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Digitiser outputs written to the working directory
+*_automated_digitised_trace_by_column.csv
+*_automated_digitised_summary_by_label.csv
+*_automated_panel_metadata.csv
+*_resampled.csv
+*_trace_plot.png
+diagnostics/
+test_figures/
+outputs/

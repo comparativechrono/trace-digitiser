@@ -15,10 +15,15 @@ sudo apt-get install tesseract-ocr
 # Install Tesseract (macOS)
 brew install tesseract
 
-# Install the package
-pip install -e .
+# Install the package from PyPI
+pip install trace-digitiser
+```
 
-# With development dependencies
+To work on the code, clone the repository and install it in editable mode:
+
+```bash
+git clone https://github.com/comparativechrono/trace-digitiser.git
+cd trace-digitiser
 pip install -e ".[dev]"
 ```
 

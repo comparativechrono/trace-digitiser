@@ -11,6 +11,23 @@ license = "MIT"
 license-files = ["LICENSE"]
 requires-python = ">=3.10"
 authors = [{ name = "Trace Digitiser Contributors" }]
+keywords = [
+    "plot digitizer",
+    "graph digitiser",
+    "data extraction",
+    "computer vision",
+    "time series",
+    "circadian",
+    "actigraphy",
+]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
 
 dependencies = [
     "opencv-python-headless>=4.8",
@@ -27,6 +44,12 @@ dev = [
     "pytest-cov>=4.1",
     "ruff>=0.4",
 ]
+
+[project.urls]
+Homepage = "https://github.com/comparativechrono/trace-digitiser"
+Repository = "https://github.com/comparativechrono/trace-digitiser"
+Issues = "https://github.com/comparativechrono/trace-digitiser/issues"
+Changelog = "https://github.com/comparativechrono/trace-digitiser/blob/main/CHANGELOG.md"
 
 [project.scripts]
 trace-digitiser = "trace_digitiser.cli:main"

@@ -402,7 +402,8 @@ def digitise_bars(
                     if c1 - c0 + 1 < min_w or c1 - c0 + 1 >= 0.9 * roi.shape[1]:
                         continue
                     width = c1 - c0 + 1
-                    inner = np.arange(c0 + int(0.2 * width), max(c0 + int(0.2 * width) + 1, c0 + int(np.ceil(0.8 * width))))
+                    lo_c = c0 + int(0.2 * width)
+                    inner = np.arange(lo_c, max(lo_c + 1, c0 + int(np.ceil(0.8 * width))))
                     hs = heights[inner]
                     med = float(np.median(hs))
                     q1, q3 = np.percentile(hs, [25, 75])
@@ -436,7 +437,8 @@ def digitise_bars(
             key = tuple(int(v) for v in c["colour"])
             if key not in colours_used:
                 colours_used.append(key)
-        order = {k: i + 1 for i, k in enumerate(sorted(colours_used, key=lambda k: palette.index(k) if k in palette else 99))}
+        rank = {k: (palette.index(k) if k in palette else 99) for k in colours_used}
+        order = {k: i + 1 for i, k in enumerate(sorted(colours_used, key=rank.get))}
         count = {}
         if left_out and kept:
             fig.note(

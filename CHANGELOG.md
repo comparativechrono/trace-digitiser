@@ -4,6 +4,66 @@ All notable changes to trace-digitiser are recorded here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and the project uses [semantic versioning](https://semver.org/).
 
+## [2.1.0] - 2026-11-14
+
+Everything in 2.0.0 works as before. What is new is readers for other kinds of
+figure, and helpers for graphical tools such as the
+[digitiser workbench](https://github.com/comparativechrono/digitiser-workbench).
+
+### Added
+
+- **Points**: `digitise_points` (`trace-digitiser points`) reads the markers of
+  a scatter or dot plot, or of a line drawn with markers, whatever their
+  shape, separating markers that overlap; and the error bars on them,
+  vertical or horizontal, to the middle of their caps.
+- **Bars**: `digitise_bars` (`trace-digitiser bars`) reads where each bar
+  ends, upright or lying down, rising or hanging from the baseline, and its
+  error bar; a legend's patch is left out.
+- **Rows**: `digitise_rows` (`trace-digitiser rows`) reads figures drawn as a
+  stack of rows - actograms, double-plotted records, birthograms - bin by bin,
+  and the dots that mark a peak in them.
+- **Heat maps**: `digitise_heatmap` (`trace-digitiser heatmap`) reads each
+  cell's value from its colour on the colour bar, whose labels are read like
+  an axis's (or from a matplotlib colour map).
+- **Polar plots**: `digitise_polar` (`trace-digitiser polar`) finds the polar
+  axes and their rings, and reads each point's angle and distance.
+- All of them return a `FigureResult` and write a CSV file, a provenance file
+  and, if asked, an overlay, as `digitise` does.
+- `describe_figure` (`trace-digitiser describe`): what the automatic steps
+  find in a figure - plot areas, each axis's tick labels and readings, the
+  colours drawn, a colour bar, polar axes - as plain values.
+- `pixels_to_values`: points picked by hand, in the figure's units.
+- Tick labels are read on the right-hand side of a plot too (a colour bar, a
+  second y axis): `calibrate_axis(..., "y2")`.
+- `y_axis="right"` (`--y-axis right`) reads a line's values against a second
+  y axis on the right of the plot (a twin axis); with `trace_colours`, the
+  lines drawn against each axis are digitised in a run of their own.
+- `describe_figure` gives the tick marks found on each plot's axes, for a
+  program that lets you click on a tick.
+- Colours can be given by name (`"black"`, `"steelblue"`, `"tab:blue"`).
+- Plots stacked on a shared x axis, of which only the lowest has labels, take
+  its x scale (with a message saying so).
+- A plot area hidden among others in a grid (a heat map whose dark colours
+  hide its axis lines) is found by its frame.
+
+### Changed
+
+- An axis scale is held to medium confidence when the tick labels support a
+  different scale just as well. Tesseract compiled to WebAssembly (as it runs
+  in a browser) read the superscript minus signs of a log axis's exponents
+  differently from the Tesseract program, and two scales then fitted equally;
+  between log scales that tie, the one that steps by a decade is chosen.
+- The sides of filled areas (bars) no longer make a plot area of their own
+  inside the real one, which bar charts with a legend could cause.
+- A long axis (ten or more labels) whose labels nearly all agree is not read
+  again in the slower ways; fitting the labels of a long axis (the 59 years of
+  a birthogram) takes a second or two rather than half a minute, with the same
+  result.
+- A heat map's colours are looked up on the colour bar once each, rather than
+  once for each pixel: Figure 4 of Hearn and Whitmore (2026) takes 4 seconds
+  rather than 45, with the same values.
+- pytesseract is imported only when it is first used.
+
 ## [2.0.0] - 2026-11-14
 
 Every call and command-line option of 1.2.0 still works, with the same
@@ -105,5 +165,6 @@ First version tracked in this repository; identical to the 1.2.0 files on PyPI.
 Releases 0.1.0 to 1.0.0 (6-7 June 2026) were uploaded to PyPI directly and are
 not recorded here.
 
+[2.1.0]: https://github.com/comparativechrono/trace-digitiser/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/comparativechrono/trace-digitiser/compare/1d34f75...v2.0.0
 [1.2.0]: https://pypi.org/project/trace-digitiser/1.2.0/

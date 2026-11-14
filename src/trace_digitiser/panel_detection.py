@@ -745,6 +745,47 @@ def panels_from_boxes(rgb: np.ndarray, boxes: list[tuple[float, float, float, fl
     return panels
 
 
+def _cluster(values: list[float], tol: float) -> list[float]:
+    groups: list[list[float]] = []
+    for v in sorted(values):
+        if groups and v - groups[-1][-1] <= tol:
+            groups[-1].append(v)
+        else:
+            groups.append([v])
+    return [float(np.mean(g)) for g in groups]
+
+
+def _complete_grid(rgb: np.ndarray, panels: list[dict]) -> list[dict]:
+    """Plot areas missing from a grid of plots (a heat map whose axis lines its dark colours hide, say): where the
+    rows and columns of the plots found cross and no plot was found, a box with a dark frame all round is one."""
+    dark = darkness_map(rgb)
+    e = [p["edges"] for p in panels]
+    tol = 4.0
+    lefts, rights = _cluster([x["left"] for x in e], tol), _cluster([x["right"] for x in e], tol)
+    tops, bottoms = _cluster([x["top"] for x in e], tol), _cluster([x["bottom"] for x in e], tol)
+    if len(lefts) != len(rights) or len(tops) != len(bottoms) or len(lefts) * len(tops) <= len(panels):
+        return []
+    added = []
+    for t, b in zip(tops, bottoms):
+        for left, r in zip(lefts, rights):
+            if any(abs(x["left"] - left) <= tol and abs(x["top"] - t) <= tol for x in e):
+                continue
+            box = [int(round(v)) for v in (left, t, r, b)]
+            x0, y0, x1, y1 = box
+            if x1 - x0 < 20 or y1 - y0 < 20:
+                continue
+            # a frame: the four sides dark along nearly all their length (within a pixel of where they should be)
+            sides = [
+                dark[max(0, y0 - 1): y0 + 2, x0: x1 + 1].max(axis=0),
+                dark[max(0, y1 - 1): y1 + 2, x0: x1 + 1].max(axis=0),
+                dark[y0: y1 + 1, max(0, x0 - 1): x0 + 2].max(axis=1),
+                dark[y0: y1 + 1, max(0, x1 - 1): x1 + 2].max(axis=1),
+            ]
+            if all(float((s_ > 140).mean()) >= 0.9 for s_ in sides):
+                added.extend(panels_from_boxes(rgb, [(float(x0), float(y0), float(x1), float(y1))]))
+    return added
+
+
 def _select_frames(
     frames: list[Frame],
     layout_mode: str,
@@ -907,6 +948,15 @@ def find_plot_panels(
                     "check the overlay, or pass plot_area."
                 )
                 panels, h_lines, v_lines = legacy, legacy_h, legacy_v
+
+    if plot_area is None and len(panels) >= 3:
+        added = _complete_grid(rgb, panels)
+        if added:
+            panels = sorted(panels + added, key=lambda p: (round(p["edges"]["top"] / 10), p["edges"]["left"]))
+            notes.append(
+                f"{len(added)} plot area(s) completing a grid of plots were found by their frames alone "
+                "(their axis lines were hidden by what is drawn beside them); check them on the overlay."
+            )
 
     if not panels:
         notes.append(

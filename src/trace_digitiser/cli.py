@@ -18,6 +18,14 @@ Usage::
     # Check the tool against figures drawn from known data
     trace-digitiser --validate validation/
 
+    # Other kinds of figure (each takes the axis options above, and options of its own: --help)
+    trace-digitiser points scatter.png --overlay        # markers, and their error bars
+    trace-digitiser bars bars.png --overlay             # the end of each bar, and its error bar
+    trace-digitiser rows actogram.png --bins 48         # a stack of rows (actograms, double plots)
+    trace-digitiser heatmap heat.png --rows 21          # cells, read off the colour bar
+    trace-digitiser polar phase.png --r-ref 37.5:1955 --r-ref 98.2:1965
+    trace-digitiser describe figure.png                 # what is found in a figure, as JSON
+
 Everything runs on this computer; no image or data is sent anywhere.
 """
 
@@ -148,6 +156,11 @@ def _build_parser() -> argparse.ArgumentParser:
         "--x-scale", dest="x_scale", default="auto", choices=["auto", "linear", "log"], help="Kind of x axis."
     )
     axes.add_argument(
+        "--y-axis", dest="y_axis", default="left", choices=["left", "right"],
+        help="Read the values against the left-hand y axis (default) or a second one on the right. With "
+        "--trace-colour, to digitise the lines drawn against each axis in a run of their own.",
+    )
+    axes.add_argument(
         "--no-ocr", dest="ocr", action="store_false", help="Never run Tesseract; use only the values given."
     )
 
@@ -261,7 +274,239 @@ def _describe(result) -> list[str]:
     return lines
 
 
+SUBCOMMANDS = ("lines", "points", "bars", "rows", "heatmap", "polar", "describe")
+
+
+def _numbers(text: str) -> list[float]:
+    """``1,2,3`` or ``1955:2013`` (every whole number from one to the other) or ``0:1:0.25`` (with a step)."""
+    text = text.strip()
+    if ":" in text and "," not in text:
+        parts = [float(v) for v in text.split(":")]
+        start, stop = parts[0], parts[1]
+        step = parts[2] if len(parts) > 2 else 1.0
+        n = int(round((stop - start) / step)) + 1
+        return [start + i * step for i in range(max(0, n))]
+    try:
+        return [float(v) for v in text.replace(";", ",").split(",") if v.strip()]
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"expected numbers separated by commas, or FIRST:LAST, got {text!r}") from None
+
+
+def _pair(text: str) -> tuple[float, float]:
+    values = _numbers(text)
+    if len(values) != 2:
+        raise argparse.ArgumentTypeError(f"expected two numbers, A,B, got {text!r}")
+    return values[0], values[1]
+
+
+def _figure_options(p: argparse.ArgumentParser, axes: bool = True) -> None:
+    p.add_argument("images", nargs="+", type=Path, help="Input image file(s).")
+    g = p.add_argument_group("the figure and its axes")
+    g.add_argument("--straighten", type=_straighten, default="auto", metavar="auto|never|DEGREES",
+                   help="Turn a tilted figure upright first (default: auto).")
+    if axes:
+        g.add_argument("--plot-area", dest="plot_area", type=_box, action="append",
+                       metavar="X_LEFT,Y_TOP,X_RIGHT,Y_BOTTOM", help="The plot area, by hand. Repeatable.")
+        g.add_argument("--y-min", dest="y_min", type=float, help="y value at the bottom edge of the plot area.")
+        g.add_argument("--y-max", dest="y_max", type=float, help="y value at the top edge of the plot area.")
+        g.add_argument("--x-min", dest="x_min", type=float, help="x value at the left edge of the plot area.")
+        g.add_argument("--x-max", dest="x_max", type=float, help="x value at the right edge of the plot area.")
+        g.add_argument("--y-ref", dest="y_ref", type=_point, action="append", metavar="ROW:VALUE",
+                       help="A y-axis reference point (give two or more).")
+        g.add_argument("--x-ref", dest="x_ref", type=_point, action="append", metavar="COLUMN:VALUE",
+                       help="An x-axis reference point (give two or more).")
+        g.add_argument("--y-scale", dest="y_scale", default="auto", choices=["auto", "linear", "log"])
+        g.add_argument("--x-scale", dest="x_scale", default="auto", choices=["auto", "linear", "log"])
+        g.add_argument("--y-axis", dest="y_axis", default="left", choices=["left", "right"],
+                       help="Read the values against the left-hand y axis (default) or one on the right.")
+        g.add_argument("--exclude", type=_box, action="append", metavar="X_LEFT,Y_TOP,X_RIGHT,Y_BOTTOM",
+                       help="A region to ignore (a legend, a label). Repeatable.")
+        g.add_argument("--no-ocr", dest="ocr", action="store_false", help="Never run Tesseract.")
+    o = p.add_argument_group("output")
+    o.add_argument("--output-dir", "-o", dest="output_dir", type=Path, default=None,
+                   help="Where to write the files (default: the current directory).")
+    o.add_argument("--overlay", action="store_true", help="Also save what was found drawn over the figure.")
+
+
+def _figure_kwargs(args) -> dict:
+    out = {"straighten": args.straighten}
+    names = ("plot_area", "y_min", "y_max", "x_min", "x_max", "y_ref", "x_ref", "y_scale", "x_scale", "exclude", "ocr",
+             "y_axis")
+    for k in names:
+        if hasattr(args, k):
+            out[k] = getattr(args, k)
+    return out
+
+
+def _subcommand(name: str, argv: list[str]) -> None:
+    if name == "lines":
+        return main(argv)
+    from .provenance import package_version
+
+    p = argparse.ArgumentParser(prog=f"trace-digitiser {name}", epilog="Pixel coordinates count from the top-left "
+                                "corner of the image, starting at 0. Everything runs on this computer.")
+    p.add_argument("--version", action="version", version=f"trace-digitiser {package_version()}")
+    if name == "describe":
+        p.description = "Say what is found in a figure - its plot areas, axes, tick labels and colours - as JSON."
+        p.add_argument("images", nargs="+", type=Path, help="Input image file(s).")
+        p.add_argument("--straighten", type=_straighten, default="auto", metavar="auto|never|DEGREES")
+        p.add_argument("--plot-area", dest="plot_area", type=_box, action="append",
+                       metavar="X_LEFT,Y_TOP,X_RIGHT,Y_BOTTOM")
+        p.add_argument("--no-ocr", dest="ocr", action="store_false")
+        p.add_argument("--output", "-o", dest="output", type=Path, default=None, help="Write the JSON to a file.")
+        args = p.parse_args(argv)
+        import json
+
+        from .explore import describe_figure
+
+        out = {}
+        for image in args.images:
+            out[str(image)] = describe_figure(image, straighten=args.straighten, plot_area=args.plot_area,
+                                              ocr=args.ocr)
+        text = json.dumps(out if len(out) > 1 else next(iter(out.values())), indent=2)
+        if args.output:
+            args.output.write_text(text + "\n", encoding="utf-8")
+            print(f"Wrote {args.output}")
+        else:
+            print(text)
+        return None
+    if name == "points":
+        p.description = "Read the points (markers) of a figure, and their error bars."
+        _figure_options(p)
+        g = p.add_argument_group("the points")
+        g.add_argument("--colour", "--color", dest="colours", action="append", metavar="COLOUR",
+                       help="The colour of the points (#rrggbb, or a name such as black). Repeatable.")
+        g.add_argument("--colour-tolerance", dest="colour_tolerance", type=float, default=60.0)
+        g.add_argument("--marker-size", dest="marker_size", type=float, help="The markers' diameter in pixels.")
+        g.add_argument("--error-bars", dest="error_bars", default="auto",
+                       choices=["auto", "vertical", "horizontal", "both", "none"])
+        args = p.parse_args(argv)
+        from .points import digitise_points as reader
+
+        extra = {"colours": args.colours, "colour_tolerance": args.colour_tolerance,
+                 "marker_size": args.marker_size, "error_bars": args.error_bars}
+    elif name == "bars":
+        p.description = "Read the bars of a bar chart: where each ends, and its error bar."
+        _figure_options(p)
+        g = p.add_argument_group("the bars")
+        g.add_argument("--colour", "--color", dest="colours", action="append", metavar="COLOUR")
+        g.add_argument("--colour-tolerance", dest="colour_tolerance", type=float, default=40.0)
+        g.add_argument("--baseline", type=float, help="The value the bars start from (default 0, if on the axis).")
+        g.add_argument("--horizontal", action="store_true", help="Bars that run across from the y axis.")
+        g.add_argument("--no-error-bars", dest="error_bars", action="store_false")
+        args = p.parse_args(argv)
+        from .bars import digitise_bars as reader
+
+        extra = {"colours": args.colours, "colour_tolerance": args.colour_tolerance, "baseline": args.baseline,
+                 "orientation": "horizontal" if args.horizontal else "vertical", "error_bars": args.error_bars}
+    elif name == "rows":
+        p.description = "Read a figure drawn as a stack of rows: an actogram, a double-plotted record, a birthogram."
+        _figure_options(p)
+        g = p.add_argument_group("the rows")
+        g.add_argument("--row-values", dest="row_values", type=_numbers, metavar="V1,V2,... or FIRST:LAST",
+                       help="The y-axis value of each row's baseline (1955:2013).")
+        g.add_argument("--row-positions", dest="row_positions", type=_numbers, metavar="ROW1,ROW2,...",
+                       help="The pixel row of each baseline.")
+        g.add_argument("--rows", dest="rows", type=int, help="How many evenly spaced rows (with --row-range).")
+        g.add_argument("--row-range", dest="row_range", type=_pair, metavar="FIRST,LAST",
+                       help="The pixel rows of the first and last baselines.")
+        g.add_argument("--row-spacing-value", dest="row_spacing_value", type=float,
+                       help="What the distance between two baselines stands for (1.1 if values 0-1 are drawn 1.1 "
+                       "apart).")
+        g.add_argument("--direction", default="auto", choices=["auto", "up", "down"])
+        g.add_argument("--bins", type=int, help="Average each row over this many bins (24, 48 ...).")
+        g.add_argument("--colour", "--color", dest="colour", metavar="COLOUR", help="The colour of the fill.")
+        g.add_argument("--dots", metavar="COLOUR", help="Also find dots of this colour, and say which bin each is in.")
+        args = p.parse_args(argv)
+        from .rows import digitise_rows as reader
+
+        extra = {k: getattr(args, k) for k in ("row_values", "row_positions", "rows", "row_range",
+                                               "row_spacing_value", "direction", "bins", "colour", "dots")}
+    elif name == "heatmap":
+        p.description = "Read a heat map: the value of each cell, from its colour on the colour bar."
+        _figure_options(p)
+        g = p.add_argument_group("the heat map")
+        g.add_argument("--colourbar", "--colorbar", dest="colourbar", type=_box,
+                       metavar="X_LEFT,Y_TOP,X_RIGHT,Y_BOTTOM", help="Where the colour bar is (found if not given).")
+        g.add_argument("--colourbar-values", "--colorbar-values", dest="colourbar_values", type=_pair,
+                       metavar="BOTTOM,TOP", help="The values at the ends of the colour bar (read if not given).")
+        g.add_argument("--colormap", "--colourmap", dest="colormap", metavar="NAME",
+                       help="Instead of a colour bar: matplotlib's colour map (viridis ...), with --vmin and --vmax.")
+        g.add_argument("--vmin", type=float)
+        g.add_argument("--vmax", type=float)
+        g.add_argument("--rows", type=int, help="How many cells down the map (found if not given).")
+        g.add_argument("--cols", type=int, help="How many cells across.")
+        g.add_argument("--max-colour-error", dest="max_colour_error", type=float, default=12.0)
+        args = p.parse_args(argv)
+        from .heatmap import digitise_heatmap as reader
+
+        extra = {k: getattr(args, k) for k in ("colourbar", "colourbar_values", "colormap", "vmin", "vmax", "rows",
+                                               "cols", "max_colour_error")}
+    elif name == "polar":
+        p.description = "Read the points of a polar plot: the angle of each and its distance from the centre."
+        _figure_options(p, axes=False)
+        g = p.add_argument_group("the polar axes")
+        g.add_argument("--centre", "--center", dest="centre", type=_pair, metavar="X,Y")
+        g.add_argument("--r-ref", dest="r_ref", type=_point, action="append", metavar="RADIUS:VALUE",
+                       help="A distance from the centre (pixels) and what it stands for. Give two or more.")
+        g.add_argument("--outer-value", dest="outer_value", type=float, help="The value at the outer circle.")
+        g.add_argument("--inner-value", dest="inner_value", type=float, default=0.0)
+        g.add_argument("--zero", default="east", choices=["east", "north", "west", "south"])
+        g.add_argument("--clockwise", action="store_true")
+        g.add_argument("--colour", "--color", dest="colours", action="append", metavar="COLOUR")
+        g.add_argument("--marker-size", dest="marker_size", type=float)
+        args = p.parse_args(argv)
+        from .polar import digitise_polar as reader
+
+        extra = {k: getattr(args, k) for k in ("centre", "r_ref", "outer_value", "inner_value", "zero", "clockwise",
+                                               "colours", "marker_size")}
+    failures = 0
+    for image in args.images:
+        if not image.exists():
+            print(f"WARNING: {image} not found, skipping.", file=sys.stderr)
+            failures += 1
+            continue
+        print(f"\n{'=' * 60}")
+        print(f"Processing: {image}")
+        try:
+            with warnings.catch_warnings():
+                warnings.simplefilter("ignore")
+                kwargs = dict(extra, output_dir=args.output_dir, save_overlay=args.overlay)
+                if name == "polar":
+                    kwargs["straighten"] = False if args.straighten in ("auto", "never") else args.straighten
+                else:
+                    kwargs.update(_figure_kwargs(args))
+                result = reader(image, **kwargs)
+        except (ValueError, FileNotFoundError) as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            failures += 1
+            continue
+        print(f"  Found: {len(result.data)} {name if len(result.data) != 1 else name.rstrip('s')}"
+              + (f" in {len(result.panels)} panel(s)" if result.panels else ""))
+        if len(result.data):
+            import pandas as pd
+
+            with pd.option_context("display.width", 160, "display.max_columns", 12):
+                print("  " + result.data.head(5).to_string(index=False).replace("\n", "\n  "))
+        print(f"  CSV:          {result.csv_path}")
+        print(f"  Provenance:   {result.provenance_path}")
+        if result.straightened_path:
+            print(f"  Straightened: {result.straightened_path}")
+        if result.overlay_path:
+            print(f"  Overlay:      {result.overlay_path}")
+        for message in result.warnings:
+            print(f"  CHECK: {message}")
+        if not result.overlay_path:
+            print("  Tip: add --overlay to save a picture of what was found, drawn on the figure.")
+    if failures:
+        sys.exit(1)
+    return None
+
+
 def main(argv: list[str] | None = None) -> None:
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] in SUBCOMMANDS and not Path(argv[0]).exists():
+        return _subcommand(argv[0], argv[1:])
     parser = _build_parser()
     args = parser.parse_args(argv)
 
@@ -343,6 +588,7 @@ def main(argv: list[str] | None = None) -> None:
                     ocr=args.ocr,
                     save_overlay=args.overlay,
                     straighten=args.straighten,
+                    y_axis=args.y_axis,
                 )
         except (ValueError, FileNotFoundError) as exc:
             print(f"ERROR: {exc}", file=sys.stderr)

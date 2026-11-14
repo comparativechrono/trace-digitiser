@@ -17,10 +17,9 @@ from typing import Optional
 
 import cv2
 import numpy as np
-import pytesseract
 
 from .axis_labels import calibrate_axis, tesseract_available
-from .ocr import extract_numbers_from_text, preprocess_for_ocr
+from .ocr import extract_numbers_from_text, preprocess_for_ocr, pytesseract
 
 # ===================================================================
 # Calibrations that need no OCR

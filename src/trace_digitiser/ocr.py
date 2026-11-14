@@ -8,8 +8,28 @@ from __future__ import annotations
 
 import cv2
 import numpy as np
-import pytesseract
-from pytesseract import Output
+
+
+class _LazyTesseract:
+    """pytesseract, imported when it is first used: the package can be imported (and used with axis values given
+    by hand) where pytesseract is not installed."""
+
+    def __getattr__(self, name):
+        import pytesseract
+
+        return getattr(pytesseract, name)
+
+
+pytesseract = _LazyTesseract()
+
+
+class Output:
+    """pytesseract's output types, without importing it."""
+
+    BYTES = "bytes"
+    DATAFRAME = "data.frame"
+    DICT = "dict"
+    STRING = "string"
 
 # ===================================================================
 # Preprocessing

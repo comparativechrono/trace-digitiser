@@ -76,6 +76,12 @@ class AxisFit:
     n_located: int = 0  # labels found beside the axis, read or not
     usual_step: bool = True  # the step between labels is one that axes are drawn with (10, 25, 0.5, 24 ...)
     glyph_px: float = 0.0  # height of the labels' print in pixels (0 if not known)
+    rival: Optional[tuple[float, float]] = None  # another scale the labels support as well: its values at two labels
+
+    @property
+    def ambiguous(self) -> bool:
+        """True if another, different scale is supported by the labels just as well as this one."""
+        return self.rival is not None
 
     @property
     def n_total(self) -> int:
@@ -126,8 +132,10 @@ class AxisFit:
         if not (missing <= allowed and 2 * plain >= n and plain >= 2 and self.rms_px <= 1.5 and self.anchored >= 2):
             return "medium"
         # Print this small is misread in ways that agree with each other -
-        # the same digit or the decimal point dropped from every label.
-        return "medium" if self.small_print else "high"
+        # the same digit or the decimal point dropped from every label.  And
+        # when the readings support another scale just as well (a lost minus
+        # sign in each of two exponents, say), neither can be trusted fully.
+        return "medium" if self.small_print or self.ambiguous else "high"
 
     @property
     def small_print(self) -> bool:
@@ -493,7 +501,8 @@ def find_tick_labels(
 
     Parameters
     ----------
-    axis : ``"y"`` (labels to the left of the plot) or ``"x"`` (labels below).
+    axis : ``"y"`` (labels to the left of the plot), ``"y2"`` (labels to the right: a second y axis, or a colour
+        bar's) or ``"x"`` (labels below).
     limit : float, optional
         Do not look further out than this image coordinate (a column for
         ``"y"``, a row for ``"x"``) - normally the edge of the neighbouring
@@ -518,6 +527,17 @@ def find_tick_labels(
             return []
         outward = dark[y_lo : y_hi + 1, x_lo : x_hi + 1][:, ::-1].T
         lo, hi = edges["top"] - y_lo, edges["bottom"] - y_lo
+    elif axis == "y2":
+        x_lo = int(math.ceil(edges["right"])) + half  # the column next to the axis
+        x_hi = min(w - 1, x_lo + int(0.45 * span) + 20)
+        if limit is not None:
+            x_hi = min(x_hi, int(math.floor(limit)))
+        y_lo = max(0, int(edges["top"]) - pad)
+        y_hi = min(h - 1, int(edges["bottom"]) + pad)
+        if x_hi - x_lo < 4 or y_hi - y_lo < 4:
+            return []
+        outward = dark[y_lo : y_hi + 1, x_lo : x_hi + 1].T
+        lo, hi = edges["top"] - y_lo, edges["bottom"] - y_lo
     elif axis == "x":
         y_lo = int(math.ceil(edges["bottom"])) + half
         y_hi = min(h - 1, y_lo + int(0.30 * span) + 20)
@@ -533,7 +553,7 @@ def find_tick_labels(
         outward = dark[y_lo : y_hi + 1, x_lo : x_hi + 1]
         lo, hi = edges["left"] - x_lo, edges["right"] - x_lo
     else:
-        raise ValueError("axis must be 'x' or 'y'")
+        raise ValueError("axis must be 'x', 'y' or 'y2'")
 
     ink = _text_ink(outward)
 
@@ -549,6 +569,7 @@ def find_tick_labels(
         if stats[i, cv2.CC_STAT_WIDTH] <= max_thick or not lo <= centre <= hi:
             ink[labels == i] = False
 
+    vertical = axis in ("y", "y2")
     glyph_h = _glyph_height(ink if axis == "x" else ink.T)
     if glyph_h <= 0:
         return []
@@ -557,7 +578,7 @@ def find_tick_labels(
     # A tick label is centred on its tick, so it cannot reach further past
     # the end of the axis than half its own length: half a line of print on
     # a y axis, a few characters on an x axis.
-    reach = (0.75 if axis == "y" else 4.0) * glyph_h
+    reach = (0.75 if vertical else 4.0) * glyph_h
     ink[:, : max(0, int(math.floor(lo - reach)))] = False
     ink[:, int(math.ceil(hi + reach)) + 1 :] = False
 
@@ -570,6 +591,8 @@ def find_tick_labels(
         """Box given as (distance range, along range) -> (x0, y0, x1, y1) in the image."""
         if axis == "y":
             return (x_hi - db, y_lo + a, x_hi - da, y_lo + b)
+        if axis == "y2":
+            return (x_lo + da, y_lo + a, x_lo + db, y_lo + b)
         return (x_lo + a, y_lo + da, x_lo + b, y_lo + db)
 
     def labels_in(d0: int, d1: int) -> list[TickLabel]:
@@ -577,7 +600,7 @@ def find_tick_labels(
         along = band.any(axis=0)
         # Along a y axis each label is a line of its own; along an x axis
         # the digits of a label sit closer together than neighbouring labels.
-        runs = _runs(along) if axis == "y" else _merge_runs(_runs(along), max_gap=max(1.0, 0.45 * glyph_h))
+        runs = _runs(along) if vertical else _merge_runs(_runs(along), max_gap=max(1.0, 0.45 * glyph_h))
         out: list[TickLabel] = []
         for a, b in runs:
             piece = band[:, a : b + 1]
@@ -591,8 +614,13 @@ def find_tick_labels(
                 continue
             if not lo - 0.5 * glyph_h <= 0.5 * (a + b) <= hi + 0.5 * glyph_h:
                 continue
-            label = TickLabel(pos=0.5 * (box[1] + box[3]) if axis == "y" else 0.5 * (box[0] + box[2]), box=box)
-            upright = ink[da : db + 1, a : b + 1].T[:, ::-1] if axis == "y" else ink[da : db + 1, a : b + 1]
+            label = TickLabel(pos=0.5 * (box[1] + box[3]) if vertical else 0.5 * (box[0] + box[2]), box=box)
+            if axis == "y":
+                upright = ink[da : db + 1, a : b + 1].T[:, ::-1]
+            elif axis == "y2":
+                upright = ink[da : db + 1, a : b + 1].T
+            else:
+                upright = ink[da : db + 1, a : b + 1]
             start = _exponent_start(upright)
             if start is not None and start > 0:
                 # Split into base and exponent; the exponent occupies the top
@@ -963,15 +991,12 @@ def _on_lattice(agree: list[tuple], slope: float, spacing_px: float, scale: str)
     step = _nearest_round(abs(slope) * spacing_px, scale)
     if step is None:
         return agree
-    residues = [(t / step) % 1.0 for _, t, _, _ in agree]
-
-    def near(r: float, r0: float) -> bool:
-        # Tick values are exact multiples of the step, so this only has to
-        # absorb floating-point error.
-        d = abs(r - r0)
-        return min(d, 1.0 - d) <= 0.02
-
-    members = max(([i for i, r in enumerate(residues) if near(r, r0)] for r0 in residues), key=len)
+    residues = np.array([(t / step) % 1.0 for _, t, _, _ in agree])
+    # Readings whose residues are the same as each one's (tick values are exact multiples of the step, so this only
+    # has to absorb floating-point error): the largest such group, the first of them if several are as large.
+    d = np.abs(residues[:, None] - residues[None, :])
+    near = np.minimum(d, 1.0 - d) <= 0.02
+    members = np.flatnonzero(near[int(np.argmax(near.sum(axis=1)))])
     return [agree[i] for i in members]
 
 
@@ -1095,6 +1120,10 @@ def _line_fits(
         return agree
 
     seen: set[tuple] = set()
+    # The labels that agree with the line through a pair: once they have been refitted, what follows depends on them
+    # alone, so another pair with the same labels agreeing would come to the same fit (already yielded, or not
+    # yielded for the same reason) and need not be refitted.
+    refitted: set[tuple] = set()
     for i, j in itertools.combinations(range(len(where)), 2):
         if abs(where[j] - where[i]) < 4:
             continue
@@ -1104,8 +1133,11 @@ def _line_fits(
             a = (t2 - t1) / (where[j] - where[i])
             b = t1 - a * where[i]
             agree = consensus(a, b)
+            start = tuple((k, t, d) for k, t, d, _ in agree)
+            if start in refitted:
+                continue
             # Refine: refit to the agreeing labels and look again.
-            for _ in range(3):
+            for n in range(3):
                 if len(agree) < 2:
                     break
                 ps = np.array([where[k] for k, _, _, _ in agree])
@@ -1118,6 +1150,8 @@ def _line_fits(
                     break
                 settled = [(k, t) for k, t, _, _ in again] == [(k, t) for k, t, _, _ in agree]
                 a, b, agree = a2, b2, again
+                if n == 0:
+                    refitted.add(start)
                 if settled:
                     break
             kept = _on_lattice(agree, a, spacing_px, scale)
@@ -1190,7 +1224,7 @@ def fit_axis(
     tols = [tolerance(lab) for lab in usable]
     where = [lab.where for lab in usable]
 
-    best: Optional[tuple] = None
+    candidates: list[tuple] = []
     for scale in scales:
         options: list[list[tuple[float, bool]]] = []
         for lab in usable:
@@ -1221,21 +1255,53 @@ def fit_axis(
                 plain,
                 usual,
                 scale == "linear",
+                # (between log scales the labels support equally, one that
+                # steps by a decade: an exponent misread drops a digit or a
+                # sign far more often than it invents one)
+                -abs(step) if scale == "log" and step is not None else 0.0,
                 _round_steps(ts_list, scale),
                 -rms,
             )
-            if best is None or key > best[0]:
-                best = (key, scale, a, b, agree, rms, plain, usual)
+            candidates.append((key, scale, a, b, agree, rms, plain, usual))
 
-    if best is None:
+    if not candidates:
         return None
-    _, scale, a, b, agree, rms, plain, usual = best
+    candidates.sort(key=lambda c: c[0], reverse=True)
+    _, scale, a, b, agree, rms, plain, usual = candidates[0]
+    rival = _rival(candidates, where)
     inliers = [(float(where[k]), float(10.0 ** t if scale == "log" else t)) for k, t, _, _ in agree]
     return AxisFit(
         a=float(a), b=float(b), scale=scale, inliers=inliers, n_labels=len(usable), rms_px=float(rms),
         anchored=sum(1 for k, _, _, _ in agree if usable[k].anchor is not None),
         exact=rungs is not None, n_plain=plain, n_located=max(n_located or 0, len(labels)), usual_step=usual,
+        rival=rival,
     )
+
+
+def _rival(candidates: list[tuple], where: list[float]) -> Optional[tuple[float, float]]:
+    """The values, at the first and last labels, of a different scale that the labels support exactly as well as the
+    best one (as many agreeing labels, as many of them plain readings), if there is one."""
+    best = candidates[0]
+    lo, hi = min(where), max(where)
+
+    def ends(c):
+        _, scale, a, b = c[:4]
+        v = [a * lo + b, a * hi + b]
+        return [10.0 ** x for x in v] if scale == "log" else v
+
+    e0 = ends(best)
+    span = abs(e0[1] - e0[0]) or 1.0
+    for c in candidates[1:]:
+        if c[0][:2] != best[0][:2]:
+            break
+        e = ends(c)
+        if best[1] == "log" and c[1] == "log":
+            differ = any(abs(math.log10(max(x, 1e-300)) - math.log10(max(y, 1e-300))) > 0.05 for x, y in zip(e0, e))
+        else:
+            differ = any(abs(x - y) > 0.01 * span for x, y in zip(e0, e))
+        if differ:
+            return (float(e[0]), float(e[1]))
+    return None
 
 
 def calibrate_axis(
@@ -1263,14 +1329,16 @@ def calibrate_axis(
         return None, located
     if axis == "x" and not labels_are_numeric(rgb, located):
         return None, []  # interval names or words, not a numeric axis
-    anchor_labels(located, panel.get("tick_rows" if axis == "y" else "tick_cols", []))
+    anchor_labels(located, panel.get({"y": "tick_rows", "y2": "tick_rows_right", "x": "tick_cols"}[axis], []))
 
     fit: Optional[AxisFit] = None
     for preparation in PREPARATIONS:
         read_tick_labels(rgb, located, preparation)
         fit = fit_axis(located, increasing=(axis == "x"), scales=scales)
-        if fit is not None and fit.exact and len(fit.inliers) == fit.n_total >= 3:
-            break  # every label agrees; no need to read them again another way
+        if fit is not None and fit.exact and (
+            len(fit.inliers) == fit.n_total >= 3 or (fit.n_total >= 10 and len(fit.inliers) >= 0.9 * fit.n_total)
+        ):
+            break  # every label agrees (nearly every one, of many); no need to read them again another way
     if fit is None or not fit.usable:
         # An inverted axis (depth, rank) is unusual but legitimate.  It is
         # also what negative labels look like when their minus signs are not

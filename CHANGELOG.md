@@ -4,6 +4,47 @@ All notable changes to trace-digitiser are recorded here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and the project uses [semantic versioning](https://semver.org/).
 
+## [2.2.0] - unreleased
+
+Tested on the figures of published papers whose underlying numbers are
+published too (Leypunskiy et al. 2017, eLife 6:e23539, drawn with MATLAB;
+Foley et al. 2019, eLife 8:e50063, drawn with GraphPad Prism; Pearl and Reed
+1920, PNAS 6:275, a microfilm scan), 2.1.0 read what it found accurately but
+often found nothing. This release finds much more of it. Line plots digitise
+as before: the package's validation suite and the Hearn and Whitmore (2026)
+examples give the same results.
+
+### Fixed
+
+- **Bar charts in the style of GraphPad Prism**: black, grey, hatched and
+  outlined bars are found, on an axis that does not start at 0 (2.1.0 found 3
+  of the 36 bars of Foley et al.'s figure 2, and read those upside down; all
+  36 are now read, within 0.4 % of the axis). Bars are the columns filled from
+  the baseline, so an error bar or a significance bracket joined to a bar no
+  longer spoils it; a border of another colour (a black outline round a grey
+  bar) is part of the bar; a bar cut by the edge of the plot area is kept.
+- **Error bars drawn in the colour of their bar or marker** (the default in
+  Prism, MATLAB and matplotlib) are followed beyond the bar's end, or from the
+  marker, to their caps; one running across a fitted line goes on beyond it.
+  Where only the half beyond a bar's end shows, a note says so.
+- **Markers sitting on a line of their own colour** (a fitted line, their
+  error bars) are found: other sizes are tried where the lines' ridges
+  outnumber the markers, and such a colour counts as a colour of markers if
+  its markers are joined to its lines and much thicker than them. Round
+  letters of words written in the plot, and a legend's markers beside their
+  words, are left out; a marker found in two series of close colours is kept
+  in the nearer one.
+- **A plot area given by hand** (a box drawn in the workbench, or numbers read
+  off a picture) moves to the middle of the axis lines within a few pixels of
+  it, and their thickness is measured: with a thick axis line the tick labels
+  were looked for inside it, and the axis title was read instead.
+- Long tick marks of a small plot in a large picture are found, so that its
+  labels are anchored to them.
+- A colour that fills areas (a shaded band behind a plot) is not taken for a
+  trace of a line plot.
+- Tick labels that Tesseract misreads as a line of text (75 as 15, in large
+  Helvetica) are read once more as a single word when an axis is not settled.
+
 ## [2.1.0] - 2026-11-14
 
 Everything in 2.0.0 works as before. What is new is readers for other kinds of
@@ -165,6 +206,7 @@ First version tracked in this repository; identical to the 1.2.0 files on PyPI.
 Releases 0.1.0 to 1.0.0 (6-7 June 2026) were uploaded to PyPI directly and are
 not recorded here.
 
+[2.2.0]: https://github.com/comparativechrono/trace-digitiser/compare/v2.1.0...HEAD
 [2.1.0]: https://github.com/comparativechrono/trace-digitiser/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/comparativechrono/trace-digitiser/compare/1d34f75...v2.0.0
 [1.2.0]: https://pypi.org/project/trace-digitiser/1.2.0/

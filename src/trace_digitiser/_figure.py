@@ -104,19 +104,20 @@ def _points_for_panel(ref, panel_id: int, n_panels: int, name: str) -> Optional[
     return [tuple(float(v) for v in pt) for pt in ref]
 
 
-def _neighbour_limits(panels: list[dict]) -> dict[int, tuple[Optional[float], Optional[float]]]:
+def _neighbour_limits(panels: list[dict], right: bool = False) -> dict[int, tuple[Optional[float], Optional[float]]]:
     """For each panel, how far its tick labels can extend before meeting another panel.
 
-    Returns ``{panel_id: (column limit for y labels, row limit for x labels)}``.
+    Returns ``{panel_id: (column limit for y labels, row limit for x labels)}``; with *right*, the column limit is
+    for labels to the right of the panel (a second y axis).
     """
     limits: dict[int, tuple[Optional[float], Optional[float]]] = {}
     for p in panels:
         e = p["edges"]
-        left_of = [
-            q["edges"]["right"]
+        beside = [
+            q["edges"]["left"] if right else q["edges"]["right"]
             for q in panels
             if q is not p
-            and q["edges"]["right"] < e["left"]
+            and (q["edges"]["left"] > e["right"] if right else q["edges"]["right"] < e["left"])
             and q["edges"]["top"] < e["bottom"]
             and q["edges"]["bottom"] > e["top"]
         ]
@@ -128,7 +129,8 @@ def _neighbour_limits(panels: list[dict]) -> dict[int, tuple[Optional[float], Op
             and q["edges"]["left"] < e["right"]
             and q["edges"]["right"] > e["left"]
         ]
-        limits[p["panel_id"]] = (max(left_of) + 3 if left_of else None, min(below) - 3 if below else None)
+        column = (min(beside) - 3 if right else max(beside) + 3) if beside else None
+        limits[p["panel_id"]] = (column, min(below) - 3 if below else None)
     return limits
 
 
@@ -206,6 +208,7 @@ def prepare_figure(
     ocr: bool = True,
     write_outputs: bool = True,
     straighten: Union[str, bool, float] = "auto",
+    y_axis: str = "left",
     extra_parameters: Optional[dict] = None,
     stacklevel: int = 4,
 ) -> PreparedFigure:
@@ -222,6 +225,8 @@ def prepare_figure(
     for name, value in (("y_scale", y_scale), ("x_scale", x_scale)):
         if value not in ("auto", "linear", "log"):
             raise ValueError(f"{name} must be 'auto', 'linear' or 'log'")
+    if y_axis not in ("left", "right"):
+        raise ValueError("y_axis must be 'left' or 'right'")
     if (y_min is None) != (y_max is None):
         raise ValueError("give both y_min and y_max, or neither")
     if (x_min is None) != (x_max is None):
@@ -269,6 +274,8 @@ def prepare_figure(
         "ocr": ocr,
         "straighten": straighten,
     }
+    if y_axis != "left":
+        parameters["y_axis"] = y_axis
     parameters.update(extra_parameters or {})
 
     notes: list[str] = []
@@ -349,8 +356,9 @@ def prepare_figure(
             print_panel_summary(panels, h_lines, v_lines, layout_mode)
         draw_panel_overlay(rgb, panels, h_lines, v_lines, output_dir=diag_dir, show=show_debug)
 
-    limits = _neighbour_limits(panels)
+    limits = _neighbour_limits(panels, right=(y_axis == "right"))
     n_panels = len(panels)
+    which_y = "right-hand y axis" if y_axis == "right" else "y axis"
 
     # ------------------------------------------------------------------
     # 2. Y-axis calibration: reference points, else limits, else OCR
@@ -368,7 +376,15 @@ def prepare_figure(
                     "upper end of the y-axis line. If the axis runs past its last tick, give y_ref instead."
                 )
         elif ocr:
-            cal = calibrate_y(rgb, dark, p, limit=limits[pid][0], scale=y_scale, verbose=show_debug)
+            cal = calibrate_y(
+                rgb,
+                dark,
+                p,
+                limit=limits[pid][0],
+                scale=y_scale,
+                verbose=show_debug,
+                axis="y2" if y_axis == "right" else "y",
+            )
         else:
             cal = normalised_calibration(p)
         p["y_calibration"] = cal.to_dict()
@@ -392,17 +408,18 @@ def prepare_figure(
             else:
                 why = "no tick labels were found beside it"
             note(
-                f"Panel {pid}: the y axis is not calibrated - {why}. Values run from 0 at the bottom of "
+                f"Panel {pid}: the {which_y} is not calibrated - {why}. Values run from 0 at the bottom of "
                 "the plot area to 1 at the top. Give y_min and y_max, or y_ref."
             )
         elif cal.get("method", "").startswith("tick_labels"):
             if cal.get("confidence") != "high":
-                note(f"Panel {pid}: the y-axis scale {_doubt(cal)} or give y_min and y_max.")
+                scale_name = "right-hand y-axis scale" if y_axis == "right" else "y-axis scale"
+                note(f"Panel {pid}: the {scale_name} {_doubt(cal)} or give y_min and y_max.")
             if cal.get("orientation_flipped"):
                 y_cal = Calibration(**cal)
                 top, bottom = (_tidy(float(y_cal.y_to_value(p["edges"][k]))) for k in ("top", "bottom"))
                 note(
-                    f"Panel {pid}: the y axis was read as running downwards, from {top} at the top of the plot "
+                    f"Panel {pid}: the {which_y} was read as running downwards, from {top} at the top of the plot "
                     f"area to {bottom} at the bottom. If its labels are negative numbers, their minus signs were "
                     "not read: give y_min and y_max."
                 )

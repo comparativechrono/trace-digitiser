@@ -156,6 +156,11 @@ def _build_parser() -> argparse.ArgumentParser:
         "--x-scale", dest="x_scale", default="auto", choices=["auto", "linear", "log"], help="Kind of x axis."
     )
     axes.add_argument(
+        "--y-axis", dest="y_axis", default="left", choices=["left", "right"],
+        help="Read the values against the left-hand y axis (default) or a second one on the right. With "
+        "--trace-colour, to digitise the lines drawn against each axis in a run of their own.",
+    )
+    axes.add_argument(
         "--no-ocr", dest="ocr", action="store_false", help="Never run Tesseract; use only the values given."
     )
 
@@ -312,6 +317,8 @@ def _figure_options(p: argparse.ArgumentParser, axes: bool = True) -> None:
                        help="An x-axis reference point (give two or more).")
         g.add_argument("--y-scale", dest="y_scale", default="auto", choices=["auto", "linear", "log"])
         g.add_argument("--x-scale", dest="x_scale", default="auto", choices=["auto", "linear", "log"])
+        g.add_argument("--y-axis", dest="y_axis", default="left", choices=["left", "right"],
+                       help="Read the values against the left-hand y axis (default) or one on the right.")
         g.add_argument("--exclude", type=_box, action="append", metavar="X_LEFT,Y_TOP,X_RIGHT,Y_BOTTOM",
                        help="A region to ignore (a legend, a label). Repeatable.")
         g.add_argument("--no-ocr", dest="ocr", action="store_false", help="Never run Tesseract.")
@@ -323,7 +330,8 @@ def _figure_options(p: argparse.ArgumentParser, axes: bool = True) -> None:
 
 def _figure_kwargs(args) -> dict:
     out = {"straighten": args.straighten}
-    names = ("plot_area", "y_min", "y_max", "x_min", "x_max", "y_ref", "x_ref", "y_scale", "x_scale", "exclude", "ocr")
+    names = ("plot_area", "y_min", "y_max", "x_min", "x_max", "y_ref", "x_ref", "y_scale", "x_scale", "exclude", "ocr",
+             "y_axis")
     for k in names:
         if hasattr(args, k):
             out[k] = getattr(args, k)
@@ -580,6 +588,7 @@ def main(argv: list[str] | None = None) -> None:
                     ocr=args.ocr,
                     save_overlay=args.overlay,
                     straighten=args.straighten,
+                    y_axis=args.y_axis,
                 )
         except (ValueError, FileNotFoundError) as exc:
             print(f"ERROR: {exc}", file=sys.stderr)

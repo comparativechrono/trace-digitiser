@@ -284,9 +284,13 @@ def digitise_heatmap(
         h, w = roi.shape[:2]
         if h < 2 or w < 2:
             continue
-        values, err = _nearest_values(_lab(roi), bar_lab, bar_values)
-        values = values.reshape(h, w)
-        err = err.reshape(h, w)
+        # each colour once: a heat map has far fewer colours than pixels
+        flat = roi.reshape(-1, 3).astype(np.int32)
+        uniq, inverse = np.unique((flat[:, 0] << 16) | (flat[:, 1] << 8) | flat[:, 2], return_inverse=True)
+        colours = np.stack([(uniq >> 16) & 255, (uniq >> 8) & 255, uniq & 255], axis=1).astype(np.uint8)
+        values, err = _nearest_values(_lab(colours), bar_lab, bar_values)
+        values = values[inverse.ravel()].reshape(h, w)
+        err = err[inverse.ravel()].reshape(h, w)
         good = err <= max_colour_error
         if good.mean() < 0.5:
             fig.note(

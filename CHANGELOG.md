@@ -35,6 +35,11 @@ figure, and helpers for graphical tools such as the
 - `pixels_to_values`: points picked by hand, in the figure's units.
 - Tick labels are read on the right-hand side of a plot too (a colour bar, a
   second y axis): `calibrate_axis(..., "y2")`.
+- `y_axis="right"` (`--y-axis right`) reads a line's values against a second
+  y axis on the right of the plot (a twin axis); with `trace_colours`, the
+  lines drawn against each axis are digitised in a run of their own.
+- `describe_figure` gives the tick marks found on each plot's axes, for a
+  program that lets you click on a tick.
 - Colours can be given by name (`"black"`, `"steelblue"`, `"tab:blue"`).
 - Plots stacked on a shared x axis, of which only the lowest has labels, take
   its x scale (with a message saying so).
@@ -51,7 +56,12 @@ figure, and helpers for graphical tools such as the
 - The sides of filled areas (bars) no longer make a plot area of their own
   inside the real one, which bar charts with a legend could cause.
 - A long axis (ten or more labels) whose labels nearly all agree is not read
-  again in the slower ways.
+  again in the slower ways; fitting the labels of a long axis (the 59 years of
+  a birthogram) takes a second or two rather than half a minute, with the same
+  result.
+- A heat map's colours are looked up on the colour bar once each, rather than
+  once for each pixel: Figure 4 of Hearn and Whitmore (2026) takes 4 seconds
+  rather than 45, with the same values.
 - pytesseract is imported only when it is first used.
 
 ## [2.0.0] - 2026-11-14

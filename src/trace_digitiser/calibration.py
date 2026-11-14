@@ -126,6 +126,7 @@ def calibrate_y(
     scale: str = "auto",
     exhaustive_fallback: bool = False,
     verbose: bool = False,
+    axis: str = "y",
 ) -> Calibration:
     """Calibrate the y axis of one panel from its tick labels.
 
@@ -133,6 +134,9 @@ def calibrate_y(
     ----------
     limit : float, optional
         Column beyond which not to look for labels (the neighbouring panel).
+    axis : {"y", "y2"}
+        The labels to read: those of the left-hand axis (``"y"``), or those of a second y axis on the right
+        (``"y2"``).
     scale : {"auto", "linear", "log"}
         Restrict the fit to one kind of axis; ``"auto"`` tries both.
     exhaustive_fallback : bool
@@ -154,7 +158,9 @@ def calibrate_y(
     if not tesseract_available():
         return normalised_calibration(panel)
 
-    fit, labels = calibrate_axis(rgb, dark, panel, "y", limit=limit, scales=scales)
+    if axis not in ("y", "y2"):
+        raise ValueError("axis must be 'y' or 'y2'")
+    fit, labels = calibrate_axis(rgb, dark, panel, axis, limit=limit, scales=scales)
     candidates = {int(round(lab.where)): list(lab.values) for lab in labels}
     found = len(labels)
     label_px = print_height(labels) or None
@@ -170,14 +176,14 @@ def calibrate_y(
         )
 
     if verbose:
-        print(f"Panel {panel.get('panel_id', '?')} y-axis labels:")
+        print(f"Panel {panel.get('panel_id', '?')} {'right-hand ' if axis == 'y2' else ''}y-axis labels:")
         for lab in labels:
             print(f"  row {lab.where:7.1f}: read {lab.readings} -> {lab.values}")
 
     if fit is not None and fit.confidence != "low":
         return from_fit()
 
-    if exhaustive_fallback and scale != "log" and len(panel.get("gridline_y", [])) >= 2:
+    if exhaustive_fallback and axis == "y" and scale != "log" and len(panel.get("gridline_y", [])) >= 2:
         legacy = robust_y_calibration(rgb, panel, verbose=verbose)
         if _plausible_exhaustive(legacy, panel):
             legacy.method = "tick_labels_exhaustive"

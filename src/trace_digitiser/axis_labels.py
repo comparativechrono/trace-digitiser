@@ -991,15 +991,12 @@ def _on_lattice(agree: list[tuple], slope: float, spacing_px: float, scale: str)
     step = _nearest_round(abs(slope) * spacing_px, scale)
     if step is None:
         return agree
-    residues = [(t / step) % 1.0 for _, t, _, _ in agree]
-
-    def near(r: float, r0: float) -> bool:
-        # Tick values are exact multiples of the step, so this only has to
-        # absorb floating-point error.
-        d = abs(r - r0)
-        return min(d, 1.0 - d) <= 0.02
-
-    members = max(([i for i, r in enumerate(residues) if near(r, r0)] for r0 in residues), key=len)
+    residues = np.array([(t / step) % 1.0 for _, t, _, _ in agree])
+    # Readings whose residues are the same as each one's (tick values are exact multiples of the step, so this only
+    # has to absorb floating-point error): the largest such group, the first of them if several are as large.
+    d = np.abs(residues[:, None] - residues[None, :])
+    near = np.minimum(d, 1.0 - d) <= 0.02
+    members = np.flatnonzero(near[int(np.argmax(near.sum(axis=1)))])
     return [agree[i] for i in members]
 
 
@@ -1123,6 +1120,10 @@ def _line_fits(
         return agree
 
     seen: set[tuple] = set()
+    # The labels that agree with the line through a pair: once they have been refitted, what follows depends on them
+    # alone, so another pair with the same labels agreeing would come to the same fit (already yielded, or not
+    # yielded for the same reason) and need not be refitted.
+    refitted: set[tuple] = set()
     for i, j in itertools.combinations(range(len(where)), 2):
         if abs(where[j] - where[i]) < 4:
             continue
@@ -1132,8 +1133,11 @@ def _line_fits(
             a = (t2 - t1) / (where[j] - where[i])
             b = t1 - a * where[i]
             agree = consensus(a, b)
+            start = tuple((k, t, d) for k, t, d, _ in agree)
+            if start in refitted:
+                continue
             # Refine: refit to the agreeing labels and look again.
-            for _ in range(3):
+            for n in range(3):
                 if len(agree) < 2:
                     break
                 ps = np.array([where[k] for k, _, _, _ in agree])
@@ -1146,6 +1150,8 @@ def _line_fits(
                     break
                 settled = [(k, t) for k, t, _, _ in again] == [(k, t) for k, t, _, _ in agree]
                 a, b, agree = a2, b2, again
+                if n == 0:
+                    refitted.add(start)
                 if settled:
                     break
             kept = _on_lattice(agree, a, spacing_px, scale)

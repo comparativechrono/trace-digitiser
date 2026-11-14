@@ -380,3 +380,38 @@ def test_angle_conventions_round_trip():
     theta = math.degrees(math.atan2(0, 1))
     assert (theta - 90) % 360 == 270  # anticlockwise from north
     assert (-(theta - 90)) % 360 == 90  # clockwise from north
+
+
+# --------------------------------------------------------------------- a second y axis
+
+
+@pytest.mark.skipif(not tesseract_available(), reason="needs Tesseract")
+def test_lines_against_the_right_hand_axis(tmp_path):
+    from trace_digitiser import digitise
+
+    x = np.linspace(0, 10, 200)
+    left = 200 + 100 * np.sin(x / 2)
+    right = 0.4 + 0.3 * np.cos(x / 3)
+    fig = Figure(figsize=(7, 4), dpi=100)
+    ax = fig.add_subplot(111)
+    ax.plot(x, left, color="#1f77b4", lw=1.5)
+    ax.set_ylim(50, 350)
+    ax2 = ax.twinx()
+    ax2.plot(x, right, color="#ff7f0e", lw=1.5)
+    ax2.set_ylim(0, 1)
+    fig.subplots_adjust(left=0.12, right=0.88)
+    path = save(fig, tmp_path / "twin.png")
+    r = digitise(path, trace_colours=["#ff7f0e"], y_axis="right", write_outputs=False)
+    cal = r.panels[0].calibration
+    assert cal.method == "tick_labels"
+    top, bottom = (float(cal.y_to_value(r.panels[0].edges[k])) for k in ("top", "bottom"))
+    assert abs(top - 1.0) < 0.01 and abs(bottom) < 0.01
+    d = r.trace_data.dropna(subset=["x_value"])
+    want = 0.4 + 0.3 * np.cos(d["x_value"].to_numpy() / 3)
+    assert np.median(np.abs(d["center_estimate"].to_numpy() - want)) < 0.01
+    # the left-hand axis is still the default
+    r = digitise(path, trace_colours=["#1f77b4"], write_outputs=False)
+    top = float(r.panels[0].calibration.y_to_value(r.panels[0].edges["top"]))
+    assert abs(top - 350) < 3
+    with pytest.raises(ValueError):
+        digitise(path, y_axis="middle", write_outputs=False)

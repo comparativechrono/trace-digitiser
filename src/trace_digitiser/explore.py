@@ -62,7 +62,8 @@ def describe_figure(
 
     Returns a dict with ``width``, ``height``, ``tilt_degrees`` (anticlockwise; the figure is turned upright by that
     much if *straighten* is "auto" and it is 0.15 degrees or more: ``straightened`` says whether it was), and
-    ``panels``: for each plot area its ``plot_area`` (left, top, right, bottom), ``kind`` ("box", "L" ...), and for
+    ``panels``: for each plot area its ``plot_area`` (left, top, right, bottom), ``kind`` ("box", "L" ...), its
+    ``tick_marks`` (the rows of the ticks on the left-hand axis, the columns of those on the bottom one), and for
     each of its axes (``y_axis``, ``y2_axis`` on the right, ``x_axis``) the tick labels found (their boxes, what
     was read, the values those readings could stand for) and, if they agree on one, the scale (``ticks``: the
     (pixel, value) pairs it rests on, with its ``confidence``); and ``colours``, the colours drawn in it. Then
@@ -90,6 +91,12 @@ def describe_figure(
             "panel_id": p["panel_id"],
             "plot_area": [round(e["left"], 2), round(e["top"], 2), round(e["right"], 2), round(e["bottom"], 2)],
             "kind": p.get("kind", "box"),
+            # the tick marks found on the axis lines: the rows of those on the left-hand axis and the columns of
+            # those on the bottom axis (for a program that lets you click on a tick)
+            "tick_marks": {
+                "y": [round(float(v), 2) for v in p.get("tick_rows", [])],
+                "x": [round(float(v), 2) for v in p.get("tick_cols", [])],
+            },
         }
         if use_ocr:
             item["y_axis"] = _axis(rgb, dark, p, "y")

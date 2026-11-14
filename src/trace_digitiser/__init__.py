@@ -118,6 +118,7 @@ def digitise(
     save_overlay: bool = False,
     write_outputs: bool = True,
     straighten: Union[str, bool, float] = "auto",
+    y_axis: str = "left",
 ) -> DigitiserResult:
     """Digitise the line traces in a figure image.
 
@@ -168,6 +169,12 @@ def digitise(
         Takes precedence over *y_min*/*y_max* and *x_min*/*x_max*.
     y_scale, x_scale : {"auto", "linear", "log"}
         Kind of axis.  ``"auto"`` lets OCR decide and is linear otherwise.
+    y_axis : {"left", "right"}
+        Which y axis to read the values from: the usual one on the left
+        (default), or a second one whose labels are to the right of the
+        plot (a twin axis, as for a line drawn against another scale).
+        Digitise the lines of each axis in a run of their own, with
+        *trace_colours* to choose them.
 
     trace_colours : list of colours, optional
         Colours of the traces to extract (``"#rrggbb"`` or ``(r, g, b)``).
@@ -207,7 +214,7 @@ def digitise(
         expected_panels=expected_panels, y_min=y_min, y_max=y_max, x_min=x_min, x_max=x_max, total_days=total_days,
         output_dir=output_dir, output_prefix=output_prefix, show_debug=show_debug, save_diagnostics=save_diagnostics,
         plot_area=plot_area, y_ref=y_ref, x_ref=x_ref, y_scale=y_scale, x_scale=x_scale, exclude=exclude, ocr=ocr,
-        write_outputs=write_outputs, straighten=straighten,
+        write_outputs=write_outputs, straighten=straighten, y_axis=y_axis,
         extra_parameters={"trace_colours": list(trace_colours) if trace_colours else None, "achromatic": achromatic},
     )
     rgb, dark, panels, notes, note = fig.rgb, fig.dark, fig.panels, fig.notes, fig.note

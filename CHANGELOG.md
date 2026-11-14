@@ -4,7 +4,7 @@ All notable changes to trace-digitiser are recorded here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and the project uses [semantic versioning](https://semver.org/).
 
-## [2.1.0] - unreleased
+## [2.1.0] - 2026-11-14
 
 Everything in 2.0.0 works as before. What is new is readers for other kinds of
 figure, and helpers for graphical tools such as the
@@ -165,6 +165,6 @@ First version tracked in this repository; identical to the 1.2.0 files on PyPI.
 Releases 0.1.0 to 1.0.0 (6-7 June 2026) were uploaded to PyPI directly and are
 not recorded here.
 
-[2.1.0]: https://github.com/comparativechrono/trace-digitiser/compare/v2.0.0...HEAD
+[2.1.0]: https://github.com/comparativechrono/trace-digitiser/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/comparativechrono/trace-digitiser/compare/1d34f75...v2.0.0
 [1.2.0]: https://pypi.org/project/trace-digitiser/1.2.0/

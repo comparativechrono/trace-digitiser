@@ -23,14 +23,14 @@ This has to be done once by an owner of the `trace-digitiser` project on PyPI.
 
 3. Click **Add**.
 
-That is all. The link works while the repository is private.
+That is all.
 
 ### Optional hardening
 
 PyPI recommends tying the publisher to a GitHub *environment*, which lets you
-require a manual approval before each upload. GitHub only offers environments
-on private repositories for paid plans, so the workflow does not use one. Once
-the repository is public (or on a paid plan):
+require a manual approval before each upload. The workflow does not use one
+yet (when the repository was private, GitHub offered environments only on paid
+plans). Now that the repository is public, one can be added:
 
 1. Create an environment called `pypi` under *Settings -> Environments*
    (optionally with required reviewers).
@@ -39,10 +39,12 @@ the repository is public (or on a paid plan):
 
 ## Making a release
 
-1. Set `version` in `pyproject.toml` (PyPI never accepts the same version
-   twice; the last published version is 1.2.0).
+1. Set `version` in `pyproject.toml`. PyPI never accepts the same version
+   twice; the versions already published are listed at
+   <https://pypi.org/project/trace-digitiser/#history>.
 2. In `CHANGELOG.md`, give the section for the version its date in place of
-   "not yet released".
+   "unreleased", and end its link at the new tag (`...vX.Y.Z` in place of
+   `...HEAD`).
 3. Merge to `main` and wait for the *Tests* workflow to pass.
 4. On GitHub: *Releases -> Draft a new release*, create the tag `vX.Y.Z`
    (matching the version exactly, with a leading `v`) on `main`, and publish.
@@ -53,8 +55,7 @@ uploads to PyPI. If the tag and version disagree, or a test fails, the run
 stops before anything is uploaded.
 
 The README is shown on PyPI as it is in the release. Its links to files in
-this repository are absolute, so they work there only once the repository is
-public.
+this repository are absolute, so they work there too.
 
 ## Checking a build without releasing
 

@@ -353,6 +353,18 @@ def digitise_bars(
         while r < roi.shape[0] and ink_rows[r] >= 0.85:
             barrier[r] = True
             r += 1
+        # likewise an axis line at the side of the region: columns of ink from top to bottom (not a bar cut by the
+        # edge of the plot area, which does not reach the top)
+        side = np.zeros(roi.shape[:2], bool)
+        ink_cols = ink.mean(axis=0)
+        c = 0
+        while c < roi.shape[1] and ink_cols[c] >= 0.9:
+            side[:, c] = True
+            c += 1
+        c = roi.shape[1] - 1
+        while c >= 0 and ink_cols[c] >= 0.9:
+            side[:, c] = True
+            c -= 1
         thick = int(p.get("line_thickness", 1))
         slack = max(thick // 2 + 3, int(barrier.any(axis=1).sum()) + 3)
         # a bar is wider than the lines of the figure (the sides of an outlined bar are not bars), unless the edge of
@@ -368,7 +380,7 @@ def digitise_bars(
             solid &= ~away
             # an axis line the region takes in some of (where it is thicker than it was measured): rows right across,
             # at the top or bottom of the region, are not bars
-            solid[barrier] = False
+            solid[barrier | side] = False
             if solid.sum() < 12:
                 continue
             # hatched and outlined bars: the paper inside them is part of them (a small gap in an outline closed;

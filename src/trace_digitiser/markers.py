@@ -449,7 +449,7 @@ def _own_colour_bar(cmask: np.ndarray, cx: int, cy: int, r: float, step: int) ->
     """Where an error bar of the marker's own colour ends on one side (*step* -1: above, +1: below), or None: a thin
     straight line of the colour running on from the marker's edge, centred on the marker's column, usually ending in
     a cap (a short line across it). A line joining the markers, or a fitted line through them, slants away from the
-    marker's column, or is wide across it."""
+    marker's column, or is wide across it; where such a line crosses the bar, the bar runs on beyond it."""
     h, w = cmask.shape
     thin = max(3.0, 1.0 * r)
 
@@ -476,22 +476,38 @@ def _own_colour_bar(cmask: np.ndarray, cx: int, cy: int, r: float, step: int) ->
     spans = [extent(rr, c if cmask[rr, c] else next((c + d for d in (-1, 1) if 0 <= c + d < w and cmask[rr, c + d]), c))
              for rr in rows]
     widths = [b - a + 1 for a, b in spans]
+
+    def is_thin(k: int) -> bool:
+        return widths[k] <= thin and abs(0.5 * (spans[k][0] + spans[k][1]) - cx) <= 1.5 + 0.25 * widths[k]
+
     k = 0
-    while k < len(rows) and widths[k] <= thin and abs(0.5 * (spans[k][0] + spans[k][1]) - cx) <= 1.5 + 0.25 * widths[k]:
+    while k < len(rows) and is_thin(k):
         k += 1
     if k < 3:
         return None
-    line_w = float(np.median(widths[:k]))
-    cap = []
-    while k < len(rows) and widths[k] >= 2.0 * line_w and widths[k] <= 6.0 * r + 4 and abs(
-            0.5 * (spans[k][0] + spans[k][1]) - cx) <= 0.5 * widths[k]:
-        cap.append(rows[k])
-        k += 1
-    if cap:
-        return 0.5 * (cap[0] + cap[-1])
-    if k == len(rows):
-        return float(rows[-1])
-    return None  # it runs on into something wider that is not a cap (a line it meets): not a bar
+    line_w = float(np.median([widths[j] for j in range(k)]))
+    while True:
+        # past the thin line: a cap (the end), or a line crossing the bar (the bar goes on beyond it), or something
+        # else it runs into (not a bar's end that can be told)
+        j = k
+        while j < len(rows) and not is_thin(j):
+            j += 1
+        stretch = list(range(k, j))
+        if not stretch:
+            return float(rows[-1])
+        resumes = j < len(rows) and all(is_thin(q) for q in range(j, min(len(rows), j + 3))) and len(rows) - j >= 3
+        capped = all(widths[q] >= 2.0 * line_w and widths[q] <= 6.0 * r + 4
+                     and abs(0.5 * (spans[q][0] + spans[q][1]) - cx) <= 0.5 * widths[q] for q in stretch)
+        if resumes and len(stretch) <= max(4 * line_w, 3 * r):
+            k = j  # a line crossing the bar
+            while k < len(rows) and is_thin(k):
+                k += 1
+            continue
+        if capped and j == len(rows):
+            return 0.5 * (rows[stretch[0]] + rows[stretch[-1]])
+        if capped and len(stretch) <= max(4 * line_w, 2 * r):
+            return 0.5 * (rows[stretch[0]] + rows[stretch[-1]])
+        return None
 
 
 def find_error_bars(

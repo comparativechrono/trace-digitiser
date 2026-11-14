@@ -76,6 +76,12 @@ class AxisFit:
     n_located: int = 0  # labels found beside the axis, read or not
     usual_step: bool = True  # the step between labels is one that axes are drawn with (10, 25, 0.5, 24 ...)
     glyph_px: float = 0.0  # height of the labels' print in pixels (0 if not known)
+    rival: Optional[tuple[float, float]] = None  # another scale the labels support as well: its values at two labels
+
+    @property
+    def ambiguous(self) -> bool:
+        """True if another, different scale is supported by the labels just as well as this one."""
+        return self.rival is not None
 
     @property
     def n_total(self) -> int:
@@ -126,8 +132,10 @@ class AxisFit:
         if not (missing <= allowed and 2 * plain >= n and plain >= 2 and self.rms_px <= 1.5 and self.anchored >= 2):
             return "medium"
         # Print this small is misread in ways that agree with each other -
-        # the same digit or the decimal point dropped from every label.
-        return "medium" if self.small_print else "high"
+        # the same digit or the decimal point dropped from every label.  And
+        # when the readings support another scale just as well (a lost minus
+        # sign in each of two exponents, say), neither can be trusted fully.
+        return "medium" if self.small_print or self.ambiguous else "high"
 
     @property
     def small_print(self) -> bool:
@@ -1190,7 +1198,7 @@ def fit_axis(
     tols = [tolerance(lab) for lab in usable]
     where = [lab.where for lab in usable]
 
-    best: Optional[tuple] = None
+    candidates: list[tuple] = []
     for scale in scales:
         options: list[list[tuple[float, bool]]] = []
         for lab in usable:
@@ -1221,21 +1229,53 @@ def fit_axis(
                 plain,
                 usual,
                 scale == "linear",
+                # (between log scales the labels support equally, one that
+                # steps by a decade: an exponent misread drops a digit or a
+                # sign far more often than it invents one)
+                -abs(step) if scale == "log" and step is not None else 0.0,
                 _round_steps(ts_list, scale),
                 -rms,
             )
-            if best is None or key > best[0]:
-                best = (key, scale, a, b, agree, rms, plain, usual)
+            candidates.append((key, scale, a, b, agree, rms, plain, usual))
 
-    if best is None:
+    if not candidates:
         return None
-    _, scale, a, b, agree, rms, plain, usual = best
+    candidates.sort(key=lambda c: c[0], reverse=True)
+    _, scale, a, b, agree, rms, plain, usual = best = candidates[0]
+    rival = _rival(candidates, where)
     inliers = [(float(where[k]), float(10.0 ** t if scale == "log" else t)) for k, t, _, _ in agree]
     return AxisFit(
         a=float(a), b=float(b), scale=scale, inliers=inliers, n_labels=len(usable), rms_px=float(rms),
         anchored=sum(1 for k, _, _, _ in agree if usable[k].anchor is not None),
         exact=rungs is not None, n_plain=plain, n_located=max(n_located or 0, len(labels)), usual_step=usual,
+        rival=rival,
     )
+
+
+def _rival(candidates: list[tuple], where: list[float]) -> Optional[tuple[float, float]]:
+    """The values, at the first and last labels, of a different scale that the labels support exactly as well as the
+    best one (as many agreeing labels, as many of them plain readings), if there is one."""
+    best = candidates[0]
+    lo, hi = min(where), max(where)
+
+    def ends(c):
+        _, scale, a, b = c[:4]
+        v = [a * lo + b, a * hi + b]
+        return [10.0 ** x for x in v] if scale == "log" else v
+
+    e0 = ends(best)
+    span = abs(e0[1] - e0[0]) or 1.0
+    for c in candidates[1:]:
+        if c[0][:2] != best[0][:2]:
+            break
+        e = ends(c)
+        if best[1] == "log" and c[1] == "log":
+            differ = any(abs(math.log10(max(x, 1e-300)) - math.log10(max(y, 1e-300))) > 0.05 for x, y in zip(e0, e))
+        else:
+            differ = any(abs(x - y) > 0.01 * span for x, y in zip(e0, e))
+        if differ:
+            return (float(e[0]), float(e[1]))
+    return None
 
 
 def calibrate_axis(

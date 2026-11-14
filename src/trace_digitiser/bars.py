@@ -355,8 +355,9 @@ def digitise_bars(
             r += 1
         thick = int(p.get("line_thickness", 1))
         slack = max(thick // 2 + 3, int(barrier.any(axis=1).sum()) + 3)
-        # a bar is wider than the lines of the figure (the sides of an outlined bar are not bars)
-        min_w = max(3, 2 * thick + 1, int(round(0.01 * roi.shape[1])))
+        # a bar is wider than the lines of the figure (the sides of an outlined bar are not bars), unless the edge of
+        # the plot area cuts it
+        min_w = max(3, 2 * thick + 1)
         k3 = np.ones((3, 3), np.uint8)
         candidates = []
         left_out = 0
@@ -399,7 +400,8 @@ def digitise_bars(
             for step in (-1, +1):
                 heights = _heights_from(filled, base_here - y0, step, slack)
                 for c0, c1 in _runs(heights >= 3):
-                    if c1 - c0 + 1 < min_w or c1 - c0 + 1 >= 0.9 * roi.shape[1]:
+                    cut = c0 == 0 or c1 == roi.shape[1] - 1
+                    if c1 - c0 + 1 < (3 if cut else min_w) or c1 - c0 + 1 >= 0.9 * roi.shape[1]:
                         continue
                     width = c1 - c0 + 1
                     lo_c = c0 + int(0.2 * width)

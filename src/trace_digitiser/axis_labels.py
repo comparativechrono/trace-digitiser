@@ -1241,7 +1241,7 @@ def fit_axis(
     if not candidates:
         return None
     candidates.sort(key=lambda c: c[0], reverse=True)
-    _, scale, a, b, agree, rms, plain, usual = best = candidates[0]
+    _, scale, a, b, agree, rms, plain, usual = candidates[0]
     rival = _rival(candidates, where)
     inliers = [(float(where[k]), float(10.0 ** t if scale == "log" else t)) for k, t, _, _ in agree]
     return AxisFit(

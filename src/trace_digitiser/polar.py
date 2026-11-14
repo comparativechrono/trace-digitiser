@@ -33,7 +33,13 @@ def find_polar_axes(rgb: np.ndarray) -> Optional[dict]:
     dark = darkness_map(rgb)
     h, w = dark.shape
     ink = (dark > 60).astype(np.uint8) * 255
-    blurred = cv2.GaussianBlur(ink, (5, 5), 1.2)
+    # The circles are proposed on a copy no larger than 1000 pixels a side, and then fitted to the picture itself:
+    # on a whole page of a scanned paper (all text), the transform at full size took a minute and a half.
+    scale = min(1.0, 1000.0 / max(h, w))
+    small = ink if scale >= 1.0 else cv2.resize(ink, (max(1, int(round(w * scale))), max(1, int(round(h * scale)))),
+                                                interpolation=cv2.INTER_AREA)
+    blurred = cv2.GaussianBlur(small, (5, 5), 1.2)
+    sh, sw = small.shape
     circles = cv2.HoughCircles(
         blurred,
         cv2.HOUGH_GRADIENT,
@@ -41,11 +47,12 @@ def find_polar_axes(rgb: np.ndarray) -> Optional[dict]:
         minDist=5,
         param1=120,
         param2=40,
-        minRadius=int(0.15 * min(h, w)),
-        maxRadius=int(0.75 * min(h, w)),
+        minRadius=int(0.15 * min(sh, sw)),
+        maxRadius=int(0.75 * min(sh, sw)),
     )
     if circles is None:
         return None
+    circles = circles / scale
     # the frame: of the circles proposed (each first fitted to the dark pixels near it, as the transform places
     # them only roughly), the one drawn darkest all the way round (the larger, of equals)
     angles0 = np.linspace(0, 2 * np.pi, 720, endpoint=False)

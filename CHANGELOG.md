@@ -44,6 +44,10 @@ examples give the same results.
   trace of a line plot.
 - Tick labels that Tesseract misreads as a line of text (75 as 15, in large
   Helvetica) are read once more as a single word when an axis is not settled.
+- Looking at a whole page of a scanned paper (`describe_figure`, the
+  workbench's first look at a page of a PDF) took a minute and a half, nearly
+  all of it in the search for polar axes; the circles are now proposed on a
+  smaller copy of the page (16 seconds in all).
 
 ## [2.1.0] - 2026-11-14
 

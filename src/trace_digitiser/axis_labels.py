@@ -176,13 +176,16 @@ class Preparation:
 # settled by the first (fast) attempt are therefore read again in other ways
 # and the readings pooled; the axis fit then keeps the readings that agree.
 # The settings and their order were chosen on labels 5 to 7 pixels high in
-# three typefaces: each one added reads labels that the ones before it miss.
+# three typefaces: each one added reads labels that the ones before it miss. The last was added for large print.
 PREPARATIONS = (
     Preparation(44, True, 2.0, True, True, 6),
     Preparation(64, False, 2.0, True, False, 7),
     Preparation(64, True, 0.0, False, False, 7, gamma=0.6),
     Preparation(32, False, 2.0, True, False, 7),
     Preparation(64, False, 0.0, False, False, 7, gamma=0.6),
+    # Large, clean print in some typefaces (MATLAB's Helvetica at 600 dpi) is misread as a line of text (75 as 15)
+    # and read right as a single word.
+    Preparation(64, False, 0.0, True, False, 8),
 )
 
 

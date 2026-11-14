@@ -510,6 +510,17 @@ def _trace_record(roi: np.ndarray, mask: np.ndarray, trace_id: int, hue_group: t
     }
 
 
+def _fills_area(mask: np.ndarray) -> bool:
+    """Is *mask* a filled area (a shaded band, a block of colour) rather than lines? Most of a line's pixels lie
+    within a few pixels of its edge; most of a filled area's lie far inside it."""
+    m = mask.astype(np.uint8)
+    if m.sum() < 50:
+        return False
+    dist = cv2.distanceTransform(m, cv2.DIST_L2, 3)
+    deep = float(np.percentile(dist[mask], 75))
+    return deep > max(8.0, 0.02 * min(mask.shape))
+
+
 def detect_trace_masks(
     rgb: np.ndarray,
     panel: dict,
@@ -519,8 +530,12 @@ def detect_trace_masks(
     exclude: Optional[Sequence[Sequence[float]]] = None,
     achromatic: str = "auto",
     darkness: Optional[np.ndarray] = None,
+    lines_only: bool = False,
 ) -> list[dict]:
     """Detect trace pixels within one panel.
+
+    *lines_only*: leave out colours that fill areas rather than draw lines (a shaded band behind the plot, the
+    light, night and day bars of a figure): used when looking for the lines of a line plot, not for bars.
 
     Parameters
     ----------
@@ -630,6 +645,8 @@ def detect_trace_masks(
             if mask.sum() < 2 * min_px:
                 continue
 
+            if lines_only and _fills_area(mask):
+                continue
             masks.append(_trace_record(roi, mask, len(masks) + 1, (hg["lo"], hg["hi"]), "colour"))
 
         masks = _drop_halos(masks, S, reach)

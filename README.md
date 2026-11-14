@@ -101,10 +101,11 @@ and the files written (`<image>_points.csv`, `<image>_points_provenance.json` �
 
 For a program with a graphical interface — the
 [digitiser workbench](https://github.com/comparativechrono/digitiser-workbench), which runs all of
-this in a web browser — `describe_figure` reports what the automatic steps find (plot areas, each
-axis's tick labels and what was read from them, the colours drawn, a colour bar, polar axes) so
-that they can be shown and corrected, and `pixels_to_values` turns points picked by hand into the
-figure's units. `trace-digitiser describe figure.png` prints the same as JSON.
+this in a web browser, where you can mark plot areas, ticks and colours with the mouse —
+`describe_figure` reports what the automatic steps find (plot areas, the tick marks on each axis,
+each axis's tick labels and what was read from them, the colours drawn, a colour bar, polar axes)
+so that they can be shown and corrected, and `pixels_to_values` turns points picked by hand into
+the figure's units. `trace-digitiser describe figure.png` prints the same as JSON.
 
 ## Check the result
 
@@ -175,6 +176,7 @@ the top-left corner of the image, starting at 0; any image viewer shows them.
 | The wrong number of panels | `--layout`, `--rows`, `--cols`, `--panels` | `layout_mode`, `expected_rows`, … |
 | The axis continues beyond its last tick, or has no line at the top or right | `--y-ref ROW:VALUE` twice or more (also `--x-ref`) | `y_ref=[(row, value), …]` |
 | A logarithmic axis, with limits given | `--y-scale log` | `y_scale="log"` |
+| A line drawn against a second y axis, on the right | `--y-axis right` (with `--trace-colour`) | `y_axis="right"` |
 | A trace is missed, or two are merged | `--trace-colour RRGGBB` (repeat per trace) | `trace_colours=["#578dd2", …]` |
 | A legend or annotation is taken for a trace | `--exclude LEFT,TOP,RIGHT,BOTTOM` | `exclude=(l, t, r, b)` |
 | A black trace is invented or ignored | `--achromatic never` / `always` | `achromatic="never"` |

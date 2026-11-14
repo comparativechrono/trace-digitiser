@@ -188,6 +188,8 @@ def digitise_polar(
         ra, rb = 1.0, 0.0
         radial = {"method": "pixels"}
         notes.append("The radial axis is not calibrated: r_value is in pixels. Give r_ref.")
+    # (r_value = a * distance from the centre in pixels + b: for a program that places points of its own)
+    radial.update(a=float(ra), b=float(rb))
     wanted = [parse_colour(c) for c in colours] if colours else None
     reach = outer if outer is not None else 0.45 * min(rgb.shape[:2])
     box = (

@@ -143,13 +143,20 @@ def _cluster_lab(
 # ===================================================================
 
 def parse_colour(colour) -> tuple[int, int, int]:
-    """Turn ``"#rrggbb"``, ``"rrggbb"`` or an ``(r, g, b)`` sequence into an RGB tuple."""
+    """Turn ``"#rrggbb"``, ``"rrggbb"``, a colour's name (``"black"``, ``"steelblue"``, ``"tab:blue"``) or an
+    ``(r, g, b)`` sequence into an RGB tuple."""
     if isinstance(colour, str):
         text = colour.strip().lstrip("#")
-        if len(text) == 3:
+        if len(text) == 3 and all(ch in "0123456789abcdefABCDEF" for ch in text):
             text = "".join(ch * 2 for ch in text)
-        if len(text) != 6:
-            raise ValueError(f"cannot read colour {colour!r}; use '#rrggbb' or (r, g, b)")
+        if len(text) != 6 or not all(ch in "0123456789abcdefABCDEF" for ch in text):
+            try:
+                from matplotlib.colors import to_rgb
+
+                return tuple(int(round(255 * v)) for v in to_rgb(colour.strip()))  # type: ignore[return-value]
+            except (ImportError, ValueError):
+                pass
+            raise ValueError(f"cannot read colour {colour!r}; use '#rrggbb', a colour's name or (r, g, b)")
         try:
             return tuple(int(text[i : i + 2], 16) for i in (0, 2, 4))  # type: ignore[return-value]
         except ValueError as exc:

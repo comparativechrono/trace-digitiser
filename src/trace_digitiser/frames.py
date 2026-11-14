@@ -39,6 +39,7 @@ class AxisLine:
     end: int  # last pixel along the line, inclusive
     thickness: int
     darkness: float  # mean darkness along the line, 0-255
+    edge: bool = False  # the straight edge of a filled area (a bar, a dense trace) rather than a line on its own
 
     @property
     def length(self) -> int:
@@ -69,6 +70,7 @@ class Frame:
     ticks_y: list[float] = field(default_factory=list)
     ticks_x: list[float] = field(default_factory=list)
     source: str = "axis_lines"
+    from_edges: bool = False  # its left or bottom side is the edge of a filled area, not a line
 
     @property
     def width(self) -> float:
@@ -151,7 +153,7 @@ def _detect_horizontal(
     lines: list[AxisLine] = []
     seen: set[tuple[int, int, int]] = set()
 
-    def emit(r0: int, r1: int, x: int, cw: int, check_colour: bool = True) -> None:
+    def emit(r0: int, r1: int, x: int, cw: int, check_colour: bool = True, edge: bool = False) -> None:
         """Measure the line occupying rows r0..r1 near columns x..x+cw and record it."""
         # Exact extent.  The smoothing above spreads a line's ends and can
         # join it to a nearby label, so re-measure along the line itself:
@@ -186,7 +188,7 @@ def _detect_horizontal(
             weights = np.clip(profile - base, 0, None)
             rows = np.arange(p_lo, p_hi)
             pos = float((weights * rows).sum() / weights.sum()) if weights.sum() > 0 else 0.5 * (r0 + r1)
-            lines.append(AxisLine("h", pos, c0, c1, r1 - r0 + 1, float(band[c0 : c1 + 1].mean())))
+            lines.append(AxisLine("h", pos, c0, c1, r1 - r0 + 1, float(band[c0 : c1 + 1].mean()), edge=edge))
 
     # Straight, sharp edges of thick bands: (edge_row, direction, x, cw).
     edges: list[tuple[int, int, int, int]] = []
@@ -225,7 +227,7 @@ def _detect_horizontal(
         r0, r1 = (edge - typical + 1, edge) if direction < 0 else (edge, edge + typical - 1)
         if r0 >= 0 and r1 < h:
             # No colour test here: an axis under a coloured trace takes on its tint.
-            emit(r0, r1, x, cw, check_colour=False)
+            emit(r0, r1, x, cw, check_colour=False, edge=True)
 
     return sorted(lines, key=lambda ln: (ln.pos, ln.start))
 
@@ -256,7 +258,7 @@ def detect_axis_lines(
         np.ascontiguousarray(dark.T), np.ascontiguousarray(sat.T),
         max(20, int(min_len_frac * h)), max_thick, INK_THRESHOLD,
     )
-    vertical = [AxisLine("v", ln.pos, ln.start, ln.end, ln.thickness, ln.darkness) for ln in vertical_t]
+    vertical = [AxisLine("v", ln.pos, ln.start, ln.end, ln.thickness, ln.darkness, ln.edge) for ln in vertical_t]
     return horizontal, vertical
 
 
@@ -313,6 +315,7 @@ def _assemble_frames(horizontal: list[AxisLine], vertical: list[AxisLine], tol: 
                     has_right=right is not None,
                     has_top=top is not None,
                     line_thickness=max(1, int(round(0.5 * (left.thickness + bottom.thickness)))),
+                    from_edges=left.edge or bottom.edge,
                 )
             )
     return frames
@@ -353,6 +356,12 @@ def _filter_frames(frames: list[Frame], image_w: int, image_h: int) -> list[Fram
         if all(_iou(f, g) < 0.85 for g in unique):
             unique.append(f)
 
+    # A frame made from the edge of a filled area (the side of a bar, the
+    # edge of a legend's patch) inside a frame made of lines is not a plot.
+    unique = [
+        f for f in unique
+        if not (f.from_edges and any(g is not f and not g.from_edges and _contains(g, f) for g in unique))
+    ]
     # A frame that encloses another substantial frame is a border around the
     # figure, not a plot area.
     kept = [

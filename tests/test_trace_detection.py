@@ -59,12 +59,15 @@ class TestParseColour:
             ("#fff", (255, 255, 255)),
             ((1, 2, 3), (1, 2, 3)),
             ([0, 0, 0], (0, 0, 0)),
+            ("black", (0, 0, 0)),  # colour names, as matplotlib knows them
+            ("steelblue", (70, 130, 180)),
+            ("tab:blue", (31, 119, 180)),
         ],
     )
     def test_accepts(self, colour, expected):
         assert parse_colour(colour) == expected
 
-    @pytest.mark.parametrize("colour", ["blue", "#12345", "#gggggg", (1, 2), (0, 0, 300)])
+    @pytest.mark.parametrize("colour", ["blueish", "#12345", "#gggggg", (1, 2), (0, 0, 300)])
     def test_rejects(self, colour):
         with pytest.raises(ValueError):
             parse_colour(colour)

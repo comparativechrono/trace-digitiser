@@ -14,6 +14,14 @@ Quick start::
         print("check:", message)
     result.overlay("check.png")       # the result drawn over the figure
 
+Other kinds of figure have readers of their own, which find and read the axes in the same way::
+
+    digitise_points("scatter.png")        # markers, and their error bars
+    digitise_bars("bars.png")             # the end of each bar, and its error bar
+    digitise_rows("actogram.png", bins=48)  # a stack of rows: actograms, double plots
+    digitise_heatmap("heat.png", rows=21)   # cells, by their colour on the colour bar
+    digitise_polar("phase.png", r_ref=[(37.5, 1955), (98.2, 1965)])
+
 If the automatic steps need help, each can be set by hand::
 
     result = digitise(
@@ -63,6 +71,15 @@ __version__ = package_version()
 
 __all__ = [
     "digitise",
+    "digitise_points",
+    "digitise_bars",
+    "digitise_rows",
+    "digitise_heatmap",
+    "digitise_polar",
+    "describe_figure",
+    "pixels_to_values",
+    "find_polar_axes",
+    "FigureResult",
     "Calibration",
     "DigitiserResult",
     "DigitiserWarning",
@@ -325,3 +342,13 @@ def digitise(
         warnings=notes,
         provenance=provenance,
     )
+
+
+# Readers for other kinds of figure, and helpers for graphical tools (version 2.1)
+from ._results import FigureResult  # noqa: E402
+from .bars import digitise_bars  # noqa: E402
+from .explore import describe_figure, pixels_to_values  # noqa: E402
+from .heatmap import digitise_heatmap  # noqa: E402
+from .points import digitise_points  # noqa: E402
+from .polar import digitise_polar, find_polar_axes  # noqa: E402
+from .rows import digitise_rows  # noqa: E402

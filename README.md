@@ -1,10 +1,11 @@
 # trace-digitiser
 
-Get the numbers back out of a line plot when the figure is all that survives — on your own computer.
+Get the numbers back out of a figure when the figure is all that survives — on your own computer.
 
 `trace-digitiser` takes an image of a figure (a scan of an old paper, a figure saved from a PDF),
-finds the plot area, follows each trace, and writes the values to a CSV file. It is ordinary image
-processing, written to be read and checked.
+finds the plot area, follows each trace, and writes the values to a CSV file. It reads line plots,
+and also [points, bars, actograms, heat maps and polar plots](#other-kinds-of-figure). It is
+ordinary image processing, written to be read and checked.
 
 **Nothing is uploaded and no AI model is involved.** The only other program it runs is
 [Tesseract](https://github.com/tesseract-ocr/tesseract), also on your machine and optional, to read
@@ -70,6 +71,40 @@ A scale read from labels always comes with a statement of how far to trust it an
 "high", of the labels it rests on. If too few labels can be read to agree on a scale, the axis is
 left uncalibrated (values from 0 to 1) and you are told so: the aim is never to pass off a wrong
 scale as a good one ([how well that is met](#how-accurate-is-it)).
+
+## Other kinds of figure
+
+Points, bars, stacked rows, heat maps and polar plots each have a reader of their own. They find
+the plot areas and read the axes exactly as `digitise` does, take the same settings for them
+(`y_min`, `y_ref`, `plot_area`, `exclude` …), and give a table with a row for each thing found:
+
+| Figure | Python | Command line | One row for each |
+|---|---|---|---|
+| Scatter or dot plot, line with markers | `digitise_points` | `trace-digitiser points` | point, with its error bars |
+| Bar chart | `digitise_bars` | `trace-digitiser bars` | bar: where it ends, and its error bar |
+| Actogram, double-plotted record, any stack of rows | `digitise_rows` | `trace-digitiser rows` | bin (or column) of each row |
+| Heat map with a colour bar | `digitise_heatmap` | `trace-digitiser heatmap` | cell, from its colour on the bar |
+| Polar plot | `digitise_polar` | `trace-digitiser polar` | point: its angle and distance |
+
+```python
+from trace_digitiser import digitise_points, digitise_bars, digitise_rows, digitise_heatmap
+
+digitise_points("forest.png", save_overlay=True)        # markers, joined by a line or not; error bars too
+digitise_bars("bars.png", y_min=-25, y_max=0)           # the legend's patch is left out
+digitise_rows("birthogram.png", row_values=range(1955, 2014), row_spacing_value=1.1,
+              bins=24, dots="black")                    # each row's fill, month by month, and its dot
+digitise_heatmap("ccf.png", rows=21)                    # the colour bar's labels are read too
+```
+
+Each returns a `FigureResult`: `result.data` (the table), `result.warnings`, `result.overlay()`
+and the files written (`<image>_points.csv`, `<image>_points_provenance.json` …).
+
+For a program with a graphical interface — the
+[digitiser workbench](https://github.com/comparativechrono/digitiser-workbench), which runs all of
+this in a web browser — `describe_figure` reports what the automatic steps find (plot areas, each
+axis's tick labels and what was read from them, the colours drawn, a colour bar, polar axes) so
+that they can be shown and corrected, and `pixels_to_values` turns points picked by hand into the
+figure's units. `trace-digitiser describe figure.png` prints the same as JSON.
 
 ## Check the result
 
@@ -213,14 +248,19 @@ does this for a week of minute-by-minute activity drawn at the size of a small j
   that is askew is straightened automatically if the tilt is under five degrees; beyond that,
   or for a photograph taken at an angle (where the axes are no longer parallel), correct the
   image first.
-* One trace per colour per panel. Two traces of the same colour, dashed or dotted lines, and
-  traces that are only markers are not separated or joined up.
+* One trace per colour per panel. Two traces of the same colour and dashed or dotted lines are not
+  separated or joined up. Markers are read by `digitise_points`.
 * Where traces cross or overlap, the one drawn underneath is hidden and its values there are
-  interpolated (`interpolated` is `True`).
-* Axis scales are read only from numeric labels on linear or logarithmic axes; dates, broken axes
-  and a second y axis are not understood. Limits typed in are assumed to be at the axis lines
-  unless `y_ref` / `x_ref` say otherwise.
-* Error bars, shaded bands, bars and scatter plots are not digitised.
+  interpolated (`interpolated` is `True`). Markers that overlap heavily (the inner turns of a
+  spiral on a polar plot, say) are separated by their size, and some may be missed or doubled:
+  check the overlay.
+* Axis scales are read only from numeric labels on linear or logarithmic axes (on the left, below,
+  or for a colour bar or a second y axis, on the right); dates, month names and broken axes are
+  not understood: give `x_ref` / `y_ref` for those. Limits typed in are assumed to be at the axis
+  lines unless `y_ref` / `x_ref` say otherwise.
+* Shaded bands are not digitised. A fill drawn with an outline of its own colour (matplotlib's
+  `fill_between`) is measured to the middle of the outline; bars are measured to their edges, to
+  the nearest pixel where the bars' edges are not antialiased.
 
 ## Development
 
@@ -244,6 +284,11 @@ ruff check src tests
 | `ocr.py`, `summarise.py` | Interval labels along the x axis, and means per interval. |
 | `diagnostics.py`, `provenance.py`, `io.py` | Overlay, record of the run, files. |
 | `validation.py`, `synthetic.py` | Figures drawn from known data, and the comparisons. |
+| `_figure.py` | What every reader does first: the image, straightening, plot areas and axes. |
+| `markers.py`, `points.py` | Markers and their error bars. |
+| `bars.py`, `rows.py`, `heatmap.py`, `polar.py` | Bar charts, stacks of rows, heat maps and polar plots. |
+| `explore.py` | `describe_figure` and `pixels_to_values`, for graphical tools. |
+| `_results.py` | What the readers of points, bars, rows, heat maps and polar plots give back. |
 | `cli.py` | The command line. |
 
 Changes are listed in [CHANGELOG.md](https://github.com/comparativechrono/trace-digitiser/blob/main/CHANGELOG.md);

@@ -113,18 +113,53 @@ def _neighbour_limits(panels: list[dict]) -> dict[int, tuple[Optional[float], Op
     for p in panels:
         e = p["edges"]
         left_of = [
-            q["edges"]["right"] for q in panels
-            if q is not p and q["edges"]["right"] < e["left"]
-            and q["edges"]["top"] < e["bottom"] and q["edges"]["bottom"] > e["top"]
+            q["edges"]["right"]
+            for q in panels
+            if q is not p
+            and q["edges"]["right"] < e["left"]
+            and q["edges"]["top"] < e["bottom"]
+            and q["edges"]["bottom"] > e["top"]
         ]
         below = [
-            q["edges"]["top"] for q in panels
-            if q is not p and q["edges"]["top"] > e["bottom"]
-            and q["edges"]["left"] < e["right"] and q["edges"]["right"] > e["left"]
+            q["edges"]["top"]
+            for q in panels
+            if q is not p
+            and q["edges"]["top"] > e["bottom"]
+            and q["edges"]["left"] < e["right"]
+            and q["edges"]["right"] > e["left"]
         ]
         limits[p["panel_id"]] = (max(left_of) + 3 if left_of else None, min(below) - 3 if below else None)
     return limits
 
+
+def _share_x_calibration(panels: list[dict], note) -> None:
+    """Give a panel without x-axis labels the x scale of a panel above or below it that has the same left and right
+    edges: plots stacked on one shared x axis (matplotlib's ``sharex``) label only the bottom one."""
+    for p in panels:
+        if "x_calibration" in p:
+            continue
+        e = p["edges"]
+        same = [
+            q
+            for q in panels
+            if q is not p
+            and q.get("x_calibration")
+            and str(q["x_calibration"].get("method", "")).startswith("tick_labels")
+            and abs(q["edges"]["left"] - e["left"]) <= 2.0
+            and abs(q["edges"]["right"] - e["right"]) <= 2.0
+        ]
+        if not same:
+            continue
+        src = min(same, key=lambda q: abs(q["edges"]["top"] - e["top"]))
+        cal = dict(src["x_calibration"])
+        cal["method"] = "propagated"
+        cal["propagated_from"] = src["panel_id"]
+        p["x_calibration"] = cal
+        note(
+            f"Panel {p['panel_id']}: its x axis has no labels that could be read, so it was given the x scale of "
+            f"panel {src['panel_id']}, which has the same left and right edges (a shared x axis). If the two do not "
+            "share an axis, give x_min and x_max, or x_ref."
+        )
 
 
 @dataclass
@@ -217,11 +252,22 @@ def prepare_figure(
         output_prefix = source_path.stem if source_path is not None else "figure"
 
     parameters = {
-        "layout_mode": layout_mode, "expected_rows": expected_rows, "expected_cols": expected_cols,
-        "expected_panels": expected_panels, "plot_area": plot_boxes,
-        "y_min": y_min, "y_max": y_max, "x_min": x_min, "x_max": x_max,
-        "y_ref": y_ref, "x_ref": x_ref, "y_scale": y_scale, "x_scale": x_scale,
-        "exclude": exclude_boxes, "ocr": ocr, "straighten": straighten,
+        "layout_mode": layout_mode,
+        "expected_rows": expected_rows,
+        "expected_cols": expected_cols,
+        "expected_panels": expected_panels,
+        "plot_area": plot_boxes,
+        "y_min": y_min,
+        "y_max": y_max,
+        "x_min": x_min,
+        "x_max": x_max,
+        "y_ref": y_ref,
+        "x_ref": x_ref,
+        "y_scale": y_scale,
+        "x_scale": x_scale,
+        "exclude": exclude_boxes,
+        "ocr": ocr,
+        "straighten": straighten,
     }
     parameters.update(extra_parameters or {})
 
@@ -249,8 +295,14 @@ def prepare_figure(
         if abs(tilt_found) >= MIN_TILT_DEGREES:
             which = "anticlockwise" if tilt_found > 0 else "clockwise"
             measured = [
-                name for name, given in
-                (("plot_area", plot_boxes), ("y_ref", y_ref), ("x_ref", x_ref), ("exclude", exclude_boxes)) if given
+                name
+                for name, given in (
+                    ("plot_area", plot_boxes),
+                    ("y_ref", y_ref),
+                    ("x_ref", x_ref),
+                    ("exclude", exclude_boxes),
+                )
+                if given
             ]
             if measured:
                 note(
@@ -379,6 +431,9 @@ def prepare_figure(
                 if x_cal.get("confidence") != "high":
                     note(f"Panel {pid}: the x-axis scale {_doubt(x_cal)} or give x_min and x_max.")
 
+    if x_ref is None and x_min is None:
+        _share_x_calibration(panels, note)
+
     uncalibrated_x = [p["panel_id"] for p in panels if "x_calibration" not in p]
     if uncalibrated_x:
         if n_panels == 1:
@@ -393,7 +448,16 @@ def prepare_figure(
         )
 
     return PreparedFigure(
-        rgb=rgb, dark=dark, panels=panels, notes=notes, note=note, parameters=parameters, source_path=source_path,
-        output_prefix=output_prefix, exclude_boxes=exclude_boxes, diag_dir=diag_dir, tilt_found=tilt_found,
+        rgb=rgb,
+        dark=dark,
+        panels=panels,
+        notes=notes,
+        note=note,
+        parameters=parameters,
+        source_path=source_path,
+        output_prefix=output_prefix,
+        exclude_boxes=exclude_boxes,
+        diag_dir=diag_dir,
+        tilt_found=tilt_found,
         turned_by=turned_by,
     )

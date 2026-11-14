@@ -15,39 +15,73 @@ from typing import Optional
 import numpy as np
 import pandas as pd
 
-
 # ---------------------------------------------------------------------------
 # Y-axis calibration
 # ---------------------------------------------------------------------------
 
 @dataclass
 class Calibration:
-    """Linear mapping  ``y_value = a * y_pixel + b``.
+    """Mapping from a pixel row to a y value.
 
-    For a standard upward y-axis rendered in an image whose y-pixel
-    coordinate increases downward, *a* will be negative.
+    Linear axes use ``y_value = a * y_pixel + b``; for a standard upward
+    y-axis rendered in an image whose y-pixel coordinate increases
+    downward, *a* is negative.  Logarithmic axes (any ``scale_type``
+    beginning with ``"log"``) use ``y_value = 10 ** (a * y_pixel + b)``.
+
+    ``scale_type`` records where the calibration came from:
+
+    ``"ocr_value"`` / ``"log_ocr_value"``
+        tick labels read by OCR (see ``confidence``);
+    ``"user_supplied"`` / ``"log_user_supplied"``
+        axis limits given by the user, mapped to the plot-area edges;
+    ``"user_reference"`` / ``"log_user_reference"``
+        pixel/value reference points given by the user;
+    ``"propagated_from_panel_N"``
+        copied from the labelled panel in the same row;
+    ``"normalised_0_to_1"``
+        no calibration: 0 at the bottom of the plot area, 1 at the top.
     """
 
     a: float
     b: float
-    scale_type: str  # "ocr_value", "normalised_0_to_1", or "propagated_from_panel_N"
+    scale_type: str
     orientation_flipped: bool = False
     ocr_candidates: dict[int, list[float]] = field(default_factory=dict)
     inliers: list[tuple[float, float]] = field(default_factory=list)
+    # How far to trust an OCR calibration: "high", "medium" or "low" ("" if not from OCR).
+    confidence: str = ""
+    # How it was obtained: "tick_labels", "tick_labels_exhaustive", "axis_limits",
+    # "reference_points", "propagated" or "none".
+    method: str = ""
+    n_labels: int = 0  # tick labels found beside the axis (``inliers`` holds those the scale rests on)
+    rms_px: Optional[float] = None  # scatter of the agreeing labels about the fit, in pixels
+    label_px: Optional[float] = None  # height of the labels' print in pixels
 
     # Convenience -----------------------------------------------------------
 
-    def y_to_value(self, y) -> np.ndarray:
-        """Apply the calibration to one or many y-pixel values.
+    @property
+    def is_log(self) -> bool:
+        return self.scale_type.startswith("log")
 
-        For log-scale axes (``scale_type == "log_ocr_value"``), the
-        mapping is ``10 ** (a * y + b)``; for linear axes it is
-        ``a * y + b``.
-        """
+    @property
+    def is_calibrated(self) -> bool:
+        """False when the values are only normalised 0-1."""
+        return self.scale_type != "normalised_0_to_1"
+
+    def y_to_value(self, y) -> np.ndarray:
+        """Apply the calibration to one or many y-pixel values."""
         y_arr = np.asarray(y, dtype=float)
-        if self.scale_type == "log_ocr_value":
+        if self.is_log:
             return np.power(10.0, self.a * y_arr + self.b)
         return self.a * y_arr + self.b
+
+    def value_to_y(self, value) -> np.ndarray:
+        """Inverse of :meth:`y_to_value`: the pixel row at which a value is drawn."""
+        v = np.asarray(value, dtype=float)
+        if self.is_log:
+            with np.errstate(divide="ignore", invalid="ignore"):
+                v = np.log10(v)
+        return (v - self.b) / self.a
 
     def to_dict(self) -> dict:
         return {
@@ -57,6 +91,11 @@ class Calibration:
             "orientation_flipped": self.orientation_flipped,
             "ocr_candidates": self.ocr_candidates,
             "inliers": self.inliers,
+            "confidence": self.confidence,
+            "method": self.method,
+            "n_labels": self.n_labels,
+            "rms_px": self.rms_px,
+            "label_px": self.label_px,
         }
 
 
@@ -97,6 +136,12 @@ class Panel:
     layout_mode: str = "auto"
     calibration: Optional[Calibration] = None
     x_labels: list[XLabel] = field(default_factory=list)
+    # Sub-pixel positions of the plot-area edges: left, right, top, bottom.
+    edges: dict[str, float] = field(default_factory=dict)
+    # "box" (closed frame), "L" (left and bottom axes only) or "partial".
+    kind: str = "box"
+    # x-axis calibration, if any: keys a, b, scale_type, inliers, confidence.
+    x_calibration: Optional[dict] = None
 
     # Convenience -----------------------------------------------------------
 
@@ -137,7 +182,7 @@ class Trace:
 class DigitiserResult:
     """Everything returned by :func:`digitise`."""
 
-    image_path: Path
+    image_path: Optional[Path]  # None if an image array was passed in
     rgb: np.ndarray
     panels: list[Panel]
     trace_data: pd.DataFrame
@@ -146,6 +191,34 @@ class DigitiserResult:
     trace_csv_path: Optional[Path] = None
     summary_csv_path: Optional[Path] = None
     metadata_csv_path: Optional[Path] = None
+    overlay_path: Optional[Path] = None
+    provenance_path: Optional[Path] = None
+    straightened_path: Optional[Path] = None  # the image turned upright, if it was tilted
+    # Things the user should check: weak calibrations, missing panels, etc.
+    warnings: list[str] = field(default_factory=list)
+    # Full record of inputs, settings, versions and results (see provenance.py).
+    provenance: dict = field(default_factory=dict)
+
+    @property
+    def n_traces(self) -> int:
+        """Number of traces digitised, over all panels."""
+        if self.trace_data.empty:
+            return 0
+        return int(self.trace_data.groupby(["panel_id", "trace_id"]).ngroups)
+
+    def overlay(self, output_path: Optional[str | Path] = None, show: bool = False):
+        """Draw the digitised traces on top of the original figure.
+
+        This is the quickest check of a digitisation: the drawn line should
+        sit on the trace, the box on the axes, and the labelled tick values
+        on the ticks.  Returns the overlay as an RGB array.
+        """
+        from .diagnostics import draw_result_overlay
+
+        return draw_result_overlay(
+            self.rgb, self.panels, self.trace_data,
+            output_path=Path(output_path) if output_path else None, show=show,
+        )
 
     def plot(
         self,
@@ -182,7 +255,7 @@ class DigitiserResult:
         self,
         interval: Optional[float] = None,
         x_units: str = "",
-    ) -> "ResampledResult":
+    ) -> ResampledResult:
         """Resample per-pixel trace data to a regular sampling interval.
 
         Parameters

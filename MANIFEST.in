@@ -1,4 +1,7 @@
-# Ship the complete test suite in the source distribution.
-# (Without this, setuptools includes tests/test_*.py but not conftest.py,
-# so the tests in the sdist cannot run.)
-recursive-include tests *.py
+# Ship the complete test suite and the examples in the source distribution.
+# (Without this, setuptools includes tests/test_*.py but not conftest.py or
+# the reference data, so the tests in the sdist cannot run.)
+recursive-include tests *.py *.csv
+recursive-include examples *.py *.md *.jpg *.ipynb
+prune examples/output
+include CHANGELOG.md RELEASING.md

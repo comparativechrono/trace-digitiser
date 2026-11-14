@@ -1,24 +1,111 @@
-"""X-axis calibration: numeric tick OCR and linear fitting.
+"""X-axis calibration: turning pixel columns into data values.
 
-Mirrors the y-axis calibration approach: OCR tick labels along the
-x-axis, associate them with pixel positions, and fit::
+Mirrors the y axis (:mod:`trace_digitiser.calibration`).  An x calibration
+is a dict with ``a``, ``b`` and ``scale_type``; the mapping is
+``x_value = a * x_pixel + b``, or ``10 ** (a * x_pixel + b)`` when
+``scale_type`` begins with ``"log"``.
 
-    x_value = a * x_pixel + b
-
-For categorical / interval labels the pipeline already uses
-:func:`~trace_digitiser.ocr.detect_x_labels`.  This module handles
-the numeric case.
+Numeric tick labels are read by OCR (:func:`calibrate_x`).  Axes labelled
+with words or interval names ("1N", "Mon") cannot be calibrated from the
+labels; give the axis limits or reference points instead.
 """
 
 from __future__ import annotations
 
+from collections.abc import Sequence
 from typing import Optional
 
 import cv2
 import numpy as np
 import pytesseract
 
+from .axis_labels import calibrate_axis, tesseract_available
 from .ocr import extract_numbers_from_text, preprocess_for_ocr
+
+# ===================================================================
+# Calibrations that need no OCR
+# ===================================================================
+
+def x_calibration_from_points(
+    points: Sequence[tuple[float, float]],
+    scale: str = "linear",
+    method: str = "reference_points",
+) -> dict:
+    """Calibrate from ``(pixel, value)`` reference points along the x axis."""
+    pts = [(float(px), float(v)) for px, v in points]
+    if len(pts) < 2:
+        raise ValueError("at least two (pixel, value) reference points are needed")
+    px = np.array([q[0] for q in pts])
+    values = np.array([q[1] for q in pts])
+    if np.ptp(px) < 1e-9:
+        raise ValueError("reference points must be at different pixel positions")
+    if scale == "log":
+        if np.any(values <= 0):
+            raise ValueError("reference values on a log axis must be positive")
+        targets = np.log10(values)
+    elif scale in ("linear", "auto"):
+        targets = values
+    else:
+        raise ValueError("scale must be 'linear' or 'log'")
+    if np.ptp(targets) == 0:
+        raise ValueError("reference points must have different values")
+    a, b = np.polyfit(px, targets, 1)
+    kind = "user_supplied" if method == "axis_limits" else "user_reference"
+    return {
+        "a": float(a), "b": float(b),
+        "scale_type": ("log_" if scale == "log" else "") + kind,
+        "inliers": pts, "ocr_candidates": {}, "confidence": "", "method": method,
+    }
+
+
+def x_calibration_from_range(panel: dict, v_min: float, v_max: float, scale: str = "linear") -> dict:
+    """Calibrate from the axis limits: *v_min* at the left edge of the plot area, *v_max* at the right."""
+    e = panel.get("edges") or {"left": float(panel["x0"]), "right": float(panel["x1"])}
+    return x_calibration_from_points([(e["left"], v_min), (e["right"], v_max)], scale=scale, method="axis_limits")
+
+
+def apply_x(x_calib: dict, x_pixel):
+    """Convert pixel columns to x values with an x calibration dict."""
+    v = x_calib["a"] * np.asarray(x_pixel, dtype=float) + x_calib["b"]
+    return np.power(10.0, v) if str(x_calib.get("scale_type", "")).startswith("log") else v
+
+
+# ===================================================================
+# OCR calibration
+# ===================================================================
+
+def calibrate_x(
+    rgb: np.ndarray,
+    dark: np.ndarray,
+    panel: dict,
+    limit: Optional[float] = None,
+    scale: str = "auto",
+) -> Optional[dict]:
+    """Calibrate the x axis of one panel from numeric tick labels, or return None.
+
+    A calibration is returned only when at least three labels, and at least
+    half of those found, agree on a scale (see :attr:`AxisFit.confidence`).
+    The stricter rule than for the y axis is deliberate: x axes are often
+    labelled with interval names, and a few stray digits must not be
+    mistaken for a numeric axis.
+    """
+    scales = {"auto": ("linear", "log"), "linear": ("linear",), "log": ("log",)}.get(scale)
+    if scales is None:
+        raise ValueError("scale must be 'auto', 'linear' or 'log'")
+    if not tesseract_available():
+        return None
+    fit, labels = calibrate_axis(rgb, dark, panel, "x", limit=limit, scales=scales)
+    if fit is None or fit.confidence == "low":
+        return None
+    return {
+        "a": fit.a, "b": fit.b,
+        "scale_type": "log_x_ocr_value" if fit.scale == "log" else "x_ocr_value",
+        "inliers": fit.inliers,
+        "ocr_candidates": {int(round(lab.where)): list(lab.values) for lab in labels},
+        "confidence": fit.confidence, "method": "tick_labels",
+        "n_labels": fit.n_total, "rms_px": fit.rms_px,
+        "label_px": fit.glyph_px if fit.glyph_px > 0 else None,
+    }
 
 
 # ===================================================================
@@ -117,7 +204,10 @@ def calibrate_x_axis(
     panel: dict,
     verbose: bool = False,
 ) -> Optional[dict]:
-    """Attempt to fit a linear x-axis calibration for *panel*.
+    """Attempt to fit a linear x-axis calibration for *panel* (the 1.x method).
+
+    Superseded by :func:`calibrate_x`, which is faster and reports a
+    confidence; kept for callers that used it directly.
 
     Returns a dict with ``a``, ``b``, ``scale_type``, ``inliers``,
     or None if calibration fails.

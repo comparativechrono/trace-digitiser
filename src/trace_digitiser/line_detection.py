@@ -16,7 +16,6 @@ import numpy as np
 
 from .geometry import merge_contiguous
 
-
 # ---------------------------------------------------------------------------
 # Primary horizontal line detector
 # ---------------------------------------------------------------------------

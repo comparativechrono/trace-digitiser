@@ -1,10 +1,8 @@
 """Tests for trace_digitiser.panel_detection."""
 
-import numpy as np
 import pytest
 
 from trace_digitiser.panel_detection import (
-    cluster_panel_rows,
     find_plot_panels,
     infer_expected_panels,
     panel_quality,

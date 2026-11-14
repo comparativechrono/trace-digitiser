@@ -1,19 +1,196 @@
-"""Y-axis calibration: OCR-based linear fitting and cross-panel propagation.
+"""Y-axis calibration: turning pixel rows into data values.
 
-The calibration model is::
+A calibration can come from three places, tried in this order by
+:func:`trace_digitiser.digitise`:
 
-    y_value = a * y_pixel + b
+1. **The user** - reference points (:func:`calibration_from_points`) or the
+   axis limits (:func:`calibration_from_range`).  Always the most reliable.
+2. **Tick labels read by OCR** (:func:`calibrate_y`) - the labels beside
+   the axis are located, read and fitted by consensus
+   (:mod:`trace_digitiser.axis_labels`).  The result carries a confidence.
+3. **Nothing** (:func:`normalised_calibration`) - values run from 0 at the
+   bottom of the plot area to 1 at the top.
 
-Because image y-coordinates increase downward, normal scientific axes
-will have a negative ``a``.
+The linear model is ``y_value = a * y_pixel + b``; because image rows
+increase downward, a normal axis has a negative ``a``.  A logarithmic axis
+uses ``log10(y_value) = a * y_pixel + b``.
 """
 
 from __future__ import annotations
 
+import math
+from collections.abc import Sequence
+from typing import Optional
+
 import numpy as np
 
+from .axis_labels import _nearest_round, calibrate_axis, print_height, tesseract_available
 from .models import Calibration
 from .ocr import ocr_number_near_y
+
+# ===================================================================
+# Calibrations that need no OCR
+# ===================================================================
+
+def _edges(panel: dict) -> dict:
+    return panel.get("edges") or {
+        "left": float(panel["x0"]), "right": float(panel["x1"]),
+        "top": float(panel["y_top"]), "bottom": float(panel["y_bottom"]),
+    }
+
+
+def normalised_calibration(panel: dict) -> Calibration:
+    """No real calibration: 0 at the bottom of the plot area, 1 at the top."""
+    e = _edges(panel)
+    a = -1.0 / max(1e-9, e["bottom"] - e["top"])
+    return Calibration(a=a, b=-a * e["bottom"], scale_type="normalised_0_to_1", method="none")
+
+
+def calibration_from_range(panel: dict, v_min: float, v_max: float, scale: str = "linear") -> Calibration:
+    """Calibrate from the axis limits: *v_min* at the bottom edge of the plot area, *v_max* at the top.
+
+    This assumes the axis lines mark the axis limits, which is the usual
+    case for a framed plot.  For axes that run past their last tick, use
+    :func:`calibration_from_points` with two tick positions instead.
+    """
+    return calibration_from_points(
+        [(_edges(panel)["bottom"], v_min), (_edges(panel)["top"], v_max)], scale=scale, method="axis_limits",
+    )
+
+
+def calibration_from_points(
+    points: Sequence[tuple[float, float]],
+    scale: str = "linear",
+    method: str = "reference_points",
+) -> Calibration:
+    """Calibrate from ``(pixel, value)`` reference points.
+
+    Two points define the scale; with more, a least-squares line is fitted.
+    *pixel* is the image row of a tick (or any known level) and *value* is
+    what the axis reads there.
+    """
+    pts = [(float(px), float(v)) for px, v in points]
+    if len(pts) < 2:
+        raise ValueError("at least two (pixel, value) reference points are needed")
+    px = np.array([q[0] for q in pts])
+    values = np.array([q[1] for q in pts])
+    if np.ptp(px) < 1e-9:
+        raise ValueError("reference points must be at different pixel positions")
+    if scale == "log":
+        if np.any(values <= 0):
+            raise ValueError("reference values on a log axis must be positive")
+        targets = np.log10(values)
+    elif scale in ("linear", "auto"):
+        targets = values
+    else:
+        raise ValueError("scale must be 'linear' or 'log'")
+    if np.ptp(targets) == 0:
+        raise ValueError("reference points must have different values")
+    a, b = np.polyfit(px, targets, 1)
+    kind = "user_supplied" if method == "axis_limits" else "user_reference"
+    return Calibration(
+        a=float(a), b=float(b),
+        scale_type=("log_" if scale == "log" else "") + kind,
+        inliers=pts, method=method, orientation_flipped=bool(a > 0),
+    )
+
+
+# ===================================================================
+# OCR calibration
+# ===================================================================
+
+def _plausible_exhaustive(cal: Calibration, panel: dict) -> bool:
+    """Sanity check for the exhaustive OCR route, which has no notion of confidence.
+
+    Accept it only if three or more labels agree and they step by a round
+    amount, which is what real tick labels do and garbled readings do not.
+    """
+    if cal.scale_type not in ("ocr_value", "log_ocr_value") or len(cal.inliers) < 3:
+        return False
+    values = sorted({round(v, 9) for _, v in cal.inliers})
+    if len(values) < 3:
+        return False
+    if cal.is_log:
+        if min(values) <= 0:
+            return False
+        values = [math.log10(v) for v in values]
+    step = min(b - a for a, b in zip(values, values[1:]))
+    return _nearest_round(step, "log" if cal.is_log else "linear") is not None
+
+
+def calibrate_y(
+    rgb: np.ndarray,
+    dark: np.ndarray,
+    panel: dict,
+    limit: Optional[float] = None,
+    scale: str = "auto",
+    exhaustive_fallback: bool = False,
+    verbose: bool = False,
+) -> Calibration:
+    """Calibrate the y axis of one panel from its tick labels.
+
+    Parameters
+    ----------
+    limit : float, optional
+        Column beyond which not to look for labels (the neighbouring panel).
+    scale : {"auto", "linear", "log"}
+        Restrict the fit to one kind of axis; ``"auto"`` tries both.
+    exhaustive_fallback : bool
+        If the labels cannot be located or do not agree, try the 1.x method
+        (many OCR attempts beside each gridline).  Off by default: it takes
+        some fifteen seconds a panel, and on axes that the present method
+        declines to read it was right in none of twenty trials.  Its result
+        is always marked low confidence.
+
+    Returns
+    -------
+    Calibration
+        ``scale_type`` is ``"normalised_0_to_1"`` if no calibration could be
+        made.  Check ``confidence`` otherwise.
+    """
+    scales = {"auto": ("linear", "log"), "linear": ("linear",), "log": ("log",)}.get(scale)
+    if scales is None:
+        raise ValueError("scale must be 'auto', 'linear' or 'log'")
+    if not tesseract_available():
+        return normalised_calibration(panel)
+
+    fit, labels = calibrate_axis(rgb, dark, panel, "y", limit=limit, scales=scales)
+    candidates = {int(round(lab.where)): list(lab.values) for lab in labels}
+    found = len(labels)
+    label_px = print_height(labels) or None
+
+    def from_fit() -> Calibration:
+        return Calibration(
+            a=fit.a, b=fit.b,
+            scale_type="log_ocr_value" if fit.scale == "log" else "ocr_value",
+            orientation_flipped=bool(fit.a > 0),
+            ocr_candidates=candidates, inliers=fit.inliers,
+            confidence=fit.confidence, method="tick_labels",
+            n_labels=found, rms_px=fit.rms_px, label_px=label_px,
+        )
+
+    if verbose:
+        print(f"Panel {panel.get('panel_id', '?')} y-axis labels:")
+        for lab in labels:
+            print(f"  row {lab.where:7.1f}: read {lab.readings} -> {lab.values}")
+
+    if fit is not None and fit.confidence != "low":
+        return from_fit()
+
+    if exhaustive_fallback and scale != "log" and len(panel.get("gridline_y", [])) >= 2:
+        legacy = robust_y_calibration(rgb, panel, verbose=verbose)
+        if _plausible_exhaustive(legacy, panel):
+            legacy.method = "tick_labels_exhaustive"
+            legacy.confidence = "low"
+            legacy.n_labels = len([v for v in legacy.ocr_candidates.values() if v])
+            return legacy
+
+    if fit is not None and fit.usable:
+        return from_fit()  # an axis with two or three labels, two of them agreeing: flagged as low confidence
+    # Not calibrated; say what was found so that the caller can report it.
+    none = normalised_calibration(panel)
+    none.ocr_candidates, none.n_labels, none.label_px = candidates, found, label_px
+    return none
 
 
 # ===================================================================
@@ -120,7 +297,11 @@ def _try_arithmetic_progression(
                         continue
 
                     abs_step = abs(step)
-                    if best is None or (score, abs_step, -total_err) > (best["score"], best.get("_abs_step", 0), -best["total_err"]):
+                    if best is None or (score, abs_step, -total_err) > (
+                        best["score"],
+                        best.get("_abs_step", 0),
+                        -best["total_err"],
+                    ):
                         # Convert progression to linear calibration.
                         pixel_step = float(np.median(gaps))
                         a = step / pixel_step
@@ -144,7 +325,12 @@ def robust_y_calibration(
     panel: dict,
     verbose: bool = False,
 ) -> Calibration:
-    """Fit a linear y-pixel → y-value mapping for one panel.
+    """Fit a y-pixel → y-value mapping by exhaustive OCR beside each gridline.
+
+    This is the calibration method of versions 1.x.  It makes dozens of
+    Tesseract calls per gridline and has no measure of confidence, so
+    :func:`calibrate_y` is now tried first and this is kept as a fallback
+    for figures whose labels cannot be located geometrically.
 
     Steps:
 
@@ -341,6 +527,7 @@ def robust_y_calibration(
         orientation_flipped=orientation_flipped,
         ocr_candidates=ocr,
         inliers=best_used["inliers"],
+        method="none" if scale_type == "normalised_0_to_1" else "tick_labels_exhaustive",
     )
 
 
@@ -389,7 +576,8 @@ def propagate_y_calibration_across_rows(
         ref_bottom_val = ref_cal["a"] * ref["y_bottom"] + ref_cal["b"]
 
         for p in group:
-            if p["y_calibration"]["scale_type"] == "ocr_value":
+            # Only panels that have no calibration of their own inherit one.
+            if p["y_calibration"]["scale_type"] != "normalised_0_to_1":
                 continue
 
             a = (ref_bottom_val - ref_top_val) / max(1, p["y_bottom"] - p["y_top"])
@@ -400,6 +588,8 @@ def propagate_y_calibration_across_rows(
                 "a": float(a),
                 "b": float(b),
                 "scale_type": f"propagated_from_panel_{ref['panel_id']}",
+                "method": "propagated",
+                "confidence": ref_cal.get("confidence", ""),
             }
 
             if verbose:

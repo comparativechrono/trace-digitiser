@@ -28,8 +28,13 @@ Thumbs.db
 *_automated_digitised_trace_by_column.csv
 *_automated_digitised_summary_by_label.csv
 *_automated_panel_metadata.csv
+*_automated_provenance.json
+*_automated_overlay.png
+*_automated_straightened.png
 *_resampled.csv
 *_trace_plot.png
 diagnostics/
 test_figures/
 outputs/
+examples/output/
+.ipynb_checkpoints/

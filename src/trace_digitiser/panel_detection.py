@@ -1,32 +1,36 @@
-"""Panel detection: candidate generation, deduplication, and layout selection.
+"""Panel detection: finding the plot area(s) in a figure.
 
-The main entry point is :func:`find_plot_panels`, which returns the
-final list of panel dicts after all stages.
+The main entry point is :func:`find_plot_panels`.  It tries, in order:
 
-Improvements over the original notebook:
+1. **User-supplied plot areas** (``plot_area=``) - used exactly as given.
+2. **Axis lines** (:mod:`trace_digitiser.frames`) - each plot area is
+   located from its axis lines, to sub-pixel precision.  Works for closed
+   frames and for open "L" axes, with or without gridlines.
+3. **Gridline clustering** (the original route) - for charts that have
+   horizontal gridlines but no axis lines to anchor on.
 
-* :func:`split_y_clusters` accepts an ``expected_splits`` hint so that
-  evenly-spaced gridlines across stacked panels can be split at the
-  largest gap(s) even when the inter-panel gap is only marginally
-  wider than the intra-panel gap.
-* :func:`apply_layout_hint` performs **post-hoc subdivision** of
-  oversized candidates when the initial detection yields fewer panels
-  than expected.
-* :func:`choose_best_grid` properly cross-matches row/column structure
-  from all available candidates.
+Every panel is a dict.  ``x0``, ``x1``, ``y_top`` and ``y_bottom`` are the
+integer pixel bounds of the plot area; ``edges`` holds the same bounds as
+sub-pixel floats, which is what axis calibration uses.
 """
 
 from __future__ import annotations
 
-import copy
 from typing import Optional
 
-import cv2
 import numpy as np
 
+from .frames import (
+    AxisLine,
+    Frame,
+    _add_gridlines_and_ticks,
+    _reading_order,
+    _saturation,
+    darkness_map,
+    find_frames_and_lines,
+)
 from .geometry import box_area, box_iou, contains_box
 from .line_detection import detect_axis_line_segments, detect_long_horizontal_lines
-
 
 # ===================================================================
 # Clustering helpers
@@ -407,97 +411,6 @@ def _subdivide_panel_vertically(panel: dict, n_parts: int) -> list[dict]:
     return parts if len(parts) == n_parts else [panel]
 
 
-def _subdivide_panel_horizontally(
-    panel: dict,
-    n_parts: int,
-    all_h_lines: list[dict],
-) -> list[dict]:
-    """Split one wide panel into *n_parts* side-by-side at detected vertical
-    gaps in its horizontal line coverage.
-
-    Looks for x-regions within the panel where horizontal evidence
-    drops off, indicating column boundaries.
-    """
-    if n_parts < 2:
-        return [panel]
-
-    # Gather all horizontal lines within this panel's y range
-    relevant = []
-    for l in all_h_lines:
-        if panel["y_top"] - 5 <= l["y"] <= panel["y_bottom"] + 5:
-            # Only keep the portion within panel x range
-            ox0 = max(l["x0"], panel["x0"])
-            ox1 = min(l["x1"], panel["x1"])
-            if ox1 > ox0:
-                relevant.append({"x0": ox0, "x1": ox1, "y": l["y"]})
-
-    if not relevant:
-        return [panel]
-
-    # Build a 1-D horizontal coverage histogram
-    pw = panel["x1"] - panel["x0"]
-    coverage = np.zeros(pw, dtype=int)
-    for l in relevant:
-        x0_local = l["x0"] - panel["x0"]
-        x1_local = l["x1"] - panel["x0"]
-        coverage[max(0, x0_local) : min(pw, x1_local)] += 1
-
-    # Find valleys in coverage — these are column boundaries
-    # Smooth to avoid noise
-    from scipy.ndimage import uniform_filter1d
-    try:
-        smooth = uniform_filter1d(coverage.astype(float), size=max(5, pw // 40))
-    except Exception:
-        smooth = coverage.astype(float)
-
-    # Find the n_parts-1 deepest valleys
-    threshold = smooth.max() * 0.3
-    valley_mask = smooth < threshold
-    if not valley_mask.any():
-        return [panel]
-
-    from .geometry import merge_contiguous
-    valley_runs = merge_contiguous(list(np.where(valley_mask)[0]), max_gap=max(3, pw // 100))
-
-    if len(valley_runs) < n_parts - 1:
-        return [panel]
-
-    # Pick the n_parts-1 widest valleys
-    valley_centers = [(v[0] + v[1]) // 2 for v in sorted(valley_runs, key=lambda v: v[1] - v[0], reverse=True)]
-    split_xs = sorted(valley_centers[: n_parts - 1])
-
-    parts: list[dict] = []
-    prev_x = panel["x0"]
-    for sx in split_xs:
-        abs_x = panel["x0"] + sx
-        sub_gridlines = [g for g in panel["gridline_y"]]  # shared
-        parts.append(
-            {
-                "x0": prev_x,
-                "x1": abs_x,
-                "y_top": panel["y_top"],
-                "y_bottom": panel["y_bottom"],
-                "gridline_y": sub_gridlines,
-                "score": panel["score"],
-                "source": panel["source"] + "_hsplit",
-            }
-        )
-        prev_x = abs_x
-    parts.append(
-        {
-            "x0": prev_x,
-            "x1": panel["x1"],
-            "y_top": panel["y_top"],
-            "y_bottom": panel["y_bottom"],
-            "gridline_y": list(panel["gridline_y"]),
-            "score": panel["score"],
-            "source": panel["source"] + "_hsplit",
-        }
-    )
-
-    return parts if len(parts) == n_parts else [panel]
-
-
 # ===================================================================
 # Layout selection helpers
 # ===================================================================
@@ -763,20 +676,122 @@ def apply_layout_hint(
 
 
 # ===================================================================
-# Main entry point
+# Panels from axis-line frames and from user-supplied boxes
 # ===================================================================
 
-def find_plot_panels(
+def _panel_from_frame(frame: Frame, source: str) -> dict:
+    """Convert a :class:`~trace_digitiser.frames.Frame` into a panel dict."""
+    anchors_y = [frame.bottom] + ([frame.top] if frame.has_top else []) + frame.gridlines_h + frame.ticks_y
+    anchors_x = [frame.left] + ([frame.right] if frame.has_right else []) + frame.gridlines_v + frame.ticks_x
+    return {
+        "x0": int(round(frame.left)),
+        "x1": int(round(frame.right)),
+        "y_top": int(round(frame.top)),
+        "y_bottom": int(round(frame.bottom)),
+        "edges": {
+            "left": float(frame.left), "right": float(frame.right),
+            "top": float(frame.top), "bottom": float(frame.bottom),
+        },
+        "has_top": frame.has_top,
+        "has_right": frame.has_right,
+        "kind": frame.kind,
+        "line_thickness": frame.line_thickness,
+        # Rows of horizontal gridlines (plus the frame's own top and bottom),
+        # as in the original pipeline.
+        "gridline_y": sorted({int(round(v)) for v in [frame.bottom, frame.top] + frame.gridlines_h}),
+        "gridline_x": sorted({int(round(v)) for v in frame.gridlines_v}),
+        # Sub-pixel positions where a tick label may be anchored.
+        "tick_rows": _dedupe_positions(anchors_y),
+        "tick_cols": _dedupe_positions(anchors_x),
+        "score": 10.0 + len(frame.gridlines_h),
+        "source": source,
+    }
+
+
+def _dedupe_positions(values: list[float], tol: float = 1.5) -> list[float]:
+    """Sort positions and merge any that are within *tol* pixels of each other."""
+    out: list[float] = []
+    for v in sorted(float(v) for v in values):
+        if out and v - out[-1] <= tol:
+            out[-1] = 0.5 * (out[-1] + v)
+        else:
+            out.append(v)
+    return out
+
+
+def panels_from_boxes(rgb: np.ndarray, boxes: list[tuple[float, float, float, float]]) -> list[dict]:
+    """Build panels from user-supplied plot areas.
+
+    Each box is ``(x_left, y_top, x_right, y_bottom)`` in image pixels: the
+    positions of the axis lines (or, with no frame, of the limits of the data
+    region).  Gridlines and tick marks inside the box are still detected, so
+    that tick labels can be anchored to them.
+    """
+    h, w = rgb.shape[:2]
+    dark = darkness_map(rgb)
+    sat = _saturation(rgb)
+    panels = []
+    for box in boxes:
+        if len(box) != 4:
+            raise ValueError("each plot area must be (x_left, y_top, x_right, y_bottom)")
+        left, top, right, bottom = (float(v) for v in box)
+        if not (0 <= left < right <= w - 1 + 1e-6 and 0 <= top < bottom <= h - 1 + 1e-6):
+            raise ValueError(
+                f"plot area {box} is not inside the {w}x{h} image, or is not (x_left, y_top, x_right, y_bottom)"
+            )
+        frame = Frame(left=left, right=right, top=top, bottom=bottom, source="user")
+        _add_gridlines_and_ticks(frame, dark, sat)
+        panels.append(_panel_from_frame(frame, "user_plot_area"))
+    return panels
+
+
+def _select_frames(
+    frames: list[Frame],
+    layout_mode: str,
+    target_n: Optional[int],
+) -> list[Frame]:
+    """Apply the layout hint to axis-line frames."""
+    if not frames:
+        return []
+    if layout_mode == "single":
+        return [max(frames, key=lambda f: f.area)]
+    if target_n is not None and len(frames) > target_n:
+        # More frames than plots: keep the largest, which drops stray boxes.
+        frames = sorted(frames, key=lambda f: f.area, reverse=True)[:target_n]
+    return _reading_order(frames)
+
+
+def _lines_for_overlay(horizontal: list[AxisLine], vertical: list[AxisLine]) -> tuple[list[dict], list[dict]]:
+    """Axis lines as the dicts the diagnostic overlay expects."""
+    h_lines = [
+        {"orientation": "h", "x0": ln.start, "x1": ln.end, "y": int(round(ln.pos)),
+         "span": ln.length, "thickness": ln.thickness, "source": "axis_line"}
+        for ln in horizontal
+    ]
+    v_lines = [
+        {"orientation": "v", "x": int(round(ln.pos)), "y0": ln.start, "y1": ln.end,
+         "span": ln.length, "thickness": ln.thickness, "source": "axis_line"}
+        for ln in vertical
+    ]
+    return h_lines, v_lines
+
+
+# ===================================================================
+# Original gridline-clustering route
+# ===================================================================
+
+def find_plot_panels_from_gridlines(
     rgb: np.ndarray,
     layout_mode: str = "auto",
     expected_rows: Optional[int] = None,
     expected_cols: Optional[int] = None,
     expected_panels: Optional[int] = None,
 ) -> tuple[list[dict], list[dict], list[dict]]:
-    """Detect plot panels in *rgb*.
+    """Detect plot panels by clustering horizontal gridlines (the 1.x method).
 
-    Returns ``(panels, h_lines, v_lines)`` where *panels* is the final
-    selected list after layout-hint filtering.
+    Returns ``(panels, h_lines, v_lines)``.  The left and right bounds come
+    from the extent of the horizontal lines, so they include any tick marks
+    that stick out past the axis; prefer :func:`find_plot_panels`.
     """
     h, w = rgb.shape[:2]
 
@@ -812,5 +827,96 @@ def find_plot_panels(
         expected_panels=expected_panels,
         all_h_lines=all_h_lines,
     )
+    for p in panels:
+        p["edges"] = {
+            "left": float(p["x0"]), "right": float(p["x1"]),
+            "top": float(p["y_top"]), "bottom": float(p["y_bottom"]),
+        }
+        p.setdefault("has_top", True)
+        p.setdefault("has_right", True)
+        p.setdefault("kind", "box")
+        p.setdefault("line_thickness", 1)
+        p.setdefault("gridline_x", [])
+        p.setdefault("tick_rows", [float(v) for v in p["gridline_y"]])
+        p.setdefault("tick_cols", [])
 
     return panels, legacy_h_lines, axis_v_lines
+
+
+# ===================================================================
+# Main entry point
+# ===================================================================
+
+def find_plot_panels(
+    rgb: np.ndarray,
+    layout_mode: str = "auto",
+    expected_rows: Optional[int] = None,
+    expected_cols: Optional[int] = None,
+    expected_panels: Optional[int] = None,
+    plot_area: Optional[list[tuple[float, float, float, float]]] = None,
+    notes: Optional[list[str]] = None,
+) -> tuple[list[dict], list[dict], list[dict]]:
+    """Detect plot panels in *rgb*.
+
+    Parameters
+    ----------
+    rgb : ndarray, shape (H, W, 3)
+    layout_mode, expected_rows, expected_cols, expected_panels
+        Layout hints.  With axis-line detection they are only needed to
+        choose among candidates; they are not required.
+    plot_area : list of (x_left, y_top, x_right, y_bottom), optional
+        Plot areas to use as given, skipping detection.
+    notes : list of str, optional
+        If supplied, human-readable remarks about how the panels were found
+        (for example a mismatch with the layout hint) are appended to it.
+
+    Returns
+    -------
+    (panels, h_lines, v_lines)
+        *panels* is the final list, numbered row by row from ``panel_id`` 1.
+    """
+    layout_mode = str(layout_mode).lower().strip()
+    if layout_mode not in ("auto", "single", "stacked", "horizontal", "grid"):
+        raise ValueError("layout_mode must be 'auto', 'single', 'stacked', 'horizontal', or 'grid'")
+    if notes is None:
+        notes = []
+    target_n = infer_expected_panels(layout_mode, expected_rows, expected_cols, expected_panels)
+
+    if plot_area is not None:
+        panels = panels_from_boxes(rgb, list(plot_area))
+        h_lines, v_lines = [], []
+    else:
+        frames, horizontal, vertical = find_frames_and_lines(rgb)
+        frames = _select_frames(frames, layout_mode, target_n)
+        panels = [_panel_from_frame(f, "axis_lines") for f in frames]
+        h_lines, v_lines = _lines_for_overlay(horizontal, vertical)
+
+        if not panels or (target_n is not None and len(panels) < target_n):
+            # No usable axis lines (or fewer plots than the user expects):
+            # fall back to gridline clustering if that does better.
+            legacy, legacy_h, legacy_v = find_plot_panels_from_gridlines(
+                rgb, layout_mode, expected_rows, expected_cols, expected_panels
+            )
+            better = len(legacy) > len(panels) if target_n is None else (
+                abs(len(legacy) - target_n) < abs(len(panels) - target_n)
+            )
+            if legacy and better:
+                notes.append(
+                    f"Axis lines gave {len(panels)} plot area(s); used gridline clustering instead "
+                    f"({len(legacy)} found). Left/right bounds from this route can include tick marks - "
+                    "check the overlay, or pass plot_area."
+                )
+                panels, h_lines, v_lines = legacy, legacy_h, legacy_v
+
+    if not panels:
+        notes.append(
+            "No plot area was found. Pass plot_area=(x_left, y_top, x_right, y_bottom) to set it by hand."
+        )
+    elif target_n is not None and len(panels) != target_n:
+        notes.append(f"Expected {target_n} plot area(s) from the layout hint but found {len(panels)}.")
+
+    for i, p in enumerate(panels, start=1):
+        p["panel_id"] = i
+        p["layout_mode"] = layout_mode
+
+    return panels, h_lines, v_lines

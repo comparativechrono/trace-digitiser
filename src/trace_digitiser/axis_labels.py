@@ -661,6 +661,76 @@ def find_tick_labels(
             best = found
         if len(found) >= 2:
             break
+
+    # Labels set close together (or an axis title just below them, run into them) come out as one long piece. Where
+    # the axis has tick marks at a regular step, each label is looked for under its own tick instead: the first
+    # piece of print out from the axis in the stretch nearer that tick than any other.
+    origin = x_lo if axis == "x" else y_lo
+    key = {"x": "tick_cols", "y": "tick_rows", "y2": "tick_rows_right"}[axis]
+    ticks = sorted(t - origin for t in panel.get(key, []) if lo - 2 <= t - origin <= hi + 2)
+    lattice = _regular(ticks)
+    if len(lattice) >= 3:
+        step = float(np.median(np.diff(lattice)))
+        too_wide = any(
+            ((lab.box[2] - lab.box[0]) if not vertical else (lab.box[3] - lab.box[1])) > 1.1 * step for lab in best
+        )
+        # (pieces of an axis title run in among the labels split them up: more pieces than ticks)
+        many = len(best) > 1.5 * (len(lattice) if len(lattice) >= 0.7 * len(ticks) else len(ticks))
+        if too_wide or len(best) < 0.6 * len(lattice) or many:
+            at_ticks = []
+            # under an x axis, the print of a label has no blank row across it, and a title below does; beside a
+            # y axis, the characters of a label stand a little apart
+            gap = max(1.0, 0.5 * glyph_h) if vertical else 1.0
+            for t in lattice:
+                a, b = int(math.ceil(t - 0.48 * step)), int(math.floor(t + 0.48 * step))
+                a, b = max(0, a), min(ink.shape[1] - 1, b)
+                if b - a < 2:
+                    continue
+                window = ink[:, a : b + 1]
+                rows = _merge_runs(_runs(window.any(axis=1)), max_gap=gap)
+                rows = [r for r in rows if window[r[0] : r[1] + 1].sum() >= 4]
+                if not rows or rows[0][0] > 4.0 * glyph_h + 0.12 * span:
+                    continue
+                da, db = rows[0]
+                cols = np.flatnonzero(window[da : db + 1].any(axis=0))
+                ca, cb = a + int(cols[0]), a + int(cols[-1])
+                if not 0.5 * glyph_h <= db - da + 1 <= 3.0 * glyph_h:
+                    continue
+                box = to_image_box(da, db, ca, cb)
+                at_ticks.append(
+                    TickLabel(
+                        pos=0.5 * (box[1] + box[3]) if vertical else 0.5 * (box[0] + box[2]),
+                        box=box,
+                        anchor=float(t + origin),
+                    )
+                )
+            if (
+                len(at_ticks) > len(best)
+                or (too_wide and len(at_ticks) >= 3)
+                or (many and len(at_ticks) >= max(3, 0.6 * len(lattice)))
+            ):
+                best = at_ticks
+    return best
+
+
+def _regular(positions: list[float]) -> list[float]:
+    """The longest run of *positions* at one regular step (to 4 %, or a pixel and a half): the tick marks along an
+    axis, without the ends of the axis or a gridline out of step."""
+    pos = sorted(positions)
+    best: list[float] = []
+    for i in range(len(pos)):
+        for j in range(i + 1, len(pos)):
+            step = pos[j] - pos[i]
+            if step < 4:
+                continue
+            run = [pos[i], pos[j]]
+            nxt = pos[j] + step
+            for q in pos[j + 1 :]:
+                if abs(q - nxt) <= max(1.5, 0.04 * step):
+                    run.append(q)
+                    nxt = q + step
+            if len(run) > len(best):
+                best = run
     return best
 
 
@@ -840,7 +910,8 @@ def _restore_lost_points(labels: list[TickLabel]) -> None:
     decimals = 0
     for lab in labels:
         whole = _whole_number(lab.text) if lab.text else None
-        if whole and len(whole[1]) > 1 and whole[1][0] == "0":
+        # (every reading of the label: "54" read once as "54" and twice as "04" is a misread 5, not a lost point)
+        if whole and len(whole[1]) > 1 and whole[1][0] == "0" and len(set(lab.readings)) == 1:
             decimals = max(decimals, len(whole[1]) - 1)
     if decimals == 0:
         return

@@ -521,6 +521,52 @@ def _fills_area(mask: np.ndarray) -> bool:
     return deep > max(8.0, 0.02 * min(mask.shape))
 
 
+def _line_within_band(roi: np.ndarray, mask: np.ndarray) -> np.ndarray:
+    """The line drawn inside a pale band of its own colour (a mean within its standard error, shaded), if *mask* is
+    such a line and band: the strong colour of the line, not the pale colour of the band, whose middle is not the
+    line's. Otherwise *mask* itself."""
+    if mask.sum() < 200:
+        return mask
+    f = roi.astype(np.float32)
+    paper = np.median(f[~mask], axis=0) if (~mask).any() else np.array([255.0, 255.0, 255.0])
+    strength = np.sqrt(((f - paper) ** 2).sum(axis=2))
+    values = strength[mask]
+    # two kinds of pixel: Otsu's split of their strengths, if it parts them well
+    hist, edges = np.histogram(values, bins=64)
+    centres = 0.5 * (edges[:-1] + edges[1:])
+    total = hist.sum()
+    best_t, best_var = None, -1.0
+    for k in range(4, 60):
+        w0, w1 = hist[:k].sum(), hist[k:].sum()
+        if w0 < 0.1 * total or w1 < 0.03 * total:
+            continue
+        m0 = (hist[:k] * centres[:k]).sum() / w0
+        m1 = (hist[k:] * centres[k:]).sum() / w1
+        between = w0 * w1 * (m1 - m0) ** 2
+        if between > best_var:
+            best_var, best_t = between, edges[k]
+    if best_t is None:
+        return mask
+    strong = mask & (strength >= best_t)
+    weak = mask & ~strong
+    m0, m1 = float(np.median(strength[weak])), float(np.median(strength[strong]))
+    if m1 < 1.6 * m0:
+        return mask  # one colour, shading into its edges
+    # the line is thin and runs the length of the band; the band is broad
+    dist_s = cv2.distanceTransform(strong.astype(np.uint8), cv2.DIST_L2, 3)
+    dist_w = cv2.distanceTransform(mask.astype(np.uint8), cv2.DIST_L2, 3)
+    thick_s = float(np.percentile(dist_s[strong], 90))
+    thick_w = float(np.percentile(dist_w[mask], 90))
+    cols_all = mask.any(axis=0).sum()
+    cols_strong = strong.any(axis=0).sum()
+    # (the pale edge of a line drawn densely, or blurred by a JPEG, is a pixel or two deep: a band is broad)
+    dist_b = cv2.distanceTransform(weak.astype(np.uint8), cv2.DIST_L2, 3)
+    band = weak.sum() >= 2 * strong.sum() and float(np.percentile(dist_b[weak], 90)) >= 3.0
+    if band and thick_s <= 0.5 * thick_w and cols_strong >= 0.45 * cols_all:
+        return _drop_small_components(strong, _min_pixels(mask.shape))
+    return mask
+
+
 def detect_trace_masks(
     rgb: np.ndarray,
     panel: dict,
@@ -645,8 +691,10 @@ def detect_trace_masks(
             if mask.sum() < 2 * min_px:
                 continue
 
-            if lines_only and _fills_area(mask):
-                continue
+            if lines_only:
+                mask = _line_within_band(roi, mask)
+                if _fills_area(mask):
+                    continue
             masks.append(_trace_record(roi, mask, len(masks) + 1, (hg["lo"], hg["hi"]), "colour"))
 
         masks = _drop_halos(masks, S, reach)

@@ -78,7 +78,7 @@ python validation/activity-traces/cd157.py                # the CD157 figure, fr
 | `claims.json`, `claims.py` | the statements in the papers about their traces, and how each is checked |
 | `summarise.py`, `tables.py`, `summary_figure.py` | the agreement tables, the tables below and the figure above |
 | `plot_case.py` | one figure's traces as read drawn over the authors' series, for looking at |
-| `cd157.py` → `results/cd157*` | the CD157 figure read from both copies and analysed ([below](#the-cd157-figure)) |
+| `cd157.py` → `results/cd157*` | the CD157 figure read from both copies and analysed ([below](#the-cd157-figure)); the four values of every column in `digitised/*-columns.csv` |
 | `run.py` | all of the above, in order |
 | `search/` | the search and screening that found the papers |
 
@@ -367,36 +367,60 @@ digitised). Each genotype's trace is read as hourly values over the 168 h from t
 legend; the figure's labels begin with night 1) and analysed as every series above is, over the whole week and day by
 day.
 
-The knockout's trace is pale pink, and the grey of the plot's gridlines and frame lies within the line reader's colour
-tolerance of it (the closest of them at colour distances of 47 in PMC's copy and 51 in the journal's, within the
-reader's tolerance of 60; the wild type's blue is 72 or more from all of them), so the reader takes them for part of
-the trace. In most columns they only pull the median of the column's pixels up a little; in a few, where the trace is
-thin, the median lands on a gridline or the frame (five columns of PMC's copy and one of the journal's, four and one
-of them at hours that are read: `results/cd157_misread.csv` lists the columns whose value lies on a grey or white
-pixel rather than on the trace). The primary reading therefore leaves out panel B's gridlines and the sides of its
-frame (`configs/*-gridlines-left-out.json`: the rows of the gridlines the reader finds, 1.5 px either side), which
-leaves no value on grey and lowers the knockout's hourly values by 5.1 on average in PMC's copy (median 4.2) and 1.7
-in the journal's (median 0.6). The table gives the results of that reading (primary), of the validation set's reading
-of the same figures (as read), and of the primary reading with the values taken on the half hour.
+The figure is a dense trace: its record is much finer than the image, so each pixel column is a vertical stroke from
+the lowest to the highest sample within it (18 min of record per column in PMC's copy, 29 min in the journal's). The
+line reader gives the midpoint of each stroke (the median of the column's trace pixels), the mean of those pixels, and
+the stroke's top and bottom; [`../dense-traces`](../dense-traces/README.md) tests the four on real records drawn the
+same way, and the midpoint reads timing as well as any and levels and ratios best. Hourly values are therefore the mean
+of the columns' midpoints within each hour (hours 0–1, 1–2, … from lights-off), so that every column counts; the
+first revision of the paper took instead the value at each whole hour, as `compare.py` does for figures without data
+(the reading "nearest the hour" below). Columns the reader filled in from their neighbours are left out, as above.
 
-| Copy | Reading | Values on grey | Acrophase, −/− minus +/+ | Each day | Dark share, +/+ and −/− | Mean, −/− ÷ +/+ | Amplitude, −/− ÷ +/+ |
-|---|---|---|---|---|---|---|---|
-| PMC copy (630 × 597 px) | primary | 0 | −6.4 h | −7.3 to −5.1 h | 0.49, 0.65 | 0.33 | 0.44 |
-| PMC copy (630 × 597 px) | as read | 5 | −7.0 h | −10.8 to −5.2 h | 0.49, 0.63 | 0.40 | 0.44 |
-| PMC copy (630 × 597 px) | half-hour grid | 0 | −6.4 h | −7.2 to −5.0 h | 0.50, 0.66 | 0.33 | 0.43 |
-| journal copy (397 × 376 px) | primary | 0 | −6.7 h | −7.3 to −5.1 h | 0.49, 0.64 | 0.34 | 0.42 |
-| journal copy (397 × 376 px) | as read | 1 | −6.8 h | −7.4 to −5.9 h | 0.49, 0.66 | 0.36 | 0.49 |
-| journal copy (397 × 376 px) | half-hour grid | 0 | −6.3 h | −7.1 to −5.0 h | 0.50, 0.65 | 0.33 | 0.42 |
+The knockout's trace is pale pink, and the grey of the plot's gridlines and frame, and of the x axis's labels (1N,
+1D … 7D, which this figure draws inside the top of each plot area), lies within the line reader's colour tolerance of
+it (the closest at colour distances of 47 in PMC's copy and 51 in the journal's, within the reader's tolerance of 60;
+the wild type's blue is 72 or more from all of them). The reader therefore takes them for part of the trace. In most
+columns they only pull the midpoint up a little; in a few, where the trace is thin, the midpoint lands on a gridline
+or the frame (five columns of PMC's copy and one of the journal's: `results/cd157_misread.csv` lists the columns
+whose midpoint, as read, lies on a grey or white pixel rather than on the trace); and they become the top of every
+column they cross. The primary reading therefore leaves out panel B's gridlines (the rows of the gridlines the reader
+finds, 1.5 px either side), the sides of its frame and the strip of its axis labels
+(`configs/*-gridlines-left-out.json`), which leaves no midpoint on grey and lowers the knockout's mean by 15% in
+PMC's copy and 7% in the journal's. The table gives the results of that reading (primary); of the validation set's
+reading of the same figures, with nothing left out (as read); of the primary reading with each hour's bin centred on
+the hour, and with the value taken nearest each hour; and of the primary reading with the top, the mean or the bottom
+of each column in place of its midpoint.
 
-Whichever copy and reading, the knockout's 24-h acrophase is 6.3 to 7.0 h earlier than the wild type's, and earlier on
-each of the 7 days; its share of activity in the dark is 0.14 to 0.18 higher, and higher on each day; and its mean
-activity is 33 to 40% of the wild type's, close to the paper's 40%. These differences are several times the errors
-measured above for the papers with data, where the acrophase was within 1 h and the dark share within 0.05 for 27 of
-29 series. The phase of each genotype relative to lights-off rests on the record's starting at lights-off, as the
-figure's labels say; the difference between the genotypes does not. The figure shows one trace per genotype for groups
-of 8 mice (its legend does not say whether each trace is the group's mean or one animal's), so this describes two
-traces: it cannot say how much the mice within each group differ, and it is a reason to look again with the animals'
-own records, not a test of a difference between the genotypes.
+| Copy | Reading | Acrophase, −/− minus +/+ | Each day | Dark share, +/+ and −/− | Mean, −/− ÷ +/+ | Amplitude, −/− ÷ +/+ |
+|---|---|---|---|---|---|---|
+| PMC copy | primary | −6.6 h | −6.9 to −5.5 h | 0.50, 0.66 | 0.33 | 0.44 |
+| PMC copy | as read | −6.6 h | −7.5 to −5.8 h | 0.50, 0.65 | 0.39 | 0.46 |
+| PMC copy | bins on the hour | −6.5 h | −7.1 to −5.2 h | 0.48, 0.65 | 0.33 | 0.44 |
+| PMC copy | nearest the hour | −6.4 h | −7.1 to −5.2 h | 0.49, 0.65 | 0.33 | 0.44 |
+| PMC copy | top | −6.4 h | −7.8 to −4.5 h | 0.49, 0.66 | 0.35 | 0.48 |
+| PMC copy | mean of pixels | −6.6 h | −6.9 to −5.5 h | 0.50, 0.67 | 0.33 | 0.45 |
+| PMC copy | bottom | −7.0 h | −9.1 to −4.7 h | 0.50, 0.70 | 0.29 | 0.47 |
+| journal copy | primary | −6.5 h | −7.3 to −5.1 h | 0.50, 0.65 | 0.33 | 0.40 |
+| journal copy | as read | −6.5 h | −7.3 to −5.5 h | 0.50, 0.67 | 0.36 | 0.48 |
+| journal copy | bins on the hour | −6.6 h | −7.4 to −5.2 h | 0.49, 0.64 | 0.33 | 0.41 |
+| journal copy | nearest the hour | −6.8 h | −7.5 to −5.1 h | 0.49, 0.64 | 0.33 | 0.41 |
+| journal copy | top | −6.1 h | −8.0 to −4.0 h | 0.50, 0.65 | 0.34 | 0.43 |
+| journal copy | mean of pixels | −6.4 h | −7.3 to −5.0 h | 0.50, 0.65 | 0.34 | 0.41 |
+| journal copy | bottom | −6.6 h | −8.5 to −4.0 h | 0.51, 0.68 | 0.31 | 0.47 |
+
+Whichever copy and reading, the knockout's 24-h acrophase is 6.1 to 7.0 h earlier than the wild type's, and earlier on
+each of the 7 days; its share of activity in the dark is 0.15 to 0.20 higher, and higher on each day; and its mean
+activity is 29 to 39% of the wild type's (33% in the primary reading of both copies), against the paper's 40%. These
+differences are several times the errors measured above for the papers with data, where the acrophase was within 1 h
+and the dark share within 0.05 for 27 of 29 series, and in the dense-trace test, where the difference between two
+records' acrophases was within 1.4 h, and that of their dark shares within 0.085, for 90% of pairs. The dense-trace
+test also shows that a dense trace understates how much of the activity falls in the dark (by 0.03–0.04 for the means
+of three mice, more for single animals), so both genotypes' true dark shares are probably higher than read, the wild
+type's near-even split included. The phase of each genotype relative to lights-off rests on the record's starting at
+lights-off, as the figure's labels say; the difference between the genotypes does not. The figure shows one trace per
+genotype for groups of 8 mice (its legend does not say whether each trace is the group's mean or one animal's), so
+this describes two traces: it cannot say how much the mice within each group differ, and it is a reason to look again
+with the animals' own records, not a test of a difference between the genotypes.
 
 ## What this set does not show
 

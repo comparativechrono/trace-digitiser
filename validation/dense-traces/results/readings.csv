@@ -1,0 +1,145 @@
+record,size,colour,statistic,columns,samples_per_column,hours_read,r,level,mean_true,mean_read,acrophase_true_h,acrophase_read_h,acrophase_error_h,daily_acrophase_max_abs_error_h,dark_share_true,dark_share_read,dark_share_error,dark_start_h,y_max,colour_clicked,image
+locomotor mouse 1,PMC-sized,blue,top,552,3.652,168,0.8782,1.903,16.96,32.28,3.098,2.541,-0.5574,1.125,0.8049,0.7319,-0.07296,21,80.94,#7b98be,figures/locomotor_mouse_1-PMC-sized-blue.jpg
+locomotor mouse 1,PMC-sized,blue,midpoint,552,3.652,168,0.935,1.133,16.96,19.21,3.098,2.776,-0.3216,0.5995,0.8049,0.7689,-0.03598,21,80.94,#7b98be,figures/locomotor_mouse_1-PMC-sized-blue.jpg
+locomotor mouse 1,PMC-sized,blue,mean of pixels,552,3.652,168,0.9373,1.133,16.96,19.21,3.098,2.743,-0.3551,0.6286,0.8049,0.7687,-0.0362,21,80.94,#7b98be,figures/locomotor_mouse_1-PMC-sized-blue.jpg
+locomotor mouse 1,PMC-sized,blue,bottom,552,3.652,168,0.8757,0.4244,16.96,7.197,3.098,3.178,0.08054,1.33,0.8049,0.8812,0.07631,21,80.94,#7b98be,figures/locomotor_mouse_1-PMC-sized-blue.jpg
+locomotor mouse 1,PMC-sized,red,top,552,3.652,164,0.8873,1.802,17.36,31.27,3.143,2.681,-0.4628,0.7924,0.7978,0.6961,-0.1017,21,80.94,#bf7b79,figures/locomotor_mouse_1-PMC-sized-red.jpg
+locomotor mouse 1,PMC-sized,red,midpoint,552,3.652,164,0.8972,1.156,17.36,20.06,3.143,2.882,-0.2612,0.9151,0.7978,0.7205,-0.07723,21,80.94,#bf7b79,figures/locomotor_mouse_1-PMC-sized-red.jpg
+locomotor mouse 1,PMC-sized,red,mean of pixels,552,3.652,164,0.9123,1.16,17.36,20.14,3.143,2.817,-0.3263,0.949,0.7978,0.7232,-0.07458,21,80.94,#bf7b79,figures/locomotor_mouse_1-PMC-sized-red.jpg
+locomotor mouse 1,PMC-sized,red,bottom,552,3.652,167,0.8685,0.5279,17.05,9.001,3.094,2.84,-0.2534,1.525,0.8034,0.834,0.03064,21,80.94,#bf7b79,figures/locomotor_mouse_1-PMC-sized-red.jpg
+locomotor mouse 1,journal-sized,blue,top,348,5.793,165,0.7857,2.207,17.26,38.1,3.124,2.171,-0.9526,1.452,0.7992,0.6608,-0.1384,21,80.94,#7093bd,figures/locomotor_mouse_1-journal-sized-blue.jpg
+locomotor mouse 1,journal-sized,blue,midpoint,348,5.793,165,0.8558,1.223,17.26,21.11,3.124,2.61,-0.5136,1.131,0.7992,0.7134,-0.08576,21,80.94,#7093bd,figures/locomotor_mouse_1-journal-sized-blue.jpg
+locomotor mouse 1,journal-sized,blue,mean of pixels,348,5.793,165,0.8541,1.232,17.26,21.27,3.124,2.566,-0.5577,1.179,0.7992,0.7041,-0.09506,21,80.94,#7093bd,figures/locomotor_mouse_1-journal-sized-blue.jpg
+locomotor mouse 1,journal-sized,blue,bottom,348,5.793,166,0.7792,0.3337,17.16,5.727,3.121,3.691,0.5696,1.223,0.8011,0.8235,0.02236,21,80.94,#7093bd,figures/locomotor_mouse_1-journal-sized-blue.jpg
+locomotor mouse 1,journal-sized,red,top,348,5.793,164,0.8158,1.955,17.18,33.59,3.135,2.385,-0.7499,1.599,0.7989,0.6948,-0.1041,21,80.94,#c07170,figures/locomotor_mouse_1-journal-sized-red.jpg
+locomotor mouse 1,journal-sized,red,midpoint,348,5.793,164,0.8568,1.195,17.18,20.52,3.135,2.765,-0.3696,0.9166,0.7989,0.7269,-0.07199,21,80.94,#c07170,figures/locomotor_mouse_1-journal-sized-red.jpg
+locomotor mouse 1,journal-sized,red,mean of pixels,348,5.793,164,0.8544,1.19,17.18,20.43,3.135,2.746,-0.389,1.123,0.7989,0.7237,-0.07518,21,80.94,#c07170,figures/locomotor_mouse_1-journal-sized-red.jpg
+locomotor mouse 1,journal-sized,red,bottom,348,5.793,166,0.7573,0.3986,17.16,6.84,3.121,3.706,0.5848,1.325,0.8011,0.8482,0.04706,21,80.94,#c07170,figures/locomotor_mouse_1-journal-sized-red.jpg
+locomotor mouse 2,PMC-sized,blue,top,552,3.652,168,0.9174,1.798,16.75,30.12,2.228,2.251,0.02308,0.911,0.8038,0.7312,-0.07266,21,86.12,#6e91bd,figures/locomotor_mouse_2-PMC-sized-blue.jpg
+locomotor mouse 2,PMC-sized,blue,midpoint,552,3.652,168,0.9513,1.097,16.75,18.37,2.228,2.129,-0.09825,0.2725,0.8038,0.7677,-0.03614,21,86.12,#6e91bd,figures/locomotor_mouse_2-PMC-sized-blue.jpg
+locomotor mouse 2,PMC-sized,blue,mean of pixels,552,3.652,168,0.9513,1.092,16.75,18.3,2.228,2.12,-0.1075,0.2511,0.8038,0.7648,-0.03901,21,86.12,#6e91bd,figures/locomotor_mouse_2-PMC-sized-blue.jpg
+locomotor mouse 2,PMC-sized,blue,bottom,552,3.652,168,0.8775,0.4092,16.75,6.856,2.228,1.836,-0.3912,0.8589,0.8038,0.8659,0.06202,21,86.12,#6e91bd,figures/locomotor_mouse_2-PMC-sized-blue.jpg
+locomotor mouse 2,PMC-sized,red,top,552,3.652,133,0.8311,1.915,20.98,40.18,2.369,2.036,-0.3322,1.122,0.751,0.6394,-0.1115,21,86.12,#bf6f6d,figures/locomotor_mouse_2-PMC-sized-red.jpg
+locomotor mouse 2,PMC-sized,red,midpoint,552,3.652,133,0.8837,1.226,20.98,25.73,2.369,1.804,-0.5644,1.341,0.751,0.666,-0.08493,21,86.12,#bf6f6d,figures/locomotor_mouse_2-PMC-sized-red.jpg
+locomotor mouse 2,PMC-sized,red,mean of pixels,552,3.652,133,0.8834,1.219,20.98,25.59,2.369,1.882,-0.4863,1.28,0.751,0.6643,-0.08664,21,86.12,#bf6f6d,figures/locomotor_mouse_2-PMC-sized-red.jpg
+locomotor mouse 2,PMC-sized,red,bottom,552,3.652,151,0.8214,0.5169,18.53,9.576,2.084,1.551,-0.5324,2.714,0.776,0.7754,-0.0005538,21,86.12,#bf6f6d,figures/locomotor_mouse_2-PMC-sized-red.jpg
+locomotor mouse 2,journal-sized,blue,top,348,5.793,140,0.7891,2.231,19.98,44.57,2.393,2.271,-0.1214,1.944,0.7655,0.6158,-0.1497,21,86.12,#6588bc,figures/locomotor_mouse_2-journal-sized-blue.jpg
+locomotor mouse 2,journal-sized,blue,midpoint,348,5.793,140,0.8484,1.25,19.98,24.98,2.393,2.253,-0.1392,1.495,0.7655,0.6622,-0.1033,21,86.12,#6588bc,figures/locomotor_mouse_2-journal-sized-blue.jpg
+locomotor mouse 2,journal-sized,blue,mean of pixels,348,5.793,140,0.8463,1.253,19.98,25.03,2.393,2.214,-0.179,1.606,0.7655,0.6576,-0.1079,21,86.12,#6588bc,figures/locomotor_mouse_2-journal-sized-blue.jpg
+locomotor mouse 2,journal-sized,blue,bottom,348,5.793,162,0.6677,0.3779,17.37,6.566,2.335,1.689,-0.646,1.774,0.7999,0.7948,-0.005081,21,86.12,#6588bc,figures/locomotor_mouse_2-journal-sized-blue.jpg
+locomotor mouse 2,journal-sized,red,top,348,5.793,137,0.8116,2.015,20.1,40.5,2.41,2.502,0.09237,1.738,0.7582,0.6447,-0.1135,21,86.12,#bf6564,figures/locomotor_mouse_2-journal-sized-red.jpg
+locomotor mouse 2,journal-sized,red,midpoint,348,5.793,137,0.8414,1.207,20.1,24.27,2.41,2.369,-0.04134,1.219,0.7582,0.6762,-0.08206,21,86.12,#bf6564,figures/locomotor_mouse_2-journal-sized-red.jpg
+locomotor mouse 2,journal-sized,red,mean of pixels,348,5.793,137,0.8451,1.205,20.1,24.22,2.41,2.346,-0.06414,1.359,0.7582,0.6747,-0.08359,21,86.12,#bf6564,figures/locomotor_mouse_2-journal-sized-red.jpg
+locomotor mouse 2,journal-sized,red,bottom,348,5.793,165,0.7149,0.3933,17.06,6.708,2.373,2.003,-0.3694,1.47,0.8057,0.8348,0.02906,21,86.12,#bf6564,figures/locomotor_mouse_2-journal-sized-red.jpg
+locomotor mouse 3,PMC-sized,blue,top,552,3.652,141,0.8144,2.767,7.743,21.42,6.847,6.904,0.05714,3.794,0.7246,0.5963,-0.1283,22,68.7,#7998be,figures/locomotor_mouse_3-PMC-sized-blue.jpg
+locomotor mouse 3,PMC-sized,blue,midpoint,552,3.652,141,0.8618,1.425,7.743,11.03,6.847,7.628,0.7814,3.188,0.7246,0.6147,-0.1099,22,68.7,#7998be,figures/locomotor_mouse_3-PMC-sized-blue.jpg
+locomotor mouse 3,PMC-sized,blue,mean of pixels,552,3.652,141,0.8721,1.438,7.743,11.13,6.847,7.469,0.6219,2.603,0.7246,0.6111,-0.1135,22,68.7,#7998be,figures/locomotor_mouse_3-PMC-sized-blue.jpg
+locomotor mouse 3,PMC-sized,blue,bottom,552,3.652,159,0.7322,0.3511,6.873,2.413,5.837,7.971,2.135,9.069,0.7649,0.6626,-0.1023,22,68.7,#7998be,figures/locomotor_mouse_3-PMC-sized-blue.jpg
+locomotor mouse 3,PMC-sized,red,top,552,3.652,139,0.8126,2.41,7.853,18.93,6.981,8.222,1.241,6.082,0.7179,0.5873,-0.1306,22,68.7,#c07a78,figures/locomotor_mouse_3-PMC-sized-red.jpg
+locomotor mouse 3,PMC-sized,red,midpoint,552,3.652,139,0.7905,1.451,7.853,11.39,6.981,9.434,2.453,4.463,0.7179,0.5794,-0.1385,22,68.7,#c07a78,figures/locomotor_mouse_3-PMC-sized-red.jpg
+locomotor mouse 3,PMC-sized,red,mean of pixels,552,3.652,139,0.8091,1.434,7.853,11.26,6.981,9.102,2.121,4.807,0.7179,0.5825,-0.1353,22,68.7,#c07a78,figures/locomotor_mouse_3-PMC-sized-red.jpg
+locomotor mouse 3,PMC-sized,red,bottom,552,3.652,154,0.6127,0.4279,7.094,3.036,6.069,9.246,3.177,10.86,0.7524,0.6164,-0.136,22,68.7,#c07a78,figures/locomotor_mouse_3-PMC-sized-red.jpg
+locomotor mouse 3,journal-sized,blue,top,348,5.793,136,0.7248,3.103,8.011,24.86,6.553,6.099,-0.4533,7.906,0.7268,0.5797,-0.1471,22,68.7,#6a8cbc,figures/locomotor_mouse_3-journal-sized-blue.jpg
+locomotor mouse 3,journal-sized,blue,midpoint,348,5.793,137,0.7888,1.602,7.953,12.74,6.669,7.313,0.6439,6.663,0.7243,0.5797,-0.1447,22,68.7,#6a8cbc,figures/locomotor_mouse_3-journal-sized-blue.jpg
+locomotor mouse 3,journal-sized,blue,mean of pixels,348,5.793,136,0.7886,1.622,8.011,12.99,6.553,6.912,0.3589,6.731,0.7268,0.5834,-0.1435,22,68.7,#6a8cbc,figures/locomotor_mouse_3-journal-sized-blue.jpg
+locomotor mouse 3,journal-sized,blue,bottom,348,5.793,160,0.5526,0.3468,6.835,2.371,5.384,7.346,1.961,7.512,0.7796,0.6531,-0.1265,22,68.7,#6a8cbc,figures/locomotor_mouse_3-journal-sized-blue.jpg
+locomotor mouse 3,journal-sized,red,top,348,5.793,132,0.723,2.83,8.108,22.94,6.74,6.991,0.2508,7.607,0.725,0.5701,-0.1549,22,68.7,#bd6968,figures/locomotor_mouse_3-journal-sized-red.jpg
+locomotor mouse 3,journal-sized,red,midpoint,348,5.793,132,0.7646,1.554,8.108,12.6,6.74,7.344,0.6046,7.259,0.725,0.5856,-0.1394,22,68.7,#bd6968,figures/locomotor_mouse_3-journal-sized-red.jpg
+locomotor mouse 3,journal-sized,red,mean of pixels,348,5.793,132,0.7742,1.558,8.108,12.63,6.74,7.404,0.6641,7.113,0.725,0.584,-0.1411,22,68.7,#bd6968,figures/locomotor_mouse_3-journal-sized-red.jpg
+locomotor mouse 3,journal-sized,red,bottom,348,5.793,158,0.6267,0.3446,6.854,2.362,5.361,7.238,1.877,6.692,0.7812,0.7091,-0.07216,22,68.7,#bd6968,figures/locomotor_mouse_3-journal-sized-red.jpg
+"locomotor, mean of 3",PMC-sized,blue,top,552,3.652,168,0.9383,1.59,13.41,21.31,2.966,2.823,-0.1429,0.5098,0.7933,0.7289,-0.06445,21,62.43,#7494bd,figures/locomotor_mean_of_3-PMC-sized-blue.jpg
+"locomotor, mean of 3",PMC-sized,blue,midpoint,552,3.652,168,0.9576,1.079,13.41,14.46,2.966,2.769,-0.1976,0.4306,0.7933,0.7669,-0.02642,21,62.43,#7494bd,figures/locomotor_mean_of_3-PMC-sized-blue.jpg
+"locomotor, mean of 3",PMC-sized,blue,mean of pixels,552,3.652,168,0.9584,1.078,13.41,14.46,2.966,2.773,-0.1933,0.3878,0.7933,0.7661,-0.02728,21,62.43,#7494bd,figures/locomotor_mean_of_3-PMC-sized-blue.jpg
+"locomotor, mean of 3",PMC-sized,blue,bottom,552,3.652,168,0.9341,0.5858,13.41,7.854,2.966,2.699,-0.2671,0.608,0.7933,0.8553,0.06193,21,62.43,#7494bd,figures/locomotor_mean_of_3-PMC-sized-blue.jpg
+"locomotor, mean of 3",PMC-sized,red,top,552,3.652,167,0.9385,1.524,13.49,20.55,2.968,2.887,-0.08104,0.6254,0.7914,0.7225,-0.06893,21,62.43,#bf7574,figures/locomotor_mean_of_3-PMC-sized-red.jpg
+"locomotor, mean of 3",PMC-sized,red,midpoint,552,3.652,167,0.9498,1.089,13.49,14.68,2.968,2.808,-0.1602,0.4591,0.7914,0.7547,-0.03675,21,62.43,#bf7574,figures/locomotor_mean_of_3-PMC-sized-red.jpg
+"locomotor, mean of 3",PMC-sized,red,mean of pixels,552,3.652,167,0.9521,1.086,13.49,14.64,2.968,2.801,-0.1672,0.438,0.7914,0.7543,-0.03711,21,62.43,#bf7574,figures/locomotor_mean_of_3-PMC-sized-red.jpg
+"locomotor, mean of 3",PMC-sized,red,bottom,552,3.652,167,0.9249,0.6422,13.49,8.661,2.968,2.685,-0.2827,0.6466,0.7914,0.8311,0.03967,21,62.43,#bf7574,figures/locomotor_mean_of_3-PMC-sized-red.jpg
+"locomotor, mean of 3",journal-sized,blue,top,348,5.793,168,0.8822,1.758,13.41,23.57,2.966,2.702,-0.2639,1.055,0.7933,0.7045,-0.08888,21,62.43,#698cbc,figures/locomotor_mean_of_3-journal-sized-blue.jpg
+"locomotor, mean of 3",journal-sized,blue,midpoint,348,5.793,168,0.9151,1.113,13.41,14.92,2.966,2.685,-0.2807,0.5407,0.7933,0.751,-0.04237,21,62.43,#698cbc,figures/locomotor_mean_of_3-journal-sized-blue.jpg
+"locomotor, mean of 3",journal-sized,blue,mean of pixels,348,5.793,168,0.9177,1.113,13.41,14.92,2.966,2.686,-0.2801,0.5102,0.7933,0.7492,-0.04417,21,62.43,#698cbc,figures/locomotor_mean_of_3-journal-sized-blue.jpg
+"locomotor, mean of 3",journal-sized,blue,bottom,348,5.793,168,0.8966,0.4957,13.41,6.646,2.966,2.687,-0.2793,0.9348,0.7933,0.8845,0.09115,21,62.43,#698cbc,figures/locomotor_mean_of_3-journal-sized-blue.jpg
+"locomotor, mean of 3",journal-sized,red,top,348,5.793,166,0.8976,1.658,13.38,22.17,3.014,2.702,-0.3116,0.6568,0.7904,0.7076,-0.08276,21,62.43,#be6967,figures/locomotor_mean_of_3-journal-sized-red.jpg
+"locomotor, mean of 3",journal-sized,red,midpoint,348,5.793,166,0.9181,1.106,13.38,14.79,3.014,2.684,-0.3302,0.5805,0.7904,0.7494,-0.04096,21,62.43,#be6967,figures/locomotor_mean_of_3-journal-sized-red.jpg
+"locomotor, mean of 3",journal-sized,red,mean of pixels,348,5.793,166,0.9207,1.109,13.38,14.83,3.014,2.713,-0.3009,0.6578,0.7904,0.7478,-0.0426,21,62.43,#be6967,figures/locomotor_mean_of_3-journal-sized-red.jpg
+"locomotor, mean of 3",journal-sized,red,bottom,348,5.793,168,0.8664,0.5477,13.41,7.344,2.966,2.876,-0.0899,0.8955,0.7933,0.856,0.06266,21,62.43,#be6967,figures/locomotor_mean_of_3-journal-sized-red.jpg
+wheel mouse 1,PMC-sized,blue,top,552,3.65,105,0.8514,1.655,25.15,41.62,1.195,1.034,-0.1609,1.497,0.9336,0.8169,-0.1168,20,92.14,#7495bf,figures/wheel_mouse_1-PMC-sized-blue.jpg
+wheel mouse 1,PMC-sized,blue,midpoint,552,3.65,106,0.905,1.068,24.92,26.6,1.182,0.9685,-0.2134,2.925,0.9358,0.8499,-0.08585,20,92.14,#7495bf,figures/wheel_mouse_1-PMC-sized-blue.jpg
+wheel mouse 1,PMC-sized,blue,mean of pixels,552,3.65,106,0.9065,1.059,24.92,26.38,1.182,0.9782,-0.2038,2.22,0.9358,0.8485,-0.08724,20,92.14,#7495bf,figures/wheel_mouse_1-PMC-sized-blue.jpg
+wheel mouse 1,PMC-sized,blue,bottom,552,3.65,162,0.8134,0.4451,16.34,7.273,1.178,0.743,-0.4349,1.151,0.9705,0.9156,-0.05499,20,92.14,#7495bf,figures/wheel_mouse_1-PMC-sized-blue.jpg
+wheel mouse 1,PMC-sized,red,top,552,3.65,103,0.8881,1.582,25.6,40.49,1.216,1.187,-0.02936,5.01,0.9365,0.8389,-0.09758,20,92.14,#c17573,figures/wheel_mouse_1-PMC-sized-red.jpg
+wheel mouse 1,PMC-sized,red,midpoint,552,3.65,111,0.9122,1.058,23.75,25.13,1.298,1.217,-0.08111,5.236,0.9503,0.8695,-0.08085,20,92.14,#c17573,figures/wheel_mouse_1-PMC-sized-red.jpg
+wheel mouse 1,PMC-sized,red,mean of pixels,552,3.65,111,0.9145,1.058,23.75,25.13,1.298,1.21,-0.0883,5.512,0.9503,0.8693,-0.08097,20,92.14,#c17573,figures/wheel_mouse_1-PMC-sized-red.jpg
+wheel mouse 1,PMC-sized,red,bottom,552,3.65,158,0.8415,0.5252,16.75,8.799,1.216,0.9273,-0.2887,1.105,0.9705,0.9308,-0.03971,20,92.14,#c17573,figures/wheel_mouse_1-PMC-sized-red.jpg
+wheel mouse 1,journal-sized,blue,top,348,5.79,95,0.8021,1.707,27.67,47.23,1.251,0.7285,-0.5228,2.397,0.9071,0.7056,-0.2014,20,92.14,#6589bd,figures/wheel_mouse_1-journal-sized-blue.jpg
+wheel mouse 1,journal-sized,blue,midpoint,348,5.79,104,0.8458,1.026,25.28,25.95,1.274,0.7502,-0.5236,2.678,0.9349,0.7802,-0.1547,20,92.14,#6589bd,figures/wheel_mouse_1-journal-sized-blue.jpg
+wheel mouse 1,journal-sized,blue,mean of pixels,348,5.79,104,0.8462,1.027,25.28,25.95,1.274,0.7626,-0.5112,2.768,0.9349,0.7796,-0.1553,20,92.14,#6589bd,figures/wheel_mouse_1-journal-sized-blue.jpg
+wheel mouse 1,journal-sized,blue,bottom,348,5.79,164,0.6217,0.372,16.14,6.004,1.256,0.5608,-0.6949,1.392,0.9732,0.8572,-0.116,20,92.14,#6589bd,figures/wheel_mouse_1-journal-sized-blue.jpg
+wheel mouse 1,journal-sized,red,top,348,5.79,92,0.8254,1.604,28.17,45.18,1.243,0.6339,-0.6092,1.401,0.9054,0.7209,-0.1846,20,92.14,#bf6564,figures/wheel_mouse_1-journal-sized-red.jpg
+wheel mouse 1,journal-sized,red,midpoint,348,5.79,101,0.8556,0.9973,25.66,25.59,1.265,0.6654,-0.5997,2.859,0.9348,0.7883,-0.1465,20,92.14,#bf6564,figures/wheel_mouse_1-journal-sized-red.jpg
+wheel mouse 1,journal-sized,red,mean of pixels,348,5.79,101,0.8565,1,25.66,25.66,1.265,0.6767,-0.5884,2.756,0.9348,0.7885,-0.1464,20,92.14,#bf6564,figures/wheel_mouse_1-journal-sized-red.jpg
+wheel mouse 1,journal-sized,red,bottom,348,5.79,166,0.6634,0.406,15.95,6.474,1.298,0.4509,-0.847,1.75,0.9732,0.8619,-0.1113,20,92.14,#bf6564,figures/wheel_mouse_1-journal-sized-red.jpg
+wheel mouse 2,PMC-sized,blue,top,552,3.65,101,0.789,2.012,17.12,34.45,0.1109,22.96,-1.149,3.19,0.6929,0.5928,-0.1001,20,80.46,#7093be,figures/wheel_mouse_2-PMC-sized-blue.jpg
+wheel mouse 2,PMC-sized,blue,midpoint,552,3.65,111,0.8582,1.2,15.58,18.69,0.7896,0.1334,-0.6563,3.179,0.7436,0.6526,-0.09108,20,80.46,#7093be,figures/wheel_mouse_2-PMC-sized-blue.jpg
+wheel mouse 2,PMC-sized,blue,mean of pixels,552,3.65,103,0.8377,1.186,16.79,19.92,0.01925,22.59,-1.427,3.163,0.6873,0.5974,-0.08992,20,80.46,#7093be,figures/wheel_mouse_2-PMC-sized-blue.jpg
+wheel mouse 2,PMC-sized,blue,bottom,552,3.65,147,0.7187,0.399,11.79,4.705,1.136,23.81,-1.328,3.897,0.8363,0.7266,-0.1097,20,80.46,#7093be,figures/wheel_mouse_2-PMC-sized-blue.jpg
+wheel mouse 2,PMC-sized,red,top,552,3.65,103,0.8194,1.9,16.79,31.91,0.01925,22.86,-1.164,3.351,0.6873,0.6056,-0.08177,20,80.46,#c0706e,figures/wheel_mouse_2-PMC-sized-red.jpg
+wheel mouse 2,PMC-sized,red,midpoint,552,3.65,103,0.8206,1.18,16.79,19.81,0.01925,22.66,-1.359,3.089,0.6873,0.6071,-0.08029,20,80.46,#c0706e,figures/wheel_mouse_2-PMC-sized-red.jpg
+wheel mouse 2,PMC-sized,red,mean of pixels,552,3.65,103,0.8228,1.177,16.79,19.77,0.01925,22.59,-1.426,3.079,0.6873,0.6073,-0.08007,20,80.46,#c0706e,figures/wheel_mouse_2-PMC-sized-red.jpg
+wheel mouse 2,PMC-sized,red,bottom,552,3.65,139,0.6956,0.4385,12.47,5.468,0.9242,23.43,-1.491,4.612,0.8169,0.7233,-0.09355,20,80.46,#c0706e,figures/wheel_mouse_2-PMC-sized-red.jpg
+wheel mouse 2,journal-sized,blue,top,348,5.79,98,0.6863,2.079,17.61,36.61,0.7621,23.18,-1.582,4.225,0.69,0.6006,-0.08939,20,80.46,#5f85bb,figures/wheel_mouse_2-journal-sized-blue.jpg
+wheel mouse 2,journal-sized,blue,midpoint,348,5.79,98,0.7359,1.151,17.61,20.27,0.7621,23.25,-1.509,3.477,0.69,0.6157,-0.07426,20,80.46,#5f85bb,figures/wheel_mouse_2-journal-sized-blue.jpg
+wheel mouse 2,journal-sized,blue,mean of pixels,348,5.79,98,0.7355,1.152,17.61,20.28,0.7621,23.24,-1.518,3.46,0.69,0.6155,-0.07446,20,80.46,#5f85bb,figures/wheel_mouse_2-journal-sized-blue.jpg
+wheel mouse 2,journal-sized,blue,bottom,348,5.79,159,0.5498,0.3156,10.9,3.441,1.289,0.384,-0.905,5.062,0.8613,0.7343,-0.1269,20,80.46,#5f85bb,figures/wheel_mouse_2-journal-sized-blue.jpg
+wheel mouse 2,journal-sized,red,top,348,5.79,95,0.7158,1.968,17.78,35,0.9088,23.56,-1.352,4.872,0.6936,0.6073,-0.08626,20,80.46,#be5f5d,figures/wheel_mouse_2-journal-sized-red.jpg
+wheel mouse 2,journal-sized,red,midpoint,348,5.79,95,0.7165,1.117,17.78,19.87,0.9088,23.38,-1.526,4.443,0.6936,0.6165,-0.07711,20,80.46,#be5f5d,figures/wheel_mouse_2-journal-sized-red.jpg
+wheel mouse 2,journal-sized,red,mean of pixels,348,5.79,95,0.725,1.121,17.78,19.94,0.9088,23.29,-1.614,4.889,0.6936,0.615,-0.0786,20,80.46,#be5f5d,figures/wheel_mouse_2-journal-sized-red.jpg
+wheel mouse 2,journal-sized,red,bottom,348,5.79,160,0.572,0.318,10.79,3.43,1.411,23.98,-1.427,5.791,0.8651,0.7461,-0.119,20,80.46,#be5f5d,figures/wheel_mouse_2-journal-sized-red.jpg
+wheel mouse 3,PMC-sized,blue,top,552,3.65,78,0.7436,2.144,14.14,30.32,23.54,23.48,-0.06058,3.075,0.6879,0.5963,-0.09163,21,61.17,#6c8fbc,figures/wheel_mouse_3-PMC-sized-blue.jpg
+wheel mouse 3,PMC-sized,blue,midpoint,552,3.65,78,0.818,1.266,14.14,17.9,23.54,23.39,-0.1467,2.847,0.6879,0.6024,-0.08555,21,61.17,#6c8fbc,figures/wheel_mouse_3-PMC-sized-blue.jpg
+wheel mouse 3,PMC-sized,blue,mean of pixels,552,3.65,78,0.8166,1.265,14.14,17.89,23.54,23.35,-0.1845,2.816,0.6879,0.6015,-0.08645,21,61.17,#6c8fbc,figures/wheel_mouse_3-PMC-sized-blue.jpg
+wheel mouse 3,PMC-sized,blue,bottom,552,3.65,147,0.7559,0.4481,7.518,3.369,1.063,0.8713,-0.1921,2.334,0.8988,0.796,-0.1028,21,61.17,#6c8fbc,figures/wheel_mouse_3-PMC-sized-blue.jpg
+wheel mouse 3,PMC-sized,red,top,552,3.65,77,0.7527,2.017,14.33,28.9,23.68,23.66,-0.02021,3.5,0.6913,0.6033,-0.08796,21,61.17,#bf6d6b,figures/wheel_mouse_3-PMC-sized-red.jpg
+wheel mouse 3,PMC-sized,red,midpoint,552,3.65,77,0.8217,1.235,14.33,17.7,23.68,23.41,-0.2681,2.946,0.6913,0.6046,-0.08669,21,61.17,#bf6d6b,figures/wheel_mouse_3-PMC-sized-red.jpg
+wheel mouse 3,PMC-sized,red,mean of pixels,552,3.65,77,0.8206,1.238,14.33,17.73,23.68,23.36,-0.3194,2.86,0.6913,0.604,-0.08724,21,61.17,#bf6d6b,figures/wheel_mouse_3-PMC-sized-red.jpg
+wheel mouse 3,PMC-sized,red,bottom,552,3.65,146,0.7851,0.4883,7.569,3.696,1.115,0.5785,-0.5368,2.463,0.9,0.7997,-0.1003,21,61.17,#bf6d6b,figures/wheel_mouse_3-PMC-sized-red.jpg
+wheel mouse 3,journal-sized,blue,top,348,5.79,82,0.7672,2.315,13.41,31.05,23.68,23.19,-0.4973,2.654,0.6784,0.5821,-0.09631,21,61.17,#6287bb,figures/wheel_mouse_3-journal-sized-blue.jpg
+wheel mouse 3,journal-sized,blue,midpoint,348,5.79,82,0.7698,1.302,13.41,17.47,23.68,23.31,-0.3705,3.617,0.6784,0.5833,-0.09513,21,61.17,#6287bb,figures/wheel_mouse_3-journal-sized-blue.jpg
+wheel mouse 3,journal-sized,blue,mean of pixels,348,5.79,82,0.7763,1.307,13.41,17.54,23.68,23.31,-0.3715,4.431,0.6784,0.5824,-0.09595,21,61.17,#6287bb,figures/wheel_mouse_3-journal-sized-blue.jpg
+wheel mouse 3,journal-sized,blue,bottom,348,5.79,140,0.5025,0.3963,7.907,3.133,1.16,2.689,1.529,11.43,0.8945,0.7526,-0.1419,21,61.17,#6287bb,figures/wheel_mouse_3-journal-sized-blue.jpg
+wheel mouse 3,journal-sized,red,top,348,5.79,77,0.7328,2.165,14.27,30.88,0.2672,23.94,-0.3251,1.363,0.6945,0.6031,-0.09138,21,61.17,#be6260,figures/wheel_mouse_3-journal-sized-red.jpg
+wheel mouse 3,journal-sized,red,midpoint,348,5.79,77,0.7301,1.253,14.27,17.87,0.2672,0.09792,-0.1693,2.155,0.6945,0.5928,-0.1017,21,61.17,#be6260,figures/wheel_mouse_3-journal-sized-red.jpg
+wheel mouse 3,journal-sized,red,mean of pixels,348,5.79,77,0.7407,1.255,14.27,17.9,0.2672,0.09435,-0.1728,2.276,0.6945,0.592,-0.1025,21,61.17,#be6260,figures/wheel_mouse_3-journal-sized-red.jpg
+wheel mouse 3,journal-sized,red,bottom,348,5.79,121,0.5468,0.3938,9.082,3.577,1.466,1.977,0.5111,7.59,0.8881,0.7018,-0.1862,21,61.17,#be6260,figures/wheel_mouse_3-journal-sized-red.jpg
+"wheel, mean of 3",PMC-sized,blue,top,552,3.65,168,0.976,1.457,10.9,15.88,1.198,1.115,-0.08275,0.1607,0.924,0.9075,-0.01653,20,67.56,#6f92bd,figures/wheel_mean_of_3-PMC-sized-blue.jpg
+"wheel, mean of 3",PMC-sized,blue,midpoint,552,3.65,168,0.9807,1.035,10.9,11.27,1.198,1.031,-0.1669,0.28,0.924,0.9198,-0.00423,20,67.56,#6f92bd,figures/wheel_mean_of_3-PMC-sized-blue.jpg
+"wheel, mean of 3",PMC-sized,blue,mean of pixels,552,3.65,168,0.9803,1.031,10.9,11.23,1.198,1.022,-0.1763,0.3277,0.924,0.9195,-0.004458,20,67.56,#6f92bd,figures/wheel_mean_of_3-PMC-sized-blue.jpg
+"wheel, mean of 3",PMC-sized,blue,bottom,552,3.65,168,0.945,0.5821,10.9,6.342,1.198,0.6812,-0.5168,1.231,0.924,0.9504,0.0264,20,67.56,#6f92bd,figures/wheel_mean_of_3-PMC-sized-blue.jpg
+"wheel, mean of 3",PMC-sized,red,top,552,3.65,114,0.948,1.476,16.03,23.65,0.5042,0.1072,-0.397,1.534,0.8233,0.7474,-0.07586,20,67.56,#bf706f,figures/wheel_mean_of_3-PMC-sized-red.jpg
+"wheel, mean of 3",PMC-sized,red,midpoint,552,3.65,123,0.9587,1.082,14.86,16.08,0.6628,0.3039,-0.3589,1.583,0.8571,0.8008,-0.05631,20,67.56,#bf706f,figures/wheel_mean_of_3-PMC-sized-red.jpg
+"wheel, mean of 3",PMC-sized,red,mean of pixels,552,3.65,123,0.9587,1.082,14.86,16.07,0.6628,0.2778,-0.385,1.71,0.8571,0.8002,-0.05685,20,67.56,#bf706f,figures/wheel_mean_of_3-PMC-sized-red.jpg
+"wheel, mean of 3",PMC-sized,red,bottom,552,3.65,159,0.9392,0.6668,11.51,7.674,1.15,0.7009,-0.4488,1.137,0.918,0.9093,-0.008702,20,67.56,#bf706f,figures/wheel_mean_of_3-PMC-sized-red.jpg
+"wheel, mean of 3",journal-sized,blue,top,348,5.79,168,0.9569,1.566,10.9,17.06,1.198,1.004,-0.1935,0.4922,0.924,0.8955,-0.02853,20,67.56,#6688bb,figures/wheel_mean_of_3-journal-sized-blue.jpg
+"wheel, mean of 3",journal-sized,blue,midpoint,348,5.79,168,0.959,1.031,10.9,11.23,1.198,0.8331,-0.3649,0.5686,0.924,0.9157,-0.008308,20,67.56,#6688bb,figures/wheel_mean_of_3-journal-sized-blue.jpg
+"wheel, mean of 3",journal-sized,blue,mean of pixels,348,5.79,168,0.959,1.031,10.9,11.23,1.198,0.842,-0.356,0.5557,0.924,0.9155,-0.008491,20,67.56,#6688bb,figures/wheel_mean_of_3-journal-sized-blue.jpg
+"wheel, mean of 3",journal-sized,blue,bottom,348,5.79,168,0.8936,0.5019,10.9,5.468,1.198,0.5779,-0.6201,1.304,0.924,0.9628,0.0388,20,67.56,#6688bb,figures/wheel_mean_of_3-journal-sized-blue.jpg
+"wheel, mean of 3",journal-sized,red,top,348,5.79,112,0.9169,1.55,16.11,24.97,0.9298,0.2454,-0.6844,2.472,0.8364,0.752,-0.08444,20,67.56,#bd6464,figures/wheel_mean_of_3-journal-sized-red.jpg
+"wheel, mean of 3",journal-sized,red,midpoint,348,5.79,118,0.9239,1.067,15.29,16.31,0.9738,0.2476,-0.7262,2.631,0.8579,0.7968,-0.06104,20,67.56,#bd6464,figures/wheel_mean_of_3-journal-sized-red.jpg
+"wheel, mean of 3",journal-sized,red,mean of pixels,348,5.79,118,0.9251,1.068,15.29,16.34,0.9738,0.2606,-0.7131,2.591,0.8579,0.7954,-0.06247,20,67.56,#bd6464,figures/wheel_mean_of_3-journal-sized-red.jpg
+"wheel, mean of 3",journal-sized,red,bottom,348,5.79,154,0.8844,0.5948,11.74,6.979,1.299,0.5524,-0.7463,2.605,0.9193,0.8855,-0.03377,20,67.56,#bd6464,figures/wheel_mean_of_3-journal-sized-red.jpg
+LMA per minute,PMC-sized,blue,top,157,18.34,42,0.7816,6.711,0.6286,4.218,17.5,16.98,-0.5177,0.7655,0.8766,0.6663,-0.2103,12,11.76,#5883bc,figures/LMA_per_minute-PMC-sized-blue.jpg
+LMA per minute,PMC-sized,blue,midpoint,157,18.34,42,0.8188,3.282,0.6286,2.063,17.5,17.04,-0.4585,1.153,0.8766,0.6658,-0.2108,12,11.76,#5883bc,figures/LMA_per_minute-PMC-sized-blue.jpg
+LMA per minute,PMC-sized,blue,mean of pixels,157,18.34,42,0.8104,3.308,0.6286,2.079,17.5,17.03,-0.4654,1.122,0.8766,0.6644,-0.2122,12,11.76,#5883bc,figures/LMA_per_minute-PMC-sized-blue.jpg
+LMA per minute,PMC-sized,blue,bottom,157,18.34,47,-0.1554,0.2191,0.5784,0.1267,17.6,8.235,-9.368,9.78,0.8949,0.4424,-0.4525,12,11.76,#5883bc,figures/LMA_per_minute-PMC-sized-blue.jpg
+LMA per minute,PMC-sized,red,top,157,18.34,42,0.8209,6.05,0.6286,3.803,17.5,17.24,-0.2569,1.073,0.8766,0.691,-0.1856,12,11.76,#c05857,figures/LMA_per_minute-PMC-sized-red.jpg
+LMA per minute,PMC-sized,red,midpoint,157,18.34,42,0.8266,2.994,0.6286,1.882,17.5,17.28,-0.2139,1.026,0.8766,0.675,-0.2016,12,11.76,#c05857,figures/LMA_per_minute-PMC-sized-red.jpg
+LMA per minute,PMC-sized,red,mean of pixels,157,18.34,42,0.8193,3.067,0.6286,1.928,17.5,17.28,-0.2118,1.093,0.8766,0.6742,-0.2025,12,11.76,#c05857,figures/LMA_per_minute-PMC-sized-red.jpg
+LMA per minute,PMC-sized,red,bottom,157,18.34,47,-0.173,0.2395,0.5784,0.1385,17.6,2.773,9.17,9.815,0.8949,0.3937,-0.5012,12,11.76,#c05857,figures/LMA_per_minute-PMC-sized-red.jpg
+LMA per minute,journal-sized,blue,top,99,29.09,41,0.7667,7.335,0.6415,4.705,17.5,17.26,-0.2383,0.2807,0.8748,0.6942,-0.1805,12,11.76,#5482bc,figures/LMA_per_minute-journal-sized-blue.jpg
+LMA per minute,journal-sized,blue,midpoint,99,29.09,41,0.7301,3.618,0.6415,2.321,17.5,16.88,-0.6199,0.9261,0.8748,0.6726,-0.2022,12,11.76,#5482bc,figures/LMA_per_minute-journal-sized-blue.jpg
+LMA per minute,journal-sized,blue,mean of pixels,99,29.09,41,0.7391,3.659,0.6415,2.347,17.5,16.95,-0.5425,0.7759,0.8748,0.6755,-0.1992,12,11.76,#5482bc,figures/LMA_per_minute-journal-sized-blue.jpg
+LMA per minute,journal-sized,blue,bottom,99,29.09,48,-0.1888,0.3891,0.5663,0.2203,17.57,18.09,0.5219,9.084,0.8988,0.5088,-0.39,12,11.76,#5482bc,figures/LMA_per_minute-journal-sized-blue.jpg
+LMA per minute,journal-sized,red,top,99,29.09,39,0.7429,6.56,0.6671,4.376,17.65,17.09,-0.5625,0.7596,0.8742,0.6795,-0.1947,12,11.76,#bf5453,figures/LMA_per_minute-journal-sized-red.jpg
+LMA per minute,journal-sized,red,midpoint,99,29.09,39,0.7888,3.182,0.6671,2.122,17.65,17.32,-0.3319,0.2944,0.8742,0.6802,-0.1941,12,11.76,#bf5453,figures/LMA_per_minute-journal-sized-red.jpg
+LMA per minute,journal-sized,red,mean of pixels,99,29.09,39,0.7752,3.274,0.6671,2.184,17.65,17.14,-0.518,0.6849,0.8742,0.6722,-0.2021,12,11.76,#bf5453,figures/LMA_per_minute-journal-sized-red.jpg
+LMA per minute,journal-sized,red,bottom,99,29.09,46,-0.1378,0.2938,0.5909,0.1736,17.57,4.561,10.99,11.96,0.8906,0.4944,-0.3963,12,11.76,#bf5453,figures/LMA_per_minute-journal-sized-red.jpg

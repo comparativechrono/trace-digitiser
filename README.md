@@ -249,6 +249,15 @@ share of activity in the dark phase agrees to within 0.05 for 27, and the acroph
 papers, what the authors say about their traces is checked against them: 46 of 53 statements are borne out, and
 where the authors' numbers can decide, the trace and the numbers agree on 21 of 22.
 
+**Dense traces.**
+[`validation/dense-traces`](https://github.com/comparativechrono/trace-digitiser/tree/main/validation/dense-traces)
+draws real activity records, kept every minute or every 5 minutes, as dense traces (a week across a few hundred
+pixels, so that each pixel column is a stroke from the lowest to the highest sample within it) and reads them back.
+Averaged within each hour, the midpoint of each column (`center_estimate`) puts the acrophase within 0.36 h of the
+record's (median) and reads the level 1.19 times too high; the top of each column (`upper_envelope`) times the rhythm
+as well but reads the level about twice too high. Every reading of a dense trace understates how much of the
+activity falls in the dark phase, by 0.03–0.04 for the means of three mice and more for single animals.
+
 ### Test it on data you know
 
 The best test of a digitisation is one on data like yours. `round_trip` draws a known series as a
@@ -296,6 +305,7 @@ pytest                      # the tests that need Tesseract are skipped without 
 ruff check src tests
 python validation/published-figures/run.py   # figures from papers against their authors' data (minutes)
 python validation/activity-traces/run.py      # rhythm analysis of digitised activity traces (a minute)
+python validation/dense-traces/run.py         # real records drawn as dense traces and read back (seconds)
 ```
 
 `src/trace_digitiser/` in the order the work is done:

@@ -1,15 +1,13 @@
-// The two screenshots of the workbench in Fig 1A and S1 Fig B, taken with digitiser-workbench's own browser test:
+// The screenshot of the workbench in Fig 1A, taken with digitiser-workbench's own browser test:
 //
 //   mkdir -p WORKBENCH/_paper_tmp
 //   cp validation/activity-traces/figures/PMC4001052-fig4.jpg WORKBENCH/_paper_tmp/lopatina2014-fig4.jpg
 //   (cd WORKBENCH && python3 tests/browser_test.py PATH/TO/paper/workbench_shots.js 800 /tmp/wb)
 //   cp /tmp/wb-marked.png paper/workbench-marked.png
-//   cp /tmp/wb-digitised.png paper/workbench-both-colours.png
 //   rm -r WORKBENCH/_paper_tmp
 //
 // The page opens the figure, marks the two plot areas, the two trace colours and the ends of each x axis
-// (0 and 168 h), and is photographed (marked); then it digitises with both colours given for both panels, and is
-// photographed again (digitised).
+// (0 and 168 h), and is photographed (marked).
 await waitFor(() => MG.app.digitise, 20000, 'the Digitise tab');
 const K = MG.kernels.get();
 await waitFor(() => K.state === 'ready' || K.state === 'failed', 400000, 'Python');
@@ -27,11 +25,4 @@ D.apply({ kind: 'lines', marks: { areas: [[64.5, 36, 615.1, 253.1], [64.5, 346.8
   ticks: [{ axis: 'x', px: 64.5, value: 0, side: 'bottom', at: [64.5, 262] }, { axis: 'x', px: 615.1, value: 168, side: 'bottom', at: [615.1, 262] },
           { axis: 'x', px: 64.5, value: 0, side: 'bottom', at: [64.5, 572] }, { axis: 'x', px: 616, value: 168, side: 'bottom', at: [616, 572] }] } });
 //--SHOT marked
-const D = window.D;
-await D.run();
-if (D.runError) { log('ERROR', D.runError); }
-await sleep(3000);
-log('rows', D.result && D.result.table ? D.result.table.n : 'none');
-log('cmd', D.result && D.result.command ? D.result.command.text : '');
-//--SHOT digitised
 return 'ok';

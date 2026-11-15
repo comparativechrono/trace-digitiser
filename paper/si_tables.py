@@ -1,8 +1,8 @@
-"""S1-S4 Tables of Hearn & Lloyd-Owen (revised) as Excel workbooks, from the CSV files tables.py writes.
+"""S1-S5 Tables of Hearn & Lloyd-Owen (revised) as Excel workbooks, from the CSV files tables.py writes.
 
     python paper/si_tables.py TABLES_DIR OUT_DIR
 
-Each workbook has the table (or, for S4, its parts) and a sheet of notes: the caption, what each column holds and
+Each workbook has the table (or, for S4 and S5, its parts) and a sheet of notes: the caption, what each column holds and
 where the values come from in the repository.
 """
 import sys
@@ -42,18 +42,38 @@ S = {
                  "light-phase mean), period, rel_drop (relative decrease).",
                  [("Statements", "s3_table_claims.csv")],
                  "validation/activity-traces/claims.json and results/claims_checked.csv"),
-    "S4_Table": ("S4 Table. The CD157 figure read six ways.",
+    "S4_Table": ("S4 Table. The CD157 figure in every reading.",
                  "Lopatina et al. (2014), Fig 4, read from PubMed Central's copy (630 x 597 px) and the journal's "
-                 "copy (397 x 376 px), each three ways: primary (the gridlines and frame sides of panel B left out; "
-                 "hourly values on the hour), as read (as in validation 3, nothing left out) and half-hour grid "
-                 "(primary, with values on the half hour). Measures: rhythm measures of each genotype for each "
+                 "copy (397 x 376 px), each seven ways. primary: the gridlines, the sides of the frame and the strip "
+                 "of axis labels of panel B left out; each column's midpoint (the median of its trace pixels); "
+                 "hourly values the mean of the columns within each hour from lights-off. as read: as primary, with "
+                 "nothing left out (as in validation 3). bins on the hour: as primary, with each hour's bin centred on "
+                 "the hour. nearest the hour: as primary, with the value at each whole hour taken as the median of "
+                 "the columns within 0.23 h (the rule of validation 3 for figures without data, used in the first "
+                 "revision). top, mean of pixels, bottom: as primary, with the top, the mean or the bottom of each "
+                 "column's trace pixels in place of its midpoint. Measures: rhythm measures of each genotype for each "
                  "reading (activity in cm/s; acrophase in h after lights-off; ZT = acrophase + 12, mod 24). Summary: "
                  "the knockout against the wild type for each reading. Daily: the 24-h cosinor and dark-phase share "
-                 "of each day. Values on grey: the columns whose value, as read, lies on a grey or white pixel rather "
-                 "than on the trace.",
+                 "of each day. Values on grey: the columns whose midpoint, as read, lies on a grey or white pixel "
+                 "rather than on the trace.",
                  [("Measures", "s4_table_cd157_measures.csv"), ("Summary", "s4_table_cd157_summary.csv"),
                   ("Daily", "s4_table_cd157_daily.csv"), ("Values on grey", "s4_table_cd157_on_grey.csv")],
                  "validation/activity-traces/cd157.py and results/cd157*.csv"),
+    "S5_Table": ("S5 Table. Real records drawn as dense traces and read back.",
+                 "Nine activity records (three mice's home-cage activity and three mice's wheel running in 5-min bins, "
+                 "and the mean of each three, from Hirano et al. (2026); one mouse's activity per minute over two "
+                 "days, from Hoekstra et al. (2019)), each drawn as Lopatina et al. (2014), Fig 4, is drawn, in plot "
+                 "areas the size of its two copies and in two colours, and read back. Each pixel column gives four "
+                 "values (top, midpoint, mean of pixels, bottom), averaged within each hour and compared with the "
+                 "record's hourly means. Summary: medians, ranges and 90th percentiles over the 36 readings and the "
+                 "112 pairs of 7-day records drawn alike. Readings: one row per record, size, colour and statistic "
+                 "(level = mean read / true mean; acrophase of the 24-h cosinor in h from the start of the record; "
+                 "dark share with lights-off taken as the start of the 12 h of the day holding the largest share of "
+                 "the record's activity). Pairs: for two records drawn alike, the errors in the difference of their "
+                 "acrophases, the ratio of their means (as a factor) and the difference of their dark shares.",
+                 [("Summary", "s5_table_dense_summary.csv"), ("Readings", "s5_table_dense_readings.csv"),
+                  ("Pairs", "s5_table_dense_pairs.csv")],
+                 "validation/dense-traces/run.py and results/"),
 }
 
 

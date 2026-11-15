@@ -1,12 +1,13 @@
 """The tables of Hearn & Lloyd-Owen (revised), worked out from the validation sets' results, as CSV files (the
-manuscript's Tables 1-4) and as the rows of S1-S4 Tables.
+manuscript's Tables 1-4) and as the rows of S1-S5 Tables.
 
     python paper/tables.py OUT_DIR --workbench PATH_TO_DIGITISER_WORKBENCH
 
 Table 1 reads the figures of Hearn & Whitmore (2026) again, with the settings of the workbench's walkthroughs, and
 compares them with the values each figure shows, with the workbench's own comparison (python/dwb/known.py); it needs
 a checkout of digitiser-workbench. The other tables are read from validation/published-figures/results-2.2.0.json and
-validation/activity-traces/results/ (run validation/activity-traces/run.py and cd157.py first).
+validation/activity-traces/results/ and validation/dense-traces/results/ (run validation/activity-traces/run.py,
+cd157.py and validation/dense-traces/run.py first).
 """
 import argparse
 import importlib.util
@@ -23,6 +24,7 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 AT = ROOT / "validation" / "activity-traces"
 PF = ROOT / "validation" / "published-figures"
+DT = ROOT / "validation" / "dense-traces"
 sys.path.insert(0, str(AT))
 
 # --------------------------------------------------------------------------- Table 1: our own figures
@@ -392,6 +394,18 @@ def s4_cd157():
     return t, s, d, m
 
 
+def s5_dense():
+    """The dense-trace test: its summary, every reading and every pair."""
+    sm = pd.read_csv(DT / "results" / "summary.csv")
+    r = pd.read_csv(DT / "results" / "readings.csv")
+    pr = pd.read_csv(DT / "results" / "pairs.csv")
+    keep = ["record", "size", "colour", "statistic", "columns", "samples_per_column", "hours_read", "r", "level",
+            "mean_true", "mean_read", "acrophase_true_h", "acrophase_read_h", "acrophase_error_h",
+            "daily_acrophase_max_abs_error_h", "dark_start_h", "dark_share_true", "dark_share_read",
+            "dark_share_error", "y_max", "colour_clicked", "image"]
+    return sm, r[keep], pr
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("out")
@@ -414,6 +428,10 @@ def main():
     s.to_csv(out / "s4_table_cd157_summary.csv", index=False)
     d.to_csv(out / "s4_table_cd157_daily.csv", index=False)
     m.to_csv(out / "s4_table_cd157_on_grey.csv", index=False)
+    sm, r, pr = s5_dense()
+    sm.to_csv(out / "s5_table_dense_summary.csv", index=False)
+    r.to_csv(out / "s5_table_dense_readings.csv", index=False)
+    pr.to_csv(out / "s5_table_dense_pairs.csv", index=False)
     for f in sorted(out.glob("table*.csv")):
         print(f"\n== {f.name}\n" + pd.read_csv(f).to_string())
 

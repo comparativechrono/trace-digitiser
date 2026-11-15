@@ -1,0 +1,5 @@
+statistic,readings,pairs,r_median,level_median,level_min,level_max,acrophase_abs_error_median_h,acrophase_abs_error_p90_h,acrophase_abs_error_max_h,dark_share_error_median,dark_share_error_min,dark_share_error_max,pair_acrophase_abs_error_median_h,pair_acrophase_abs_error_p90_h,pair_acrophase_abs_error_max_h,pair_ratio_error_median_pct,pair_ratio_error_p90_pct,pair_dark_share_abs_error_median,pair_dark_share_abs_error_p90
+top,36,112,0.8151,1.962,1.457,7.335,0.3287,1.156,1.582,-0.09884,-0.2103,-0.01653,0.4211,1.256,2.405,25.14,53.72,0.0329,0.09779
+midpoint,36,112,0.8557,1.187,0.9973,3.618,0.3619,1.07,2.453,-0.08524,-0.2108,-0.00423,0.4173,1.369,3.812,12.14,33.45,0.04347,0.0853
+mean of pixels,36,112,0.8502,1.182,1,3.659,0.3652,1.426,2.121,-0.08654,-0.2122,-0.004458,0.4139,1.435,3.547,12.1,33.24,0.0434,0.08617
+bottom,36,112,0.7441,0.4076,0.2191,0.6668,0.5772,2.656,10.99,-0.06358,-0.5012,0.09115,0.9151,2.656,4.668,21.97,50.95,0.09624,0.1783

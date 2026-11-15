@@ -227,6 +227,18 @@ Labels under 8 pixels high are never given high confidence, however well they ag
 that small is misread in consistent ways — the decimal point dropped from every label, say. If
 your figure has such labels, enlarging the image does not help; typing in two numbers does.
 
+**Published figures.** The tests above draw their own figures.
+[`validation/published-figures`](https://github.com/comparativechrono/trace-digitiser/tree/main/validation/published-figures)
+holds seven figures from four papers whose authors published the numbers behind them — markers with error bars, a
+line over shaded bands, ten bar charts, dot plots, and a scanned page from 1920 — and reads them with nothing given
+and with the help a user can give. With nothing given, 2.2.0 reads all 35 bars of the bar charts to within 0.3 % of
+the axis, and the 29 points of a scatter plot of four series to within 0.5 % (2.1.0 read none of either); with two
+ticks clicked on each axis and the dots' colour, the census dots of the 1920 figure to within 0.9 %. On the figures
+of a paper held out until the changes were made, with the plot area drawn, it reads 24 bars to within 0.4 % once
+two ticks are clicked, and 33 of 37 points once the ticks of a slanted axis and the colours are. Stacked plots with no gap between them, dot
+plots whose dots overlap, and tick labels that are slanted or hand-lettered still need help or remain hard; that
+folder's README has the details.
+
 ### Test it on data you know
 
 The best test of a digitisation is one on data like yours. `round_trip` draws a known series as a
@@ -272,6 +284,7 @@ cd trace-digitiser
 pip install -e ".[dev]"
 pytest                      # the tests that need Tesseract are skipped without it
 ruff check src tests
+python validation/published-figures/run.py   # figures from papers against their authors' data (minutes)
 ```
 
 `src/trace_digitiser/` in the order the work is done:

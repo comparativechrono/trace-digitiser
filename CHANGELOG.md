@@ -7,12 +7,24 @@ and the project uses [semantic versioning](https://semver.org/).
 ## [2.2.0] - unreleased
 
 Tested on the figures of published papers whose underlying numbers are
-published too (Leypunskiy et al. 2017, eLife 6:e23539, drawn with MATLAB;
-Foley et al. 2019, eLife 8:e50063, drawn with GraphPad Prism; Pearl and Reed
-1920, PNAS 6:275, a microfilm scan), 2.1.0 read what it found accurately but
-often found nothing. This release finds much more of it. Line plots digitise
-as before: the package's validation suite and the Hearn and Whitmore (2026)
-examples give the same results.
+published too (Leypunskiy et al. 2017, eLife 6:e23539: markers with error
+bars, a line over shaded bands; Foley et al. 2019, eLife 8:e50063: bar charts;
+Pearl and Reed 1920, PNAS 6:275, a microfilm scan), 2.1.0 read what it found
+accurately but often found nothing. This release finds much more of it, there
+and on the figures of a paper held out until the changes were made (Andreani
+et al. 2022, eLife 11:e74327). Line plots digitise as before: the package's
+validation suite and the Hearn and Whitmore (2026) examples give the same
+results.
+
+### Added
+
+- **A test set of published figures**
+  ([`validation/published-figures`](https://github.com/comparativechrono/trace-digitiser/tree/main/validation/published-figures)):
+  seven figures from those four papers, the numbers behind them from their
+  authors' data, and a script that reads them with nothing given and with the
+  help a user can give, and compares. Its README has the results of 2.1.0 and
+  2.2.0, case by case, including the few that 2.2.0 reads worse. It is run
+  before each release and is not part of the package.
 
 ### Fixed
 

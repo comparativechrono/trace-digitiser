@@ -45,8 +45,21 @@ plans). Now that the repository is public, one can be added:
 2. In `CHANGELOG.md`, give the section for the version its date in place of
    "unreleased", and end its link at the new tag (`...vX.Y.Z` in place of
    `...HEAD`).
-3. Merge to `main` and wait for the *Tests* workflow to pass.
-4. On GitHub: *Releases -> Draft a new release*, create the tag `vX.Y.Z`
+3. Run the published-figure test set
+   ([`validation/published-figures`](validation/published-figures/README.md)),
+   which reads figures from papers whose data are published, and compare the
+   results with the last release's:
+
+   ```bash
+   python validation/published-figures/run.py \
+       --json validation/published-figures/results-X.Y.Z.json \
+       --compare validation/published-figures/results-<last release>.json
+   ```
+
+   Look into any case marked WORSE before going on. Commit the new results,
+   and update the table in that folder's README (`--markdown` prints it).
+4. Merge to `main` and wait for the *Tests* workflow to pass.
+5. On GitHub: *Releases -> Draft a new release*, create the tag `vX.Y.Z`
    (matching the version exactly, with a leading `v`) on `main`, and publish.
 
 Publishing the release starts the workflow. It checks that the tag matches the

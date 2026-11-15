@@ -90,6 +90,9 @@ L5A_TICKS = {"plot_area": [BOX["leypunskiy-5A"]], "y_ref": [(882.5, 12), (1646.5
 L5C_COLOURS = ["#e81828", "#d8d828", "#08a888", "#0868b8", "#c81888"]
 P3_BOX = (0, 0, 1e9, 1e9)  # the only plot in the figure
 P3_TICKS = {"y_ref": [(845.18, 0), (54.73, 100_000_000)], "x_ref": [(263.04, 1790), (1095.94, 1910)]}
+P3_AREA = (193, 55, 1163, 845)  # the frame: the y axis, the top, the right-hand side and the x axis
+P3_EQUATION = (280, 230, 620, 320)  # the printed equation of the curve
+P3_GRIDLINE_1890 = (949, 50, 962, 850)  # the gridline at 1890, which the curve's reading follows up and down
 A1B_COLOURS = ["#236333", "#f26930", "#542484"]
 A1B_TICKS = {"plot_area": [BOX["andreani-1B"]], "x_ref": [(1165, 0.0), (1829, 11.5)]}  # its labels are slanted
 A3_COLOURS = ["#636dac", "#ec4739"]
@@ -139,11 +142,21 @@ CASES = [
     _case("pearl-reed-3-curve-ticks", P3, "lines", "two ticks on each axis", "curves", "pearl-reed-3-curve",
           P3_TICKS, box=P3_BOX),
     _case("pearl-reed-3-curve-ticks-exclude", P3, "lines", "ticks, the equation excluded", "curves",
-          "pearl-reed-3-curve", {**P3_TICKS, "exclude": [(280, 230, 620, 320)]}, box=P3_BOX),
+          "pearl-reed-3-curve", {**P3_TICKS, "exclude": [P3_EQUATION]}, box=P3_BOX),
     _case("pearl-reed-3-dots-ticks", P3, "points", "two ticks on each axis", "points", "pearl-reed-3-dots", P3_TICKS,
           box=P3_BOX),
     _case("pearl-reed-3-dots-ticks-colour", P3, "points", "ticks, the colour", "points", "pearl-reed-3-dots",
           {**P3_TICKS, "colours": ["#404040"]}, box=P3_BOX),
+    # what a user would add after looking at the overlay: the frame drawn as the plot area (its corner was read as a
+    # dot), the equation left out (its letters were), no error bars (the gridlines through the dots were taken for
+    # them); and, for the curve, the gridline at 1890 left out (the reading followed it up and down)
+    _case("pearl-reed-3-dots-ticks-colour-area", P3, "points",
+          "ticks, the colour, the plot area, the equation left out, no error bars", "points", "pearl-reed-3-dots",
+          {**P3_TICKS, "colours": ["#404040"], "plot_area": [P3_AREA], "exclude": [P3_EQUATION], "error_bars": "none"},
+          box=P3_BOX),
+    _case("pearl-reed-3-curve-ticks-exclude-gridline", P3, "lines",
+          "ticks, the equation and the 1890 gridline left out", "curves", "pearl-reed-3-curve",
+          {**P3_TICKS, "exclude": [P3_EQUATION, P3_GRIDLINE_1890]}, box=P3_BOX),
     # ---- held out: Andreani et al. (2022), looked at only after the changes they test were made
     _case("andreani-1B-area", A1, "points", "the plot area", "points", "andreani-1B",
           {"plot_area": [BOX["andreani-1B"]]}, held_out=True),

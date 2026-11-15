@@ -94,6 +94,8 @@ as columns, so that the dots are split into columns as drawn, but not compared.
 | `pearl-reed-3-curve-ticks-exclude` | ticks, the equation excluded | logistic: 0.17% (worst 40.0%) | logistic: 0.17% (worst 40.0%) |
 | `pearl-reed-3-dots-ticks` | two ticks on each axis | 0/13 points | 0/13 points |
 | `pearl-reed-3-dots-ticks-colour` | ticks, the colour | 13/13 points (+1 extra), y error 0.10% (worst 0.88%), error bars on 13 points that have none | 13/13 points (+5 extra), y error 0.08% (worst 0.88%), error bars on 10 points that have none |
+| `pearl-reed-3-dots-ticks-colour-area` | ticks, the colour, the plot area, the equation left out, no error bars | 13/13 points, y error 0.10% (worst 0.88%) | 13/13 points (+1 extra), y error 0.08% (worst 0.88%) |
+| `pearl-reed-3-curve-ticks-exclude-gridline` | ticks, the equation and the 1890 gridline left out | logistic: 0.17% (worst 1.0%) | logistic: 0.17% (worst 1.0%) |
 | `andreani-1B-area` | the plot area | x axis not read | x axis not read |
 | `andreani-1B-area-colours` | the plot area, the colours | x axis not read | x axis not read |
 | `andreani-1B-area-ticks` | the plot area, two ticks on the x axis | 0/37 points (+130 extra) | 0/37 points (+3 extra) |
@@ -110,7 +112,7 @@ as columns, so that the dots are split into columns as drawn, but not compared.
 | `andreani-3C-colours` | the colours | 54/180 dots (+3 extra), y error 0.12% (worst 1.91%) | 141/180 dots (+34 extra), y error 0.18% (worst 2.77%) |
 | `andreani-3D-colours` | the colours | 44/87 dots (+32 extra), y error 0.32% (worst 2.94%) | 38/44 dots (+4 extra), y error 0.15% (worst 2.94%) |
 
-Summed over the cases, 2.3.0 reads 366 of 409 points, bars and curves in the development figures (2.2.0: 296) and
+Summed over the cases, 2.3.0 reads 380 of 423 points, bars and curves in the development figures (2.2.0: 310) and
 818 of 1,192 in those of Andreani et al. (2.2.0: 318 of the same 1,192; 339 of 1,278, with the three columns of 3D
 that are no longer compared). The 2.1.0 results are in `results-2.1.0.json`.
 
@@ -132,8 +134,14 @@ What is still hard:
   apart: about a quarter of them are missed. The workbench's *Edit points* tool adds them by hand.
 * Error bars of markers are found less often than in 2.2.0 in Leypunskiy et al. 1C and 2C (6 and 22 of 12 and 29,
   against 8 and 24): a bar is no longer accepted where the line through the marker runs on aslant or beyond a gap.
-* The fitted curve of Pearl and Reed's scan is followed to within 0.2 % (median), but where it crosses a printed
-  gridline the trace is followed up the gridline for a few columns (worst 40 %).
+* The fitted curve of Pearl and Reed's scan is followed to within 0.2 % (median), but where it crosses the printed
+  gridline at 1890 the trace is followed up the gridline for a few columns (worst 40 %). A box over that gridline,
+  as the workbench's *Leave out* tool draws one, takes it away: worst 1.0 %
+  (`pearl-reed-3-curve-ticks-exclude-gridline`).
+* Pearl and Reed's dots, with their colour given, come with three marks in the printed equation and one at the
+  frame's lower right corner, and the gridlines through the census years are taken for error bars. Drawing the
+  frame as the plot area, leaving the equation out and turning error bars off leaves one extra mark: the 1910 dot,
+  read twice (`pearl-reed-3-dots-ticks-colour-area`).
 
 ## The figures
 

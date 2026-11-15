@@ -1,0 +1,19 @@
+{
+ "case": "pearl-reed-3-dots-ticks-colour-area",
+ "known": "pearl-reed-3-dots",
+ "given": "ticks, the colour, the plot area, the equation left out, no error bars",
+ "parts": [
+  {
+   "box": [
+    0.0,
+    0.0,
+    1000000000.0,
+    1000000000.0
+   ],
+   "series": null,
+   "panel_id": 1,
+   "x_calibrated": true,
+   "y_calibrated": true
+  }
+ ]
+}

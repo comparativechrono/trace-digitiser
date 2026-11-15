@@ -1,0 +1,19 @@
+{
+ "case": "pearl-reed-3-curve-ticks-exclude-gridline",
+ "known": "pearl-reed-3-curve",
+ "given": "ticks, the equation and the 1890 gridline left out",
+ "parts": [
+  {
+   "box": [
+    0.0,
+    0.0,
+    1000000000.0,
+    1000000000.0
+   ],
+   "series": null,
+   "panel_id": 1,
+   "x_calibrated": true,
+   "y_calibrated": true
+  }
+ ]
+}

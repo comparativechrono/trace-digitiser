@@ -18,7 +18,7 @@
    "summary": "12/12 points, y error 0.31% (worst 0.70%), error bars 6/12 (0.87%)",
    "score": 12,
    "of": 12,
-   "seconds": 23.3,
+   "seconds": 22.6,
    "details": {
     "known": 12,
     "found": 12,
@@ -60,7 +60,7 @@
    "summary": "12/12 points, y error 0.31% (worst 0.70%), error bars 6/12 (0.87%)",
    "score": 12,
    "of": 12,
-   "seconds": 21.5,
+   "seconds": 22.9,
    "details": {
     "known": 12,
     "found": 12,
@@ -95,7 +95,7 @@
    "summary": "18:6: 0.58% (worst 1.1%); 12:12: 0.37% (worst 1.4%); 6:18: 0.19% (worst 0.9%)",
    "score": 3,
    "of": 3,
-   "seconds": 17.0,
+   "seconds": 17.1,
    "details": [
     {
      "18:6": {
@@ -161,7 +161,7 @@
    "summary": "18:6: 0.60% (worst 1.1%); 12:12: 0.29% (worst 1.5%); 6:18: 0.24% (worst 0.9%)",
    "score": 3,
    "of": 3,
-   "seconds": 10.2,
+   "seconds": 10.8,
    "details": [
     {
      "18:6": {
@@ -225,7 +225,7 @@
    "summary": "18:6: 0.65% (worst 1.2%); 12:12: 0.35% (worst 1.3%); 6:18: 0.21% (worst 0.9%)",
    "score": 3,
    "of": 3,
-   "seconds": 10.1,
+   "seconds": 10.2,
    "details": [
     {
      "18:6": {
@@ -289,7 +289,7 @@
    "summary": "99/102 points, y error 0.60% (worst 1.11%)",
    "score": 99,
    "of": 102,
-   "seconds": 10.7,
+   "seconds": 10.6,
    "details": [
     {
      "known": 34,
@@ -347,7 +347,7 @@
    "summary": "29/29 points (+1 extra), y error 0.07% (worst 0.46%), error bars 22/29 (0.33%)",
    "score": 29,
    "of": 29,
-   "seconds": 18.3,
+   "seconds": 17.9,
    "details": {
     "known": 29,
     "found": 30,
@@ -433,7 +433,7 @@
    "summary": "29/29 points (+3 extra), y error 0.08% (worst 0.64%), error bars 21/29 (0.36%)",
    "score": 29,
    "of": 29,
-   "seconds": 17.3,
+   "seconds": 16.7,
    "details": {
     "known": 29,
     "found": 32,
@@ -468,7 +468,7 @@
    "summary": "9/9 points (+3 extra), y error 0.04% (worst 0.25%), error bars 8/9 (0.02%)",
    "score": 9,
    "of": 9,
-   "seconds": 13.0,
+   "seconds": 12.7,
    "details": {
     "known": 9,
     "found": 12,
@@ -528,7 +528,7 @@
    "summary": "9/9 points (+3 extra), y error 0.04% (worst 0.25%), error bars 8/9 (0.02%)",
    "score": 9,
    "of": 9,
-   "seconds": 1.9,
+   "seconds": 1.7,
    "details": {
     "known": 9,
     "found": 12,
@@ -588,7 +588,7 @@
    "summary": "9/9 points (+5 extra), y error 0.03% (worst 0.25%), error bars 8/9 (0.26%)",
    "score": 9,
    "of": 9,
-   "seconds": 1.8,
+   "seconds": 1.5,
    "details": {
     "known": 9,
     "found": 14,
@@ -617,7 +617,7 @@
    "summary": "5/10 points, y error 0.01% (worst 0.14%), error bars 5/5 (0.02%)",
    "score": 5,
    "of": 10,
-   "seconds": 13.0,
+   "seconds": 12.7,
    "details": {
     "known": 10,
     "found": 5,
@@ -653,7 +653,7 @@
    "summary": "10/10 points (+19 extra), y error 0.09% (worst 0.20%), error bars 8/10 (0.20%)",
    "score": 10,
    "of": 10,
-   "seconds": 10.1,
+   "seconds": 9.9,
    "details": {
     "known": 10,
     "found": 29,
@@ -687,7 +687,7 @@
    "summary": "15/19 points (+1 extra), y error 0.03% (worst 0.40%), error bars 14/15 (0.34%)",
    "score": 15,
    "of": 19,
-   "seconds": 13.0,
+   "seconds": 12.7,
    "details": {
     "known": 19,
     "found": 16,
@@ -726,7 +726,7 @@
    "summary": "17/19 points (+14 extra), y error 0.03% (worst 0.60%), error bars 13/17 (0.34%)",
    "score": 17,
    "of": 19,
-   "seconds": 11.7,
+   "seconds": 11.1,
    "details": {
     "known": 19,
     "found": 31,
@@ -769,7 +769,7 @@
    "summary": "17/19 points (+17 extra), y error 0.05% (worst 0.26%), error bars 15/17 (0.34%)",
    "score": 17,
    "of": 19,
-   "seconds": 11.6,
+   "seconds": 10.7,
    "details": {
     "known": 19,
     "found": 34,
@@ -803,7 +803,7 @@
    "summary": "6/6 bars within 1%, error 0.13% (worst 0.22%), error bars 3/6 (0.08%)",
    "score": 6,
    "of": 6,
-   "seconds": 21.9,
+   "seconds": 20.2,
    "details": {
     "known": 6,
     "found": 6,
@@ -871,7 +871,7 @@
    "summary": "5/5 bars within 1%, error 0.15% (worst 0.29%), error bars 4/5 (0.07%)",
    "score": 5,
    "of": 5,
-   "seconds": 21.9,
+   "seconds": 20.2,
    "details": {
     "known": 5,
     "found": 5,
@@ -934,7 +934,7 @@
    "summary": "3/3 bars within 1%, error 0.10% (worst 0.10%), error bars 3/3 (0.06%)",
    "score": 3,
    "of": 3,
-   "seconds": 21.9,
+   "seconds": 20.2,
    "details": {
     "known": 3,
     "found": 3,
@@ -987,7 +987,7 @@
    "summary": "3/3 bars within 1%, error 0.15% (worst 0.26%), error bars 2/3 (0.42%)",
    "score": 3,
    "of": 3,
-   "seconds": 21.9,
+   "seconds": 20.2,
    "details": {
     "known": 3,
     "found": 3,
@@ -1040,7 +1040,7 @@
    "summary": "3/3 bars within 1%, error 0.06% (worst 0.14%), error bars 3/3 (0.02%)",
    "score": 3,
    "of": 3,
-   "seconds": 21.9,
+   "seconds": 20.2,
    "details": {
     "known": 3,
     "found": 3,
@@ -1093,7 +1093,7 @@
    "summary": "3/3 bars within 1%, error 0.23% (worst 0.25%)",
    "score": 3,
    "of": 3,
-   "seconds": 21.9,
+   "seconds": 20.2,
    "details": {
     "known": 3,
     "found": 3,
@@ -1144,7 +1144,7 @@
    "summary": "3/3 bars within 1%, error 0.09% (worst 0.09%), error bars 3/3 (0.08%)",
    "score": 3,
    "of": 3,
-   "seconds": 21.9,
+   "seconds": 20.2,
    "details": {
     "known": 3,
     "found": 3,
@@ -1197,7 +1197,7 @@
    "summary": "3/3 bars within 1%, error 0.10% (worst 0.24%)",
    "score": 3,
    "of": 3,
-   "seconds": 21.9,
+   "seconds": 20.2,
    "details": {
     "known": 3,
     "found": 3,
@@ -1248,7 +1248,7 @@
    "summary": "3/3 bars within 1%, error 0.13% (worst 0.19%), error bars 3/3 (0.17%)",
    "score": 3,
    "of": 3,
-   "seconds": 21.9,
+   "seconds": 20.2,
    "details": {
     "known": 3,
     "found": 3,
@@ -1301,7 +1301,7 @@
    "summary": "3/3 bars within 1%, error 0.20% (worst 0.23%)",
    "score": 3,
    "of": 3,
-   "seconds": 21.9,
+   "seconds": 20.2,
    "details": {
     "known": 3,
     "found": 3,
@@ -1361,7 +1361,7 @@
    "summary": "6/6 bars within 1%, error 0.18% (worst 0.28%), error bars 5/6 (0.08%)",
    "score": 6,
    "of": 6,
-   "seconds": 4.2,
+   "seconds": 3.0,
    "details": {
     "known": 6,
     "found": 6,
@@ -1419,7 +1419,7 @@
    "summary": "logistic: x and y axes not read",
    "score": 0,
    "of": 1,
-   "seconds": 12.0,
+   "seconds": 11.1,
    "details": {
     "error": "x and y axes not read",
     "found": 972
@@ -1438,7 +1438,7 @@
    "summary": "x and y axes not read",
    "score": 0,
    "of": 13,
-   "seconds": 12.2,
+   "seconds": 11.3,
    "details": {
     "error": "x and y axes not read",
     "found": 0
@@ -1479,7 +1479,7 @@
    "summary": "logistic: 0.38% (worst 66.9%)",
    "score": 1,
    "of": 1,
-   "seconds": 1.4,
+   "seconds": 1.0,
    "details": {
     "logistic": {
      "coverage": 1.0,
@@ -1527,7 +1527,7 @@
    "summary": "logistic: 0.17% (worst 40.0%)",
    "score": 1,
    "of": 1,
-   "seconds": 1.3,
+   "seconds": 1.0,
    "details": {
     "logistic": {
      "coverage": 1.0,
@@ -1567,7 +1567,7 @@
    "summary": "0/13 points",
    "score": 0,
    "of": 13,
-   "seconds": 1.3,
+   "seconds": 1.1,
    "details": {
     "known": 13,
     "found": 0,
@@ -1610,7 +1610,7 @@
    "summary": "13/13 points (+5 extra), y error 0.08% (worst 0.88%), error bars on 10 points that have none",
    "score": 13,
    "of": 13,
-   "seconds": 1.1,
+   "seconds": 0.8,
    "details": {
     "known": 13,
     "found": 18,
@@ -1627,6 +1627,128 @@
    "warnings": [
     "Panel 1: 4 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
    ]
+  },
+  "pearl-reed-3-dots-ticks-colour-area": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "points",
+   "given": "ticks, the colour, the plot area, the equation left out, no error bars",
+   "options": {
+    "y_ref": [
+     [
+      845.18,
+      0
+     ],
+     [
+      54.73,
+      100000000
+     ]
+    ],
+    "x_ref": [
+     [
+      263.04,
+      1790
+     ],
+     [
+      1095.94,
+      1910
+     ]
+    ],
+    "colours": [
+     "#404040"
+    ],
+    "plot_area": [
+     [
+      193,
+      55,
+      1163,
+      845
+     ]
+    ],
+    "exclude": [
+     [
+      280,
+      230,
+      620,
+      320
+     ]
+    ],
+    "error_bars": "none"
+   },
+   "held_out": false,
+   "summary": "13/13 points (+1 extra), y error 0.08% (worst 0.88%)",
+   "score": 13,
+   "of": 13,
+   "seconds": 0.6,
+   "details": {
+    "known": 13,
+    "found": 14,
+    "matched": 13,
+    "extra": 1,
+    "x_median": 0.2952371053837055,
+    "x_worst": 0.43156987087797916,
+    "y_median": 0.07564681572437282,
+    "y_worst": 0.8810028114997703,
+    "errbars_known": 0,
+    "errbars_found": 0,
+    "errbars_unexpected": 0
+   },
+   "warnings": [
+    "Panel 1: 2 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "pearl-reed-3-curve-ticks-exclude-gridline": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "lines",
+   "given": "ticks, the equation and the 1890 gridline left out",
+   "options": {
+    "y_ref": [
+     [
+      845.18,
+      0
+     ],
+     [
+      54.73,
+      100000000
+     ]
+    ],
+    "x_ref": [
+     [
+      263.04,
+      1790
+     ],
+     [
+      1095.94,
+      1910
+     ]
+    ],
+    "exclude": [
+     [
+      280,
+      230,
+      620,
+      320
+     ],
+     [
+      949,
+      50,
+      962,
+      850
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "logistic: 0.17% (worst 1.0%)",
+   "score": 1,
+   "of": 1,
+   "seconds": 1.1,
+   "details": {
+    "logistic": {
+     "coverage": 1.0,
+     "median": 0.1671262878095964,
+     "worst": 0.9525180657536239
+    }
+   },
+   "warnings": []
   },
   "andreani-1B-area": {
    "figure": "andreani-2022-fig1.jpg",
@@ -1646,7 +1768,7 @@
    "summary": "x axis not read",
    "score": 0,
    "of": 37,
-   "seconds": 3.6,
+   "seconds": 3.5,
    "details": {
     "error": "x axis not read",
     "found": 3
@@ -1680,7 +1802,7 @@
    "summary": "x axis not read",
    "score": 0,
    "of": 37,
-   "seconds": 3.5,
+   "seconds": 3.3,
    "details": {
     "error": "x axis not read",
     "found": 34
@@ -1719,7 +1841,7 @@
    "summary": "0/37 points (+3 extra)",
    "score": 0,
    "of": 37,
-   "seconds": 3.7,
+   "seconds": 3.2,
    "details": {
     "known": 37,
     "found": 3,
@@ -1764,7 +1886,7 @@
    "summary": "34/37 points, y error 0.27% (worst 1.31%), error bars on 5 points that have none",
    "score": 34,
    "of": 37,
-   "seconds": 3.5,
+   "seconds": 3.0,
    "details": {
     "known": 37,
     "found": 34,
@@ -1792,7 +1914,7 @@
    "summary": "control: 0.60% (worst 2.7%); FD: 0.99% (worst 19.5%)",
    "score": 2,
    "of": 2,
-   "seconds": 1.7,
+   "seconds": 1.3,
    "details": {
     "control": {
      "coverage": 1.0,
@@ -1829,7 +1951,7 @@
    "summary": "24/24 bars within 1%, error 0.17% (worst 0.39%), error bars 22/24 (0.15%)",
    "score": 24,
    "of": 24,
-   "seconds": 10.4,
+   "seconds": 9.5,
    "details": {
     "known": 24,
     "found": 24,
@@ -1997,7 +2119,7 @@
    "summary": "24/24 bars within 1%, error 0.16% (worst 0.39%), error bars 22/24 (0.15%)",
    "score": 24,
    "of": 24,
-   "seconds": 10.7,
+   "seconds": 9.6,
    "details": {
     "known": 24,
     "found": 24,
@@ -2146,7 +2268,7 @@
    "summary": "120/165 dots (+29 extra), y error 0.14% (worst 2.91%)",
    "score": 120,
    "of": 165,
-   "seconds": 4.6,
+   "seconds": 4.0,
    "details": {
     "known": 165,
     "found": 149,
@@ -2184,7 +2306,7 @@
    "summary": "77/108 dots, y error 0.09% (worst 2.14%)",
    "score": 77,
    "of": 108,
-   "seconds": 4.6,
+   "seconds": 4.0,
    "details": {
     "known": 108,
     "found": 77,
@@ -2222,7 +2344,7 @@
    "summary": "114/180 dots (+27 extra), y error 0.15% (worst 2.92%)",
    "score": 114,
    "of": 180,
-   "seconds": 4.6,
+   "seconds": 4.0,
    "details": {
     "known": 180,
     "found": 141,
@@ -2260,7 +2382,7 @@
    "summary": "37/44 dots (+11 extra), y error 0.14% (worst 2.94%)",
    "score": 37,
    "of": 44,
-   "seconds": 4.6,
+   "seconds": 4.0,
    "details": {
     "known": 44,
     "found": 88,
@@ -2303,7 +2425,7 @@
    "summary": "129/165 dots (+24 extra), y error 0.22% (worst 2.82%)",
    "score": 129,
    "of": 165,
-   "seconds": 3.3,
+   "seconds": 3.2,
    "details": {
     "known": 165,
     "found": 153,
@@ -2346,7 +2468,7 @@
    "summary": "78/108 dots (+8 extra), y error 0.10% (worst 2.14%)",
    "score": 78,
    "of": 108,
-   "seconds": 3.3,
+   "seconds": 3.2,
    "details": {
     "known": 108,
     "found": 86,
@@ -2389,7 +2511,7 @@
    "summary": "141/180 dots (+34 extra), y error 0.18% (worst 2.77%)",
    "score": 141,
    "of": 180,
-   "seconds": 3.3,
+   "seconds": 3.2,
    "details": {
     "known": 180,
     "found": 175,
@@ -2432,7 +2554,7 @@
    "summary": "38/44 dots (+4 extra), y error 0.15% (worst 2.94%)",
    "score": 38,
    "of": 44,
-   "seconds": 3.3,
+   "seconds": 3.2,
    "details": {
     "known": 44,
     "found": 82,

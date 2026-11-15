@@ -6,6 +6,25 @@ and the project uses [semantic versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- Two cases in `validation/published-figures` read Pearl and Reed's figure 3
+  with the marks a workbench user would add when the first reading shows
+  stray marks: for the dots, the frame as the plot area, the printed equation
+  left out and error bars turned off (13 of 13 dots, one of them read twice;
+  with only the colour given, five extra marks and error bars on ten dots);
+  for the curve, the equation and the gridline at 1890 left out (worst error
+  1.0 %, against 40 % with the equation alone left out).
+
+### Changed
+
+- `paper/figures.py`: S1–S3 Fig draw a line only where it was seen, so a
+  stretch the line reader filled in from its ends (under a legend, say) is a
+  gap; S2 Fig I shows Pearl and Reed's figure read with the marks above.
+- `paper/tables.py`: Table 1 reads Fig 1a of Hearn and Whitmore (2026) with
+  only what is not data left out, as the workbench's walkthrough now does: the
+  legend for the blue line, nothing for the green line in the inset.
+
 ## [2.3.0] - 2026-11-15
 
 Read again with 2.2.0, some of the figures in the validation sets still came

@@ -1567,6 +1567,126 @@
    },
    "warnings": []
   },
+  "pearl-reed-3-dots-ticks-colour-area": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "points",
+   "given": "ticks, the colour, the plot area, the equation left out, no error bars",
+   "options": {
+    "y_ref": [
+     [
+      845.18,
+      0
+     ],
+     [
+      54.73,
+      100000000
+     ]
+    ],
+    "x_ref": [
+     [
+      263.04,
+      1790
+     ],
+     [
+      1095.94,
+      1910
+     ]
+    ],
+    "colours": [
+     "#404040"
+    ],
+    "plot_area": [
+     [
+      193,
+      55,
+      1163,
+      845
+     ]
+    ],
+    "exclude": [
+     [
+      280,
+      230,
+      620,
+      320
+     ]
+    ],
+    "error_bars": "none"
+   },
+   "held_out": false,
+   "summary": "13/13 points, y error 0.10% (worst 0.88%)",
+   "score": 13,
+   "of": 13,
+   "seconds": 0.4,
+   "details": {
+    "known": 13,
+    "found": 13,
+    "matched": 13,
+    "extra": 0,
+    "x_median": 0.2952371053837055,
+    "x_worst": 0.43156987087797916,
+    "y_median": 0.10307756303373772,
+    "y_worst": 0.8810028114997703,
+    "errbars_known": 0,
+    "errbars_found": 0,
+    "errbars_unexpected": 0
+   },
+   "warnings": []
+  },
+  "pearl-reed-3-curve-ticks-exclude-gridline": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "lines",
+   "given": "ticks, the equation and the 1890 gridline left out",
+   "options": {
+    "y_ref": [
+     [
+      845.18,
+      0
+     ],
+     [
+      54.73,
+      100000000
+     ]
+    ],
+    "x_ref": [
+     [
+      263.04,
+      1790
+     ],
+     [
+      1095.94,
+      1910
+     ]
+    ],
+    "exclude": [
+     [
+      280,
+      230,
+      620,
+      320
+     ],
+     [
+      949,
+      50,
+      962,
+      850
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "logistic: 0.17% (worst 1.0%)",
+   "score": 1,
+   "of": 1,
+   "seconds": 0.9,
+   "details": {
+    "logistic": {
+     "coverage": 1.0,
+     "median": 0.1671262878095964,
+     "worst": 0.9525180657536239
+    }
+   },
+   "warnings": []
+  },
   "andreani-1B-area": {
    "figure": "andreani-2022-fig1.jpg",
    "reader": "points",

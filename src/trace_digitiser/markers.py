@@ -434,6 +434,13 @@ def _markers_at(
     disc = np.pi * r * r
     typical = areas[(areas >= 0.45 * disc) & (areas <= 2.2 * disc)]
     single = float(np.median(typical)) if typical.size else max(disc, float(np.median(areas)))
+    # Where most markers overlap others, the typical blob is two or three of them: go by the round blobs of about a
+    # marker's size, which are markers on their own (a blob fills about 0.785 of its box when it is round).
+    side = np.maximum(stats[1:, cv2.CC_STAT_WIDTH], stats[1:, cv2.CC_STAT_HEIGHT]).astype(float)
+    low = np.minimum(stats[1:, cv2.CC_STAT_WIDTH], stats[1:, cv2.CC_STAT_HEIGHT]).astype(float)
+    round_ = (areas >= 0.7 * disc) & (areas <= 1.6 * disc) & (side <= 1.15 * low) & (areas >= 0.68 * side * side)
+    if round_.sum() >= 2 and float(np.median(areas[round_])) < 0.85 * single:
+        single = float(np.median(areas[round_]))
     h, w = mask.shape
     # Markers are compact: a blob that is long and thin, or sprawling, is a thick line, a bar or a block of colour.
     singles = merged = 0
@@ -520,8 +527,12 @@ def _markers_at(
         if count == 1:
             ys, xs = np.nonzero(crop)
             centres = [(float(xs.mean()) + b0, float(ys.mean()) + a0)]
-            # two markers almost on top of each other: a drawn-out blob whose edges point to two centres
-            if max(bw, bh) > 1.25 * min(bw, bh) and area >= 0.9 * single:
+            # two markers almost on top of each other: a drawn-out blob whose edges point to two centres (drawn out
+            # along any direction: its long axis over its short one)
+            cov = np.cov(np.vstack([xs, ys]).astype(float)) if len(xs) > 2 else np.eye(2)
+            ev = np.linalg.eigvalsh(cov)
+            drawn_out = ev[0] > 0 and ev[1] > 1.5 * ev[0]
+            if (max(bw, bh) > 1.25 * min(bw, bh) and area >= 0.9 * single) or (drawn_out and area >= 1.15 * single):
                 found = split_overlapping(crop, rb, sub_deep, solid=mask[a0:a1, b0:b1])
                 if len(found) >= 2 and min(f[2] for f in found) >= 0.35:
                     centres = [(fx + b0, fy + a0) for fx, fy, _ in found]
@@ -700,6 +711,39 @@ def colour_mask(rgb_roi: np.ndarray, colour, tolerance: float = 60.0) -> np.ndar
     return colour_distance(rgb_roi, colour) <= tolerance
 
 
+def under_ink(rgb_roi: np.ndarray, colour, mask: np.ndarray, radius: Optional[float] = None) -> np.ndarray:
+    """The pixels of dark ink drawn over markers of this colour: a mean's bar or an error bar across a column of dots,
+    a black line through a marker. They are dark (black or grey), and the colour lies on both sides of them, above
+    and below or left and right, within about a marker's width: the marker goes on under the ink. None for markers
+    that are dark themselves, or when the markers' size cannot be told."""
+    none = np.zeros(mask.shape, bool)
+    c = np.asarray(colour, float).reshape(3)
+    if c.mean() < 110 or c.max() - c.min() < 60 or mask.sum() < 6:
+        return none  # dark or grey markers: ink drawn over them is not told from them by its darkness
+    r = radius or marker_radius(fill_small_holes(mask, 200.0))
+    if not r:
+        return none
+    rgb = rgb_roi.astype(float)
+    dark = (rgb.mean(axis=2) < 110) & (rgb.max(axis=2) - rgb.min(axis=2) < 60) & ~mask
+    if not dark.any():
+        return none
+    reach = max(3, int(round(1.2 * r)))
+    m = mask.astype(np.int32)
+
+    def beside(axis: int) -> np.ndarray:
+        """Whether the colour lies within *reach* pixels both before and after each pixel along *axis*."""
+        n = m.shape[axis]
+        zero = np.zeros((1, m.shape[1]) if axis == 0 else (m.shape[0], 1), np.int32)
+        total = np.concatenate([zero, np.cumsum(m, axis=axis)], axis=axis)  # total[i]: the sum of m[:i]
+        i = np.arange(n)
+        at = lambda k: np.take(total, np.clip(k, 0, n), axis=axis)  # noqa: E731
+        before = at(i) - at(i - reach)
+        after = at(i + 1 + reach) - at(i + 1)
+        return (before > 0) & (after > 0)
+
+    return dark & (beside(0) | beside(1))
+
+
 def find_markers(
     rgb: np.ndarray,
     box: tuple[int, int, int, int],
@@ -718,6 +762,7 @@ def find_markers(
     for s, colour in enumerate(colours, start=1):
         m = colour_mask(roi, colour, tolerance) & ~away
         deep = layer_map(roi, colour, m, paper)
+        m = m | (under_ink(roi, colour, m, radius) & ~away)
         out.extend(
             find_markers_in_mask(
                 m, origin=(x0, y0), radius=radius, rgb_roi=roi, series=s, min_coverage=min_coverage, deep=deep

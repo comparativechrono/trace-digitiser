@@ -240,10 +240,12 @@ def digitise(
             rgb, p, colours=trace_colours, exclude=exclude_boxes, achromatic=achromatic, darkness=dark,
             lines_only=True,
         )
-        # words written in the plot in a trace's colour (a panel's label, say) are not trace
-        rows = find_text_rows(rgb, (p["x0"], p["y_top"], p["x1"], p["y_bottom"]))
+        # words written in the plot in a trace's colour (a panel's label, say) are not trace; words are found in
+        # black or grey print, so only a black or grey trace can hold them
+        grey = [tr for tr in masks if np.ptp(np.asarray(tr.get("median_rgb", (0, 0, 0)), float)) <= 60]
+        rows = find_text_rows(rgb, (p["x0"], p["y_top"], p["x1"], p["y_bottom"])) if grey else []
         if rows:
-            for tr in masks:
+            for tr in grey:
                 tr["mask"] = drop_text(tr["mask"], (p["x0"], p["y_top"]), rows)
                 tr["pixel_count"] = int(tr["mask"].sum())
             masks = [tr for tr in masks if tr["pixel_count"] > 0]

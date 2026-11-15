@@ -71,6 +71,14 @@ def find_text_rows(
         max_height = max(min_height + 1, 0.12 * min(h, w), 12.0)
     mask = _print(roi) if ink is None else ink
     n, labels, stats, _ = cv2.connectedComponentsWithStats(mask.astype(np.uint8), connectivity=8)
+    # how thick each piece is at its thickest: letters are drawn with strokes, markers and blocks are solid
+    dist = cv2.distanceTransform(mask.astype(np.uint8), cv2.DIST_L2, 3)
+    thickest = np.zeros(n, dtype=np.float32)
+    np.maximum.at(thickest, labels.ravel(), dist.ravel())
+
+    def solid(i: int, gw: int, gh: int) -> bool:
+        return bool(thickest[i] > max(1.5, 0.22 * gh)) and gw > 0.35 * gh
+
     glyphs = []
     for i in range(1, n):
         gx, gy, gw, gh, area = stats[i]
@@ -80,6 +88,8 @@ def find_text_rows(
             continue
         if not (0.12 * gw * gh <= area <= 0.85 * gw * gh) and not (gw <= 0.35 * gh):
             continue  # a glyph is strokes: not a solid block (a bar, a marker) - unless it is a stroke itself (l, 1)
+        if solid(i, gw, gh):
+            continue  # nor a solid shape (a grey diamond or triangle, a marker), however much of its box it fills
         glyphs.append((int(gx), int(gy), int(gw), int(gh)))
     if len(glyphs) < 2:
         return []
@@ -129,13 +139,21 @@ def find_text_rows(
         # glyphs are of a size; the marks of a dotted or dashed line all alike, evenly spaced, and flat or tiny
         if all(g[3] <= 0.45 * g[2] for g in gs):
             continue  # dashes
+        if sum(g[2] <= 0.35 * g[3] for g in gs) > 0.5 * len(gs):
+            continue  # mostly upright strokes: the steep stretches of a dense trace (most letters are not strokes)
         # and they stand on a line: most end at one baseline (bits of a trace, or of error bars, do not)
         bottoms = np.array([g[1] + g[3] for g in gs], dtype=float)
         tops = np.array([g[1] for g in gs], dtype=float)
         tol = max(1.5, 0.12 * height)
-        on_base = np.abs(bottoms - np.median(bottoms)) <= tol
-        if on_base.mean() < 0.75 or (len(gs) == 2 and not (np.abs(tops - np.median(tops)) <= tol).all()):
+        below = bottoms - np.median(bottoms)
+        on_base = np.abs(below) <= tol
+        descends = (below > tol) & (below <= 0.5 * height)  # g, p, y: a letter that hangs below the line
+        if on_base.mean() < 0.5 or (on_base | descends).mean() < 0.75:
             continue
+        if len(gs) == 2 and not (on_base.all() and (np.abs(tops - np.median(tops)) <= tol).all()):
+            continue
+        # the row's height: of its taller letters (a word of short letters is no smaller), leaving out descenders
+        height = float(np.percentile([g[3] for g, ok in zip(gs, on_base) if ok], 75))
         # take in what is left of the row on its line: a subscript, a sign, a letter of another height
         while True:
             took = False
@@ -147,7 +165,7 @@ def find_text_rows(
                     continue
                 if gy > ry1 + 0.3 * height or gy + gh < ry0 - 0.3 * height:
                     continue
-                if area > 0.85 * gw * gh and gw > 0.35 * gh:
+                if (area > 0.85 * gw * gh and gw > 0.35 * gh) or solid(i, gw, gh):
                     continue  # a solid block: a marker, not print
                 gs.append((int(gx), int(gy), int(gw), int(gh)))
                 rx0, ry0, ry1 = int(gx), min(ry0, int(gy)), max(ry1, int(gy + gh - 1))

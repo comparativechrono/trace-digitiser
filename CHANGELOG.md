@@ -18,8 +18,8 @@ examples give the same results.
 
 - **Bar charts in the style of GraphPad Prism**: black, grey, hatched and
   outlined bars are found, on an axis that does not start at 0 (2.1.0 found 3
-  of the 36 bars of Foley et al.'s figure 2, and read those upside down; all
-  36 are now read, within 0.4 % of the axis). Bars are the columns filled from
+  of the 35 bars of Foley et al.'s figure 2, and read those upside down; all
+  35 are now read, within 0.3 % of the axis). Bars are the columns filled from
   the baseline, so an error bar or a significance bracket joined to a bar no
   longer spoils it; a border of another colour (a black outline round a grey
   bar) is part of the bar; a bar cut by the edge of the plot area is kept.

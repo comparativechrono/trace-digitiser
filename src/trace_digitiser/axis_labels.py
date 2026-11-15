@@ -671,8 +671,12 @@ def find_tick_labels(
     lattice = _regular(ticks)
     if len(lattice) >= 3:
         step = float(np.median(np.diff(lattice)))
-        too_wide = any(
-            ((lab.box[2] - lab.box[0]) if not vertical else (lab.box[3] - lab.box[1])) > 1.1 * step for lab in best
+        # (labels run together: one piece much longer than the rest, or one piece where there should be several -
+        # not merely labels longer than the step between minor ticks)
+        lengths = [((lab.box[2] - lab.box[0]) if not vertical else (lab.box[3] - lab.box[1])) + 1 for lab in best]
+        too_wide = bool(lengths) and (
+            (len(lengths) >= 2 and max(lengths) > 2.0 * float(np.median(lengths)) and max(lengths) > 1.1 * step)
+            or (len(lengths) == 1 and lengths[0] > 2.5 * step)
         )
         # (pieces of an axis title run in among the labels split them up: more pieces than ticks)
         many = len(best) > 1.5 * (len(lattice) if len(lattice) >= 0.7 * len(ticks) else len(ticks))
@@ -693,7 +697,11 @@ def find_tick_labels(
                     continue
                 da, db = rows[0]
                 cols = np.flatnonzero(window[da : db + 1].any(axis=0))
+                if cols[0] == 0 or cols[-1] == window.shape[1] - 1:
+                    continue  # it runs on past the stretch: a label of a tick further on (minor ticks between)
                 ca, cb = a + int(cols[0]), a + int(cols[-1])
+                if abs(0.5 * (ca + cb) - t) > 0.25 * step:
+                    continue  # not centred on this tick
                 if not 0.5 * glyph_h <= db - da + 1 <= 3.0 * glyph_h:
                     continue
                 box = to_image_box(da, db, ca, cb)
@@ -910,8 +918,10 @@ def _restore_lost_points(labels: list[TickLabel]) -> None:
     decimals = 0
     for lab in labels:
         whole = _whole_number(lab.text) if lab.text else None
-        # (every reading of the label: "54" read once as "54" and twice as "04" is a misread 5, not a lost point)
-        if whole and len(whole[1]) > 1 and whole[1][0] == "0" and len(set(lab.readings)) == 1:
+        # (in print large enough to read, every reading of the label: "54" read once as "54" and twice as "04" is a
+        # misread 5, not a lost point; it is small print that loses its points)
+        small = lab.box[3] - lab.box[1] + 1 < 2 * SMALL_PRINT_PX
+        if whole and len(whole[1]) > 1 and whole[1][0] == "0" and (small or len(set(lab.readings)) == 1):
             decimals = max(decimals, len(whole[1]) - 1)
     if decimals == 0:
         return

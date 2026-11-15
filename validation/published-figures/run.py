@@ -349,7 +349,7 @@ def compare_dots(found, known, yspan):
     """The dots of a dot plot ({column: [value, ...]}, columns left to right) against those found: the coloured
     marks found are split into the columns at the widest gaps between them, then paired by value in each column."""
     columns = list(known.items())
-    n_known = sum(len(v) for _, v in columns)
+    n_known = sum(len(v) for _, v in columns if v is not None)  # (a column whose values are not those drawn: None)
     d = found.dropna(subset=["y_value"]) if len(found) else found
     if len(d):  # the dots are coloured; the marks of the means and error bars drawn over them are black
         rgb = np.array([[int(c[i:i + 2], 16) for i in (1, 3, 5)] for c in d["colour"]])
@@ -360,13 +360,18 @@ def compare_dots(found, known, yspan):
     xs = d["x_pixel"].to_numpy(float)
     cuts = sorted(int(g) + 1 for g in np.argsort(-np.diff(xs))[: len(columns) - 1])
     errs, per = [], {}
+    left_out = 0
     for (name, values), idx in zip(columns, np.split(np.arange(len(xs)), cuts)):
+        if values is None:
+            left_out += len(idx)
+            per[name] = f"not compared (found {len(idx)})"
+            continue
         vals, got = np.asarray(values, float), d.iloc[idx]["y_value"].to_numpy(float)
         ri, ci = assignment(np.abs(vals[:, None] - got[None, :]) / yspan)
         ok = np.abs(vals[ri] - got[ci]) / yspan <= DOT_TOL
         errs += [float(v) for v in np.abs(vals[ri] - got[ci])[ok] / yspan * 100]
         per[name] = f"{int(ok.sum())} of {len(vals)} (found {len(got)})"
-    out.update(matched=len(errs), extra=int(len(d)) - len(errs), columns=per)
+    out.update(matched=len(errs), extra=int(len(d)) - left_out - len(errs), columns=per)
     if errs:
         out.update(y_median=float(np.median(errs)), y_worst=float(np.max(errs)))
     return out
@@ -379,7 +384,7 @@ NEEDED = {"points": ["x_value", "y_value"], "curves": ["x_value", "y_value"], "b
 def _size(kind, part):
     if kind in ("curves", "bars"):
         return len(part)
-    return sum(len(v) for v in part.values())
+    return sum(len(v) for v in part.values() if v is not None)
 
 
 def evaluate(case, run, known):

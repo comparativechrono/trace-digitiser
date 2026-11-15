@@ -5,7 +5,7 @@ wild-type mice (Lopatina et al. 2014, Fig 4), digitised and analysed for its dai
 that works in general, for the kind of figure it was written for: line traces of rodent activity over several days.
 
 It holds 18 open-access papers (CC BY) and the activity traces of 32 panels of their figures, read with
-trace-digitiser 2.2.0 in the way a user of the [workbench](https://comparativechrono.github.io/digitiser-workbench/)
+trace-digitiser 2.3.0 in the way a user of the [workbench](https://comparativechrono.github.io/digitiser-workbench/)
 would read them. The papers come in two kinds:
 
 * **8 papers that published the numbers behind their traces.** For these the series each trace was drawn from is
@@ -24,11 +24,11 @@ not in the package.
 ## In short
 
 * **Values.** For the 29 series with data the trace as read correlates with the authors' series with a median
-  r of 0.94 (0.96 once the figure's own placement in time is allowed for, below), and differs from it by a median
+  r of 0.95 (0.96 once the figure's own placement in time is allowed for, below), and differs from it by a median
   of 5.9% of its range.
 * **Rhythmic or not.** Run on the trace as read and on the authors' series, the Lomb–Scargle periodogram and the
   24-h cosinor give the same answer for all 29 series, and the chi-square periodogram for 21 of the 22 long enough
-  for it. Cut into whole days, the 24-h cosinor gives the same answer for 63 of 69 days; on five of the other six
+  for it. Cut into whole days, the 24-h cosinor gives the same answer for 64 of 70 days; on five of the other six
   the trace makes the day look rhythmic where the data fall just short of it (p 0.06–0.13).
 * **Rhythm measures.** The share of activity falling in the dark phase is within 0.05 of the authors' for 27 of 29
   series (largest difference 0.07); the 24-h acrophase is within 1 h for 27 of 29 (the two that are not come from
@@ -142,13 +142,15 @@ trace does not hold).
 
 ## How each figure was read
 
-Each figure was read with trace-digitiser 2.2.0's line reader (`trace_digitiser.digitise`), given what a user of
+Each figure was read with trace-digitiser 2.3.0's line reader (`trace_digitiser.digitise`), given what a user of
 the workbench would give and nothing taken from the authors' data. Where a first reading needed more help (an axis the
 package could not calibrate, a legend read as a trace, a trace lost against shading), it was given, as a user looking
 at the overlay would give it. Each figure's configuration records what was given and why:
 
 * **The plot area**, drawn round the panel. Where a panel holds a legend or marks drawn in a series' colour
-  (significance asterisks, say), the legend is left outside the area or the marks are excluded with boxes.
+  (significance asterisks, say), the legend is left outside the area or the marks are excluded with boxes. (2.3.0
+  also finds a legend inside a plot area by itself and leaves it out, with a warning: it does so in the six panels
+  of Sayler & Hammond's figure.)
 * **The colour of each series**: the swatch `describe_figure` offers for it or, where that swatch is a blend that
   loses the trace (seen on the overlay), a colour sampled from the trace itself. Where a trace is a mean line inside
   an SEM band, the mean line's colour.
@@ -186,18 +188,18 @@ shading or bar), or, for one rat under shifting light, the schedule drawn beside
 
 | Figure | Series | r | Mean abs. error (% of range) | Best shift (h) | r at best shift | Dark share (figure / data) | Acrophase difference (h) | Amplitude ratio | Rhythmic: χ² / LS / cosinor (figure; data) |
 |---|---|---|---|---|---|---|---|---|---|
-| Sayler & Hammond 2025, Ambulatory female | KO | 0.96 | 6.1 | +0.05 | 0.96 | 0.70 / 0.73 | -0.25 | 0.84 | yes/yes/yes; yes/yes/yes |
-| Sayler & Hammond 2025, Ambulatory female | WT | 0.87 | 11.2 | -0.30 | 0.88 | 0.66 / 0.65 | -0.85 | 0.77 | yes/yes/yes; yes/yes/yes |
-| Sayler & Hammond 2025, Ambulatory male | KO | 0.95 | 5.8 | -0.20 | 0.95 | 0.70 / 0.71 | -0.11 | 0.82 | yes/yes/yes; yes/yes/yes |
+| Sayler & Hammond 2025, Ambulatory female | KO | 0.96 | 6.1 | +0.40 | 0.96 | 0.70 / 0.73 | -0.25 | 0.84 | yes/yes/yes; yes/yes/yes |
+| Sayler & Hammond 2025, Ambulatory female | WT | 0.87 | 11.2 | -0.35 | 0.88 | 0.66 / 0.65 | -0.85 | 0.78 | yes/yes/yes; yes/yes/yes |
+| Sayler & Hammond 2025, Ambulatory male | KO | 0.95 | 5.9 | -0.20 | 0.95 | 0.70 / 0.71 | -0.12 | 0.83 | yes/yes/yes; yes/yes/yes |
 | Sayler & Hammond 2025, Ambulatory male | WT | 0.95 | 5.4 | -0.35 | 0.96 | 0.68 / 0.72 | -0.00 | 0.78 | yes/yes/yes; yes/yes/yes |
-| Sayler & Hammond 2025, X-activity female | KO | 0.89 | 7.7 | -0.40 | 0.97 | 0.69 / 0.73 | -0.39 | 0.94 | yes/yes/yes; yes/yes/yes |
-| Sayler & Hammond 2025, X-activity female | WT | 0.91 | 9.0 | -0.35 | 0.91 | 0.68 / 0.67 | -0.87 | 0.86 | yes/yes/yes; yes/yes/yes |
-| Sayler & Hammond 2025, X-activity male | KO | 0.98 | 4.3 | -0.20 | 0.98 | 0.71 / 0.72 | -0.21 | 0.94 | yes/yes/yes; yes/yes/yes |
+| Sayler & Hammond 2025, X-activity female | KO | 0.96 | 6.1 | -0.40 | 0.97 | 0.72 / 0.73 | -0.39 | 1.03 | yes/yes/yes; yes/yes/yes |
+| Sayler & Hammond 2025, X-activity female | WT | 0.91 | 8.9 | -0.35 | 0.91 | 0.69 / 0.67 | -0.88 | 0.86 | yes/yes/yes; yes/yes/yes |
+| Sayler & Hammond 2025, X-activity male | KO | 0.98 | 4.3 | -0.30 | 0.98 | 0.71 / 0.72 | -0.21 | 0.95 | yes/yes/yes; yes/yes/yes |
 | Sayler & Hammond 2025, X-activity male | WT | 0.97 | 5.1 | -0.35 | 0.97 | 0.67 / 0.69 | -0.12 | 0.88 | yes/yes/yes; yes/yes/yes |
-| Sayler & Hammond 2025, Z-activity female | KO | 0.89 | 11.2 | +0.20 | 0.90 | 0.69 / 0.76 | -0.75 | 0.64 | yes/yes/yes; yes/yes/yes |
-| Sayler & Hammond 2025, Z-activity female | WT | 0.77 | 13.8 | +0.00 | 0.77 | 0.65 / 0.63 | -0.96 | 0.77 | yes/yes/yes; yes/yes/yes |
+| Sayler & Hammond 2025, Z-activity female | KO | 0.89 | 11.2 | -0.45 | 0.92 | 0.69 / 0.76 | -0.75 | 0.64 | yes/yes/yes; yes/yes/yes |
+| Sayler & Hammond 2025, Z-activity female | WT | 0.77 | 13.8 | -0.35 | 0.78 | 0.65 / 0.63 | -0.96 | 0.77 | yes/yes/yes; yes/yes/yes |
 | Sayler & Hammond 2025, Z-activity male | KO | 0.90 | 12.0 | -0.05 | 0.90 | 0.70 / 0.69 | +0.07 | 0.80 | yes/yes/yes; yes/yes/yes |
-| Sayler & Hammond 2025, Z-activity male | WT | 0.94 | 6.0 | -0.10 | 0.94 | 0.67 / 0.70 | +0.39 | 0.88 | yes/yes/yes; yes/yes/yes |
+| Sayler & Hammond 2025, Z-activity male | WT | 0.94 | 6.0 | -0.20 | 0.94 | 0.67 / 0.70 | +0.39 | 0.89 | yes/yes/yes; yes/yes/yes |
 | Park et al. 2023, b LMA | Control | 0.97 | 5.7 | -0.20 | 0.98 | 0.66 / 0.65 | -0.70 | 1.21 | –/yes/yes; –/yes/yes |
 | Park et al. 2023, b LMA | FK866 3.3mg/kg | 0.95 | 6.0 | -0.05 | 0.96 | 0.57 / 0.56 | +0.06 | 1.26 | –/yes/yes; –/yes/yes |
 | Park et al. 2023, b LMA | FK866 8mg/kg | 0.87 | 10.2 | +0.10 | 0.88 | 0.52 / 0.53 | -0.60 | 1.19 | –/yes/yes; –/yes/yes |
@@ -205,8 +207,8 @@ shading or bar), or, for one rat under shifting light, the schedule drawn beside
 | Park et al. 2023, f LMA | siNampt | 0.56 | 14.2 | -1.20 | 0.75 | 0.53 / 0.52 | +0.01 | 1.19 | –/yes/yes; –/yes/yes |
 | Hoekstra et al. 2019, A LMA | KO | 0.82 | 9.5 | +0.70 | 0.99 | 0.75 / 0.77 | +0.37 | 1.06 | yes/yes/yes; yes/yes/yes |
 | Hoekstra et al. 2019, A LMA | WT | 0.85 | 5.5 | +0.65 | 1.00 | 0.65 / 0.67 | +0.50 | 1.00 | no/yes/yes; yes/yes/yes |
-| Quante et al. 2021, D LMA | Control | 0.93 | 5.7 | +0.25 | 0.96 | 0.61 / 0.61 | +0.33 | 0.97 | yes/yes/yes; yes/yes/yes |
-| Quante et al. 2021, D LMA | TDCA/valine | 0.94 | 5.9 | -0.25 | 0.95 | 0.58 / 0.60 | -0.10 | 0.90 | yes/yes/yes; yes/yes/yes |
+| Quante et al. 2021, D LMA | Control | 0.94 | 5.5 | +0.25 | 0.96 | 0.61 / 0.61 | +0.36 | 0.98 | yes/yes/yes; yes/yes/yes |
+| Quante et al. 2021, D LMA | TDCA/valine | 0.95 | 5.7 | -0.20 | 0.96 | 0.59 / 0.60 | -0.12 | 0.91 | yes/yes/yes; yes/yes/yes |
 | Endo et al. 2018, b activity | GH | 1.00 | 1.1 | +0.05 | 1.00 | 0.81 / 0.81 | -0.05 | 1.01 | yes/yes/yes; yes/yes/yes |
 | Endo et al. 2018, b activity | SI | 1.00 | 0.2 | +0.00 | 1.00 | 0.84 / 0.84 | +0.02 | 1.00 | yes/yes/yes; yes/yes/yes |
 | Gulledge et al. 2025, B actigraphy | baseline | 0.99 | 3.6 | +0.00 | 0.99 | 0.78 / 0.80 | -0.12 | 0.96 | yes/yes/yes; yes/yes/yes |
@@ -227,22 +229,21 @@ data (– where the record is too short for the chi-square periodogram).
 | chi-square periodogram (records ≥ 60 h) | 22 | 21 | 0 | 1 | 0 |
 | Lomb–Scargle periodogram | 29 | 29 | 0 | 0 | 0 |
 | 24-h cosinor | 29 | 29 | 0 | 0 | 0 |
-| 24-h cosinor, each whole day | 69 days | 60 | 5 | 1 | 3 |
+| 24-h cosinor, each whole day | 70 days | 60 | 5 | 1 | 4 |
 
 The one series the chi-square periodogram calls differently (Cirbp WT) lies close to its critical value either way:
 Q<sub>p</sub> 33.9 read, 36.6 from the data, against a critical value of 35.2. Of the six days that the two call
 differently, five are days that the trace as read calls rhythmic and the data leave short of it (p 0.06–0.13):
 withdrawal days W5–W8 of the oxycodone rats, each read from eight 3-h values, and one day of the bariatric controls.
-On the sixth, a day of the TDCA/valine mice, it is the other way round (p 0.09 read, 0.003 from the data).
+On the sixth, a day of the TDCA/valine mice, it is the other way round (p 0.06 read, 0.003 from the data).
 
 For 16 pairs of series in the same panel (WT and KO, say), the trace as read and the data agree on which has the
-higher dark-phase mean in 14, the higher light-phase mean in 13, the larger cosinor amplitude in 13 and the later
-acrophase in 14. The pairs they disagree on differ in the data by 10% or less in that measure (or, for the
-acrophase, by under 0.2 h), with two exceptions: the light-phase means of the female Slc43a3 mice (differing by 26%)
-and the cosinor amplitudes of the Ube3a mice, read at 2.5 px an hour (24%).
+higher dark-phase mean in 14, the higher light-phase mean in 14, the larger cosinor amplitude in 13 and the later
+acrophase in 14. The pairs they disagree on differ in the data by about 10% or less in that measure (or, for the
+acrophase, by under 0.2 h), except the cosinor amplitudes of the Ube3a mice, read at 2.5 px an hour (24%).
 
 Periods are another matter for the shorter records. Over records of 60 h or more the Lomb–Scargle period of the read
-trace is within 0.5 h of the data's (median absolute difference 0.09 h). Over the seven series of 37–49 h it differs
+trace is within 0.5 h of the data's (median absolute difference 0.08 h). Over the seven series of 37–49 h it differs
 by 0.2–8 h: two days do not fix a period, and the peak of a periodogram over them moves with small changes.
 
 ## What the figures themselves do
@@ -273,9 +274,9 @@ periodogram, or Lomb–Scargle for short records), *nocturnal* (dark-phase mean 
 
 | Claim | Paper, figure | Kind | From the figure | ✓ | From the data | ✓ |
 |---|---|---|---|---|---|---|
-| Male KO mice were less active than male WT mice (X-activity). | Sayler & Hammond 2025, Fig 2 | compare | mean: 1212 vs 1421 | ✓ | mean: 1248 vs 1386 | ✓ |
-| Male KO mice were less active than male WT mice (Ambulatory). | Sayler & Hammond 2025, Fig 2 | compare | mean: 587.6 vs 709.9 | ✓ | mean: 639.1 vs 747.2 | ✓ |
-| Male KO mice were less active than male WT mice (Z-activity). | Sayler & Hammond 2025, Fig 2 | compare | mean: 149.5 vs 302.7 | ✓ | mean: 193.9 vs 297.5 | ✓ |
+| Male KO mice were less active than male WT mice (X-activity). | Sayler & Hammond 2025, Fig 2 | compare | mean: 1210 vs 1419 | ✓ | mean: 1248 vs 1386 | ✓ |
+| Male KO mice were less active than male WT mice (Ambulatory). | Sayler & Hammond 2025, Fig 2 | compare | mean: 586.6 vs 709.2 | ✓ | mean: 639.1 vs 747.2 | ✓ |
+| Male KO mice were less active than male WT mice (Z-activity). | Sayler & Hammond 2025, Fig 2 | compare | mean: 149.5 vs 302.6 | ✓ | mean: 193.9 vs 297.5 | ✓ |
 | Rearing (Z-activity) in male KO mice was about 40% lower than in WT. | Sayler & Hammond 2025, Fig 2 | ratio | mean ratio 0.49 | ✗ | mean ratio 0.65 | ✓ |
 | The decrease in activity was not seen in female KO mice. | Sayler & Hammond 2025, Fig 2 | not testable: absence of a significant difference | | – | | – |
 | FK866 blunted the night-time rise in LMA, more so at the higher dose. | Park et al. 2023, Fig 2b | order | night_minus_day: 1727 > 633.1 > 128.5 | ✓ | night_minus_day: 1545 > 529.9 > 244.3 | ✓ |
@@ -295,7 +296,7 @@ periodogram, or Lomb–Scargle for short records), *nocturnal* (dark-phase mean 
 | Withdrawal reduced the day-night difference in activity on W3 compared with baseline. | Gulledge et al. 2025, Fig 3B | compare | night_minus_day: 0.1664 vs 1.629 | ✓ | night_minus_day: 0.5976 vs 1.724 | ✓ |
 | By W8 the day-night difference had recovered towards baseline (larger than on W2). | Gulledge et al. 2025, Fig 3B | compare | night_minus_day: 0.931 vs 0.1664 | ✓ | night_minus_day: 1.029 vs 0.4021 | ✓ |
 | The effect of withdrawal on activity fell mainly in the lights-off phase (W2 dark-phase activity below baseline). | Gulledge et al. 2025, Fig 3B | compare | dark_mean: 1.019 vs 2.273 | ✓ | dark_mean: 1.113 vs 2.306 | ✓ |
-| Mice (Control) were more active at night. | Re et al. 2022, Fig 2A | nocturnal | dark mean 243.6, light mean 136.4 (dark share 0.64) | ✓ | dark mean 243.8, light mean 136 (dark share 0.64) | ✓ |
+| Mice (Control) were more active at night. | Re et al. 2022, Fig 2A | nocturnal | dark mean 243.5, light mean 136.4 (dark share 0.64) | ✓ | dark mean 243.8, light mean 136 (dark share 0.64) | ✓ |
 | Mice (METH) were more active at night. | Re et al. 2022, Fig 2A | nocturnal | dark mean 221.8, light mean 138.8 (dark share 0.62) | ✓ | dark mean 221.7, light mean 139.3 (dark share 0.61) | ✓ |
 | Locomotor activity did not differ between METH and control mice. | Re et al. 2022, Fig 2A | not testable: absence of a significant difference | | – | | – |
 | Locomotor activity did not differ between genotypes. | Lee et al. 2026, Fig 2n | not testable: absence of a significant difference | | – | | – |
@@ -311,11 +312,11 @@ periodogram, or Lomb–Scargle for short records), *nocturnal* (dark-phase mean 
 | The baseline period was approximately circadian. | Ashek et al. 2012, Fig 1A | period | Lomb-Scargle period 24.05 h | ✓ |  | – |
 | Circadian rhythmicity of activity persisted in the hypertensive (I3C) period. | Ashek et al. 2012, Fig 1A | rhythmic | chi-square periodogram: rhythmic (LS period 23.6 h, FAP 0) | ✓ |  | – |
 | The day-night cycle of activity was unaffected by RAAS activation. | Ashek et al. 2012, Fig 1A | not testable: absence of a significant difference | | – | | – |
-| CD157-/- activity by night was about 40% (+-4%) of CD157+/+ activity. | Lopatina et al. 2014, Fig 4 | ratio | dark_mean ratio 0.52 | ✗ |  | – |
-| CD157-/- activity by day was about 40% (+-4%) of CD157+/+ activity. | Lopatina et al. 2014, Fig 4 | ratio | light_mean ratio 0.29 | ✗ |  | – |
+| CD157-/- activity by night was about 40% (+-4%) of CD157+/+ activity. | Lopatina et al. 2014, Fig 4 | ratio | dark_mean ratio 0.51 | ✗ |  | – |
+| CD157-/- activity by day was about 40% (+-4%) of CD157+/+ activity. | Lopatina et al. 2014, Fig 4 | ratio | light_mean ratio 0.28 | ✗ |  | – |
 | CD157+/+ mice show a day-night rhythm over the 7 days. | Lopatina et al. 2014, Fig 4 | rhythmic | chi-square periodogram: rhythmic (LS period 24.4 h, FAP 0) | ✓ |  | – |
-| CD157-/- mice keep the same day-night rhythm (circadian rhythm not affected). | Lopatina et al. 2014, Fig 4 | rhythmic | chi-square periodogram: rhythmic (LS period 24.4 h, FAP 2.56e-10) | ✓ |  | – |
-| CD157-/- mice, like the controls, are more active by night. | Lopatina et al. 2014, Fig 4 | nocturnal | dark mean 43.15, light mean 25.37 (dark share 0.63) | ✓ |  | – |
+| CD157-/- mice keep the same day-night rhythm (circadian rhythm not affected). | Lopatina et al. 2014, Fig 4 | rhythmic | chi-square periodogram: rhythmic (LS period 24.6 h, FAP 1.72e-12) | ✓ |  | – |
+| CD157-/- mice, like the controls, are more active by night. | Lopatina et al. 2014, Fig 4 | nocturnal | dark mean 42.88, light mean 24.25 (dark share 0.64) | ✓ |  | – |
 | ADGRF5 KO mice were markedly less active in the dark phase. | El-Merahbi et al. 2026, Fig 3L | compare | dark_mean: 785 vs 1165 | ✓ |  | – |
 | Activity was decreased in Rictor KO females (fed). | Chellappa et al. 2019, Fig 3a-b | compare | mean: 5.417 vs 11.13 | ✓ |  | – |
 | Activity was decreased in Rictor KO males (fed). | Chellappa et al. 2019, Fig 3a-b | compare | mean: 5.303 vs 5.962 | ✓ |  | – |
@@ -451,10 +452,10 @@ A short account, for adapting:
 > figure). We kept 18 papers whose text says something about the traces: 8 that published the numbers behind their
 > figure and 10 that did not; in each group some papers had analysed their rhythms with a dedicated method
 > (periodogram, cosinor, JTK_CYCLE) and some had not. Each trace (57 in all) was digitised with trace-digitiser
-> 2.2.0, given only what a user of the browser workbench gives (a plot area, the series' colours and, where an
+> 2.3.0, given only what a user of the browser workbench gives (a plot area, the series' colours and, where an
 > axis's labels could not be read, two ticks), and analysed with the same code as the series rebuilt from the
 > authors' data. For the 29 series with data, the digitised trace correlated with the original with a median r of
-> 0.94 (median absolute error 5.9% of the series' range); the Lomb–Scargle periodogram and the 24-h cosinor reached
+> 0.95 (median absolute error 5.9% of the series' range); the Lomb–Scargle periodogram and the 24-h cosinor reached
 > the same verdict on rhythmicity for all 29 series and the chi-square periodogram for 21 of 22; the share of
 > activity in the dark phase was within 0.05 for 27 of 29 and the 24-h acrophase within 1 h for 27 of 29, the
 > exceptions coming from figures that place their points away from their times or are drawn at 2.5 pixels per hour.

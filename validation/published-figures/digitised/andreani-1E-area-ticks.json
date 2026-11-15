@@ -1,0 +1,19 @@
+{
+ "case": "andreani-1E-area-ticks",
+ "known": "andreani-1E",
+ "given": "the plot area, two ticks",
+ "parts": [
+  {
+   "box": [
+    946.0,
+    826.0,
+    1896.0,
+    1092.0
+   ],
+   "series": null,
+   "panel_id": 1,
+   "x_calibrated": false,
+   "y_calibrated": true
+  }
+ ]
+}

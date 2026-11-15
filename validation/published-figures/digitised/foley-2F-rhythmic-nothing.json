@@ -1,0 +1,19 @@
+{
+ "case": "foley-2F-rhythmic-nothing",
+ "known": "foley-2F-rhythmic",
+ "given": "nothing",
+ "parts": [
+  {
+   "box": [
+    930.0,
+    3909.0,
+    1423.0,
+    4515.0
+   ],
+   "series": null,
+   "panel_id": 8,
+   "x_calibrated": false,
+   "y_calibrated": true
+  }
+ ]
+}

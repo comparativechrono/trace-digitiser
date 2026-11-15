@@ -1,0 +1,19 @@
+{
+ "case": "foley-2C-30C-nothing",
+ "known": "foley-2C-30C",
+ "given": "nothing",
+ "parts": [
+  {
+   "box": [
+    1443.0,
+    2543.0,
+    2335.0,
+    3138.0
+   ],
+   "series": null,
+   "panel_id": 4,
+   "x_calibrated": false,
+   "y_calibrated": true
+  }
+ ]
+}

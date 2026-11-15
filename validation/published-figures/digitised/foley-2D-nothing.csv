@@ -1,0 +1,4 @@
+panel_id,series,colour,x_pixel,x_value,value,error_low,error_high
+5,1,#dd41fa,2886.5,,24.8506,24.8506,24.8897
+5,1,#dd41fa,3057.5,,24.1831,24.1831,24.2455
+5,1,#dd41fa,3228.5,,24.6575,24.6575,24.7174

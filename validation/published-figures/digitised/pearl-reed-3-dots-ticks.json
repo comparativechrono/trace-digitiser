@@ -1,0 +1,19 @@
+{
+ "case": "pearl-reed-3-dots-ticks",
+ "known": "pearl-reed-3-dots",
+ "given": "two ticks on each axis",
+ "parts": [
+  {
+   "box": [
+    0.0,
+    0.0,
+    1000000000.0,
+    1000000000.0
+   ],
+   "series": null,
+   "panel_id": 1,
+   "x_calibrated": true,
+   "y_calibrated": true
+  }
+ ]
+}

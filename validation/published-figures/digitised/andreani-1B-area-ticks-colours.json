@@ -1,0 +1,19 @@
+{
+ "case": "andreani-1B-area-ticks-colours",
+ "known": "andreani-1B",
+ "given": "the plot area, x ticks, the colours",
+ "parts": [
+  {
+   "box": [
+    1143.0,
+    160.0,
+    1853.0,
+    521.0
+   ],
+   "series": null,
+   "panel_id": 1,
+   "x_calibrated": true,
+   "y_calibrated": true
+  }
+ ]
+}

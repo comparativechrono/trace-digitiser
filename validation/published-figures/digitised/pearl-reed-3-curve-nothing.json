@@ -1,0 +1,19 @@
+{
+ "case": "pearl-reed-3-curve-nothing",
+ "known": "pearl-reed-3-curve",
+ "given": "nothing",
+ "parts": [
+  {
+   "box": [
+    0.0,
+    0.0,
+    1000000000.0,
+    1000000000.0
+   ],
+   "series": null,
+   "panel_id": 1,
+   "x_calibrated": false,
+   "y_calibrated": false
+  }
+ ]
+}

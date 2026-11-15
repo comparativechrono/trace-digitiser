@@ -1,0 +1,19 @@
+{
+ "case": "andreani-3B-colours",
+ "known": "andreani-3B",
+ "given": "the colours",
+ "parts": [
+  {
+   "box": [
+    1386.0,
+    151.0,
+    1925.0,
+    728.0
+   ],
+   "series": null,
+   "panel_id": 2,
+   "x_calibrated": false,
+   "y_calibrated": true
+  }
+ ]
+}

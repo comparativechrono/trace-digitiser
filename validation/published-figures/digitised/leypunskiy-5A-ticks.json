@@ -1,0 +1,19 @@
+{
+ "case": "leypunskiy-5A-ticks",
+ "known": "leypunskiy-5A",
+ "given": "the plot area, two ticks on each axis",
+ "parts": [
+  {
+   "box": [
+    224.9,
+    730.0,
+    1192.6,
+    1799.3
+   ],
+   "series": null,
+   "panel_id": 1,
+   "x_calibrated": true,
+   "y_calibrated": true
+  }
+ ]
+}

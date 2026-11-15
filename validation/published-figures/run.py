@@ -377,6 +377,34 @@ def compare_dots(found, known, yspan):
     return out
 
 
+# ------------------------------------------------------------------------------------------- what was read
+KEEP = ["panel_id", "series", "colour", "x_pixel", "y_pixel", "x_value", "y_value", "value", "shared",
+        "interpolated", "y_error_low", "y_error_high", "error_low", "error_high"]
+
+
+def save_digitised(case, run, folder):
+    """What a case read in the plots it compares: <case>.csv (the values) and <case>.json (which panel was compared
+    with each part of the known values, and whether its axes were read), for drawing them beside the known values
+    (paper/figures.py, S2 Fig)."""
+    folder.mkdir(parents=True, exist_ok=True)
+    parts, ids = [], set()
+    for box, names in case["parts"]:
+        p = None if "error" in run else pick(run["panels"], box)
+        parts.append({"box": [float(v) for v in box], "series": names,
+                      "panel_id": None if p is None else int(p["panel_id"]),
+                      "x_calibrated": p is not None and _calibrated(p, "x"),
+                      "y_calibrated": p is not None and _calibrated(p, "y")})
+        if p is not None:
+            ids.add(int(p["panel_id"]))
+    data = run.get("data")
+    if data is None or not len(data) or "panel_id" not in data:
+        data = pd.DataFrame(columns=["panel_id"])
+    data = data[data["panel_id"].isin(ids)]
+    data[[c for c in KEEP if c in data]].to_csv(folder / f"{case['name']}.csv", index=False, float_format="%.6g")
+    info = {"case": case["name"], "known": case["known"], "given": case["given"], "parts": parts}
+    (folder / f"{case['name']}.json").write_text(json.dumps(info, indent=1) + "\n")
+
+
 # ------------------------------------------------------------------------------------------------- a case
 NEEDED = {"points": ["x_value", "y_value"], "curves": ["x_value", "y_value"], "bars": ["value"], "dots": ["y_value"]}
 
@@ -538,6 +566,9 @@ def main(argv=None):
     ap.add_argument("--results", type=Path, help="show results saved before (with --json) instead of reading")
     ap.add_argument("--markdown", action="store_true", help="print the results as a Markdown table")
     ap.add_argument("--out", type=Path, help="write each run's files, and its overlay, in a folder in this one")
+    ap.add_argument("--digitised", type=Path, nargs="?", const=HERE / "digitised",
+                    help="save what each case read in the plots it compares, as a CSV and a JSON file, in this folder "
+                         "(digitised/ if no folder is given)")
     ap.add_argument("--list", action="store_true", help="list the cases and stop")
     args = ap.parse_args(argv)
     cases = [c for c in CASES if not args.names or any(c["name"].startswith(n) for n in args.names)]
@@ -569,6 +600,8 @@ def main(argv=None):
                 runs[key] = read(c["reader"], c["figure"], c["options"], out_dir)
             run = runs[key]
             details, summary, score, total = evaluate(c, run, known)
+            if args.digitised:
+                save_digitised(c, run, args.digitised)
             results[c["name"]] = {"figure": c["figure"], "reader": c["reader"], "given": c["given"],
                                   "options": c["options"], "held_out": c["held_out"], "summary": summary,
                                   "score": int(score), "of": int(total), "seconds": round(run["seconds"], 1),

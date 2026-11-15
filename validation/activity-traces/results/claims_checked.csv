@@ -1,7 +1,7 @@
 id,pmcid,case,figure,where,claim,type,group,tools,testable,why_untestable,supported_by_digitised,digitised_found,supported_by_original,original_found
-PMC12370043-1,PMC12370043,PMC12370043-fig2,Fig 2,Results,Male KO mice were less active than male WT mice (X-activity).,compare,data,True,True,,True,mean: 1212 vs 1421,True,mean: 1248 vs 1386
-PMC12370043-2,PMC12370043,PMC12370043-fig2,Fig 2,Results,Male KO mice were less active than male WT mice (Ambulatory).,compare,data,True,True,,True,mean: 587.6 vs 709.9,True,mean: 639.1 vs 747.2
-PMC12370043-3,PMC12370043,PMC12370043-fig2,Fig 2,Results,Male KO mice were less active than male WT mice (Z-activity).,compare,data,True,True,,True,mean: 149.5 vs 302.7,True,mean: 193.9 vs 297.5
+PMC12370043-1,PMC12370043,PMC12370043-fig2,Fig 2,Results,Male KO mice were less active than male WT mice (X-activity).,compare,data,True,True,,True,mean: 1210 vs 1419,True,mean: 1248 vs 1386
+PMC12370043-2,PMC12370043,PMC12370043-fig2,Fig 2,Results,Male KO mice were less active than male WT mice (Ambulatory).,compare,data,True,True,,True,mean: 586.6 vs 709.2,True,mean: 639.1 vs 747.2
+PMC12370043-3,PMC12370043,PMC12370043-fig2,Fig 2,Results,Male KO mice were less active than male WT mice (Z-activity).,compare,data,True,True,,True,mean: 149.5 vs 302.6,True,mean: 193.9 vs 297.5
 PMC12370043-4,PMC12370043,PMC12370043-fig2,Fig 2,Results,Rearing (Z-activity) in male KO mice was about 40% lower than in WT.,ratio,data,True,True,,False,mean ratio 0.49,True,mean ratio 0.65
 PMC12370043-5,PMC12370043,PMC12370043-fig2,Fig 2,Results,The decrease in activity was not seen in female KO mice.,untestable,data,True,False,absence of a significant difference,,,,
 PMC10082796-1,PMC10082796,PMC10082796-fig2,Fig 2b,Results,"FK866 blunted the night-time rise in LMA, more so at the higher dose.",order,data,True,True,,True,night_minus_day: 1727 > 633.1 > 128.5,True,night_minus_day: 1545 > 529.9 > 244.3
@@ -21,7 +21,7 @@ PMC11741586-1,PMC11741586,PMC11741586-fig3,Fig 3B,Results,Withdrawal reduced the
 PMC11741586-2,PMC11741586,PMC11741586-fig3,Fig 3B,Results,Withdrawal reduced the day-night difference in activity on W3 compared with baseline.,compare,data,False,True,,True,night_minus_day: 0.1664 vs 1.629,True,night_minus_day: 0.5976 vs 1.724
 PMC11741586-3,PMC11741586,PMC11741586-fig3,Fig 3B,Results,By W8 the day-night difference had recovered towards baseline (larger than on W2).,compare,data,False,True,,True,night_minus_day: 0.931 vs 0.1664,True,night_minus_day: 1.029 vs 0.4021
 PMC11741586-4,PMC11741586,PMC11741586-fig3,Fig 3B,Results,The effect of withdrawal on activity fell mainly in the lights-off phase (W2 dark-phase activity below baseline).,compare,data,False,True,,True,dark_mean: 1.019 vs 2.273,True,dark_mean: 1.113 vs 2.306
-PMC9465459-1,PMC9465459,PMC9465459-fig2,Fig 2A,Results,Mice (Control) were more active at night.,nocturnal,data,False,True,,True,"dark mean 243.6, light mean 136.4 (dark share 0.64)",True,"dark mean 243.8, light mean 136 (dark share 0.64)"
+PMC9465459-1,PMC9465459,PMC9465459-fig2,Fig 2A,Results,Mice (Control) were more active at night.,nocturnal,data,False,True,,True,"dark mean 243.5, light mean 136.4 (dark share 0.64)",True,"dark mean 243.8, light mean 136 (dark share 0.64)"
 PMC9465459-2,PMC9465459,PMC9465459-fig2,Fig 2A,Results,Mice (METH) were more active at night.,nocturnal,data,False,True,,True,"dark mean 221.8, light mean 138.8 (dark share 0.62)",True,"dark mean 221.7, light mean 139.3 (dark share 0.61)"
 PMC9465459-3,PMC9465459,PMC9465459-fig2,Fig 2A,Results,Locomotor activity did not differ between METH and control mice.,untestable,data,False,False,absence of a significant difference,,,,
 PMC13720268-1,PMC13720268,PMC13720268-fig2,Fig 2n,Results,Locomotor activity did not differ between genotypes.,untestable,data,False,False,absence of a significant difference,,,,
@@ -37,11 +37,11 @@ PMC3338649-1,PMC3338649,PMC3338649-fig1,Fig 1A,Results,"Activity had a significa
 PMC3338649-2,PMC3338649,PMC3338649-fig1,Fig 1A,Results,The baseline period was approximately circadian.,period,nodata,True,True,,True,Lomb-Scargle period 24.05 h,,
 PMC3338649-3,PMC3338649,PMC3338649-fig1,Fig 1A,Results,Circadian rhythmicity of activity persisted in the hypertensive (I3C) period.,rhythmic,nodata,True,True,,True,"chi-square periodogram: rhythmic (LS period 23.6 h, FAP 0)",,
 PMC3338649-4,PMC3338649,PMC3338649-fig1,Fig 1A,Results,The day-night cycle of activity was unaffected by RAAS activation.,untestable,nodata,True,False,absence of a significant difference,,,,
-PMC4001052-1,PMC4001052,PMC4001052-fig4,Fig 4,Results,CD157-/- activity by night was about 40% (+-4%) of CD157+/+ activity.,ratio,nodata,False,True,,False,dark_mean ratio 0.52,,
-PMC4001052-2,PMC4001052,PMC4001052-fig4,Fig 4,Results,CD157-/- activity by day was about 40% (+-4%) of CD157+/+ activity.,ratio,nodata,False,True,,False,light_mean ratio 0.29,,
+PMC4001052-1,PMC4001052,PMC4001052-fig4,Fig 4,Results,CD157-/- activity by night was about 40% (+-4%) of CD157+/+ activity.,ratio,nodata,False,True,,False,dark_mean ratio 0.51,,
+PMC4001052-2,PMC4001052,PMC4001052-fig4,Fig 4,Results,CD157-/- activity by day was about 40% (+-4%) of CD157+/+ activity.,ratio,nodata,False,True,,False,light_mean ratio 0.28,,
 PMC4001052-3,PMC4001052,PMC4001052-fig4,Fig 4,Results/Discussion,CD157+/+ mice show a day-night rhythm over the 7 days.,rhythmic,nodata,False,True,,True,"chi-square periodogram: rhythmic (LS period 24.4 h, FAP 0)",,
-PMC4001052-4,PMC4001052,PMC4001052-fig4,Fig 4,Results/Discussion,CD157-/- mice keep the same day-night rhythm (circadian rhythm not affected).,rhythmic,nodata,False,True,,True,"chi-square periodogram: rhythmic (LS period 24.4 h, FAP 2.56e-10)",,
-PMC4001052-5,PMC4001052,PMC4001052-fig4,Fig 4,Results/Discussion,"CD157-/- mice, like the controls, are more active by night.",nocturnal,nodata,False,True,,True,"dark mean 43.15, light mean 25.37 (dark share 0.63)",,
+PMC4001052-4,PMC4001052,PMC4001052-fig4,Fig 4,Results/Discussion,CD157-/- mice keep the same day-night rhythm (circadian rhythm not affected).,rhythmic,nodata,False,True,,True,"chi-square periodogram: rhythmic (LS period 24.6 h, FAP 1.72e-12)",,
+PMC4001052-5,PMC4001052,PMC4001052-fig4,Fig 4,Results/Discussion,"CD157-/- mice, like the controls, are more active by night.",nocturnal,nodata,False,True,,True,"dark mean 42.88, light mean 24.25 (dark share 0.64)",,
 PMC13053757-1,PMC13053757,PMC13053757-fig3,Fig 3L,Results,ADGRF5 KO mice were markedly less active in the dark phase.,compare,nodata,False,True,,True,dark_mean: 785 vs 1165,,
 PMC6718533-1,PMC6718533,PMC6718533-fig3,Fig 3a-b,Results,Activity was decreased in Rictor KO females (fed).,compare,nodata,False,True,,True,mean: 5.417 vs 11.13,,
 PMC6718533-2,PMC6718533,PMC6718533-fig3,Fig 3a-b,Results,Activity was decreased in Rictor KO males (fed).,compare,nodata,False,True,,True,mean: 5.303 vs 5.962,,

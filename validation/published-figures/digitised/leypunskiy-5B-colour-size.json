@@ -1,0 +1,19 @@
+{
+ "case": "leypunskiy-5B-colour-size",
+ "known": "leypunskiy-5B",
+ "given": "the colour, the marker size",
+ "parts": [
+  {
+   "box": [
+    1539.0,
+    734.1,
+    2539.6,
+    1797.4
+   ],
+   "series": null,
+   "panel_id": 2,
+   "x_calibrated": true,
+   "y_calibrated": true
+  }
+ ]
+}

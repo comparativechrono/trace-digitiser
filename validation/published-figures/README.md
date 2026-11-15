@@ -18,12 +18,16 @@ From the repository, with the version to test installed (`pip install -e .`):
 python validation/published-figures/run.py                   # every case
 python validation/published-figures/run.py foley andreani-1E # the cases whose names start so
 python validation/published-figures/run.py --list            # the cases, and what each is given
-python validation/published-figures/run.py --json new.json --compare validation/published-figures/results-2.2.0.json
+python validation/published-figures/run.py --json new.json --compare validation/published-figures/results-2.3.0.json
+python validation/published-figures/run.py --digitised                # and keep what each case read
 ```
 
 `--compare` shows each case's result beside one saved before with `--json`, and marks the cases read better or
 worse. `--markdown` prints the table below, and `--results FILE` shows saved results without reading anything
 again. `--out DIR` keeps each run's files, with an overlay of what was found drawn on the figure, for looking at.
+`--digitised` keeps what each case read in the plots it compares, in [`digitised/`](digitised): a CSV file of the
+values and a JSON file saying which panel was compared with which known values, and whether its axes were read.
+The paper's S2 and S3 Fig are drawn from them (`paper/figures.py`).
 `run.py` needs nothing beyond trace-digitiser (and Tesseract, as trace-digitiser does). `make_known.py`, which
 builds `known.json` from the papers' data in `sources/`, also needs openpyxl.
 
@@ -42,95 +46,94 @@ can be compared.
 * An **error bar**'s half-length is compared with the standard deviation or error the paper gives: for a point the
   mean of its two arms, for a bar the longer one, as a bar often hides the other.
 
-The totals add up the points, bars, curves and dots read. The figures of Andreani et al. are **held out**: they were
-first looked at after the changes in 2.2.0 were made, so their results show how those changes carry over to figures
-they were not made for. A figure that has guided a change is no longer held out; add another in its place.
+The totals add up the points, bars, curves and dots read. The figures of Andreani et al. were **held out** until
+2.2.0: they were first looked at after the changes in 2.2.0 were made, so their results with 2.2.0 show how those
+changes carry over to figures they were not made for. The changes in 2.3.0 were made while looking at them, so their
+results with 2.3.0 are not those of figures held out (the totals still count them apart). A figure that has guided a
+change is no longer held out; add another in its place.
+
+In Andreani et al.'s Fig 3D three of the six columns are not drawn from the values deposited for them (the means
+drawn over their dots are 69.5, 92.3 and 88.4 min; the deposited sheet's are 84.6, 124.7 and 123.7): they are kept
+as columns, so that the dots are split into columns as drawn, but not compared.
 
 ## Results
 
-| Case | Given | 2.1.0 | 2.2.0 |
+| Case | Given | 2.2.0 | 2.3.0 |
 |---|---|---|---|
-| `leypunskiy-1C-nothing` | nothing | 12/12 points (+2 extra), y error 0.22% (worst 0.63%), error bars 7/12 (0.97%) | 12/12 points (+2 extra), y error 0.22% (worst 0.63%), error bars 8/12 (0.87%) |
-| `leypunskiy-1C-colour` | the colour | 12/12 points (+2 extra), y error 0.22% (worst 0.63%), error bars 7/12 (0.97%) | 12/12 points (+2 extra), y error 0.22% (worst 0.63%), error bars 8/12 (0.87%) |
-| `leypunskiy-2B-nothing` | nothing | 18:6: y axis not read; 12:12: y axis not read; 6:18: y axis not read | 18:6: y axis not read; 12:12: y axis not read; 6:18: y axis not read |
-| `leypunskiy-2B-areas` | the plot areas | 18:6: 0.65% (worst 3.2%); 12:12: 0.43% (worst 4.9%); 6:18: y axis not read | 18:6: 0.72% (worst 1.2%); 12:12: 2.77% (worst 4.7%); 6:18: y axis not read |
-| `leypunskiy-2B-areas-colour` | the plot areas, the line's colour | 18:6: 0.63% (worst 1.5%); 12:12: 0.39% (worst 0.8%); 6:18: y axis not read | 18:6: 0.74% (worst 1.2%); 12:12: 2.72% (worst 4.5%); 6:18: y axis not read |
-| `leypunskiy-2B-points` | the plot areas, the markers' colour | 0/102 points; y axis not read | 50/102 points (+21 extra), y error 0.70% (worst 2.89%), error bars on 10 points that have none; y axis not read |
-| `leypunskiy-2C-nothing` | nothing | 0/29 points | 29/29 points (+1 extra), y error 0.07% (worst 0.46%), error bars 24/29 (0.33%) |
-| `leypunskiy-2C-colours` | the colours | 0/29 points | 29/29 points, y error 0.07% (worst 0.64%), error bars 20/29 (0.35%) |
-| `leypunskiy-2C-colours-size` | the colours, the marker size | 29/29 points (+32 extra), y error 0.08% (worst 0.64%), error bars 17/29 (0.37%) | 29/29 points (+4 extra), y error 0.08% (worst 0.64%), error bars 23/29 (0.35%) |
-| `leypunskiy-5A-nothing` | nothing | x axis not read | x axis not read |
-| `leypunskiy-5A-ticks` | the plot area, two ticks on each axis | 0/9 points | 9/9 points (+3 extra), y error 0.04% (worst 0.18%), error bars 9/9 (0.02%) |
-| `leypunskiy-5A-ticks-colour-size` | the plot area, ticks, the colour, the marker size | 9/9 points (+9 extra), y error 0.03% (worst 0.15%), error bars 0/9 | 9/9 points (+6 extra), y error 0.03% (worst 0.15%), error bars 8/9 (0.25%) |
-| `leypunskiy-5B-nothing` | nothing | 0/10 points | 5/10 points (+1 extra), y error 0.01% (worst 0.14%), error bars 5/5 (0.02%) |
-| `leypunskiy-5B-colour-size` | the colour, the marker size | 10/10 points (+10 extra), y error 0.03% (worst 0.11%), error bars 0/10 | 10/10 points (+10 extra), y error 0.03% (worst 0.11%), error bars 7/10 (0.02%) |
-| `leypunskiy-5C-nothing` | nothing | 0/19 points | 10/19 points (+11 extra), y error 0.04% (worst 0.21%), error bars 9/10 (0.33%) |
-| `leypunskiy-5C-colours` | the colours | 0/19 points | 17/19 points (+14 extra), y error 0.03% (worst 0.28%), error bars 15/17 (0.41%) |
-| `leypunskiy-5C-colours-size` | the colours, the marker size | 17/19 points (+18 extra), y error 0.03% (worst 0.26%), error bars 12/17 (0.65%) | 17/19 points (+18 extra), y error 0.03% (worst 0.26%), error bars 12/17 (0.65%) |
-| `foley-2C-25C-nothing` | nothing | 0/6 bars within 1% (1 found), error 84.28% (worst 84.28%), error bars 0/6 | 6/6 bars within 1%, error 0.18% (worst 0.28%), error bars 3/6 (0.08%) |
-| `foley-2C-30C-nothing` | nothing | 0/5 bars within 1% (1 found), error 56.46% (worst 56.46%), error bars 0/5 | 5/5 bars within 1%, error 0.15% (worst 0.29%), error bars 4/5 (0.07%) |
-| `foley-2D-nothing` | nothing | 0/3 bars within 1% (1 found), error 116.21% (worst 116.21%), error bars 0/3 | 3/3 bars within 1%, error 0.16% (worst 0.18%), error bars 3/3 (0.06%) |
-| `foley-2E-nothing` | nothing | 0/3 bars within 1% (0 found), error bars 0/3 | 3/3 bars within 1%, error 0.10% (worst 0.22%), error bars 2/3 (0.42%) |
-| `foley-2F-period-nothing` | nothing | 0/3 bars within 1% (0 found), error bars 0/3 | 3/3 bars within 1%, error 0.06% (worst 0.12%), error bars 3/3 (0.02%) |
-| `foley-2F-rhythmic-nothing` | nothing | 0/3 bars within 1% (0 found) | 3/3 bars within 1%, error 0.24% (worst 0.25%) |
-| `foley-2G-period-nothing` | nothing | 0/3 bars within 1% (0 found), error bars 0/3 | 3/3 bars within 1%, error 0.09% (worst 0.11%), error bars 3/3 (0.08%) |
-| `foley-2G-rhythmic-nothing` | nothing | 0/3 bars within 1% (0 found) | 3/3 bars within 1%, error 0.07% (worst 0.27%) |
-| `foley-2H-period-nothing` | nothing | 0/3 bars within 1% (0 found), error bars 0/3 | 3/3 bars within 1%, error 0.13% (worst 0.19%), error bars 3/3 (0.17%) |
-| `foley-2H-rhythmic-nothing` | nothing | 0/3 bars within 1% (0 found) | 3/3 bars within 1%, error 0.21% (worst 0.24%) |
-| `foley-2C-25C-area` | the plot area | y axis not read | 6/6 bars within 1%, error 0.18% (worst 0.28%), error bars 5/6 (0.08%) |
+| `leypunskiy-1C-nothing` | nothing | 12/12 points (+2 extra), y error 0.22% (worst 0.63%), error bars 8/12 (0.87%) | 12/12 points, y error 0.31% (worst 0.70%), error bars 6/12 (0.87%) |
+| `leypunskiy-1C-colour` | the colour | 12/12 points (+2 extra), y error 0.22% (worst 0.63%), error bars 8/12 (0.87%) | 12/12 points, y error 0.31% (worst 0.70%), error bars 6/12 (0.87%) |
+| `leypunskiy-2B-nothing` | nothing | 18:6: y axis not read; 12:12: y axis not read; 6:18: y axis not read | 18:6: 0.58% (worst 1.1%); 12:12: 0.37% (worst 1.4%); 6:18: 0.19% (worst 0.9%) |
+| `leypunskiy-2B-areas` | the plot areas | 18:6: 0.72% (worst 1.2%); 12:12: 2.77% (worst 4.7%); 6:18: y axis not read | 18:6: 0.60% (worst 1.1%); 12:12: 0.29% (worst 1.5%); 6:18: 0.24% (worst 0.9%) |
+| `leypunskiy-2B-areas-colour` | the plot areas, the line's colour | 18:6: 0.74% (worst 1.2%); 12:12: 2.72% (worst 4.5%); 6:18: y axis not read | 18:6: 0.65% (worst 1.2%); 12:12: 0.35% (worst 1.3%); 6:18: 0.21% (worst 0.9%) |
+| `leypunskiy-2B-points` | the plot areas, the markers' colour | 50/102 points (+21 extra), y error 0.70% (worst 2.89%), error bars on 10 points that have none; y axis not read | 99/102 points, y error 0.60% (worst 1.11%) |
+| `leypunskiy-2C-nothing` | nothing | 29/29 points (+1 extra), y error 0.07% (worst 0.46%), error bars 24/29 (0.33%) | 29/29 points (+1 extra), y error 0.07% (worst 0.46%), error bars 22/29 (0.33%) |
+| `leypunskiy-2C-colours` | the colours | 29/29 points, y error 0.07% (worst 0.64%), error bars 20/29 (0.35%) | 29/29 points (+1 extra), y error 0.07% (worst 0.64%), error bars 18/29 (0.35%) |
+| `leypunskiy-2C-colours-size` | the colours, the marker size | 29/29 points (+4 extra), y error 0.08% (worst 0.64%), error bars 23/29 (0.35%) | 29/29 points (+3 extra), y error 0.08% (worst 0.64%), error bars 21/29 (0.36%) |
+| `leypunskiy-5A-nothing` | nothing | x axis not read | 9/9 points (+3 extra), y error 0.04% (worst 0.25%), error bars 8/9 (0.02%) |
+| `leypunskiy-5A-ticks` | the plot area, two ticks on each axis | 9/9 points (+3 extra), y error 0.04% (worst 0.18%), error bars 9/9 (0.02%) | 9/9 points (+3 extra), y error 0.04% (worst 0.25%), error bars 8/9 (0.02%) |
+| `leypunskiy-5A-ticks-colour-size` | the plot area, ticks, the colour, the marker size | 9/9 points (+6 extra), y error 0.03% (worst 0.15%), error bars 8/9 (0.25%) | 9/9 points (+5 extra), y error 0.03% (worst 0.25%), error bars 8/9 (0.26%) |
+| `leypunskiy-5B-nothing` | nothing | 5/10 points (+1 extra), y error 0.01% (worst 0.14%), error bars 5/5 (0.02%) | 5/10 points, y error 0.01% (worst 0.14%), error bars 5/5 (0.02%) |
+| `leypunskiy-5B-colour-size` | the colour, the marker size | 10/10 points (+10 extra), y error 0.03% (worst 0.11%), error bars 7/10 (0.02%) | 10/10 points (+19 extra), y error 0.09% (worst 0.20%), error bars 8/10 (0.20%) |
+| `leypunskiy-5C-nothing` | nothing | 10/19 points (+11 extra), y error 0.04% (worst 0.21%), error bars 9/10 (0.33%) | 15/19 points (+1 extra), y error 0.03% (worst 0.40%), error bars 14/15 (0.34%) |
+| `leypunskiy-5C-colours` | the colours | 17/19 points (+14 extra), y error 0.03% (worst 0.28%), error bars 15/17 (0.41%) | 17/19 points (+14 extra), y error 0.03% (worst 0.60%), error bars 13/17 (0.34%) |
+| `leypunskiy-5C-colours-size` | the colours, the marker size | 17/19 points (+18 extra), y error 0.03% (worst 0.26%), error bars 12/17 (0.65%) | 17/19 points (+17 extra), y error 0.05% (worst 0.26%), error bars 15/17 (0.34%) |
+| `foley-2C-25C-nothing` | nothing | 6/6 bars within 1%, error 0.18% (worst 0.28%), error bars 3/6 (0.08%) | 6/6 bars within 1%, error 0.13% (worst 0.22%), error bars 3/6 (0.08%) |
+| `foley-2C-30C-nothing` | nothing | 5/5 bars within 1%, error 0.15% (worst 0.29%), error bars 4/5 (0.07%) | 5/5 bars within 1%, error 0.15% (worst 0.29%), error bars 4/5 (0.07%) |
+| `foley-2D-nothing` | nothing | 3/3 bars within 1%, error 0.16% (worst 0.18%), error bars 3/3 (0.06%) | 3/3 bars within 1%, error 0.10% (worst 0.10%), error bars 3/3 (0.06%) |
+| `foley-2E-nothing` | nothing | 3/3 bars within 1%, error 0.10% (worst 0.22%), error bars 2/3 (0.42%) | 3/3 bars within 1%, error 0.15% (worst 0.26%), error bars 2/3 (0.42%) |
+| `foley-2F-period-nothing` | nothing | 3/3 bars within 1%, error 0.06% (worst 0.12%), error bars 3/3 (0.02%) | 3/3 bars within 1%, error 0.06% (worst 0.14%), error bars 3/3 (0.02%) |
+| `foley-2F-rhythmic-nothing` | nothing | 3/3 bars within 1%, error 0.24% (worst 0.25%) | 3/3 bars within 1%, error 0.23% (worst 0.25%) |
+| `foley-2G-period-nothing` | nothing | 3/3 bars within 1%, error 0.09% (worst 0.11%), error bars 3/3 (0.08%) | 3/3 bars within 1%, error 0.09% (worst 0.09%), error bars 3/3 (0.08%) |
+| `foley-2G-rhythmic-nothing` | nothing | 3/3 bars within 1%, error 0.07% (worst 0.27%) | 3/3 bars within 1%, error 0.10% (worst 0.24%) |
+| `foley-2H-period-nothing` | nothing | 3/3 bars within 1%, error 0.13% (worst 0.19%), error bars 3/3 (0.17%) | 3/3 bars within 1%, error 0.13% (worst 0.19%), error bars 3/3 (0.17%) |
+| `foley-2H-rhythmic-nothing` | nothing | 3/3 bars within 1%, error 0.21% (worst 0.24%) | 3/3 bars within 1%, error 0.20% (worst 0.23%) |
+| `foley-2C-25C-area` | the plot area | 6/6 bars within 1%, error 0.18% (worst 0.28%), error bars 5/6 (0.08%) | 6/6 bars within 1%, error 0.18% (worst 0.28%), error bars 5/6 (0.08%) |
 | `pearl-reed-3-curve-nothing` | nothing | logistic: x and y axes not read | logistic: x and y axes not read |
 | `pearl-reed-3-dots-nothing` | nothing | x and y axes not read | x and y axes not read |
 | `pearl-reed-3-curve-ticks` | two ticks on each axis | logistic: 0.38% (worst 66.9%) | logistic: 0.38% (worst 66.9%) |
 | `pearl-reed-3-curve-ticks-exclude` | ticks, the equation excluded | logistic: 0.17% (worst 40.0%) | logistic: 0.17% (worst 40.0%) |
 | `pearl-reed-3-dots-ticks` | two ticks on each axis | 0/13 points | 0/13 points |
-| `pearl-reed-3-dots-ticks-colour` | ticks, the colour | 0/13 points | 13/13 points (+1 extra), y error 0.10% (worst 0.88%), error bars on 13 points that have none |
+| `pearl-reed-3-dots-ticks-colour` | ticks, the colour | 13/13 points (+1 extra), y error 0.10% (worst 0.88%), error bars on 13 points that have none | 13/13 points (+5 extra), y error 0.08% (worst 0.88%), error bars on 10 points that have none |
 | `andreani-1B-area` | the plot area | x axis not read | x axis not read |
 | `andreani-1B-area-colours` | the plot area, the colours | x axis not read | x axis not read |
-| `andreani-1B-area-ticks` | the plot area, two ticks on the x axis | 0/37 points (+3 extra) | 0/37 points (+130 extra) |
-| `andreani-1B-area-ticks-colours` | the plot area, x ticks, the colours | 5/37 points (+1 extra), y error 0.04% (worst 0.40%), error bars on 5 points that have none | 33/37 points (+3 extra), y error 0.28% (worst 1.31%), error bars on 24 points that have none |
-| `andreani-1C-nothing` | nothing | control: 0.60% (worst 2.7%); FD: 4.20% (worst 34.6%) | control: 0.60% (worst 2.7%); FD: 4.20% (worst 34.6%) |
-| `andreani-1E-area` | the plot area | y axis not read | y axis not read |
-| `andreani-1E-area-ticks` | the plot area, two ticks | 24/24 bars within 1%, error 0.19% (worst 0.47%), error bars 0/24 | 24/24 bars within 1%, error 0.16% (worst 0.39%), error bars 22/24 (0.15%) |
-| `andreani-3A-nothing` | nothing | 0/165 dots | 10/165 dots, y error 0.37% (worst 0.75%) |
-| `andreani-3B-nothing` | nothing | 54/108 dots (+4 extra), y error 0.12% (worst 1.18%) | 41/108 dots (+4 extra), y error 0.12% (worst 1.08%) |
-| `andreani-3C-nothing` | nothing | 25/180 dots (+5 extra), y error 0.47% (worst 2.42%) | 56/180 dots (+3 extra), y error 0.13% (worst 1.91%) |
-| `andreani-3D-nothing` | nothing | 0/87 dots | 18/87 dots (+15 extra), y error 1.51% (worst 2.46%) |
-| `andreani-3A-colours` | the colours | 0/165 dots | 10/165 dots, y error 0.37% (worst 0.75%) |
-| `andreani-3B-colours` | the colours | 54/108 dots (+3 extra), y error 0.12% (worst 2.36%) | 48/108 dots (+3 extra), y error 0.12% (worst 2.36%) |
-| `andreani-3C-colours` | the colours | 27/180 dots (+1 extra), y error 0.18% (worst 0.80%) | 54/180 dots (+3 extra), y error 0.12% (worst 1.91%) |
-| `andreani-3D-colours` | the colours | 25/87 dots (+21 extra), y error 0.98% (worst 2.94%) | 44/87 dots (+32 extra), y error 0.32% (worst 2.94%) |
+| `andreani-1B-area-ticks` | the plot area, two ticks on the x axis | 0/37 points (+130 extra) | 0/37 points (+3 extra) |
+| `andreani-1B-area-ticks-colours` | the plot area, x ticks, the colours | 33/37 points (+3 extra), y error 0.28% (worst 1.31%), error bars on 24 points that have none | 34/37 points, y error 0.27% (worst 1.31%), error bars on 5 points that have none |
+| `andreani-1C-nothing` | nothing | control: 0.60% (worst 2.7%); FD: 4.20% (worst 34.6%) | control: 0.60% (worst 2.7%); FD: 0.99% (worst 19.5%) |
+| `andreani-1E-area` | the plot area | y axis not read | 24/24 bars within 1%, error 0.17% (worst 0.39%), error bars 22/24 (0.15%) |
+| `andreani-1E-area-ticks` | the plot area, two ticks | 24/24 bars within 1%, error 0.16% (worst 0.39%), error bars 22/24 (0.15%) | 24/24 bars within 1%, error 0.16% (worst 0.39%), error bars 22/24 (0.15%) |
+| `andreani-3A-nothing` | nothing | 10/165 dots, y error 0.37% (worst 0.75%) | 120/165 dots (+29 extra), y error 0.14% (worst 2.91%) |
+| `andreani-3B-nothing` | nothing | 41/108 dots (+4 extra), y error 0.12% (worst 1.08%) | 77/108 dots, y error 0.09% (worst 2.14%) |
+| `andreani-3C-nothing` | nothing | 56/180 dots (+3 extra), y error 0.13% (worst 1.91%) | 114/180 dots (+27 extra), y error 0.15% (worst 2.92%) |
+| `andreani-3D-nothing` | nothing | 18/87 dots (+15 extra), y error 1.51% (worst 2.46%) | 37/44 dots (+11 extra), y error 0.14% (worst 2.94%) |
+| `andreani-3A-colours` | the colours | 10/165 dots, y error 0.37% (worst 0.75%) | 129/165 dots (+24 extra), y error 0.22% (worst 2.82%) |
+| `andreani-3B-colours` | the colours | 48/108 dots (+3 extra), y error 0.12% (worst 2.36%) | 78/108 dots (+8 extra), y error 0.10% (worst 2.14%) |
+| `andreani-3C-colours` | the colours | 54/180 dots (+3 extra), y error 0.12% (worst 1.91%) | 141/180 dots (+34 extra), y error 0.18% (worst 2.77%) |
+| `andreani-3D-colours` | the colours | 44/87 dots (+32 extra), y error 0.32% (worst 2.94%) | 38/44 dots (+4 extra), y error 0.15% (worst 2.94%) |
 
-Summed over the cases, 2.2.0 reads 296 of 409 points, bars and curves in the development figures (2.1.0: 95)
-and 339 of 1,278 in the held-out ones (2.1.0: 215).
+Summed over the cases, 2.3.0 reads 366 of 409 points, bars and curves in the development figures (2.2.0: 296) and
+818 of 1,192 in those of Andreani et al. (2.2.0: 318 of the same 1,192; 339 of 1,278, with the three columns of 3D
+that are no longer compared). The 2.1.0 results are in `results-2.1.0.json`.
 
-What 2.2.0 reads that 2.1.0 did not comes from the changes listed in the [changelog](../../CHANGELOG.md): bar
-charts with dark, hatched or outlined bars on an axis that does not start at 0 (2.1.0 read none of the 35 bars of
-Foley et al.), error bars in the colour of their bar or marker, markers sitting on a fitted line, and plot areas
-inside thick axis lines, with their tick labels beyond them.
+What 2.3.0 reads that 2.2.0 did not comes from the changes listed in the [changelog](../../CHANGELOG.md): markers
+that overlap, found by the edges of each that can be seen (the dot plots of Andreani et al. 3A-D: 386 of 497 dots
+with their colours given, 2.2.0 143); plots stacked with no gap between them (Leypunskiy et al. 2B, now read with
+nothing given); tick labels set close together (Leypunskiy et al. 5A with nothing given; Andreani et al. 1E with its
+plot area); legends and words inside plots, left out; a line inside a pale band of its own colour (Andreani et al.
+1C, FD); and error bars no longer found in shaded bands or broken gridlines.
 
-Where 2.2.0 does worse:
+What is still hard:
 
-* `leypunskiy-2B-areas`: the middle of the three stacked plots has its scale read from two of its three tick labels,
-  with a warning that confidence in it is low; 2.2.0 reads 75 and 50 where 2.1.0 read 50 and 25, and is 2.8 % off
-  where 2.1.0 was 0.4 % off.
-* `andreani-3B`: 2.2.0 finds fewer of the overlapping dots (41 of 108 against 54; 48 against 54 with the colours
-  clicked), though more in the other three dot plots (125 of 540 in all, against 79).
-* `andreani-1B-area-ticks`: without the colours, 2.2.0 takes the letters of the legend, which lies inside the plot,
-  for 127 small markers (2.1.0 found 3 marks); neither version finds the coloured markers until their colours are
-  clicked.
-
-What neither version does yet:
-
-* Stacked plots with no gap between them are not separated (`leypunskiy-2B-nothing`): draw the plot areas.
-* Tick labels are sometimes not read, small, slanted, crowded or hand-lettered ones especially (`leypunskiy-5A`,
-  the bottom plot of `leypunskiy-2B`, `andreani-1B`, `andreani-1E`, `pearl-reed-3`). A warning says so; clicking two
-  ticks on the axis puts it right.
-* In dot plots where the dots overlap, only 6 % to 51 % of them are found (`andreani-3`).
-* Markers on lines over shaded areas, with a legend inside the plot (`andreani-1B`), are found only once their
-  colours are clicked.
-* Where a grid line or a connecting line runs through a marker, it is reported as an error bar
-  (`pearl-reed-3-dots-ticks-colour`, `andreani-1B`, `leypunskiy-2B-points`).
-* A line with a translucent band of its own colour around it is followed less closely (`andreani-1C`, FD: 4 %).
+* Tick labels that are slanted (Andreani et al. 1B) or printed in an old typeface (Pearl and Reed's scan) are not
+  read: two ticks clicked on the axis are needed.
+* Two series of one colour told apart only by the shape of their markers (Leypunskiy et al. 5B) are found as one
+  colour; with nothing given, only the markers of one series are read, and with the colour and marker size given
+  every marker is found, with the other series' markers among the extra marks.
+* In the dot plots, dots that lie almost exactly on top of each other, or wholly under a mean's bar, cannot be told
+  apart: about a quarter of them are missed. The workbench's *Edit points* tool adds them by hand.
+* Error bars of markers are found less often than in 2.2.0 in Leypunskiy et al. 1C and 2C (6 and 22 of 12 and 29,
+  against 8 and 24): a bar is no longer accepted where the line through the marker runs on aslant or beyond a gap.
+* The fitted curve of Pearl and Reed's scan is followed to within 0.2 % (median), but where it crosses a printed
+  gridline the trace is followed up the gridline for a few columns (worst 40 %).
 
 ## The figures
 

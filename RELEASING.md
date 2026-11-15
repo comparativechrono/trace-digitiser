@@ -51,13 +51,14 @@ plans). Now that the repository is public, one can be added:
    results with the last release's:
 
    ```bash
-   python validation/published-figures/run.py \
+   python validation/published-figures/run.py --digitised \
        --json validation/published-figures/results-X.Y.Z.json \
        --compare validation/published-figures/results-<last release>.json
    ```
 
-   Look into any case marked WORSE before going on. Commit the new results,
-   and update the table in that folder's README (`--markdown` prints it).
+   Look into any case marked WORSE before going on. Commit the new results
+   and what each case read (`digitised/`), and update the table in that
+   folder's README (`--markdown` prints it).
 
    Then run the activity-trace set
    ([`validation/activity-traces`](validation/activity-traces/README.md)),

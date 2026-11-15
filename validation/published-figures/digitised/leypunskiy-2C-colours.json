@@ -1,0 +1,19 @@
+{
+ "case": "leypunskiy-2C-colours",
+ "known": "leypunskiy-2C",
+ "given": "the colours",
+ "parts": [
+  {
+   "box": [
+    294.5,
+    777.7,
+    1141.5,
+    1697.1
+   ],
+   "series": null,
+   "panel_id": 3,
+   "x_calibrated": true,
+   "y_calibrated": true
+  }
+ ]
+}

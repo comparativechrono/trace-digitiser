@@ -1,0 +1,19 @@
+{
+ "case": "leypunskiy-5C-colours-size",
+ "known": "leypunskiy-5C",
+ "given": "the colours, the marker size",
+ "parts": [
+  {
+   "box": [
+    1537.8,
+    2072.0,
+    2529.9,
+    3135.4
+   ],
+   "series": null,
+   "panel_id": 3,
+   "x_calibrated": true,
+   "y_calibrated": true
+  }
+ ]
+}

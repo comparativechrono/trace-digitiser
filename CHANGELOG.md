@@ -6,8 +6,40 @@ and the project uses [semantic versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [2.3.0] - 2026-11-15
+
+Read again with 2.2.0, some of the figures in the validation sets still came
+out wrong, or not at all: dot plots of translucent dots that overlap, legends
+and labels drawn inside plots, plots stacked with no gap between them, tick
+labels set close together, a line inside a pale band of its own colour. This
+release reads most of them: of the values in the figures of published papers
+(`validation/published-figures`), 1,184 of 1,601 are read (2.2.0: 614). The
+changes were made while looking at all of those figures, including the ones
+of Andreani et al. (2022) that were held out until 2.2.0 was made, so their
+results are no longer those of figures held out. Activity traces read as well
+as before or better (median correlation with the authors' series 0.95; 2.2.0:
+0.94), and dense traces give the same results as with 2.2.0.
+
 ### Added
 
+- **Legends inside a plot are found and left out**
+  (`trace_digitiser.legend`; `digitise(..., legend="auto")`, the default, or
+  `legend="keep"`): two or more entries, each a symbol with its words to the
+  right, one above another or side by side in a row. Their symbols and words
+  are left out as user-given `exclude` boxes are, and a warning says where.
+- **Words written inside a plot are taken out of its traces**: a panel's
+  label in the trace's colour (such as "18:6") is found as a row of glyphs
+  standing on a baseline and left out of the trace.
+- **Stacked plots with no gap between them are separated**: lines as dark and
+  as thick as the frame's sides that run right across it are noted, and where
+  the frame's tick labels give no one scale and the plots between such lines
+  each read as an axis of their own, they are taken as plots of their own.
+  Leypunskiy et al. (2017) 2B with nothing given: all three plots, 0.2-0.6 %
+  (2.2.0: no axis read).
+- `validation/published-figures/run.py --digitised` keeps what each case read
+  (`validation/published-figures/digitised`), and `paper/figures.py` draws
+  the paper's supporting figures (S1-S6 Fig) from it and from the other
+  validation sets.
 - **A validation set of activity traces**
   ([`validation/activity-traces`](https://github.com/comparativechrono/trace-digitiser/tree/main/validation/activity-traces)):
   57 traces of mouse and rat activity over days, from the figures of 18
@@ -29,6 +61,38 @@ and the project uses [semantic versioning](https://semver.org/).
   level about twice too high. Every column statistic but the lower envelope
   understates the share of activity in the dark phase. Not part of the
   package.
+
+### Fixed
+
+- **Overlapping markers** are found by the edges of each that can be seen: a
+  Hough transform for circles of one size, in which each pixel on an edge -
+  of the blob, or, where the markers are translucent, between one layer and
+  two - votes for a centre a marker's radius inwards. Markers mostly hidden
+  are added where the blob is otherwise not covered; a marker partly hidden
+  under dark ink (a mean's bar, an error bar) is taken to go on under it; the
+  size of one marker is taken from the round blobs where most blobs are two
+  or three markers. Dot plots of Andreani et al. (2022) 3A-D: 386 of the 497
+  dots compared, with their colours given (2.2.0: 143), 348 with nothing
+  given (117); the polar plot of Hearn & Whitmore (2026): 55 of 60 years (50).
+- **Tick labels set close together, or run into an axis title**, are each
+  looked for under (or beside) their own tick, where the ticks are at a
+  regular step: Leypunskiy et al. 5A with nothing given, 9 of 9 points
+  (2.2.0: x axis not read); Andreani et al. 1E with its plot area, 24 of 24
+  bars (y axis not read).
+- **Ticks are found on plots shaded with pale bands**, by their contrast with
+  what they are drawn on.
+- **A line drawn inside a pale band of its own colour** (a mean within its
+  error, shaded) is followed by its strong colour, not by the band's middle:
+  Andreani et al. 1C, FD 1.0 % (4.2 %).
+- **Error bars** are judged against what lies round them, so that a pale band
+  is not taken for a bar; a line through a marker that runs on, uncapped, to
+  the edge of the plot, or aslant past where a bar would end, or on beyond a
+  gap (a broken gridline), is not a bar.
+- A label read as "04" counts as evidence that an axis's decimal points are
+  being lost in small print, or in larger print only if every reading of it
+  agrees.
+- A lump of more than fifty markers' area is a region of colour, not markers
+  (a figure with shaded bands took four minutes).
 
 ## [2.2.0] - 2026-11-15
 
@@ -248,7 +312,8 @@ First version tracked in this repository; identical to the 1.2.0 files on PyPI.
 Releases 0.1.0 to 1.0.0 (6-7 June 2026) were uploaded to PyPI directly and are
 not recorded here.
 
-[Unreleased]: https://github.com/comparativechrono/trace-digitiser/compare/v2.2.0...HEAD
+[Unreleased]: https://github.com/comparativechrono/trace-digitiser/compare/v2.3.0...HEAD
+[2.3.0]: https://github.com/comparativechrono/trace-digitiser/compare/v2.2.0...v2.3.0
 [2.2.0]: https://github.com/comparativechrono/trace-digitiser/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/comparativechrono/trace-digitiser/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/comparativechrono/trace-digitiser/compare/1d34f75...v2.0.0

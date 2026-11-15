@@ -1,0 +1,19 @@
+{
+ "case": "foley-2G-period-nothing",
+ "known": "foley-2G-period",
+ "given": "nothing",
+ "parts": [
+  {
+   "box": [
+    1760.0,
+    3908.0,
+    2257.0,
+    4518.0
+   ],
+   "series": null,
+   "panel_id": 9,
+   "x_calibrated": false,
+   "y_calibrated": true
+  }
+ ]
+}

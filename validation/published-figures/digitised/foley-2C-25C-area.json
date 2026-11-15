@@ -1,0 +1,19 @@
+{
+ "case": "foley-2C-25C-area",
+ "known": "foley-2C-25C",
+ "given": "the plot area",
+ "parts": [
+  {
+   "box": [
+    159.0,
+    2543.0,
+    1218.0,
+    3137.0
+   ],
+   "series": null,
+   "panel_id": 1,
+   "x_calibrated": false,
+   "y_calibrated": true
+  }
+ ]
+}

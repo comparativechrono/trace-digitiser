@@ -1,0 +1,19 @@
+{
+ "case": "andreani-1C-nothing",
+ "known": "andreani-1C",
+ "given": "nothing",
+ "parts": [
+  {
+   "box": [
+    95.0,
+    828.0,
+    522.0,
+    1101.0
+   ],
+   "series": null,
+   "panel_id": 1,
+   "x_calibrated": true,
+   "y_calibrated": true
+  }
+ ]
+}

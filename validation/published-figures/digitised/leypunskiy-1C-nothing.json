@@ -1,0 +1,19 @@
+{
+ "case": "leypunskiy-1C-nothing",
+ "known": "leypunskiy-1C",
+ "given": "nothing",
+ "parts": [
+  {
+   "box": [
+    1894.7,
+    905.7,
+    2559.0,
+    1631.3
+   ],
+   "series": null,
+   "panel_id": 3,
+   "x_calibrated": true,
+   "y_calibrated": true
+  }
+ ]
+}

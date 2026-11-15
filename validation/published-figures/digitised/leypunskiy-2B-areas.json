@@ -1,0 +1,49 @@
+{
+ "case": "leypunskiy-2B-areas",
+ "known": "leypunskiy-2B",
+ "given": "the plot areas",
+ "parts": [
+  {
+   "box": [
+    1529.0,
+    65.0,
+    2545.0,
+    608.5
+   ],
+   "series": [
+    "18:6"
+   ],
+   "panel_id": 1,
+   "x_calibrated": true,
+   "y_calibrated": true
+  },
+  {
+   "box": [
+    1529.0,
+    608.5,
+    2545.0,
+    1153.0
+   ],
+   "series": [
+    "12:12"
+   ],
+   "panel_id": 2,
+   "x_calibrated": true,
+   "y_calibrated": true
+  },
+  {
+   "box": [
+    1529.0,
+    1153.0,
+    2545.0,
+    1696.0
+   ],
+   "series": [
+    "6:18"
+   ],
+   "panel_id": 3,
+   "x_calibrated": true,
+   "y_calibrated": true
+  }
+ ]
+}

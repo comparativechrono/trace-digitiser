@@ -299,6 +299,14 @@ def finish(ax, mark, title, xlabel=None, ylabel=None, grid=True):
     tag(ax, title)
 
 
+def seen(d, column="center_estimate"):
+    """A trace's values where it was seen: the columns filled in from their neighbours (under a legend, say) blank."""
+    y = d[column].to_numpy(float)
+    if "interpolated" in d:
+        y = np.where(d["interpolated"].astype(str).str.lower().isin(["true", "1"]), np.nan, y)
+    return y
+
+
 def thousands(ax):
     ax.yaxis.set_major_formatter(matplotlib.ticker.FuncFormatter(lambda v, _: f"{v / 1000:.0f}k"))
 
@@ -352,7 +360,7 @@ def s1_fig(out, workbench):
         ax = fig.add_axes([L, 0.86 - i * 0.135, R - L, 0.085])
         d = reads["figure-1a"][i]
         ax.plot(k1a.decimal_year, k1a[col], color=KNOWN_C, lw=1.0)
-        ax.plot(d.x_value, d.center_estimate, color=READ_C, lw=0.6)
+        ax.plot(d.x_value, seen(d), color=READ_C, lw=0.6)
         ax.set_xlim(1955, 2015)
         ax.set_ylabel(ylab, fontsize=7)
         if i:
@@ -370,7 +378,7 @@ def s1_fig(out, workbench):
     ins = k1a[k1a.in_inset.astype(str).str.lower() == "true"]
     d = reads["figure-1a"][2]
     ax.plot(ins.decimal_year, ins.births, color=KNOWN_C, lw=1.2)
-    ax.plot(d.x_value, d.center_estimate, color=READ_C, lw=0.7)
+    ax.plot(d.x_value, seen(d), color=READ_C, lw=0.7)
     ax.set_xlim(1972, 1979)
     thousands(ax)
     finish(ax, "C", "Fig 1a, inset (green line)", None, "Births per month")
@@ -406,7 +414,7 @@ def s1_fig(out, workbench):
         kk = k3a[k3a.panel == era]
         g = d[(d.panel_id == pid) & (d.x_value >= 2) & (d.x_value <= 20)]
         ax.plot(kk.period_months, kk.amplitude, color=KNOWN_C, lw=1.2)
-        ax.plot(g.x_value, g.center_estimate, color=READ_C, lw=0.7)
+        ax.plot(g.x_value, seen(g), color=READ_C, lw=0.7)
         ax.set_xlim(2, 20)
         finish(ax, "FG"[i], f"Fig 3a, spectrum {era.replace('-', '–')}", "Period (months)",
                "Amplitude" if i == 0 else None)
@@ -487,10 +495,7 @@ def read_lines(ax, d, scale=1.0, lw=0.8):
     """The traces read, where they were seen (the columns filled in between, or beyond, are left out)."""
     d = d.dropna(subset=["x_value"]).sort_values("x_value")
     for _, g in d.groupby("series"):
-        y = g.y_value.to_numpy(float) / scale
-        if "interpolated" in g:
-            y = np.where(g.interpolated.astype(str).str.lower().isin(["true", "1"]), np.nan, y)
-        ax.plot(g.x_value, y, color=READ_C, lw=lw, zorder=3)
+        ax.plot(g.x_value, seen(g, "y_value") / scale, color=READ_C, lw=lw, zorder=3)
 
 
 def paired_bars(ax, known, d, width=0.38):
@@ -560,8 +565,8 @@ def s2_fig(out):
     pr = known["pearl-reed-3-curve"]["logistic"]
     ax.plot(pr["x"], np.asarray(pr["y"]) / 1e6, color=KNOWN_C, lw=1.6, zorder=1)
     known_points(ax, [(x, y / 1e6) for x, y, _ in known["pearl-reed-3-dots"]["census"]])
-    read_lines(ax, case_part("pearl-reed-3-curve-ticks-exclude"), scale=1e6)
-    d = case_part("pearl-reed-3-dots-ticks-colour")
+    read_lines(ax, case_part("pearl-reed-3-curve-ticks-exclude-gridline"), scale=1e6)
+    d = case_part("pearl-reed-3-dots-ticks-colour-area")
     read_points(ax, d.assign(y_value=d.y_value / 1e6))
     ax.set(xlim=(1780, 1920), ylim=(0, 110))
     finish(ax, "I", "Pearl and Reed, Fig 3", "Year", "Population (millions)")

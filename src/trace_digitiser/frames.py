@@ -479,7 +479,9 @@ def _add_gridlines_and_ticks(frame: Frame, dark: np.ndarray, sat: np.ndarray) ->
     # Tick marks: short stubs attached to the outside (or inside) of an axis.
     # A stub must end within twice the usual tick length, which separates
     # ticks from gridlines and from traces that happen to touch the axis.
-    tick_len = max(3, int(round(0.02 * min(frame.width, frame.height))))
+    # (in a large picture of a small plot - a figure scanned or exported at a high resolution - the ticks are long
+    # for the plot: allow for the picture's size as well)
+    tick_len = max(3, int(round(0.02 * min(frame.width, frame.height))), int(round(0.004 * max(h, w))))
     reach = 2 * tick_len + 1
     min_run = 2 if min(frame.width, frame.height) < 200 else 3
 

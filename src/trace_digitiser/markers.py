@@ -86,9 +86,72 @@ def find_markers_in_mask(
     """
     if mask.sum() == 0:
         return []
-    r = radius if radius else marker_radius(fill_small_holes(mask, 200.0))
-    if not r:
+    if radius:
+        return _markers_at(mask, float(radius), origin, rgb_roi, series, min_coverage, strict=False)
+    # The size of the markers. The usual estimate (the highest cluster of the distance transform's peaks with a fair
+    # share of them) is tried first; where the markers sit on lines of their own colour - a fitted line, error bars -
+    # the lines' ridges can outnumber them, so the other sizes the peaks suggest are tried too, the largest first,
+    # and kept only if they give at least three compact markers all of a size.
+    filled0 = fill_small_holes(mask, 200.0)
+    usual = marker_radius(filled0)
+    if usual:
+        found = _markers_at(mask, usual, origin, rgb_roi, series, min_coverage, strict=False)
+        if found:
+            return found
+    for r in _peak_scales(filled0)[:6]:
+        if usual and abs(r - usual) <= 0.5:
+            continue
+        found = _markers_at(mask, r, origin, rgb_roi, series, min_coverage, strict=True)
+        if found:
+            return found
+    return []
+
+
+def _peak_scales(mask: np.ndarray) -> list[float]:
+    """The radii the markers in *mask* may have, largest first: the heights of the distance transform's peaks, one
+    per plateau (a line's ridge is one long plateau), where at least three peaks agree."""
+    m = mask.astype(np.uint8)
+    if m.sum() < 6:
         return []
+    dist = cv2.distanceTransform(m, cv2.DIST_L2, 5)
+    peaks = (dist >= cv2.dilate(dist, np.ones((5, 5), np.uint8))) & (dist >= 1.9)
+    if not peaks.any():
+        return []
+    n, labels = cv2.connectedComponents(peaks.astype(np.uint8), connectivity=8)
+    cand = np.zeros(n - 1, dtype=np.float32)
+    np.maximum.at(cand, labels[peaks] - 1, dist[peaks])
+    out: list[float] = []
+    for b in np.arange(np.floor(cand.max() * 2) / 2, 1.75, -0.5):
+        near = cand[np.abs(cand - b) <= 0.75]
+        if near.size >= 3:
+            r = float(np.median(near))
+            if all(abs(r - o) > 0.75 for o in out):
+                out.append(r)
+    return out
+
+
+def _line_half_width(mask: np.ndarray) -> Optional[float]:
+    """Half the width of the lines in *mask*: the distance transform along their middles, pixel by pixel (where the
+    lines outnumber everything else)."""
+    m = mask.astype(np.uint8)
+    if m.sum() < 6:
+        return None
+    dist = cv2.distanceTransform(m, cv2.DIST_L2, 5)
+    ridge = (dist >= cv2.dilate(dist, np.ones((3, 3), np.uint8))) & (dist >= 0.9)
+    return float(np.median(dist[ridge])) if ridge.any() else None
+
+
+def _markers_at(
+    mask: np.ndarray,
+    r: float,
+    origin: tuple[int, int],
+    rgb_roi: Optional[np.ndarray],
+    series: int,
+    min_coverage: float,
+    strict: bool,
+) -> list[Marker]:
+    """The markers of radius *r* in *mask* (see :func:`find_markers_in_mask`). *strict*: the size was a guess, so
+    keep the markers only if there are at least three that stand alone, all of a size."""
     # A thin line drawn across a marker (a dashed threshold, a gridline on top) cuts it in two: close such gaps.
     closed = (
         cv2.morphologyEx(
@@ -129,12 +192,29 @@ def find_markers_in_mask(
         keep.append((i, count))
     if singles == 0 or merged > 3 * singles:
         return []
+    lone = np.array([float(stats[i, cv2.CC_STAT_AREA]) for i, c in keep if c == 1])
+    alike = lone.size >= 3 and float(lone.std()) <= 0.35 * float(lone.mean())
+    if strict and not alike:
+        return []
     if min_coverage > 0:
         # Most of a colour of markers is in its markers; a colour of lines (or bars, or gridlines) that happens to
-        # have a few thick places is mostly line.
+        # have a few thick places is mostly line. Unless the markers sit on lines of their own colour - a fitted
+        # line, their error bars - and stand out from them: all of a size, and much thicker than the lines (where
+        # lines cross they are a little thicker, not twice as thick). The dots of a dotted line stand alone.
         in_markers = sum(int(stats[i, cv2.CC_STAT_AREA]) for i, _ in keep)
         if in_markers < min_coverage * float(filled.sum()):
-            return []
+            r_line = _line_half_width(filled)
+            joined = 0
+            if alike and r_line and r >= 1.6 * r_line:
+                _, flab, fstats, _ = cv2.connectedComponentsWithStats(filled.astype(np.uint8), connectivity=8)
+                for i, c in keep:
+                    if c != 1:
+                        continue
+                    ys, xs = np.nonzero(labels == i)
+                    whole = fstats[int(np.bincount(flab[ys, xs]).argmax()), cv2.CC_STAT_AREA]
+                    joined += int(whole >= 2.0 * stats[i, cv2.CC_STAT_AREA])
+            if joined < max(3, 0.6 * lone.size):
+                return []
     out: list[Marker] = []
     for i, count in keep:
         x, y, bw, bh, area = stats[i]
@@ -179,8 +259,44 @@ def find_markers_in_mask(
     for m in sorted(out, key=lambda m: m.shared):
         if all((m.x - q.x) ** 2 + (m.y - q.y) ** 2 >= (0.75 * r) ** 2 for q in kept):
             kept.append(m)
+    kept = _not_letters(mask, kept, origin, r)
     kept.sort(key=lambda m: (m.x, m.y))
     return kept
+
+
+def _not_letters(mask: np.ndarray, markers: list[Marker], origin: tuple[int, int], r: float) -> list[Marker]:
+    """Leave out "markers" that are letters: a round letter (o, e, a, filled in) of a word written in the plot, or the
+    marker of a legend with its words beside it, has other glyphs of its colour all round it - pieces about its size
+    that are not markers, and not joined to it. A marker on a line, or with error bars, is joined to them."""
+    if not markers:
+        return markers
+    ox, oy = origin
+    h, w = mask.shape
+    n, labels, stats, cents = cv2.connectedComponentsWithStats(mask.astype(np.uint8), connectivity=8)
+    if n <= 2:
+        return markers
+    d = 2.0 * r
+    holding = set()
+    for m in markers:
+        y, x = int(round(m.y - oy)), int(round(m.x - ox))
+        if 0 <= y < h and 0 <= x < w:
+            holding.add(int(labels[y, x]))
+    glyphs = []
+    for i in range(1, n):
+        if i in holding:
+            continue
+        bw, bh, area = stats[i, cv2.CC_STAT_WIDTH], stats[i, cv2.CC_STAT_HEIGHT], stats[i, cv2.CC_STAT_AREA]
+        if area >= 6 and 0.4 * d <= max(bw, bh) <= 2.5 * d:
+            glyphs.append(cents[i])
+    if len(glyphs) < 2:
+        return markers
+    g = np.array(glyphs)
+    out = []
+    for m in markers:
+        near = np.hypot(g[:, 0] - (m.x - ox), g[:, 1] - (m.y - oy)) <= 2.5 * d
+        if int(near.sum()) < 2:
+            out.append(m)
+    return out
 
 
 _RAYS = [(float(np.cos(a)), float(np.sin(a))) for a in np.linspace(0, 2 * np.pi, 16, endpoint=False)]
@@ -329,6 +445,71 @@ def _bar_end(ink, clear, along_row: bool, centre_line: int, start: int, step: in
     return float(end)
 
 
+def _own_colour_bar(cmask: np.ndarray, cx: int, cy: int, r: float, step: int) -> Optional[float]:
+    """Where an error bar of the marker's own colour ends on one side (*step* -1: above, +1: below), or None: a thin
+    straight line of the colour running on from the marker's edge, centred on the marker's column, usually ending in
+    a cap (a short line across it). A line joining the markers, or a fitted line through them, slants away from the
+    marker's column, or is wide across it; where such a line crosses the bar, the bar runs on beyond it."""
+    h, w = cmask.shape
+    thin = max(3.0, 1.0 * r)
+
+    def extent(rr: int, c: int) -> tuple[int, int]:
+        a = b = c
+        while a - 1 >= 0 and cmask[rr, a - 1]:
+            a -= 1
+        while b + 1 < w and cmask[rr, b + 1]:
+            b += 1
+        return a, b
+
+    start = int(round(cy + step * (r + 1)))
+    if not 0 <= start < h:
+        return None
+    c = next((cx + d for d in (0, -1, 1) if 0 <= cx + d < w and cmask[start, cx + d]), None)
+    if c is None:
+        return None
+    i = start
+    while 0 <= i + step < h and any(0 <= c + d < w and cmask[i + step, c + d] for d in (0, -1, 1)):
+        i += step
+        if not cmask[i, c]:
+            c = next(c + d for d in (-1, 1) if 0 <= c + d < w and cmask[i, c + d])
+    rows = list(range(start, i + step, step))
+    spans = [extent(rr, c if cmask[rr, c] else next((c + d for d in (-1, 1) if 0 <= c + d < w and cmask[rr, c + d]), c))
+             for rr in rows]
+    widths = [b - a + 1 for a, b in spans]
+
+    def is_thin(k: int) -> bool:
+        return widths[k] <= thin and abs(0.5 * (spans[k][0] + spans[k][1]) - cx) <= 1.5 + 0.25 * widths[k]
+
+    k = 0
+    while k < len(rows) and is_thin(k):
+        k += 1
+    if k < 3:
+        return None
+    line_w = float(np.median([widths[j] for j in range(k)]))
+    while True:
+        # past the thin line: a cap (the end), or a line crossing the bar (the bar goes on beyond it), or something
+        # else it runs into (not a bar's end that can be told)
+        j = k
+        while j < len(rows) and not is_thin(j):
+            j += 1
+        stretch = list(range(k, j))
+        if not stretch:
+            return float(rows[-1])
+        resumes = j < len(rows) and all(is_thin(q) for q in range(j, min(len(rows), j + 3))) and len(rows) - j >= 3
+        capped = all(widths[q] >= 2.0 * line_w and widths[q] <= 6.0 * r + 4
+                     and abs(0.5 * (spans[q][0] + spans[q][1]) - cx) <= 0.5 * widths[q] for q in stretch)
+        if resumes and len(stretch) <= max(4 * line_w, 3 * r):
+            k = j  # a line crossing the bar
+            while k < len(rows) and is_thin(k):
+                k += 1
+            continue
+        if capped and j == len(rows):
+            return 0.5 * (rows[stretch[0]] + rows[stretch[-1]])
+        if capped and len(stretch) <= max(4 * line_w, 2 * r):
+            return 0.5 * (rows[stretch[0]] + rows[stretch[-1]])
+        return None
+
+
 def find_error_bars(
     rgb: np.ndarray,
     box: tuple[int, int, int, int],
@@ -355,6 +536,7 @@ def find_error_bars(
     ink &= ~clear
     want_v = directions in ("auto", "vertical", "both")
     want_h = directions in ("auto", "horizontal", "both")
+    own = [colour_mask(roi, c, tolerance) for c in marker_colours] if marker_colours else None
     for m in markers:
         cx, cy = int(round(m.x)) - x0, int(round(m.y)) - y0
         if not (0 <= cx < ink.shape[1] and 0 <= cy < ink.shape[0]):
@@ -376,6 +558,12 @@ def find_error_bars(
         if want_v:
             top = _bar_end(ink, clear, False, cx, cy, -1, skip)
             bottom = _bar_end(ink, clear, False, cx, cy, +1, skip)
+            if top is None and bottom is None and own is not None:
+                # error bars of the marker's own colour (the default in MATLAB, Prism and matplotlib)
+                c_own = own[m.series - 1] if m.series - 1 < len(own) else None
+                if c_own is not None:
+                    top = _own_colour_bar(c_own, cx, cy, m.radius, -1)
+                    bottom = _own_colour_bar(c_own, cx, cy, m.radius, +1)
             if top is not None:
                 found["up"] = float(top + y0)
             if bottom is not None:

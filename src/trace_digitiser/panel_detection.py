@@ -16,6 +16,7 @@ sub-pixel floats, which is what axis calibration uses.
 
 from __future__ import annotations
 
+import math
 from typing import Optional
 
 import numpy as np
@@ -719,13 +720,53 @@ def _dedupe_positions(values: list[float], tol: float = 1.5) -> list[float]:
     return out
 
 
+def _axis_line_near(dark: np.ndarray, pos: float, lo: float, hi: float, vertical: bool) -> Optional[tuple[float, int]]:
+    """The axis line drawn along one side of a plot area given by hand, if there is one near *pos*: (its middle, its
+    thickness in pixels). *vertical*: the side is a column (*pos*) running from row *lo* to *hi*; else a row running
+    from column *lo* to *hi*.
+
+    A plot area given by hand (a box drawn in a program, or numbers read off a picture) can be a few pixels off the
+    axis lines, and says nothing of how thick they are; the tick labels are looked for beyond the line, so both
+    matter. An axis line is dark along nearly all of the side; a run of such columns (or rows) that takes in *pos*, or
+    is the nearest to it, is the line.
+    """
+    h, w = dark.shape
+    size = max(h, w)
+    reach = max(3, int(round(0.004 * size)))
+    a, b = int(round(lo + 0.05 * (hi - lo))), int(round(hi - 0.05 * (hi - lo)))
+    if b - a < 10:
+        return None
+    first = max(0, int(math.floor(pos)) - reach)
+    last = min((w if vertical else h) - 1, int(math.ceil(pos)) + reach)
+    if last < first:
+        return None
+    strip = dark[a : b + 1, first : last + 1] if vertical else dark[first : last + 1, a : b + 1].T
+    cover = (strip > 100).mean(axis=0)
+    runs, start = [], None
+    for i, v in enumerate(list(cover >= 0.85) + [False]):
+        if v and start is None:
+            start = i
+        elif not v and start is not None:
+            runs.append((start + first, i - 1 + first))
+            start = None
+    if not runs:
+        return None
+    s, e = min(runs, key=lambda r: 0.0 if r[0] <= pos <= r[1] else min(abs(pos - r[0]), abs(pos - r[1])))
+    thick = e - s + 1
+    if thick > max(12, int(0.02 * (hi - lo))):
+        return None  # not a line: a filled area against the side
+    return 0.5 * (s + e), thick
+
+
 def panels_from_boxes(rgb: np.ndarray, boxes: list[tuple[float, float, float, float]]) -> list[dict]:
     """Build panels from user-supplied plot areas.
 
     Each box is ``(x_left, y_top, x_right, y_bottom)`` in image pixels: the
     positions of the axis lines (or, with no frame, of the limits of the data
-    region).  Gridlines and tick marks inside the box are still detected, so
-    that tick labels can be anchored to them.
+    region).  Where an axis line is drawn within a few pixels of a side, the
+    side is moved to the middle of the line, and the line's thickness is
+    measured (see :func:`_axis_line_near`).  Gridlines and tick marks inside
+    the box are still detected, so that tick labels can be anchored to them.
     """
     h, w = rgb.shape[:2]
     dark = darkness_map(rgb)
@@ -739,7 +780,23 @@ def panels_from_boxes(rgb: np.ndarray, boxes: list[tuple[float, float, float, fl
             raise ValueError(
                 f"plot area {box} is not inside the {w}x{h} image, or is not (x_left, y_top, x_right, y_bottom)"
             )
-        frame = Frame(left=left, right=right, top=top, bottom=bottom, source="user")
+        found = {
+            "left": _axis_line_near(dark, left, top, bottom, True),
+            "right": _axis_line_near(dark, right, top, bottom, True),
+            "top": _axis_line_near(dark, top, left, right, False),
+            "bottom": _axis_line_near(dark, bottom, left, right, False),
+        }
+        sides = {"left": left, "right": right, "top": top, "bottom": bottom}
+        for k, v in found.items():
+            if v is not None:
+                sides[k] = v[0]
+        thick = max([v[1] for k, v in found.items() if v is not None and k in ("left", "bottom")] or [1])
+        if not (sides["left"] < sides["right"] and sides["top"] < sides["bottom"]):
+            sides, thick = {"left": left, "right": right, "top": top, "bottom": bottom}, 1
+        frame = Frame(
+            left=sides["left"], right=sides["right"], top=sides["top"], bottom=sides["bottom"], source="user",
+            line_thickness=int(thick),
+        )
         _add_gridlines_and_ticks(frame, dark, sat)
         panels.append(_panel_from_frame(frame, "user_plot_area"))
     return panels

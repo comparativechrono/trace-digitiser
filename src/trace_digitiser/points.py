@@ -22,6 +22,24 @@ def _auto_colours(rgb, panel, exclude, dark) -> list[tuple[int, int, int]]:
     return [tuple(int(v) for v in t["median_rgb"]) for t in found]
 
 
+def _one_series_each(markers: list, palette: list) -> list:
+    """A marker found in two series (two colours close enough that its pixels belong to both) is kept in the series
+    whose colour it is nearer."""
+    if len({m.series for m in markers}) < 2:
+        return markers
+
+    def off(m) -> float:
+        c = palette[m.series - 1]
+        return float(sum((float(a) - float(b)) ** 2 for a, b in zip(m.rgb, c)))
+
+    kept: list = []
+    for m in sorted(markers, key=off):
+        if all(q.series == m.series or (m.x - q.x) ** 2 + (m.y - q.y) ** 2 >= (0.75 * max(m.radius, q.radius)) ** 2
+               for q in kept):
+            kept.append(m)
+    return kept
+
+
 def digitise_points(
     image_path: Union[str, Path, np.ndarray],
     *,
@@ -96,6 +114,7 @@ def digitise_points(
             radius=radius,
             min_coverage=0.0 if wanted else 0.3,
         )
+        markers = _one_series_each(markers, palette)
         if not markers:
             fig.note(
                 f"Panel {p['panel_id']}: no markers were found. Give colours (and marker_size) if the points are "

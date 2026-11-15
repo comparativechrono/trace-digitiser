@@ -231,6 +231,7 @@ def digitise(
     for p in panels:
         masks = detect_trace_masks(
             rgb, p, colours=trace_colours, exclude=exclude_boxes, achromatic=achromatic, darkness=dark,
+            lines_only=True,
         )
         if show_debug:
             print(f"Panel {p['panel_id']}: detected {len(masks)} trace(s)")

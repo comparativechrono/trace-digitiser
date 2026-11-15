@@ -18,9 +18,10 @@ and the project uses [semantic versioning](https://semver.org/).
 
 ### Changed
 
-- `paper/figures.py`: S1–S3 Fig draw a line only where it was seen, so a
-  stretch the line reader filled in from its ends (under a legend, say) is a
-  gap; S2 Fig I shows Pearl and Reed's figure read with the marks above.
+- `paper/figures.py`: S1 Fig, like S2 and S3 Fig, draws a line only where it
+  was seen, so a stretch the line reader filled in from its ends (under a
+  legend, say) is a gap; S2 Fig I shows Pearl and Reed's figure read with the
+  marks above.
 - `paper/tables.py`: Table 1 reads Fig 1a of Hearn and Whitmore (2026) with
   only what is not data left out, as the workbench's walkthrough now does: the
   legend for the blue line, nothing for the green line in the inset.

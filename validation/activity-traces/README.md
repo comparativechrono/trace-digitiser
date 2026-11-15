@@ -241,9 +241,9 @@ acrophase in 14. The pairs they disagree on differ in the data by 10% or less in
 acrophase, by under 0.2 h), with two exceptions: the light-phase means of the female Slc43a3 mice (differing by 26%)
 and the cosinor amplitudes of the Ube3a mice, read at 2.5 px an hour (24%).
 
-Periods are another matter for the shorter records. Over records of 60 h or more the Lomb–Scargle period of the
-read trace is within 0.5 h of the data's (median difference 0.02 h). Over the seven series of 37–49 h it differs by
-0.2–8 h: two days do not fix a period, and the peak of a periodogram over them moves with small changes.
+Periods are another matter for the shorter records. Over records of 60 h or more the Lomb–Scargle period of the read
+trace is within 0.5 h of the data's (median absolute difference 0.09 h). Over the seven series of 37–49 h it differs
+by 0.2–8 h: two days do not fix a period, and the peak of a periodogram over them moves with small changes.
 
 ## What the figures themselves do
 
@@ -388,14 +388,15 @@ of the same figures (as read), and of the primary reading with the values taken 
 | journal copy (397 × 376 px) | as read | 1 | −6.8 h | −7.4 to −5.9 h | 0.49, 0.66 | 0.36 | 0.49 |
 | journal copy (397 × 376 px) | half-hour grid | 0 | −6.3 h | −7.1 to −5.0 h | 0.50, 0.65 | 0.33 | 0.42 |
 
-Whichever copy and reading, the knockout's 24-h acrophase is 6.3 to 7.0 h earlier than the wild type's, and earlier
-on each of the 7 days; its share of activity in the dark is 0.14 to 0.18 higher, and higher on each day; and its
-mean activity is 33 to 40% of the wild type's, close to the paper's 40%. These differences are several times the
-errors measured above for the papers with data, where the acrophase was within 1 h and the dark share within 0.05
-for 27 of 29 series. The phase of each genotype relative to lights-off rests on the record's starting at lights-off,
-as the figure's labels say; the difference between the genotypes does not. The figure plots the mean of 8 mice per
-genotype, so this describes two mean traces: it cannot say how much the mice within each group differ, and it is a
-reason to look again with the animals' own records, not a test of a difference between the genotypes.
+Whichever copy and reading, the knockout's 24-h acrophase is 6.3 to 7.0 h earlier than the wild type's, and earlier on
+each of the 7 days; its share of activity in the dark is 0.14 to 0.18 higher, and higher on each day; and its mean
+activity is 33 to 40% of the wild type's, close to the paper's 40%. These differences are several times the errors
+measured above for the papers with data, where the acrophase was within 1 h and the dark share within 0.05 for 27 of
+29 series. The phase of each genotype relative to lights-off rests on the record's starting at lights-off, as the
+figure's labels say; the difference between the genotypes does not. The figure shows one trace per genotype for groups
+of 8 mice (its legend does not say whether each trace is the group's mean or one animal's), so this describes two
+traces: it cannot say how much the mice within each group differ, and it is a reason to look again with the animals'
+own records, not a test of a difference between the genotypes.
 
 ## What this set does not show
 

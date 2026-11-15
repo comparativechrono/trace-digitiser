@@ -5,7 +5,7 @@ manuscript's Tables 1-4) and as the rows of S1-S5 Tables.
 
 Table 1 reads the figures of Hearn & Whitmore (2026) again, with the settings of the workbench's walkthroughs, and
 compares them with the values each figure shows, with the workbench's own comparison (python/dwb/known.py); it needs
-a checkout of digitiser-workbench. The other tables are read from validation/published-figures/results-2.2.0.json and
+a checkout of digitiser-workbench. The other tables are read from validation/published-figures/results-2.3.0.json and
 validation/activity-traces/results/ and validation/dense-traces/results/ (run validation/activity-traces/run.py,
 cd157.py and validation/dense-traces/run.py first).
 """
@@ -56,24 +56,30 @@ OWN = [
 ]
 
 
-def own_figures(workbench):
+def read_own(workbench):
+    """Each figure of Hearn & Whitmore (2026) read as Table 1 says: (figure, what, kind, given, data, seconds)."""
     import trace_digitiser as td
 
+    examples = Path(workbench) / "data" / "examples" / "hearn-whitmore-2026"
+    reader = {"lines": td.digitise, "points": td.digitise_points, "bars": td.digitise_bars, "rows": td.digitise_rows,
+              "heatmap": td.digitise_heatmap, "polar": td.digitise_polar}
+    for figure, what, kind, options, given in OWN:
+        t = time.time()
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore")
+            r = reader[kind](str(examples / f"{figure}.png"), write_outputs=False, **options)
+        yield figure, what, kind, given, (r.trace_data if kind == "lines" else r.data), time.time() - t
+
+
+def own_figures(workbench):
     examples = Path(workbench) / "data" / "examples" / "hearn-whitmore-2026"
     os.environ["DWB_EXAMPLES"] = str(examples)
     # known.py on its own: the workbench's python/ folder also holds a stand-in for pytesseract
     spec = importlib.util.spec_from_file_location("known", Path(workbench) / "python" / "dwb" / "known.py")
     known = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(known)
-    reader = {"lines": td.digitise, "points": td.digitise_points, "bars": td.digitise_bars, "rows": td.digitise_rows,
-              "heatmap": td.digitise_heatmap, "polar": td.digitise_polar}
     rows = []
-    for figure, what, kind, options, given in OWN:
-        t = time.time()
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
-            r = reader[kind](str(examples / f"{figure}.png"), write_outputs=False, **options)
-        data = r.trace_data if kind == "lines" else r.data
+    for figure, what, kind, given, data, seconds in read_own(workbench):
         c = known.compare(figure, data, kind)
         st = c["stats"]
         if figure == "figure-1a":
@@ -115,7 +121,7 @@ def own_figures(workbench):
             err = f"{s['median_abs_pct']:.2f}"
             extra = ""
         rows.append({"figure": what, "reader": kind, "given": given, "compared": compared,
-                     "median_error_pct_of_axis": err, "note": extra, "seconds": round(time.time() - t, 1)})
+                     "median_error_pct_of_axis": err, "note": extra, "seconds": round(seconds, 1)})
     return pd.DataFrame(rows)
 
 
@@ -136,15 +142,15 @@ def _fmt_case(c):
 PUBLISHED = [
     # (figure, what it shows, cases with nothing given, cases with help, the help)
     ("Leypunskiy et al. 2017, Fig 1C", "12 points with error bars, a fitted line and three other lines",
-     ["leypunskiy-1C-nothing"], ["leypunskiy-1C-nothing"], "none needed"),
+     ["leypunskiy-1C-nothing"], [], "none needed"),
     ("Leypunskiy et al. 2017, Fig 2B", "three stacked line plots over shaded days and nights",
-     ["leypunskiy-2B-nothing"], ["leypunskiy-2B-areas-colour"], "plot areas; line colour"),
+     ["leypunskiy-2B-nothing"], [], "none needed"),
     ("Leypunskiy et al. 2017, Fig 2B", "the 102 square markers in the same plots",
      [], ["leypunskiy-2B-points"], "plot areas; marker colour"),
     ("Leypunskiy et al. 2017, Fig 2C", "four series of points with error bars and fitted lines",
-     ["leypunskiy-2C-nothing"], ["leypunskiy-2C-nothing"], "none needed"),
+     ["leypunskiy-2C-nothing"], [], "none needed"),
     ("Leypunskiy et al. 2017, Fig 5A", "phase-response curve with 9 points and error bars",
-     ["leypunskiy-5A-nothing"], ["leypunskiy-5A-ticks"], "plot area; two ticks on each axis"),
+     ["leypunskiy-5A-nothing"], [], "none needed"),
     ("Leypunskiy et al. 2017, Fig 5B", "two series of markers with error bars",
      ["leypunskiy-5B-nothing"], ["leypunskiy-5B-colour-size"], "colour; marker size"),
     ("Leypunskiy et al. 2017, Fig 5C", "five series in five colours",
@@ -157,13 +163,14 @@ PUBLISHED = [
      ["pearl-reed-3-dots-nothing", "pearl-reed-3-curve-nothing"],
      ["pearl-reed-3-dots-ticks-colour", "pearl-reed-3-curve-ticks-exclude"],
      "two ticks on each axis; dot colour; printed equation excluded"),
-    ("Andreani et al. 2022, Fig 1B (held out)", "three series of markers on lines over shading, with slanted labels",
-     ["andreani-1B-area"], ["andreani-1B-area-ticks-colours"], "plot area; two ticks on the x axis; colours"),
-    ("Andreani et al. 2022, Fig 1C (held out)", "two lines within translucent bands of the same colour",
+    ("Andreani et al. 2022, Fig 1B", "three series of markers on lines over shading, with slanted labels",
+     [], ["andreani-1B-area-ticks-colours"], "plot area; two ticks on the x axis; colours (with the plot area alone, "
+     "the slanted x labels are not read)"),
+    ("Andreani et al. 2022, Fig 1C", "two lines within translucent bands of the same colour",
      ["andreani-1C-nothing"], [], "none tried"),
-    ("Andreani et al. 2022, Fig 1E (held out)", "24 bars with error bars, a dashed line and an equation",
-     ["andreani-1E-area"], ["andreani-1E-area-ticks"], "plot area; two ticks"),
-    ("Andreani et al. 2022, Fig 3A-D (held out)", "four dot plots with 540 overlapping dots",
+    ("Andreani et al. 2022, Fig 1E", "24 bars with error bars, a dashed line and an equation",
+     [], ["andreani-1E-area"], "plot area"),
+    ("Andreani et al. 2022, Fig 3A-D", "four dot plots with 540 overlapping dots (497 compared)",
      ["andreani-3A-nothing", "andreani-3B-nothing", "andreani-3C-nothing", "andreani-3D-nothing"],
      ["andreani-3A-colours", "andreani-3B-colours", "andreani-3C-colours", "andreani-3D-colours"], "colours"),
 ]
@@ -217,7 +224,7 @@ def _summarise(res, keys):
 
 
 def published_figures():
-    res = json.loads((PF / "results-2.2.0.json").read_text())["cases"]
+    res = json.loads((PF / "results-2.3.0.json").read_text())["cases"]
     rows = []
     for figure, what, nothing, helped, help_given in PUBLISHED:
         rows.append({"figure": figure, "what": what, "nothing_given": _summarise(res, nothing) or "-",

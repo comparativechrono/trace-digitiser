@@ -1,0 +1,1907 @@
+{
+ "environment": {
+  "trace_digitiser": "2.1.0",
+  "python": "3.13.18",
+  "date": "2026-11-15",
+  "numpy": "2.5.3",
+  "pandas": "3.0.5",
+  "opencv": "5.0.0",
+  "tesseract": "5.3.4"
+ },
+ "cases": {
+  "leypunskiy-1C-nothing": {
+   "figure": "leypunskiy-2017-fig1.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "12/12 points (+2 extra), y error 0.22% (worst 0.63%), error bars 7/12 (0.97%)",
+   "score": 12,
+   "of": 12,
+   "seconds": 17.3,
+   "details": {
+    "known": 12,
+    "found": 14,
+    "matched": 12,
+    "extra": 2,
+    "x_median": 0.05144327833986606,
+    "x_worst": 0.2771633319598066,
+    "y_median": 0.22486560735811567,
+    "y_worst": 0.6271034193366498,
+    "errbars_known": 12,
+    "errbars_found": 7,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.96579717268394,
+    "errbar_worst": 1.5596842821028878
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 2 of 3 tick labels (12312, 816). Confidence in it is low: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: the y axis is not calibrated - 5 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 4: the y axis is not calibrated - 9 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 5: the y axis is not calibrated - 4 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "The x axis of panels 2, 4 and 5 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 11 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 3: 4 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-1C-colour": {
+   "figure": "leypunskiy-2017-fig1.jpg",
+   "reader": "points",
+   "given": "the colour",
+   "options": {
+    "colours": [
+     "#e91f28"
+    ]
+   },
+   "held_out": false,
+   "summary": "12/12 points (+2 extra), y error 0.22% (worst 0.63%), error bars 7/12 (0.97%)",
+   "score": 12,
+   "of": 12,
+   "seconds": 16.5,
+   "details": {
+    "known": 12,
+    "found": 14,
+    "matched": 12,
+    "extra": 2,
+    "x_median": 0.05144327833986606,
+    "x_worst": 0.2771633319598066,
+    "y_median": 0.22486560735811567,
+    "y_worst": 0.6271034193366498,
+    "errbars_known": 12,
+    "errbars_found": 7,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.96579717268394,
+    "errbar_worst": 1.5596842821028878
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 2 of 3 tick labels (12312, 816). Confidence in it is low: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: the y axis is not calibrated - 5 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 4: the y axis is not calibrated - 9 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 5: the y axis is not calibrated - 4 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "The x axis of panels 2, 4 and 5 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 13 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 3: 4 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 5: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-2B-nothing": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "lines",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "18:6: y axis not read; 12:12: y axis not read; 6:18: y axis not read",
+   "score": 0,
+   "of": 3,
+   "seconds": 8.9,
+   "details": {
+    "error": "y axis not read",
+    "found": 2034
+   },
+   "warnings": [
+    "Panel 1: the y axis is not calibrated - 10 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 1: the x-axis scale was read from 5 of 6 tick labels (12, 24, 36, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 2 trace 1: 48% of columns had no trace pixels and were interpolated.",
+    "Panel 2 trace 2: 58% of columns had no trace pixels and were interpolated.",
+    "Panel 2 trace 3: 48% of columns had no trace pixels and were interpolated."
+   ]
+  },
+  "leypunskiy-2B-areas": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "lines",
+   "given": "the plot areas",
+   "options": {
+    "plot_area": [
+     [
+      1529,
+      65,
+      2545,
+      608.5
+     ],
+     [
+      1529,
+      608.5,
+      2545,
+      1153
+     ],
+     [
+      1529,
+      1153,
+      2545,
+      1696
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "18:6: 0.65% (worst 3.2%); 12:12: 0.43% (worst 4.9%); 6:18: y axis not read",
+   "score": 2,
+   "of": 3,
+   "seconds": 8.1,
+   "details": [
+    {
+     "18:6": {
+      "coverage": 0.9705882352941176,
+      "median": 0.6478288627450439,
+      "worst": 3.205265397858658
+     }
+    },
+    {
+     "12:12": {
+      "coverage": 0.9705882352941176,
+      "median": 0.43484576998046975,
+      "worst": 4.939369473684185
+     }
+    },
+    {
+     "error": "y axis not read",
+     "found": 2034
+    }
+   ],
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 2 of 3 tick labels (50, 25). Confidence in it is low: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: the y-axis scale was read from 2 of 3 tick labels (50, 25). Confidence in it is low: check those values against the figure, or give y_min and y_max.",
+    "Panel 3: the y axis is not calibrated - 4 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 3: the x-axis scale was read from 5 of 6 tick labels (12, 24, 36, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 1: its x axis has no labels that could be read, so it was given the x scale of panel 3, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 2: its x axis has no labels that could be read, so it was given the x scale of panel 3, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 2 trace 1: 33% of columns had no trace pixels and were interpolated.",
+    "Panel 3 trace 1: 25% of columns had no trace pixels and were interpolated."
+   ]
+  },
+  "leypunskiy-2B-areas-colour": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "lines",
+   "given": "the plot areas, the line's colour",
+   "options": {
+    "plot_area": [
+     [
+      1529,
+      65,
+      2545,
+      608.5
+     ],
+     [
+      1529,
+      608.5,
+      2545,
+      1153
+     ],
+     [
+      1529,
+      1153,
+      2545,
+      1696
+     ]
+    ],
+    "trace_colours": [
+     "#232022"
+    ]
+   },
+   "held_out": false,
+   "summary": "18:6: 0.63% (worst 1.5%); 12:12: 0.39% (worst 0.8%); 6:18: y axis not read",
+   "score": 2,
+   "of": 3,
+   "seconds": 7.8,
+   "details": [
+    {
+     "18:6": {
+      "coverage": 0.9705882352941176,
+      "median": 0.6297541176469869,
+      "worst": 1.496083725737402
+     }
+    },
+    {
+     "12:12": {
+      "coverage": 0.9705882352941176,
+      "median": 0.39378190253408724,
+      "worst": 0.8375446014322943
+     }
+    },
+    {
+     "error": "y axis not read",
+     "found": 1017
+    }
+   ],
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 2 of 3 tick labels (50, 25). Confidence in it is low: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: the y-axis scale was read from 2 of 3 tick labels (50, 25). Confidence in it is low: check those values against the figure, or give y_min and y_max.",
+    "Panel 3: the y axis is not calibrated - 4 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 3: the x-axis scale was read from 5 of 6 tick labels (12, 24, 36, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 1: its x axis has no labels that could be read, so it was given the x scale of panel 3, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 2: its x axis has no labels that could be read, so it was given the x scale of panel 3, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref."
+   ]
+  },
+  "leypunskiy-2B-points": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "points",
+   "given": "the plot areas, the markers' colour",
+   "options": {
+    "plot_area": [
+     [
+      1529,
+      65,
+      2545,
+      608.5
+     ],
+     [
+      1529,
+      608.5,
+      2545,
+      1153
+     ],
+     [
+      1529,
+      1153,
+      2545,
+      1696
+     ]
+    ],
+    "colours": [
+     "black"
+    ]
+   },
+   "held_out": false,
+   "summary": "0/102 points; y axis not read",
+   "score": 0,
+   "of": 102,
+   "seconds": 8.1,
+   "details": [
+    {
+     "known": 34,
+     "found": 0,
+     "matched": 0
+    },
+    {
+     "known": 34,
+     "found": 0,
+     "matched": 0
+    },
+    {
+     "error": "y axis not read",
+     "found": 0
+    }
+   ],
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 2 of 3 tick labels (50, 25). Confidence in it is low: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: the y-axis scale was read from 2 of 3 tick labels (50, 25). Confidence in it is low: check those values against the figure, or give y_min and y_max.",
+    "Panel 3: the y axis is not calibrated - 4 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 3: the x-axis scale was read from 5 of 6 tick labels (12, 24, 36, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 1: its x axis has no labels that could be read, so it was given the x scale of panel 3, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 2: its x axis has no labels that could be read, so it was given the x scale of panel 3, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 3: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-2C-nothing": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/29 points",
+   "score": 0,
+   "of": 29,
+   "seconds": 9.1,
+   "details": {
+    "known": 29,
+    "found": 0,
+    "matched": 0
+   },
+   "warnings": [
+    "Panel 1: the y axis is not calibrated - 10 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 1: the x-axis scale was read from 5 of 6 tick labels (12, 24, 36, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-2C-colours": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "points",
+   "given": "the colours",
+   "options": {
+    "colours": [
+     "#e81828",
+     "#0898d8",
+     "#08a8e8",
+     "black"
+    ]
+   },
+   "held_out": false,
+   "summary": "0/29 points",
+   "score": 0,
+   "of": 29,
+   "seconds": 11.6,
+   "details": {
+    "known": 29,
+    "found": 0,
+    "matched": 0
+   },
+   "warnings": [
+    "Panel 1: the y axis is not calibrated - 10 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 1: the x-axis scale was read from 5 of 6 tick labels (12, 24, 36, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-2C-colours-size": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "points",
+   "given": "the colours, the marker size",
+   "options": {
+    "colours": [
+     "#e81828",
+     "#0898d8",
+     "#08a8e8",
+     "black"
+    ],
+    "marker_size": 15
+   },
+   "held_out": false,
+   "summary": "29/29 points (+32 extra), y error 0.08% (worst 0.64%), error bars 17/29 (0.37%)",
+   "score": 29,
+   "of": 29,
+   "seconds": 9.2,
+   "details": {
+    "known": 29,
+    "found": 61,
+    "matched": 29,
+    "extra": 32,
+    "x_median": 0.053998495124052415,
+    "x_worst": 0.33433904945187054,
+    "y_median": 0.07670065121745395,
+    "y_worst": 0.6419353493175239,
+    "errbars_known": 29,
+    "errbars_found": 17,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.37468872403160686,
+    "errbar_worst": 0.5812649173775151
+   },
+   "warnings": [
+    "Panel 1: the y axis is not calibrated - 10 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 1: the x-axis scale was read from 5 of 6 tick labels (12, 24, 36, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 1: 13 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 2: 20 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "leypunskiy-5A-nothing": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "x axis not read",
+   "score": 0,
+   "of": 9,
+   "seconds": 14.3,
+   "details": {
+    "error": "x axis not read",
+    "found": 0
+   },
+   "warnings": [
+    "The x axis of panel 1 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 3: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-5A-ticks": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "the plot area, two ticks on each axis",
+   "options": {
+    "plot_area": [
+     [
+      224.9,
+      730.0,
+      1192.6,
+      1799.3
+     ]
+    ],
+    "y_ref": [
+     [
+      882.5,
+      12
+     ],
+     [
+      1646.5,
+      -8
+     ]
+    ],
+    "x_ref": [
+     [
+      293.5,
+      36
+     ],
+     [
+      1123.5,
+      60
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "0/9 points",
+   "score": 0,
+   "of": 9,
+   "seconds": 1.2,
+   "details": {
+    "known": 9,
+    "found": 0,
+    "matched": 0
+   },
+   "warnings": [
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-5A-ticks-colour-size": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "the plot area, ticks, the colour, the marker size",
+   "options": {
+    "plot_area": [
+     [
+      224.9,
+      730.0,
+      1192.6,
+      1799.3
+     ]
+    ],
+    "y_ref": [
+     [
+      882.5,
+      12
+     ],
+     [
+      1646.5,
+      -8
+     ]
+    ],
+    "x_ref": [
+     [
+      293.5,
+      36
+     ],
+     [
+      1123.5,
+      60
+     ]
+    ],
+    "colours": [
+     "black"
+    ],
+    "marker_size": 15
+   },
+   "held_out": false,
+   "summary": "9/9 points (+9 extra), y error 0.03% (worst 0.15%), error bars 0/9",
+   "score": 9,
+   "of": 9,
+   "seconds": 1.2,
+   "details": {
+    "known": 9,
+    "found": 18,
+    "matched": 9,
+    "extra": 9,
+    "x_median": 0.030120481927786713,
+    "x_worst": 0.09036144578322691,
+    "y_median": 0.03385871145992342,
+    "y_worst": 0.1458242437461954,
+    "errbars_known": 9,
+    "errbars_found": 0,
+    "errbars_unexpected": 0
+   },
+   "warnings": [
+    "Panel 1: 6 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "leypunskiy-5B-nothing": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/10 points",
+   "score": 0,
+   "of": 10,
+   "seconds": 14.3,
+   "details": {
+    "known": 10,
+    "found": 0,
+    "matched": 0
+   },
+   "warnings": [
+    "The x axis of panel 1 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 3: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-5B-colour-size": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "the colour, the marker size",
+   "options": {
+    "colours": [
+     "#383898"
+    ],
+    "marker_size": 15
+   },
+   "held_out": false,
+   "summary": "10/10 points (+10 extra), y error 0.03% (worst 0.11%), error bars 0/10",
+   "score": 10,
+   "of": 10,
+   "seconds": 13.4,
+   "details": {
+    "known": 10,
+    "found": 20,
+    "matched": 10,
+    "extra": 10,
+    "x_median": 0.023839300099637306,
+    "x_worst": 0.062344320279872356,
+    "y_median": 0.028022708822388748,
+    "y_worst": 0.10710761189612894,
+    "errbars_known": 10,
+    "errbars_found": 0,
+    "errbars_unexpected": 0
+   },
+   "warnings": [
+    "The x axis of panel 1 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 3: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-5C-nothing": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/19 points",
+   "score": 0,
+   "of": 19,
+   "seconds": 14.3,
+   "details": {
+    "known": 19,
+    "found": 0,
+    "matched": 0
+   },
+   "warnings": [
+    "The x axis of panel 1 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 3: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-5C-colours": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "the colours",
+   "options": {
+    "colours": [
+     "#e81828",
+     "#d8d828",
+     "#08a888",
+     "#0868b8",
+     "#c81888"
+    ]
+   },
+   "held_out": false,
+   "summary": "0/19 points",
+   "score": 0,
+   "of": 19,
+   "seconds": 14.0,
+   "details": {
+    "known": 19,
+    "found": 0,
+    "matched": 0
+   },
+   "warnings": [
+    "The x axis of panel 1 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 3: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-5C-colours-size": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "the colours, the marker size",
+   "options": {
+    "colours": [
+     "#e81828",
+     "#d8d828",
+     "#08a888",
+     "#0868b8",
+     "#c81888"
+    ],
+    "marker_size": 15
+   },
+   "held_out": false,
+   "summary": "17/19 points (+18 extra), y error 0.03% (worst 0.26%), error bars 12/17 (0.65%)",
+   "score": 17,
+   "of": 19,
+   "seconds": 12.9,
+   "details": {
+    "known": 19,
+    "found": 35,
+    "matched": 17,
+    "extra": 18,
+    "x_median": 0.02964761933796911,
+    "x_worst": 0.25380991396872776,
+    "y_median": 0.033469824256837644,
+    "y_worst": 0.2596561243719764,
+    "errbars_known": 17,
+    "errbars_found": 12,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.6465517905633806,
+    "errbar_worst": 17.921197185472
+   },
+   "warnings": [
+    "The x axis of panel 1 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 3: 4 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "foley-2C-25C-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/6 bars within 1% (1 found), error 84.28% (worst 84.28%), error bars 0/6",
+   "score": 0,
+   "of": 6,
+   "seconds": 19.7,
+   "details": {
+    "known": 6,
+    "found": 1,
+    "pairs": [
+     [
+      "PsiRNAiGD/+ (25\u00b0C)",
+      24.20508474576271,
+      22.519578560413247
+     ]
+    ],
+    "within": 0,
+    "median": 84.2753092674732,
+    "worst": 84.2753092674732,
+    "errbars_known": 6,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "Panel 7: the y-axis scale was read from 5 of 5 tick labels (27, 26, 25, 24, 23). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 10: the y-axis scale was read from 5 of 6 tick labels (100, 80, 60, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 6: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 7: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 8: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 9: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 10: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 11: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 12: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found."
+   ]
+  },
+  "foley-2C-30C-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/5 bars within 1% (1 found), error 56.46% (worst 56.46%), error bars 0/5",
+   "score": 0,
+   "of": 5,
+   "seconds": 19.7,
+   "details": {
+    "known": 5,
+    "found": 1,
+    "pairs": [
+     [
+      "TD2/+ (30\u00b0C)",
+      23.65294117647059,
+      22.523707842586003
+     ]
+    ],
+    "within": 0,
+    "median": 56.46166669422943,
+    "worst": 56.46166669422943,
+    "errbars_known": 5,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "Panel 7: the y-axis scale was read from 5 of 5 tick labels (27, 26, 25, 24, 23). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 10: the y-axis scale was read from 5 of 6 tick labels (100, 80, 60, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 6: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 7: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 8: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 9: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 10: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 11: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 12: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found."
+   ]
+  },
+  "foley-2D-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/3 bars within 1% (1 found), error 116.21% (worst 116.21%), error bars 0/3",
+   "score": 0,
+   "of": 3,
+   "seconds": 19.7,
+   "details": {
+    "known": 3,
+    "found": 1,
+    "pairs": [
+     [
+      "PD2/+",
+      24.8515625,
+      22.527299609862062
+     ]
+    ],
+    "within": 0,
+    "median": 116.21314450689688,
+    "worst": 116.21314450689688,
+    "errbars_known": 3,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "Panel 7: the y-axis scale was read from 5 of 5 tick labels (27, 26, 25, 24, 23). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 10: the y-axis scale was read from 5 of 6 tick labels (100, 80, 60, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 6: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 7: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 8: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 9: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 10: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 11: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 12: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found."
+   ]
+  },
+  "foley-2E-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/3 bars within 1% (0 found), error bars 0/3",
+   "score": 0,
+   "of": 3,
+   "seconds": 19.7,
+   "details": {
+    "known": 3,
+    "found": 0,
+    "pairs": [],
+    "within": 0,
+    "errbars_known": 3,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "Panel 7: the y-axis scale was read from 5 of 5 tick labels (27, 26, 25, 24, 23). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 10: the y-axis scale was read from 5 of 6 tick labels (100, 80, 60, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 6: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 7: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 8: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 9: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 10: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 11: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 12: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found."
+   ]
+  },
+  "foley-2F-period-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/3 bars within 1% (0 found), error bars 0/3",
+   "score": 0,
+   "of": 3,
+   "seconds": 19.7,
+   "details": {
+    "known": 3,
+    "found": 0,
+    "pairs": [],
+    "within": 0,
+    "errbars_known": 3,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "Panel 7: the y-axis scale was read from 5 of 5 tick labels (27, 26, 25, 24, 23). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 10: the y-axis scale was read from 5 of 6 tick labels (100, 80, 60, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 6: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 7: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 8: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 9: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 10: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 11: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 12: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found."
+   ]
+  },
+  "foley-2F-rhythmic-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/3 bars within 1% (0 found)",
+   "score": 0,
+   "of": 3,
+   "seconds": 19.7,
+   "details": {
+    "known": 3,
+    "found": 0,
+    "pairs": [],
+    "within": 0,
+    "errbars_known": 0,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "Panel 7: the y-axis scale was read from 5 of 5 tick labels (27, 26, 25, 24, 23). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 10: the y-axis scale was read from 5 of 6 tick labels (100, 80, 60, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 6: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 7: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 8: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 9: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 10: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 11: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 12: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found."
+   ]
+  },
+  "foley-2G-period-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/3 bars within 1% (0 found), error bars 0/3",
+   "score": 0,
+   "of": 3,
+   "seconds": 19.7,
+   "details": {
+    "known": 3,
+    "found": 0,
+    "pairs": [],
+    "within": 0,
+    "errbars_known": 3,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "Panel 7: the y-axis scale was read from 5 of 5 tick labels (27, 26, 25, 24, 23). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 10: the y-axis scale was read from 5 of 6 tick labels (100, 80, 60, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 6: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 7: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 8: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 9: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 10: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 11: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 12: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found."
+   ]
+  },
+  "foley-2G-rhythmic-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/3 bars within 1% (0 found)",
+   "score": 0,
+   "of": 3,
+   "seconds": 19.7,
+   "details": {
+    "known": 3,
+    "found": 0,
+    "pairs": [],
+    "within": 0,
+    "errbars_known": 0,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "Panel 7: the y-axis scale was read from 5 of 5 tick labels (27, 26, 25, 24, 23). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 10: the y-axis scale was read from 5 of 6 tick labels (100, 80, 60, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 6: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 7: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 8: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 9: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 10: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 11: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 12: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found."
+   ]
+  },
+  "foley-2H-period-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/3 bars within 1% (0 found), error bars 0/3",
+   "score": 0,
+   "of": 3,
+   "seconds": 19.7,
+   "details": {
+    "known": 3,
+    "found": 0,
+    "pairs": [],
+    "within": 0,
+    "errbars_known": 3,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "Panel 7: the y-axis scale was read from 5 of 5 tick labels (27, 26, 25, 24, 23). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 10: the y-axis scale was read from 5 of 6 tick labels (100, 80, 60, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 6: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 7: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 8: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 9: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 10: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 11: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 12: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found."
+   ]
+  },
+  "foley-2H-rhythmic-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "0/3 bars within 1% (0 found)",
+   "score": 0,
+   "of": 3,
+   "seconds": 19.7,
+   "details": {
+    "known": 3,
+    "found": 0,
+    "pairs": [],
+    "within": 0,
+    "errbars_known": 0,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "Panel 7: the y-axis scale was read from 5 of 5 tick labels (27, 26, 25, 24, 23). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 10: the y-axis scale was read from 5 of 6 tick labels (100, 80, 60, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of the bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 6: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 7: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 8: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 9: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 10: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 11: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found.",
+    "Panel 12: no bars were found. Give colours if the bars are an unusual colour, or plot_area if the plot area was not found."
+   ]
+  },
+  "foley-2C-25C-area": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "the plot area",
+   "options": {
+    "plot_area": [
+     [
+      159,
+      2543,
+      1218,
+      3137
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "y axis not read",
+   "score": 0,
+   "of": 6,
+   "seconds": 9.5,
+   "details": {
+    "error": "y axis not read",
+    "found": 1
+   },
+   "warnings": [
+    "Panel 1: the y axis is not calibrated - 13 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref."
+   ]
+  },
+  "pearl-reed-3-curve-nothing": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "lines",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "logistic: x and y axes not read",
+   "score": 0,
+   "of": 1,
+   "seconds": 10.9,
+   "details": {
+    "error": "x and y axes not read",
+    "found": 972
+   },
+   "warnings": [
+    "Panel 1: the y axis is not calibrated - 6 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref."
+   ]
+  },
+  "pearl-reed-3-dots-nothing": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "x and y axes not read",
+   "score": 0,
+   "of": 13,
+   "seconds": 9.8,
+   "details": {
+    "error": "x and y axes not read",
+    "found": 0
+   },
+   "warnings": [
+    "Panel 1: the y axis is not calibrated - 6 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "pearl-reed-3-curve-ticks": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "lines",
+   "given": "two ticks on each axis",
+   "options": {
+    "y_ref": [
+     [
+      845.18,
+      0
+     ],
+     [
+      54.73,
+      100000000
+     ]
+    ],
+    "x_ref": [
+     [
+      263.04,
+      1790
+     ],
+     [
+      1095.94,
+      1910
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "logistic: 0.38% (worst 66.9%)",
+   "score": 1,
+   "of": 1,
+   "seconds": 0.8,
+   "details": {
+    "logistic": {
+     "coverage": 1.0,
+     "median": 0.38488260267592966,
+     "worst": 66.85209161472791
+    }
+   },
+   "warnings": []
+  },
+  "pearl-reed-3-curve-ticks-exclude": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "lines",
+   "given": "ticks, the equation excluded",
+   "options": {
+    "y_ref": [
+     [
+      845.18,
+      0
+     ],
+     [
+      54.73,
+      100000000
+     ]
+    ],
+    "x_ref": [
+     [
+      263.04,
+      1790
+     ],
+     [
+      1095.94,
+      1910
+     ]
+    ],
+    "exclude": [
+     [
+      280,
+      230,
+      620,
+      320
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "logistic: 0.17% (worst 40.0%)",
+   "score": 1,
+   "of": 1,
+   "seconds": 1.0,
+   "details": {
+    "logistic": {
+     "coverage": 1.0,
+     "median": 0.1671262878095964,
+     "worst": 40.0480832453956
+    }
+   },
+   "warnings": []
+  },
+  "pearl-reed-3-dots-ticks": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "points",
+   "given": "two ticks on each axis",
+   "options": {
+    "y_ref": [
+     [
+      845.18,
+      0
+     ],
+     [
+      54.73,
+      100000000
+     ]
+    ],
+    "x_ref": [
+     [
+      263.04,
+      1790
+     ],
+     [
+      1095.94,
+      1910
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "0/13 points",
+   "score": 0,
+   "of": 13,
+   "seconds": 0.7,
+   "details": {
+    "known": 13,
+    "found": 0,
+    "matched": 0
+   },
+   "warnings": [
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "pearl-reed-3-dots-ticks-colour": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "points",
+   "given": "ticks, the colour",
+   "options": {
+    "y_ref": [
+     [
+      845.18,
+      0
+     ],
+     [
+      54.73,
+      100000000
+     ]
+    ],
+    "x_ref": [
+     [
+      263.04,
+      1790
+     ],
+     [
+      1095.94,
+      1910
+     ]
+    ],
+    "colours": [
+     "#404040"
+    ]
+   },
+   "held_out": false,
+   "summary": "0/13 points",
+   "score": 0,
+   "of": 13,
+   "seconds": 0.6,
+   "details": {
+    "known": 13,
+    "found": 0,
+    "matched": 0
+   },
+   "warnings": [
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "andreani-1B-area": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "points",
+   "given": "the plot area",
+   "options": {
+    "plot_area": [
+     [
+      1143,
+      160,
+      1853,
+      521
+     ]
+    ]
+   },
+   "held_out": true,
+   "summary": "x axis not read",
+   "score": 0,
+   "of": 37,
+   "seconds": 2.8,
+   "details": {
+    "error": "x axis not read",
+    "found": 3
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 5 tick labels (40, 30, 20, 10, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref."
+   ]
+  },
+  "andreani-1B-area-colours": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "points",
+   "given": "the plot area, the colours",
+   "options": {
+    "plot_area": [
+     [
+      1143,
+      160,
+      1853,
+      521
+     ]
+    ],
+    "colours": [
+     "#236333",
+     "#f26930",
+     "#542484"
+    ]
+   },
+   "held_out": true,
+   "summary": "x axis not read",
+   "score": 0,
+   "of": 37,
+   "seconds": 2.6,
+   "details": {
+    "error": "x axis not read",
+    "found": 6
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 5 tick labels (40, 30, 20, 10, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref."
+   ]
+  },
+  "andreani-1B-area-ticks": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "points",
+   "given": "the plot area, two ticks on the x axis",
+   "options": {
+    "plot_area": [
+     [
+      1143,
+      160,
+      1853,
+      521
+     ]
+    ],
+    "x_ref": [
+     [
+      1165,
+      0.0
+     ],
+     [
+      1829,
+      11.5
+     ]
+    ]
+   },
+   "held_out": true,
+   "summary": "0/37 points (+3 extra)",
+   "score": 0,
+   "of": 37,
+   "seconds": 2.6,
+   "details": {
+    "known": 37,
+    "found": 3,
+    "matched": 0,
+    "extra": 3
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 5 tick labels (40, 30, 20, 10, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max."
+   ]
+  },
+  "andreani-1B-area-ticks-colours": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "points",
+   "given": "the plot area, x ticks, the colours",
+   "options": {
+    "plot_area": [
+     [
+      1143,
+      160,
+      1853,
+      521
+     ]
+    ],
+    "x_ref": [
+     [
+      1165,
+      0.0
+     ],
+     [
+      1829,
+      11.5
+     ]
+    ],
+    "colours": [
+     "#236333",
+     "#f26930",
+     "#542484"
+    ]
+   },
+   "held_out": true,
+   "summary": "5/37 points (+1 extra), y error 0.04% (worst 0.40%), error bars on 5 points that have none",
+   "score": 5,
+   "of": 37,
+   "seconds": 2.6,
+   "details": {
+    "known": 37,
+    "found": 6,
+    "matched": 5,
+    "extra": 1,
+    "x_median": 0.16331806890943767,
+    "x_worst": 0.2713462545833878,
+    "y_median": 0.0364063342195773,
+    "y_worst": 0.4044692737430289,
+    "errbars_known": 0,
+    "errbars_found": 0,
+    "errbars_unexpected": 5
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 5 tick labels (40, 30, 20, 10, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max."
+   ]
+  },
+  "andreani-1C-nothing": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "lines",
+   "given": "nothing",
+   "options": {},
+   "held_out": true,
+   "summary": "control: 0.60% (worst 2.7%); FD: 4.20% (worst 34.6%)",
+   "score": 1,
+   "of": 2,
+   "seconds": 1.3,
+   "details": {
+    "control": {
+     "coverage": 1.0,
+     "median": 0.6028751638012286,
+     "worst": 2.7231304689990523
+    },
+    "FD": {
+     "coverage": 1.0,
+     "median": 4.198881360104764,
+     "worst": 34.584363562252335
+    }
+   },
+   "warnings": []
+  },
+  "andreani-1E-area": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "bars",
+   "given": "the plot area",
+   "options": {
+    "plot_area": [
+     [
+      946,
+      826,
+      1896,
+      1092
+     ]
+    ]
+   },
+   "held_out": true,
+   "summary": "y axis not read",
+   "score": 0,
+   "of": 24,
+   "seconds": 7.9,
+   "details": {
+    "error": "y axis not read",
+    "found": 24
+   },
+   "warnings": [
+    "Panel 1: the y axis is not calibrated - no tick labels were found beside it. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref."
+   ]
+  },
+  "andreani-1E-area-ticks": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "bars",
+   "given": "the plot area, two ticks",
+   "options": {
+    "plot_area": [
+     [
+      946,
+      826,
+      1896,
+      1092
+     ]
+    ],
+    "y_ref": [
+     [
+      1089,
+      0
+     ],
+     [
+      826.8,
+      200
+     ]
+    ]
+   },
+   "held_out": true,
+   "summary": "24/24 bars within 1%, error 0.19% (worst 0.47%), error bars 0/24",
+   "score": 24,
+   "of": 24,
+   "seconds": 8.2,
+   "details": {
+    "known": 24,
+    "found": 24,
+    "pairs": [
+     [
+      "bar 1",
+      88.93333333333334,
+      88.49828794291659
+     ],
+     [
+      "bar 2",
+      51.03448275862069,
+      50.41001099470782
+     ],
+     [
+      "bar 3",
+      24.6,
+      24.44161212144195
+     ],
+     [
+      "bar 4",
+      118.36666666666666,
+      117.55477009066874
+     ],
+     [
+      "bar 5",
+      85.65217391304348,
+      84.70262051719783
+     ],
+     [
+      "bar 6",
+      43.32142857142857,
+      42.759759293358684
+     ],
+     [
+      "bar 7",
+      41.44827586206897,
+      41.25635538457607
+     ],
+     [
+      "bar 8",
+      85.83333333333333,
+      85.48802332874436
+     ],
+     [
+      "bar 9",
+      56.708333333333336,
+      56.48678009242667
+     ],
+     [
+      "bar 10",
+      37.172413793103445,
+      36.64591983472144
+     ],
+     [
+      "bar 11",
+      134.6,
+      134.29426110309066
+     ],
+     [
+      "bar 12",
+      70.54166666666667,
+      70.19319978040346
+     ],
+     [
+      "bar 13",
+      44.22222222222222,
+      44.28343841994979
+     ],
+     [
+      "bar 14",
+      85.48148148148148,
+      84.70695024224074
+     ],
+     [
+      "bar 15",
+      77.6923076923077,
+      77.09587556910242
+     ],
+     [
+      "bar 16",
+      52.25,
+      51.96079745900033
+     ],
+     [
+      "bar 17",
+      28.346153846153847,
+      28.296848183638076
+     ],
+     [
+      "bar 18",
+      133.1304347826087,
+      132.78856430228268
+     ],
+     [
+      "bar 19",
+      63.8,
+      63.34277166836466
+     ],
+     [
+      "bar 20",
+      35.95238095238095,
+      35.87858082227865
+     ],
+     [
+      "bar 21",
+      128.0,
+      127.43222304285223
+     ],
+     [
+      "bar 22",
+      79.86666666666666,
+      79.3578310107381
+     ],
+     [
+      "bar 23",
+      34.8,
+      34.37522346967921
+     ],
+     [
+      "bar 24",
+      44.5,
+      44.27277705398387
+     ]
+    ],
+    "within": 24,
+    "median": 0.1933108541459987,
+    "worst": 0.47477669792282734,
+    "errbars_known": 24,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref."
+   ]
+  },
+  "andreani-3A-nothing": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": true,
+   "summary": "0/165 dots",
+   "score": 0,
+   "of": 165,
+   "seconds": 2.6,
+   "details": {
+    "known": 165,
+    "found": 0,
+    "matched": 0
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: 31 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 19 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "andreani-3B-nothing": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": true,
+   "summary": "54/108 dots (+4 extra), y error 0.12% (worst 1.18%)",
+   "score": 54,
+   "of": 108,
+   "seconds": 2.6,
+   "details": {
+    "known": 108,
+    "found": 58,
+    "matched": 54,
+    "extra": 4,
+    "columns": {
+     "sleep lost, first time": "7 of 18 (found 11)",
+     "sleep lost, second time": "5 of 18 (found 5)",
+     "baseline sleep, first time": "9 of 18 (found 9)",
+     "baseline sleep, second time": "10 of 18 (found 10)",
+     "sleep gain, first time": "13 of 18 (found 13)",
+     "sleep gain, second time": "10 of 18 (found 10)"
+    },
+    "y_median": 0.11943764132823276,
+    "y_worst": 1.176403457991654
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: 31 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 19 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "andreani-3C-nothing": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": true,
+   "summary": "25/180 dots (+5 extra), y error 0.47% (worst 2.42%)",
+   "score": 25,
+   "of": 180,
+   "seconds": 2.6,
+   "details": {
+    "known": 180,
+    "found": 30,
+    "matched": 25,
+    "extra": 5,
+    "columns": {
+     "sleep lost, first time": "0 of 25 (found 1)",
+     "sleep lost, second time": "1 of 35 (found 1)",
+     "baseline sleep, first time": "5 of 25 (found 6)",
+     "baseline sleep, second time": "1 of 35 (found 1)",
+     "sleep gain, first time": "9 of 25 (found 12)",
+     "sleep gain, second time": "9 of 35 (found 9)"
+    },
+    "y_median": 0.46566893813457,
+    "y_worst": 2.4167676008541434
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: 31 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 19 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "andreani-3D-nothing": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": true,
+   "summary": "0/87 dots",
+   "score": 0,
+   "of": 87,
+   "seconds": 2.6,
+   "details": {
+    "known": 87,
+    "found": 0,
+    "matched": 0
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: 31 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 19 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "andreani-3A-colours": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "the colours",
+   "options": {
+    "colours": [
+     "#636dac",
+     "#ec4739"
+    ]
+   },
+   "held_out": true,
+   "summary": "0/165 dots",
+   "score": 0,
+   "of": 165,
+   "seconds": 2.5,
+   "details": {
+    "known": 165,
+    "found": 0,
+    "matched": 0
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: 30 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 15 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: 31 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "andreani-3B-colours": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "the colours",
+   "options": {
+    "colours": [
+     "#636dac",
+     "#ec4739"
+    ]
+   },
+   "held_out": true,
+   "summary": "54/108 dots (+3 extra), y error 0.12% (worst 2.36%)",
+   "score": 54,
+   "of": 108,
+   "seconds": 2.5,
+   "details": {
+    "known": 108,
+    "found": 57,
+    "matched": 54,
+    "extra": 3,
+    "columns": {
+     "sleep lost, first time": "8 of 18 (found 11)",
+     "sleep lost, second time": "5 of 18 (found 5)",
+     "baseline sleep, first time": "9 of 18 (found 9)",
+     "baseline sleep, second time": "9 of 18 (found 9)",
+     "sleep gain, first time": "13 of 18 (found 13)",
+     "sleep gain, second time": "10 of 18 (found 10)"
+    },
+    "y_median": 0.12041125259182905,
+    "y_worst": 2.3568920319187328
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: 30 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 15 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: 31 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "andreani-3C-colours": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "the colours",
+   "options": {
+    "colours": [
+     "#636dac",
+     "#ec4739"
+    ]
+   },
+   "held_out": true,
+   "summary": "27/180 dots (+1 extra), y error 0.18% (worst 0.80%)",
+   "score": 27,
+   "of": 180,
+   "seconds": 2.5,
+   "details": {
+    "known": 180,
+    "found": 28,
+    "matched": 27,
+    "extra": 1,
+    "columns": {
+     "sleep lost, first time": "0 of 25 (found 1)",
+     "sleep lost, second time": "6 of 35 (found 6)",
+     "baseline sleep, first time": "1 of 25 (found 1)",
+     "baseline sleep, second time": "11 of 35 (found 11)",
+     "sleep gain, first time": "1 of 25 (found 1)",
+     "sleep gain, second time": "8 of 35 (found 8)"
+    },
+    "y_median": 0.1789450337115568,
+    "y_worst": 0.8035028637953303
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: 30 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 15 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: 31 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "andreani-3D-colours": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "the colours",
+   "options": {
+    "colours": [
+     "#636dac",
+     "#ec4739"
+    ]
+   },
+   "held_out": true,
+   "summary": "25/87 dots (+21 extra), y error 0.98% (worst 2.94%)",
+   "score": 25,
+   "of": 87,
+   "seconds": 2.5,
+   "details": {
+    "known": 87,
+    "found": 46,
+    "matched": 25,
+    "extra": 21,
+    "columns": {
+     "sleep lost, first time": "0 of 15 (found 1)",
+     "sleep lost, second time": "8 of 14 (found 15)",
+     "baseline sleep, first time": "2 of 15 (found 2)",
+     "baseline sleep, second time": "11 of 14 (found 15)",
+     "sleep gain, first time": "1 of 15 (found 1)",
+     "sleep gain, second time": "3 of 14 (found 12)"
+    },
+    "y_median": 0.9782301763625583,
+    "y_worst": 2.943819487406188
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: 30 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 15 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: 31 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  }
+ }
+}

@@ -5,3 +5,5 @@ recursive-include tests *.py *.csv
 recursive-include examples *.py *.md *.jpg *.ipynb
 prune examples/output
 include CHANGELOG.md RELEASING.md
+# The published-figure test set (validation/published-figures) is run from the repository, not shipped.
+prune validation

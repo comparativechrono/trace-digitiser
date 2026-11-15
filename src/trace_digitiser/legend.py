@@ -129,6 +129,13 @@ def find_text_rows(
         # glyphs are of a size; the marks of a dotted or dashed line all alike, evenly spaced, and flat or tiny
         if all(g[3] <= 0.45 * g[2] for g in gs):
             continue  # dashes
+        # and they stand on a line: most end at one baseline (bits of a trace, or of error bars, do not)
+        bottoms = np.array([g[1] + g[3] for g in gs], dtype=float)
+        tops = np.array([g[1] for g in gs], dtype=float)
+        tol = max(1.5, 0.12 * height)
+        on_base = np.abs(bottoms - np.median(bottoms)) <= tol
+        if on_base.mean() < 0.75 or (len(gs) == 2 and not (np.abs(tops - np.median(tops)) <= tol).all()):
+            continue
         # take in what is left of the row on its line: a subscript, a sign, a letter of another height
         while True:
             took = False

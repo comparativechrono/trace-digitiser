@@ -1,0 +1,59 @@
+{
+ "id": "cd157-journal-copy",
+ "image": "../figures/cd157-journal-copy.jpg",
+ "source": "https://www.frontiersin.org/files/Articles/86257/fnbeh-08-00133-HTML/image_m/fnbeh-08-00133-g004.jpg (the journal's copy, 397 x 376 px, the image the submission digitised; also trace-digitiser's examples/lopatina2014_fig4.jpg)",
+ "reader": "lines",
+ "notes": "Lopatina et al. 2014 Fig 4 again, from the smaller copy the submission used, read in the same way as PMC4001052-fig4 (the PMC copy), to see how much the image's size changes the CD157 results. Not one of the validation cases.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 0,
+  "light_dark": "LD 12:12, night first",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "A CD157+/+",
+   "plot_area": [
+    40.8,
+    22.7,
+    388.0,
+    159.3
+   ],
+   "x_ref": [
+    [
+     40.8,
+     0
+    ],
+    [
+     388.0,
+     168
+    ]
+   ],
+   "series": {
+    "CD157+/+": "#6d9bd6"
+   }
+  },
+  {
+   "name": "B CD157-/-",
+   "plot_area": [
+    40.8,
+    218.4,
+    388.0,
+    354.7
+   ],
+   "x_ref": [
+    [
+     40.8,
+     0
+    ],
+    [
+     388.0,
+     168
+    ]
+   ],
+   "series": {
+    "CD157-/-": "#da9e9e"
+   }
+  }
+ ]
+}

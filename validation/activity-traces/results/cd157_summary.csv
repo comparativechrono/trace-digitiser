@@ -1,0 +1,7 @@
+copy,reading,columns_left_out,acrophase_wt_h,acrophase_ko_h,acrophase_ko_minus_wt_h,daily_diff_min_h,daily_diff_max_h,days_ko_earlier,dark_share_wt,dark_share_ko,days_ko_dark_share_higher,mean_ratio_ko_wt,amplitude_ratio_ko_wt,M10_ratio_ko_wt,L5_ratio_ko_wt,RA_wt,RA_ko,r2_wt,r2_ko
+PMC copy (630 x 597 px),primary,5,11.81,5.554,-6.257,-7.397,-4.974,7,0.4887,0.6372,7,0.3842,0.4718,0.3943,0.3507,0.3169,0.3685,0.4473,0.49
+PMC copy (630 x 597 px),as read,0,11.81,4.889,-6.921,-10.79,-5.217,7,0.4887,0.6297,7,0.4018,0.4428,0.4111,0.3835,0.3169,0.3478,0.4473,0.2634
+PMC copy (630 x 597 px),half-hour grid,5,12.01,5.604,-6.403,-7.066,-5.229,7,0.495,0.6544,7,0.3836,0.4664,0.3955,0.3336,0.3315,0.405,0.4721,0.4848
+journal copy (397 x 376 px),primary,1,11.88,5.5,-6.379,-7.372,-4.995,7,0.4865,0.6546,7,0.3533,0.4741,0.3729,0.2924,0.3178,0.4224,0.4757,0.4836
+journal copy (397 x 376 px),as read,0,11.88,5.5,-6.379,-7.372,-4.995,7,0.4865,0.6546,7,0.3533,0.4741,0.3729,0.2924,0.3178,0.4224,0.4757,0.4836
+journal copy (397 x 376 px),half-hour grid,1,11.8,5.708,-6.091,-6.843,-4.806,7,0.501,0.6646,7,0.3511,0.4804,0.3842,0.2894,0.329,0.4489,0.4407,0.4833

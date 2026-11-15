@@ -105,6 +105,15 @@ def aligned(g, xs, ytrue, half, max_lag=2.0, step=0.05):
     return best
 
 
+def grid(g, tm, span=None):
+    """The times at which a series without data is read: every bin_h hours (from bin_offset_h) across span, or
+    across the trace as read."""
+    lo, hi = (span if span else (g["x"].min(), g["x"].max()))
+    b = tm["bin_h"]
+    off = tm.get("bin_offset_h", 0.0)
+    return np.arange(np.ceil((lo - off) / b) * b + off, hi + 1e-9, b)
+
+
 def circ_diff(a, b, per=24.0):
     return float((a - b + per / 2) % per - per / 2)
 
@@ -142,10 +151,7 @@ def main(cases_path, val_dir, out_dir):
                 tt = truth[(truth.panel == panel) & (truth.series == series)].sort_values("x")
                 xs, ytrue = tt["x"].to_numpy(float), tt["y"].to_numpy(float)
             else:
-                lo, hi = (span if span else (g["x"].min(), g["x"].max()))
-                b = tm["bin_h"]
-                off = tm.get("bin_offset_h", 0.0)
-                xs = np.arange(np.ceil((lo - off) / b) * b + off, hi + 1e-9, b)
+                xs = grid(g, tm, span)
                 ytrue = None
             ydig = sample(g, xs, half) if len(g) > 1 else np.full(len(xs), np.nan)
             for i, xv in enumerate(xs):

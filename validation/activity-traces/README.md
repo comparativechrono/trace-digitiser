@@ -61,6 +61,7 @@ python validation/activity-traces/run.py                  # read every figure ag
 python validation/activity-traces/run.py --keep-readings  # analyse the readings already in digitised/
 python validation/activity-traces/run.py --overlays DIR   # also keep the package's overlay of each figure
 python validation/activity-traces/tables.py               # the tables below, from results/
+python validation/activity-traces/cd157.py                # the CD157 figure, from both copies (after run.py)
 ```
 
 | File | What it holds |
@@ -77,6 +78,7 @@ python validation/activity-traces/tables.py               # the tables below, fr
 | `claims.json`, `claims.py` | the statements in the papers about their traces, and how each is checked |
 | `summarise.py`, `tables.py`, `summary_figure.py` | the agreement tables, the tables below and the figure above |
 | `plot_case.py` | one figure's traces as read drawn over the authors' series, for looking at |
+| `cd157.py` → `results/cd157*` | the CD157 figure read from both copies and analysed ([below](#the-cd157-figure)) |
 | `run.py` | all of the above, in order |
 | `search/` | the search and screening that found the papers |
 
@@ -357,6 +359,38 @@ The two statements the traces do not support in the papers without data are in L
 submission analysed: that the knockout mice's activity was about 40% of the wild type's by night and by day. Read
 from the figure it is 40% over the whole week, as the paper says, but 52% by night and 29% by day.
 
+## The CD157 figure
+
+`cd157.py` reads the figure the submission analysed, Lopatina et al. 2014, Fig 4, from both copies: PMC's
+(630 × 597 px, the validation case above) and the journal's smaller one (397 × 376 px, the copy the submission
+digitised). Each genotype's trace is read as hourly values from the first lights-off (20:45, by the legend; the
+figure's labels begin with night 1) and analysed as every series above is, over the whole week and day by day.
+
+The knockout's trace is pale pink, within the reader's colour tolerance of the plot's grey frame and gridlines, and
+in five columns of PMC's copy and one of the journal's the reader took the frame or a gridline for the trace; four of
+the hourly values read from PMC's copy come from these columns, and none from the journal's. These columns are left
+out: a column is left out when the pixel at the value read is grey or white rather than the trace's colour
+(`results/cd157_misread.csv`). The table gives the results with them left out (primary), with them kept as the
+validation set reads them (as read), and with the hourly values taken on the half hour instead.
+
+| Copy | Reading | Columns left out | Acrophase, −/− minus +/+ | Each day | Dark share, +/+ and −/− | Mean, −/− ÷ +/+ | Amplitude, −/− ÷ +/+ |
+|---|---|---|---|---|---|---|---|
+| PMC copy (630 × 597 px) | primary | 5 | −6.3 h | −7.4 to −5.0 h | 0.49, 0.64 | 0.38 | 0.47 |
+| PMC copy (630 × 597 px) | as read | 0 | −6.9 h | −10.8 to −5.2 h | 0.49, 0.63 | 0.40 | 0.44 |
+| PMC copy (630 × 597 px) | half-hour grid | 5 | −6.4 h | −7.1 to −5.2 h | 0.50, 0.65 | 0.38 | 0.47 |
+| journal copy (397 × 376 px) | primary | 1 | −6.4 h | −7.4 to −5.0 h | 0.49, 0.65 | 0.35 | 0.47 |
+| journal copy (397 × 376 px) | as read | 0 | −6.4 h | −7.4 to −5.0 h | 0.49, 0.65 | 0.35 | 0.47 |
+| journal copy (397 × 376 px) | half-hour grid | 1 | −6.1 h | −6.8 to −4.8 h | 0.50, 0.66 | 0.35 | 0.48 |
+
+Whichever copy and reading, the knockout's 24-h acrophase is 6.1 to 6.9 h earlier than the wild type's, and earlier
+on each of the 7 days; its share of activity in the dark is 0.14 to 0.17 higher, and higher on each day; and its
+mean activity is 35 to 40% of the wild type's, close to the paper's 40%. These differences are several times the
+errors measured above for the papers with data, where the acrophase was within 1 h and the dark share within 0.05
+for 27 of 29 series. The phase of each genotype relative to lights-off rests on the record's starting at lights-off,
+as the figure's labels say; the difference between the genotypes does not. The figure plots the mean of 8 mice per
+genotype, so this describes two mean traces: it cannot say how much the mice within each group differ, and it is a
+reason to look again with the animals' own records, not a test of a difference between the genotypes.
+
 ## What this set does not show
 
 * **One careful reader.** The settings for each figure were chosen from the figure and the package's overlay, as a
@@ -421,7 +455,7 @@ paraphrased in `claims.json`.
 | Ashek A et al. (2012) Activation of Thiazide-Sensitive Co-Transport by Angiotensin II in the cyp1a1-Ren2 Hypertensive Rat. *PLoS One* 7:e36311. [10.1371/journal.pone.0036311](https://doi.org/10.1371/journal.pone.0036311) | `PMC3338649-fig1.png` (Fig 1) |  |
 | Ralph AF et al. (2021) Activation of the Sympathetic Nervous System Promotes Blood Pressure Salt-Sensitivity in C57BL6/J Mice. *Hypertension* 77:158–168. [10.1161/HYPERTENSIONAHA.120.16186](https://doi.org/10.1161/HYPERTENSIONAHA.120.16186) | `PMC7720873-fig1.jpg` (Fig 1) |  |
 | Pendergast JS et al. (2009) Robust Food Anticipatory Activity in BMAL1-Deficient Mice. *PLoS One* 4:e4860. [10.1371/journal.pone.0004860](https://doi.org/10.1371/journal.pone.0004860) | `PMC2654093-fig1.png` (Fig 1) |  |
-| Lopatina O et al. (2014) Anxiety- and depression-like behavior in mice lacking the CD157/BST1 gene, a risk factor for Parkinson's disease. *Front Behav Neurosci* 8:133. [10.3389/fnbeh.2014.00133](https://doi.org/10.3389/fnbeh.2014.00133) | `PMC4001052-fig4.jpg` (Fig 4) |  |
+| Lopatina O et al. (2014) Anxiety- and depression-like behavior in mice lacking the CD157/BST1 gene, a risk factor for Parkinson's disease. *Front Behav Neurosci* 8:133. [10.3389/fnbeh.2014.00133](https://doi.org/10.3389/fnbeh.2014.00133) | `PMC4001052-fig4.jpg` (Fig 4); `cd157-journal-copy.jpg` (Fig 4, the journal's copy) |  |
 | El-Merahbi R et al. (2026) Endothelial ADGRF5(GPR116) governs vascular adaptation required for sustained thermogenic remodeling of brown adipose tissue. *Mol Metab* 107:102346. [10.1016/j.molmet.2026.102346](https://doi.org/10.1016/j.molmet.2026.102346) | `PMC13053757-fig3.jpg` (Fig 3) |  |
 | Chellappa K et al. (2019) Hypothalamic mTORC2 is essential for metabolic health and longevity. *Aging Cell* 18:e13014. [10.1111/acel.13014](https://doi.org/10.1111/acel.13014) | `PMC6718533-fig3.jpg` (Fig 3) |  |
 | Lenihan-Geels G et al. (2024) Skeletal muscle p53-depletion uncovers a mechanism of fuel usage suppression that enables efficient energy conservation. *J Cachexia Sarcopenia Muscle* 15:1772–1784. [10.1002/jcsm.13529](https://doi.org/10.1002/jcsm.13529) | `PMC11446685-fig6.jpg` (Fig 6) |  |

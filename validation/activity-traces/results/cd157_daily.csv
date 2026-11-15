@@ -6,13 +6,13 @@ PMC copy (630 x 597 px),primary,CD157+/+,4,12.8,22.1,84.06,0.4532,24
 PMC copy (630 x 597 px),primary,CD157+/+,5,12.76,17.32,85.36,0.4819,24
 PMC copy (630 x 597 px),primary,CD157+/+,6,11.42,33.76,85.79,0.5071,24
 PMC copy (630 x 597 px),primary,CD157+/+,7,13.34,45.56,87.04,0.4049,24
-PMC copy (630 x 597 px),primary,CD157-/-,1,4.591,24.85,41.03,0.7004,23
-PMC copy (630 x 597 px),primary,CD157-/-,2,5.368,15.68,35.68,0.6523,24
-PMC copy (630 x 597 px),primary,CD157-/-,3,5.684,16.07,33.42,0.6572,24
-PMC copy (630 x 597 px),primary,CD157-/-,4,6.222,13.04,30.47,0.6402,24
-PMC copy (630 x 597 px),primary,CD157-/-,5,5.799,10.7,31.02,0.6121,24
-PMC copy (630 x 597 px),primary,CD157-/-,6,5.802,8.944,30.2,0.5953,24
-PMC copy (630 x 597 px),primary,CD157-/-,7,5.946,8.188,28.53,0.5902,23
+PMC copy (630 x 597 px),primary,CD157-/-,1,4.42,24.8,37.4,0.7167,23
+PMC copy (630 x 597 px),primary,CD157-/-,2,5.127,14.94,31.41,0.6643,24
+PMC copy (630 x 597 px),primary,CD157-/-,3,5.524,15.33,28.96,0.6717,24
+PMC copy (630 x 597 px),primary,CD157-/-,4,6.186,11.78,25.87,0.6492,24
+PMC copy (630 x 597 px),primary,CD157-/-,5,5.705,9.528,26.46,0.6167,24
+PMC copy (630 x 597 px),primary,CD157-/-,6,5.795,7.766,25.85,0.5966,24
+PMC copy (630 x 597 px),primary,CD157-/-,7,6.062,7.374,24.19,0.5963,24
 PMC copy (630 x 597 px),as read,CD157+/+,1,9.866,36.25,89.82,0.5514,24
 PMC copy (630 x 597 px),as read,CD157+/+,2,11.76,38.69,79.16,0.4986,24
 PMC copy (630 x 597 px),as read,CD157+/+,3,10.66,20.45,86.6,0.5218,24
@@ -34,35 +34,35 @@ PMC copy (630 x 597 px),half-hour grid,CD157+/+,4,12.9,21.59,88.36,0.4635,24
 PMC copy (630 x 597 px),half-hour grid,CD157+/+,5,13.2,24.29,87.77,0.4746,24
 PMC copy (630 x 597 px),half-hour grid,CD157+/+,6,11.74,32.52,86.64,0.5036,24
 PMC copy (630 x 597 px),half-hour grid,CD157+/+,7,12.65,45.95,87.94,0.4572,24
-PMC copy (630 x 597 px),half-hour grid,CD157-/-,1,4.83,24.84,41.37,0.713,24
-PMC copy (630 x 597 px),half-hour grid,CD157-/-,2,5.226,16.47,35.96,0.663,24
-PMC copy (630 x 597 px),half-hour grid,CD157-/-,3,5.94,14.86,31.83,0.665,24
-PMC copy (630 x 597 px),half-hour grid,CD157-/-,4,6.127,13.1,32.91,0.6401,24
-PMC copy (630 x 597 px),half-hour grid,CD157-/-,5,6.437,11.25,30.47,0.635,24
-PMC copy (630 x 597 px),half-hour grid,CD157-/-,6,5.63,11.07,30.31,0.6321,24
-PMC copy (630 x 597 px),half-hour grid,CD157-/-,7,6.036,9.079,28.87,0.6082,24
-journal copy (397 x 376 px),primary,CD157+/+,1,9.664,35.95,86.4,0.5699,23
+PMC copy (630 x 597 px),half-hour grid,CD157-/-,1,5.071,24.12,36.22,0.7266,23
+PMC copy (630 x 597 px),half-hour grid,CD157-/-,2,5.07,15.83,31.89,0.6756,24
+PMC copy (630 x 597 px),half-hour grid,CD157-/-,3,5.8,13.77,27.41,0.6774,24
+PMC copy (630 x 597 px),half-hour grid,CD157-/-,4,5.99,11.68,28.09,0.6462,24
+PMC copy (630 x 597 px),half-hour grid,CD157-/-,5,6.411,10.03,25.87,0.6425,24
+PMC copy (630 x 597 px),half-hour grid,CD157-/-,6,5.411,10.01,26.01,0.6418,24
+PMC copy (630 x 597 px),half-hour grid,CD157-/-,7,5.908,8.18,24.75,0.6156,23
+journal copy (397 x 376 px),primary,CD157+/+,1,9.59,35,86.99,0.5639,24
 journal copy (397 x 376 px),primary,CD157+/+,2,11.71,39.63,78.37,0.4978,24
 journal copy (397 x 376 px),primary,CD157+/+,3,11.53,20.31,85.69,0.5021,24
 journal copy (397 x 376 px),primary,CD157+/+,4,13.21,23.22,84.02,0.4418,24
 journal copy (397 x 376 px),primary,CD157+/+,5,13.72,19.33,85.28,0.466,24
 journal copy (397 x 376 px),primary,CD157+/+,6,11.25,33.05,85.44,0.5079,24
 journal copy (397 x 376 px),primary,CD157+/+,7,12.89,45.26,88.72,0.4281,24
-journal copy (397 x 376 px),primary,CD157-/-,1,4.669,24.98,38.21,0.7176,23
-journal copy (397 x 376 px),primary,CD157-/-,2,5.175,16.99,33.11,0.6752,24
-journal copy (397 x 376 px),primary,CD157-/-,3,5.629,15.36,29.76,0.6679,24
-journal copy (397 x 376 px),primary,CD157-/-,4,6.149,13.09,28.76,0.6531,24
-journal copy (397 x 376 px),primary,CD157-/-,5,6.35,10.61,27.98,0.6247,24
-journal copy (397 x 376 px),primary,CD157-/-,6,5.046,9.45,28.07,0.621,24
-journal copy (397 x 376 px),primary,CD157-/-,7,5.857,7.919,25.17,0.6073,24
-journal copy (397 x 376 px),as read,CD157+/+,1,9.664,35.95,86.4,0.5699,23
+journal copy (397 x 376 px),primary,CD157-/-,1,4.444,24.66,37.14,0.7132,23
+journal copy (397 x 376 px),primary,CD157-/-,2,4.601,16.21,31.82,0.6729,24
+journal copy (397 x 376 px),primary,CD157-/-,3,5.275,14.39,28.46,0.664,24
+journal copy (397 x 376 px),primary,CD157-/-,4,6.234,10.44,26.61,0.6285,24
+journal copy (397 x 376 px),primary,CD157-/-,5,6.45,7.89,25.69,0.602,24
+journal copy (397 x 376 px),primary,CD157-/-,6,4.779,7.043,26.22,0.6047,24
+journal copy (397 x 376 px),primary,CD157-/-,7,5.673,6.005,23.8,0.5847,23
+journal copy (397 x 376 px),as read,CD157+/+,1,9.59,35,86.99,0.5639,24
 journal copy (397 x 376 px),as read,CD157+/+,2,11.71,39.63,78.37,0.4978,24
 journal copy (397 x 376 px),as read,CD157+/+,3,11.53,20.31,85.69,0.5021,24
 journal copy (397 x 376 px),as read,CD157+/+,4,13.21,23.22,84.02,0.4418,24
 journal copy (397 x 376 px),as read,CD157+/+,5,13.72,19.33,85.28,0.466,24
 journal copy (397 x 376 px),as read,CD157+/+,6,11.25,33.05,85.44,0.5079,24
 journal copy (397 x 376 px),as read,CD157+/+,7,12.89,45.26,88.72,0.4281,24
-journal copy (397 x 376 px),as read,CD157-/-,1,4.669,24.98,38.21,0.7176,23
+journal copy (397 x 376 px),as read,CD157-/-,1,3.502,29.59,42.94,0.7464,24
 journal copy (397 x 376 px),as read,CD157-/-,2,5.175,16.99,33.11,0.6752,24
 journal copy (397 x 376 px),as read,CD157-/-,3,5.629,15.36,29.76,0.6679,24
 journal copy (397 x 376 px),as read,CD157-/-,4,6.149,13.09,28.76,0.6531,24
@@ -76,10 +76,10 @@ journal copy (397 x 376 px),half-hour grid,CD157+/+,4,12.07,22.93,85.96,0.4846,2
 journal copy (397 x 376 px),half-hour grid,CD157+/+,5,13.6,22.1,87.72,0.458,24
 journal copy (397 x 376 px),half-hour grid,CD157+/+,6,11.02,34.97,84.96,0.5295,24
 journal copy (397 x 376 px),half-hour grid,CD157+/+,7,13.07,43.5,89.09,0.44,24
-journal copy (397 x 376 px),half-hour grid,CD157-/-,1,5.027,24.87,37.22,0.7246,23
-journal copy (397 x 376 px),half-hour grid,CD157-/-,2,5.355,16.04,33.93,0.6642,24
-journal copy (397 x 376 px),half-hour grid,CD157-/-,3,5.45,15.13,29.06,0.6945,24
-journal copy (397 x 376 px),half-hour grid,CD157-/-,4,5.899,12.71,28.69,0.6571,24
-journal copy (397 x 376 px),half-hour grid,CD157-/-,5,6.761,10.98,27.89,0.6407,24
-journal copy (397 x 376 px),half-hour grid,CD157-/-,6,5.757,11,27.34,0.6452,24
-journal copy (397 x 376 px),half-hour grid,CD157-/-,7,6.636,8.444,26.2,0.6079,24
+journal copy (397 x 376 px),half-hour grid,CD157-/-,1,4.786,25.07,36.52,0.7224,23
+journal copy (397 x 376 px),half-hour grid,CD157-/-,2,4.933,14.7,33.04,0.6524,24
+journal copy (397 x 376 px),half-hour grid,CD157-/-,3,5.179,13.44,27.55,0.6811,24
+journal copy (397 x 376 px),half-hour grid,CD157-/-,4,5.938,10.11,26.65,0.63,24
+journal copy (397 x 376 px),half-hour grid,CD157-/-,5,7.098,8.288,25.21,0.6134,24
+journal copy (397 x 376 px),half-hour grid,CD157-/-,6,5.486,9.284,25.92,0.6328,24
+journal copy (397 x 376 px),half-hour grid,CD157-/-,7,6.759,6.657,24.68,0.588,23

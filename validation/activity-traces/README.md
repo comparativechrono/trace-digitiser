@@ -363,28 +363,34 @@ from the figure it is 40% over the whole week, as the paper says, but 52% by nig
 
 `cd157.py` reads the figure the submission analysed, Lopatina et al. 2014, Fig 4, from both copies: PMC's
 (630 × 597 px, the validation case above) and the journal's smaller one (397 × 376 px, the copy the submission
-digitised). Each genotype's trace is read as hourly values from the first lights-off (20:45, by the legend; the
-figure's labels begin with night 1) and analysed as every series above is, over the whole week and day by day.
+digitised). Each genotype's trace is read as hourly values over the 168 h from the first lights-off (20:45, by the
+legend; the figure's labels begin with night 1) and analysed as every series above is, over the whole week and day by
+day.
 
-The knockout's trace is pale pink, within the reader's colour tolerance of the plot's grey frame and gridlines, and
-in five columns of PMC's copy and one of the journal's the reader took the frame or a gridline for the trace; four of
-the hourly values read from PMC's copy come from these columns, and none from the journal's. These columns are left
-out: a column is left out when the pixel at the value read is grey or white rather than the trace's colour
-(`results/cd157_misread.csv`). The table gives the results with them left out (primary), with them kept as the
-validation set reads them (as read), and with the hourly values taken on the half hour instead.
+The knockout's trace is pale pink, and the grey of the plot's gridlines and frame lies within the line reader's colour
+tolerance of it (the closest of them at colour distances of 47 in PMC's copy and 51 in the journal's, within the
+reader's tolerance of 60; the wild type's blue is 72 or more from all of them), so the reader takes them for part of
+the trace. In most columns they only pull the median of the column's pixels up a little; in a few, where the trace is
+thin, the median lands on a gridline or the frame (five columns of PMC's copy and one of the journal's, four and one
+of them at hours that are read: `results/cd157_misread.csv` lists the columns whose value lies on a grey or white
+pixel rather than on the trace). The primary reading therefore leaves out panel B's gridlines and the sides of its
+frame (`configs/*-gridlines-left-out.json`: the rows of the gridlines the reader finds, 1.5 px either side), which
+leaves no value on grey and lowers the knockout's hourly values by 5.1 on average in PMC's copy (median 4.2) and 1.7
+in the journal's (median 0.6). The table gives the results of that reading (primary), of the validation set's reading
+of the same figures (as read), and of the primary reading with the values taken on the half hour.
 
-| Copy | Reading | Columns left out | Acrophase, −/− minus +/+ | Each day | Dark share, +/+ and −/− | Mean, −/− ÷ +/+ | Amplitude, −/− ÷ +/+ |
+| Copy | Reading | Values on grey | Acrophase, −/− minus +/+ | Each day | Dark share, +/+ and −/− | Mean, −/− ÷ +/+ | Amplitude, −/− ÷ +/+ |
 |---|---|---|---|---|---|---|---|
-| PMC copy (630 × 597 px) | primary | 5 | −6.3 h | −7.4 to −5.0 h | 0.49, 0.64 | 0.38 | 0.47 |
-| PMC copy (630 × 597 px) | as read | 0 | −6.9 h | −10.8 to −5.2 h | 0.49, 0.63 | 0.40 | 0.44 |
-| PMC copy (630 × 597 px) | half-hour grid | 5 | −6.4 h | −7.1 to −5.2 h | 0.50, 0.65 | 0.38 | 0.47 |
-| journal copy (397 × 376 px) | primary | 1 | −6.4 h | −7.4 to −5.0 h | 0.49, 0.65 | 0.35 | 0.47 |
-| journal copy (397 × 376 px) | as read | 0 | −6.4 h | −7.4 to −5.0 h | 0.49, 0.65 | 0.35 | 0.47 |
-| journal copy (397 × 376 px) | half-hour grid | 1 | −6.1 h | −6.8 to −4.8 h | 0.50, 0.66 | 0.35 | 0.48 |
+| PMC copy (630 × 597 px) | primary | 0 | −6.4 h | −7.3 to −5.1 h | 0.49, 0.65 | 0.33 | 0.44 |
+| PMC copy (630 × 597 px) | as read | 5 | −7.0 h | −10.8 to −5.2 h | 0.49, 0.63 | 0.40 | 0.44 |
+| PMC copy (630 × 597 px) | half-hour grid | 0 | −6.4 h | −7.2 to −5.0 h | 0.50, 0.66 | 0.33 | 0.43 |
+| journal copy (397 × 376 px) | primary | 0 | −6.7 h | −7.3 to −5.1 h | 0.49, 0.64 | 0.34 | 0.42 |
+| journal copy (397 × 376 px) | as read | 1 | −6.8 h | −7.4 to −5.9 h | 0.49, 0.66 | 0.36 | 0.49 |
+| journal copy (397 × 376 px) | half-hour grid | 0 | −6.3 h | −7.1 to −5.0 h | 0.50, 0.65 | 0.33 | 0.42 |
 
-Whichever copy and reading, the knockout's 24-h acrophase is 6.1 to 6.9 h earlier than the wild type's, and earlier
-on each of the 7 days; its share of activity in the dark is 0.14 to 0.17 higher, and higher on each day; and its
-mean activity is 35 to 40% of the wild type's, close to the paper's 40%. These differences are several times the
+Whichever copy and reading, the knockout's 24-h acrophase is 6.3 to 7.0 h earlier than the wild type's, and earlier
+on each of the 7 days; its share of activity in the dark is 0.14 to 0.18 higher, and higher on each day; and its
+mean activity is 33 to 40% of the wild type's, close to the paper's 40%. These differences are several times the
 errors measured above for the papers with data, where the acrophase was within 1 h and the dark share within 0.05
 for 27 of 29 series. The phase of each genotype relative to lights-off rests on the record's starting at lights-off,
 as the figure's labels say; the difference between the genotypes does not. The figure plots the mean of 8 mice per

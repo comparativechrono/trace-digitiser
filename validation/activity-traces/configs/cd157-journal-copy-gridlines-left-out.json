@@ -1,0 +1,115 @@
+{
+ "id": "cd157-journal-copy-gridlines-left-out",
+ "image": "../figures/cd157-journal-copy.jpg",
+ "source": "https://www.frontiersin.org/files/Articles/86257/fnbeh-08-00133-HTML/image_m/fnbeh-08-00133-g004.jpg (the journal's copy, 397 x 376 px, the image the submission digitised; also trace-digitiser's examples/lopatina2014_fig4.jpg)",
+ "reader": "lines",
+ "notes": "Lopatina et al. 2014, Fig 4, read as cd157-journal-copy (the journal's copy) is, except that in panel B the gridlines and the sides of the frame are left out (exclude). The knockout's trace is pale pink, and the grey of most of those lines lies within the line reader's colour tolerance (60) of it, so that they are otherwise read as part of the trace: colour distances 51-83 for the gridlines and 57 for the frame's left side, against 72 or more for the wild type's blue in panel A. The rows left out are those of the gridlines the reader finds in the panel (panel_metadata.gridline_y), 1.5 px either side; the columns, those of the frame's sides. For cd157.py; not one of the validation cases.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 0,
+  "light_dark": "LD 12:12, night first",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "A CD157+/+",
+   "plot_area": [
+    40.8,
+    22.7,
+    388.0,
+    159.3
+   ],
+   "x_ref": [
+    [
+     40.8,
+     0
+    ],
+    [
+     388.0,
+     168
+    ]
+   ],
+   "series": {
+    "CD157+/+": "#6d9bd6"
+   }
+  },
+  {
+   "name": "B CD157-/-",
+   "plot_area": [
+    40.8,
+    218.4,
+    388.0,
+    354.7
+   ],
+   "x_ref": [
+    [
+     40.8,
+     0
+    ],
+    [
+     388.0,
+     168
+    ]
+   ],
+   "series": {
+    "CD157-/-": "#da9e9e"
+   },
+   "exclude": [
+    [
+     38.8,
+     216.5,
+     390.0,
+     219.5
+    ],
+    [
+     38.8,
+     240.5,
+     390.0,
+     243.5
+    ],
+    [
+     38.8,
+     262.5,
+     390.0,
+     265.5
+    ],
+    [
+     38.8,
+     284.5,
+     390.0,
+     287.5
+    ],
+    [
+     38.8,
+     308.5,
+     390.0,
+     311.5
+    ],
+    [
+     38.8,
+     330.5,
+     390.0,
+     333.5
+    ],
+    [
+     38.8,
+     353.5,
+     390.0,
+     356.5
+    ],
+    [
+     38.8,
+     216.4,
+     41.5,
+     356.7
+    ],
+    [
+     386.5,
+     216.4,
+     390.0,
+     356.7
+    ]
+   ]
+  }
+ ]
+}

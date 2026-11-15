@@ -17,60 +17,66 @@ FONT = "Arial"
 HEAD = PatternFill("solid", fgColor="E7E6E6")
 
 S = {
-    "S1_Table": ("S1 Table. The papers of validation 3.",
-                 "The 26 papers shortlisted for the activity-trace validation set, with each paper's figure, whether "
-                 "its data were used, any rhythm analysis it reported, whether it was included and, if not, why not, "
-                 "and the numbers of series analysed and of statements tested (testable and not).",
+    "S1_Table": ("S1 Table. Papers considered for Validation 3.",
+                 "The 26 papers shortlisted for the activity-trace validation, with the figure used from each paper, "
+                 "whether the authors' data were used, any rhythm analysis reported, whether the paper was included "
+                 "(and if not, why not), and the numbers of series analysed and of statements tested and not "
+                 "testable.",
                  [("Papers", "s1_table_papers.csv")],
                  "validation/activity-traces/papers.csv, results/comparisons.csv and results/claims_checked.csv"),
     "S2_Table": ("S2 Table. Digitised and original series.",
-                 "For each of the 29 series with deposited data: agreement of the values read from the figure with "
-                 "the authors' series (r at the authors' times; mean absolute error as % of the series' range; the "
-                 "shift in time, within 2 h, at which they match best and r there), rhythm measures from the figure "
-                 "and from the data (dark-phase share; 24-h cosinor acrophase in h from t = 0 of the record, and its "
-                 "difference; amplitude ratio, figure over data; Lomb-Scargle period), and the verdicts of the three "
-                 "tests of rhythmicity (chi-square periodogram only for records of 60 h or more).",
+                 "For each of the 29 series with deposited data: agreement between the digitised values and the "
+                 "authors' series (Pearson r at the authors' time points; mean absolute error as a percentage of the "
+                 "range of the series; the time shift, within 2 h, giving the best match, and r at that shift); "
+                 "rhythm measures from the digitised trace and from the data (dark-phase share; 24-h cosinor "
+                 "acrophase in hours from the start of the record, and the difference between the two; amplitude "
+                 "ratio, digitised to original; Lomb-Scargle period); and the results of the three tests of "
+                 "rhythmicity (the chi-square periodogram only for records of 60 h or more).",
                  [("Series", "s2_table_series.csv")],
                  "validation/activity-traces/results/comparisons.csv"),
     "S3_Table": ("S3 Table. Statements in the papers and their tests.",
-                 "The 60 statements about the traces in the 18 papers, paraphrased, with where in the paper each is "
-                 "made, the kind of test that decides it, what was found in the digitised trace and in the authors' "
-                 "data, and whether each supports the statement. Statements of no significant difference cannot be "
-                 "tested from a mean trace. Kinds: compare (one series higher or lower than another over the windows "
-                 "named), order, ratio or value (a reported number, within the tolerance in claims.json), rhythmic "
-                 "(chi-square periodogram, or Lomb-Scargle for records under 60 h), nocturnal (dark-phase mean above "
-                 "light-phase mean), period, rel_drop (relative decrease).",
+                 "The 60 statements about the traces in the 18 papers, paraphrased, with their location in each "
+                 "paper, the type of test used, the result for the digitised trace and for the authors' data, and "
+                 "whether each supports the statement. Statements of no significant difference cannot be tested on "
+                 "a mean trace. Types of test: compare (one series higher or lower than another over the stated "
+                 "intervals), order, ratio or value (a reported number, within the tolerance given in claims.json), "
+                 "rhythmic (chi-square periodogram, or Lomb-Scargle periodogram for records shorter than 60 h), "
+                 "nocturnal (dark-phase mean higher than light-phase mean), period, and rel_drop (relative "
+                 "decrease).",
                  [("Statements", "s3_table_claims.csv")],
                  "validation/activity-traces/claims.json and results/claims_checked.csv"),
-    "S4_Table": ("S4 Table. The CD157 figure in every reading.",
-                 "Lopatina et al. (2014), Fig 4, read from PubMed Central's copy (630 x 597 px) and the journal's "
-                 "copy (397 x 376 px), each seven ways. primary: the gridlines, the sides of the frame and the strip "
-                 "of axis labels of panel B left out; each column's midpoint (the median of its trace pixels); "
-                 "hourly values the mean of the columns within each hour from lights-off. as read: as primary, with "
-                 "nothing left out (as in validation 3). bins on the hour: as primary, with each hour's bin centred on "
-                 "the hour. nearest the hour: as primary, with the value at each whole hour taken as the median of "
-                 "the columns within 0.23 h (the rule of validation 3 for figures without data, used in the first "
-                 "revision). top, mean of pixels, bottom: as primary, with the top, the mean or the bottom of each "
-                 "column's trace pixels in place of its midpoint. Measures: rhythm measures of each genotype for each "
-                 "reading (activity in cm/s; acrophase in h after lights-off; ZT = acrophase + 12, mod 24). Summary: "
-                 "the knockout against the wild type for each reading. Daily: the 24-h cosinor and dark-phase share "
-                 "of each day. Values on grey: the columns whose midpoint, as read, lies on a grey or white pixel "
-                 "rather than on the trace.",
+    "S4_Table": ("S4 Table. Analyses of the CD157 figure.",
+                 "Fig 4 of Lopatina et al. (2014), digitised from the PubMed Central copy (630 x 597 px) and the "
+                 "journal copy (397 x 376 px), each analysed in seven ways. Primary: the gridlines, the sides of the "
+                 "frame and the band of axis labels excluded from panel B; the midpoint (median) of the trace pixels "
+                 "in each pixel column; hourly values calculated as the mean of the columns within each hour from "
+                 "lights-off. Without exclusions: as primary, but with no regions excluded (as in Validation 3). "
+                 "Hourly bins centred on the hour: as primary, with each bin centred on a whole hour. Columns nearest "
+                 "each hour: as primary, with the value at each whole hour taken as the median of the columns within "
+                 "0.23 h (the rule used in Validation 3 for figures without data). Upper envelope, column mean and "
+                 "lower envelope: as primary, with the highest trace pixel, the mean of the trace pixels or the "
+                 "lowest trace pixel of each column in place of the midpoint. Measures: rhythm measures for each "
+                 "genotype in each analysis (activity in cm/s; acrophase in hours after lights-off; ZT = acrophase "
+                 "+ 12, modulo 24). Summary: knockout compared with wild type in each analysis. Daily: 24-h cosinor "
+                 "and dark-phase share for each day. Values on grey: columns whose midpoint lies on a grey or white "
+                 "pixel rather than on the trace when no regions are excluded.",
                  [("Measures", "s4_table_cd157_measures.csv"), ("Summary", "s4_table_cd157_summary.csv"),
                   ("Daily", "s4_table_cd157_daily.csv"), ("Values on grey", "s4_table_cd157_on_grey.csv")],
                  "validation/activity-traces/cd157.py and results/cd157*.csv"),
-    "S5_Table": ("S5 Table. Real records drawn as dense traces and read back.",
-                 "Nine activity records (three mice's home-cage activity and three mice's wheel running in 5-min bins, "
-                 "and the mean of each three, from Hirano et al. (2026); one mouse's activity per minute over two "
-                 "days, from Hoekstra et al. (2019)), each drawn as Lopatina et al. (2014), Fig 4, is drawn, in plot "
-                 "areas the size of its two copies and in two colours, and read back. Each pixel column gives four "
-                 "values (top, midpoint, mean of pixels, bottom), averaged within each hour and compared with the "
-                 "record's hourly means. Summary: medians, ranges and 90th percentiles over the 36 readings and the "
-                 "112 pairs of 7-day records drawn alike. Readings: one row per record, size, colour and statistic "
-                 "(level = mean read / true mean; acrophase of the 24-h cosinor in h from the start of the record; "
-                 "dark share with lights-off taken as the start of the 12 h of the day holding the largest share of "
-                 "the record's activity). Pairs: for two records drawn alike, the errors in the difference of their "
-                 "acrophases, the ratio of their means (as a factor) and the difference of their dark shares.",
+    "S5_Table": ("S5 Table. Validation 4: real records plotted as dense traces and digitised.",
+                 "Nine activity records (home-cage activity and wheel running of three mice each in 5-min bins, and "
+                 "the mean of each group of three, from Hirano et al. (2026); and the activity of one mouse in 1-min "
+                 "bins over two days, from Hoekstra et al. (2019)), each plotted in the same way as Fig 4 of Lopatina "
+                 "et al. (2014), at the sizes of its two copies and in two colours, and then digitised. Four values "
+                 "were taken from each pixel column (upper envelope, midpoint, column mean and lower envelope), "
+                 "averaged within each hour and compared with the hourly means of the record. Summary: medians, "
+                 "ranges and 90th percentiles over the 36 images and over the 112 pairs of 7-day records plotted in "
+                 "the same way. Readings: one row per record, plot size, colour and column value (level = mean of the "
+                 "digitised values divided by the true mean; 24-h cosinor acrophase in hours from the start of the "
+                 "record; dark-phase share, with lights-off taken as the start of the 12 h of the day containing the "
+                 "largest share of the record's activity). Pairs: for two records plotted in the same way, the errors "
+                 "in the difference between their acrophases, in the ratio of their means (as a factor) and in the "
+                 "difference between their dark-phase shares.",
                  [("Summary", "s5_table_dense_summary.csv"), ("Readings", "s5_table_dense_readings.csv"),
                   ("Pairs", "s5_table_dense_pairs.csv")],
                  "validation/dense-traces/run.py and results/"),
@@ -108,7 +114,7 @@ def main(tables, out):
         for r in ([title], [caption], [f"Source: github.com/comparativechrono/trace-digitiser, {source} "
                                       "(made by paper/tables.py and paper/si_tables.py)."],
                   ["Hearn TJ, Lloyd-Owen B. Recovering circadian activity data from published figures: a validated "
-                   "digitiser that runs in the browser, applied to CD157 knockout mice."]):
+                   "browser-based digitiser and its application to CD157 knockout mice."]):
             notes.append(r)
         notes.column_dimensions["A"].width = 120
         for row in notes.iter_rows():

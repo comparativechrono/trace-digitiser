@@ -167,7 +167,7 @@ PUBLISHED = [
      [], ["andreani-1B-area-ticks-colours"], "plot area; two ticks on the x axis; colours (with the plot area alone, "
      "the slanted x labels are not read)"),
     ("Andreani et al. 2022, Fig 1C", "two lines within translucent bands of the same colour",
-     ["andreani-1C-nothing"], [], "none tried"),
+     ["andreani-1C-nothing"], [], "none needed"),
     ("Andreani et al. 2022, Fig 1E", "24 bars with error bars, a dashed line and an equation",
      [], ["andreani-1E-area"], "plot area"),
     ("Andreani et al. 2022, Fig 3A-D", "four dot plots with 540 overlapping dots (497 compared)",

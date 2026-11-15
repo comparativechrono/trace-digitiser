@@ -497,6 +497,10 @@ def _add_gridlines_and_ticks(frame: Frame, dark: np.ndarray, sat: np.ndarray) ->
         is_stub = (run >= min_run) & (run < strip.shape[1])
         return [0.5 * (b0 + b1) for b0, b1 in _runs(is_stub) if b1 - b0 + 1 <= max_thick]
 
+    # A tick is darker than what it is drawn on - the paper, or a pale band shading part of the plot (which is
+    # neutral ink too, and would make every row inside the axis a run of ink).
+    lum = 255.0 - dark.astype(np.float32)
+    ink = ink & ((cv2.dilate(lum, np.ones((15, 15), np.uint8)) - lum) > 50.0)
     xl = int(round(frame.left))
     yb = int(round(frame.bottom))
     half = t // 2 + 1

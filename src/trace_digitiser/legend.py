@@ -276,3 +276,31 @@ def find_legend(rgb: np.ndarray, box: tuple[int, int, int, int]) -> list[tuple[i
             boxes.append((int(sym[0]) - pad, int(sym[1]) - pad, int(sym[2]) + pad, int(sym[3]) + pad))
             boxes.append((int(text[0]) - pad, int(text[1]) - pad, int(text[2]) + pad, int(text[3]) + pad))
     return boxes
+
+
+def drop_text(mask: np.ndarray, origin: tuple[int, int], rows: list[TextRow]) -> np.ndarray:
+    """*mask* (a trace's pixels, whose top-left pixel is *origin* (x, y) in the image) without the glyphs of *rows*:
+    each piece of the mask that lies wholly within a row's box (a label written in the trace's colour, such as
+    "18:6") is taken out; a trace that runs through the box is joined to more of itself, and stays."""
+    if not rows or not mask.any():
+        return mask
+    ox, oy = origin
+    h, w = mask.shape
+    n, labels, stats, _ = cv2.connectedComponentsWithStats(mask.astype(np.uint8), connectivity=8)
+    drop = np.zeros(n, dtype=bool)
+    for r in rows:
+        # the row's box: its glyphs, and what lies between them (the dots of a colon, a decimal point)
+        for gx, gy, gw, gh in [(r.x0, r.y0, r.x1 - r.x0 + 1, r.y1 - r.y0 + 1)]:
+            a0, a1 = max(0, gy - oy - 1), min(h, gy - oy + gh + 1)
+            b0, b1 = max(0, gx - ox - 1), min(w, gx - ox + gw + 1)
+            if a1 <= a0 or b1 <= b0:
+                continue
+            for i in np.unique(labels[a0:a1, b0:b1]):
+                if i == 0:
+                    continue
+                x, y, bw, bh, _ = stats[i]
+                if x >= b0 and y >= a0 and x + bw <= b1 and y + bh <= a1:
+                    drop[i] = True
+    if not drop.any():
+        return mask
+    return mask & ~drop[labels]

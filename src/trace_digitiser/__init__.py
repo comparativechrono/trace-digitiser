@@ -61,6 +61,7 @@ from .diagnostics import (
 )
 from .digitise import digitise_trace_mask
 from .io import build_panel_metadata, load_image, save_outputs  # noqa: F401  (load_image: as before)
+from .legend import drop_text, find_text_rows
 from .models import Calibration, DigitiserResult, Panel, ResampledResult, Trace, XLabel
 from .ocr import detect_x_labels
 from .provenance import build_provenance, package_version, write_provenance
@@ -239,6 +240,13 @@ def digitise(
             rgb, p, colours=trace_colours, exclude=exclude_boxes, achromatic=achromatic, darkness=dark,
             lines_only=True,
         )
+        # words written in the plot in a trace's colour (a panel's label, say) are not trace
+        rows = find_text_rows(rgb, (p["x0"], p["y_top"], p["x1"], p["y_bottom"]))
+        if rows:
+            for tr in masks:
+                tr["mask"] = drop_text(tr["mask"], (p["x0"], p["y_top"]), rows)
+                tr["pixel_count"] = int(tr["mask"].sum())
+            masks = [tr for tr in masks if tr["pixel_count"] > 0]
         if show_debug:
             print(f"Panel {p['panel_id']}: detected {len(masks)} trace(s)")
         if not masks:

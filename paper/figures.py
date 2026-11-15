@@ -82,8 +82,13 @@ def panel_crop(panel, x0_h, x1_h):
     return rgb, [to_h(c0 - 0.5), to_h(c1 + 0.5), to_v(r1 + 0.5), to_v(r0 - 0.5)], p
 
 
+def tag(ax, s, x=0.0, y=1.02):
+    """A short label above a panel, beside its letter (a genotype, say)."""
+    ax.text(x, y, s, transform=ax.transAxes, fontsize=8.5, va="bottom", ha="left", color=INK)
+
+
 def fig1(out):
-    """Reading a figure: the workbench, and the steps on the wild type's trace of Lopatina et al. 2014 Fig 4A."""
+    """Reading a figure: the workbench, and the steps on the wild-type trace of Lopatina et al. 2014 Fig 4A."""
     fig = plt.figure(figsize=(7.5, 7.6))
     shot = np.asarray(Image.open(HERE / "workbench-marked.png").convert("RGB"))
     ax = fig.add_axes([0.03, 0.41, 0.97, 0.59])
@@ -98,8 +103,6 @@ def fig1(out):
     d = d[(d.series == "CD157+/+") & (d.x >= 0) & (d.x <= 72)]
     hx, hy = cd157.series("PMC4001052-fig4")["CD157+/+"]
     keep = hx <= 72
-    titles = ["B  The figure (Fig 4A, days 1-3)", "C  Pixels of the clicked colour",
-              "D  Values per column and per hour"]
     for i in range(3):
         ax = fig.add_axes([0.075 + i * 0.315, 0.075, 0.27, 0.26])
         if i == 0:
@@ -111,45 +114,41 @@ def fig1(out):
         else:
             faded = (255 - 0.28 * (255 - rgb.astype(float))).astype(np.uint8)
             ax.imshow(faded, extent=ext, aspect="auto", interpolation="nearest")
-            ax.plot(d.x, d.y, color=ORANGE, lw=0.8, label="per column")
-            ax.plot(hx[keep], hy[keep], "o", ms=2.6, color=INK, mec="white", mew=0.4, label="per hour")
+            ax.plot(d.x, d.y, color=ORANGE, lw=0.8, label="Column midpoint")
+            ax.plot(hx[keep], hy[keep], "o", ms=2.6, color=INK, mec="white", mew=0.4, label="Hourly mean")
             ax.legend(loc="upper right", frameon=True, framealpha=0.92, edgecolor="none", handlelength=1.0,
                       borderpad=0.25, fontsize=6.5, handletextpad=0.3, labelspacing=0.2)
         ax.set_xlim(0, 72)
         ax.set_ylim(0, 300)
         ax.set_xticks([0, 24, 48, 72])
         ax.set_yticks([0, 100, 200, 300])
-        ax.set_xlabel("hours from the first lights-off")
+        ax.set_xlabel("Time from first lights-off (h)")
         if i == 0:
-            ax.set_ylabel("activity (cm/s)")
+            ax.set_ylabel("Activity (cm/s)")
         else:
             ax.set_yticklabels([])
-        ax.set_title(titles[i], loc="left", color=INK, pad=4)
+        letter(ax, "BCD"[i])
         style(ax, grid=False)
     save(fig, out, "Fig1")
 
 
 def fig2(out):
-    """The activity-trace validation: two traces as read beside the authors' data, and the dark-phase share and
+    """The activity-trace validation: two digitised traces beside the authors' data, and the dark-phase share and
     acrophase of all 29 series with data."""
     sampled = pd.read_csv(AT / "results" / "sampled.csv")
     comp = pd.read_csv(AT / "results" / "comparisons.csv")
     comp = comp[comp["true_cos_p"].notna()]
-    examples = [("PMC9465459-fig2", "A locomotor", "Control", "Re et al. 2022, Fig 2A (control mice)", "beam breaks"),
-                ("PMC6379088-fig6", "A LMA", "KO", "Hoekstra et al. 2019, Fig 6A (Cirbp knockout)",
-                 "movements per hour")]
+    examples = [("PMC9465459-fig2", "A locomotor", "Control", "Beam breaks"),
+                ("PMC6379088-fig6", "A LMA", "KO", "Movements per hour")]
     fig = plt.figure(figsize=(7.5, 6.4))
-    gs = fig.add_gridspec(3, 2, height_ratios=[1, 1, 1.45], hspace=0.62, wspace=0.3, left=0.085, right=0.98,
+    gs = fig.add_gridspec(3, 2, height_ratios=[1, 1, 1.45], hspace=0.55, wspace=0.3, left=0.085, right=0.98,
                           top=0.95, bottom=0.075)
-    for i, (case, panel, series, title, unit) in enumerate(examples):
+    for i, (case, panel, series, unit) in enumerate(examples):
         ax = fig.add_subplot(gs[i, :])
         s = sampled[(sampled.case == case) & (sampled.panel == panel) & (sampled.series == series)].sort_values("x")
-        ax.plot(s.x, s.original, color=BLUE, lw=1.4, label="authors' data")
-        ax.plot(s.x, s.digitised, color=ORANGE, lw=1.4, label="read from the figure")
-        r = comp[(comp.case == case) & (comp.panel == panel) & (comp.series == series)].iloc[0]
-        ax.set_title(f"{title}: r = {r['r']:.2f}, mean absolute error {r['mae_pct']:.1f}% of the range",
-                     loc="left", color=INK, pad=4)
-        ax.set_xlabel("hours")
+        ax.plot(s.x, s.original, color=BLUE, lw=1.4, label="Authors' data")
+        ax.plot(s.x, s.digitised, color=ORANGE, lw=1.4, label="Digitised")
+        ax.set_xlabel("Time (h)")
         ax.set_ylabel(unit)
         style(ax)
         letter(ax, "AB"[i])
@@ -163,10 +162,8 @@ def fig2(out):
     ax.set_xlim(lo, hi)
     ax.set_ylim(lo, hi)
     ax.set_aspect("equal")
-    ax.set_xlabel("from the authors' data")
-    ax.set_ylabel("from the figure")
-    n05 = int((comp["dark_fraction_diff"].abs() <= 0.05).sum())
-    ax.set_title(f"Share of activity in the dark ({n05} of {len(comp)} within 0.05)", loc="left", color=INK, pad=4)
+    ax.set_xlabel("Dark-phase share (authors' data)")
+    ax.set_ylabel("Dark-phase share (digitised)")
     style(ax)
     letter(ax, "C")
     ax = fig.add_subplot(gs[2, 1])
@@ -176,28 +173,29 @@ def fig2(out):
     ax.axvline(0, color=MUTED, lw=0.8)
     ax.scatter(dd[order], np.arange(len(dd)), s=22, color=ORANGE, edgecolor="white", linewidth=0.8, zorder=3)
     ax.set_yticks([])
-    ax.set_ylabel(f"the {len(dd)} series, in order")
-    ax.set_xlabel("acrophase from the figure minus from the data (h)")
-    n1 = int((np.abs(dd) <= 1).sum())
-    ax.set_title(f"24-h cosinor acrophase ({n1} of {len(dd)} within 1 h)", loc="left", color=INK, pad=4)
+    ax.set_ylabel("Series (ranked)")
+    ax.set_xlabel("Acrophase difference (h)")
     style(ax)
     ax.grid(axis="y", visible=False)
     letter(ax, "D")
     save(fig, out, "Fig2")
 
 
+GENO_LABEL = {"CD157+/+": "CD157$^{+/+}$", "CD157-/-": "CD157$^{−/−}$"}
+
+
 def fig3(out):
-    """The CD157 re-analysis: each genotype's trace as read (each pixel column from bottom to top) with its hourly
-    values, the mean day, and the acrophase and dark-phase share of each day, from both copies of the figure."""
+    """The CD157 re-analysis: each genotype's digitised trace (each pixel column from its lowest to its highest trace
+    pixel) with its hourly values, the mean day, and the acrophase and dark-phase share of each day, from both copies
+    of the figure."""
     case = cd157.COPIES[next(iter(cd157.COPIES))]["left out"]
     cols = cd157.columns(case)
     read = cd157.series(case)
     days = pd.read_csv(AT / "results" / "cd157_daily.csv")
     days = days[days.reading == "primary"]
-    fig = plt.figure(figsize=(7.5, 7.2))
-    gs = fig.add_gridspec(3, 3, height_ratios=[1, 1, 1.25], hspace=0.55, wspace=0.42, left=0.075, right=0.985,
+    fig = plt.figure(figsize=(7.5, 7.0))
+    gs = fig.add_gridspec(3, 3, height_ratios=[1, 1, 1.25], hspace=0.5, wspace=0.42, left=0.075, right=0.985,
                           top=0.955, bottom=0.07)
-    names = {"CD157+/+": "CD157+/+ (wild type)", "CD157-/-": "CD157−/− (knockout)"}
     colours = {"CD157+/+": BLUE, "CD157-/-": RED}
     for i, (_, name) in enumerate(cd157.GENOTYPES):
         ax = fig.add_subplot(gs[i, :])
@@ -211,13 +209,12 @@ def fig3(out):
         ax.set_ylim(0, 300)
         ax.set_xticks(range(0, 169, 24))
         ax.set_yticks([0, 100, 200, 300])
-        ax.set_ylabel("activity (cm/s)")
-        ax.set_title(f"{names[name]}, Lopatina et al. 2014, Fig 4{'AB'[i]}, as read: each pixel column from bottom "
-                     "to top, and the hourly values (black)", loc="left", color=INK, pad=4)
+        ax.set_ylabel("Activity (cm/s)")
         style(ax, grid=False)
         letter(ax, "AB"[i])
+        tag(ax, GENO_LABEL[name])
         if i == 1:
-            ax.set_xlabel("hours from the first lights-off (the figure's 1N, 1D, ... 7D; grey, dark)")
+            ax.set_xlabel("Time from first lights-off (h)")
     ax = fig.add_subplot(gs[2, 0])
     ax.axvspan(0, 12, color=SHADE, lw=0)
     for _, name in cd157.GENOTYPES:
@@ -225,22 +222,17 @@ def fig3(out):
         week = y.reshape(7, 24)
         ax.fill_between(np.arange(24) + 0.5, np.nanmin(week, 0), np.nanmax(week, 0), color=colours[name],
                         alpha=0.15, lw=0)
-        ax.plot(np.arange(24) + 0.5, np.nanmean(week, 0), color=colours[name], lw=1.5,
-                label=names[name].split(" ")[0])
+        ax.plot(np.arange(24) + 0.5, np.nanmean(week, 0), color=colours[name], lw=1.5, label=GENO_LABEL[name])
     ax.set_xlim(0, 24)
     ax.set_xticks([0, 6, 12, 18, 24])
     ax.set_ylim(0, None)
-    ax.set_xlabel("hours from lights-off")
-    ax.set_ylabel("activity (cm/s)")
-    ax.set_title("Mean day (band: range of 7 days)", loc="left", color=INK, pad=4)
+    ax.set_xlabel("Time from lights-off (h)")
+    ax.set_ylabel("Activity (cm/s)")
     ax.legend(frameon=False, loc="upper right")
     style(ax)
     letter(ax, "C")
-    for j, (col, ylab, title, ylim) in enumerate([
-            ("acrophase_h_after_dark_onset", "acrophase (h from lights-off)", "24-h cosinor acrophase, each day",
-             (0, 24)),
-            ("dark_share", "share of the day's activity in the dark", "Dark-phase share, each day",
-             (0.3, 0.8))]):
+    for j, (col, ylab, ylim) in enumerate([("acrophase_h_after_dark_onset", "Acrophase (h after lights-off)", (0, 24)),
+                                           ("dark_share", "Dark-phase share", (0.3, 0.8))]):
         ax = fig.add_subplot(gs[2, 1 + j])
         if j == 0:
             ax.axhspan(0, 12, color=SHADE, lw=0)
@@ -252,15 +244,14 @@ def fig3(out):
                 filled = marker == "o"
                 ax.plot(g.day + (-0.12 if filled else 0.12), g[col], marker=marker, ms=4.2, lw=0,
                         color=colours[name], mfc=colours[name] if filled else "white", mec=colours[name], mew=1.0,
-                        label=f"{names[name].split(' ')[0]}, {copy.split(' (')[0]}")
+                        label=f"{GENO_LABEL[name]} ({'PMC' if filled else 'journal'})")
         ax.set_ylim(*ylim)
         if j == 0:
             ax.set_yticks([0, 6, 12, 18, 24])
         ax.set_xticks(range(1, 8))
         ax.set_xlim(0.5, 7.5)
-        ax.set_xlabel("day")
+        ax.set_xlabel("Day")
         ax.set_ylabel(ylab)
-        ax.set_title(title, loc="left", color=INK, pad=4)
         style(ax)
         letter(ax, "DE"[j])
         if j == 0:
@@ -269,26 +260,29 @@ def fig3(out):
     save(fig, out, "Fig3")
 
 
-STAT = {"top": ("top", "#eb6834"), "midpoint": ("midpoint", INK), "mean of pixels": ("mean of pixels", "#1baf7a"),
-        "bottom": ("bottom", "#6250d6")}  # orange, ink, aqua, violet: the column statistics, in every panel
+STAT = {"top": ("Upper envelope", "#eb6834"), "midpoint": ("Midpoint", INK), "mean of pixels": ("Mean", "#1baf7a"),
+        "bottom": ("Lower envelope", "#6250d6")}  # orange, ink, aqua, violet: the column statistics, in every panel
+STAT_SHORT = {"top": "Upper", "midpoint": "Midpoint", "mean of pixels": "Mean", "bottom": "Lower"}
+READING = {"primary": "Primary", "as read": "No exclusions", "bins on the hour": "Centred bins",
+           "nearest the hour": "Nearest hour", "top": "Upper envelope", "mean of pixels": "Column mean",
+           "bottom": "Lower envelope"}
 DT = HERE.parent / "validation" / "dense-traces"
-SHORT_READING = {"bins on the hour": "bins on hour", "nearest the hour": "nearest hour", "mean of pixels": "mean"}
 
 
 def s1_fig(out):
     """Reading a dense trace: what each pixel column of the CD157 figure holds, real records drawn the same way and
-    read back, and the CD157 result in every reading."""
-    fig = plt.figure(figsize=(7.5, 8.6))
+    digitised, and the CD157 result in every reading."""
+    fig = plt.figure(figsize=(7.5, 8.4))
     case = cd157.COPIES[next(iter(cd157.COPIES))]["left out"]
     cols = cd157.columns(case)
     cfg = json.loads((AT / "configs" / f"{case}.json").read_text())
-    # A, B: a stretch of each panel with the four values of every column
+    # A, B: a stretch of each panel with the values of every column
     for i, ((panel, name), (a, b), ymax) in enumerate(zip(cd157.GENOTYPES, [(26, 38), (24, 36)], [250, 150])):
         ax = fig.add_axes([0.075 + i * 0.475, 0.775, 0.42, 0.19])
         rgb, ext, p = panel_crop(panel, a, b)
         faded = (255 - 0.55 * (255 - rgb.astype(float))).astype(np.uint8)
         ax.imshow(faded, extent=ext, aspect="auto", interpolation="nearest", zorder=0)
-        if i == 1:  # the rows and columns left out of panel B, in value units
+        if i == 1:  # the gridline rows excluded from panel B, in value units
             left, top, right, bottom = p["plot_area"]
             for x0, y0, x1, y1 in next(q for q in cfg["panels"] if q["name"] == panel)["exclude"]:
                 if x1 - x0 > 50:
@@ -300,58 +294,53 @@ def s1_fig(out):
             ax.plot(g.x, g[st], mk, ms=ms, mew=1.3, color=c, label=lab, zorder=3)
         ax.set_xlim(a, b)
         ax.set_ylim(0, ymax)
-        ax.set_xlabel("hours from the first lights-off")
+        ax.set_xlabel("Time from first lights-off (h)")
         if i == 0:
-            ax.set_ylabel("activity (cm/s)")
-        ax.set_title(f"{'Wild type' if i == 0 else 'Knockout'} (Fig 4{'AB'[i]}), hours {a}-{b}", loc="left",
-                     color=INK, pad=4)
+            ax.set_ylabel("Activity (cm/s)")
         style(ax, grid=False)
-        letter(ax, "AB"[i], x=-0.1 if i == 0 else -0.04)
+        letter(ax, "AB"[i])
+        tag(ax, GENO_LABEL[name])
         if i == 0:
             ax.legend(loc="upper left", ncol=3, frameon=True, framealpha=0.9, edgecolor="none", fontsize=6.5,
                       handletextpad=0.2, columnspacing=0.8, borderpad=0.3)
-    # C: one of the test's images; D: its hourly values, true and read
+    # C: one of the test images; D: its hourly values, true and digitised
     rec, size = "locomotor, mean of 3", "PMC-sized"
     im = np.asarray(Image.open(DT / "figures" / "locomotor_mean_of_3-PMC-sized-blue.jpg").convert("RGB"))
     r = pd.read_csv(DT / "results" / "readings.csv")
     meta = r[(r.record == rec) & (r["size"] == size) & (r.colour == "blue")].iloc[0]
     m, w7, h = 20, 551, 217
-    ax = fig.add_axes([0.075, 0.585, 0.9, 0.12])
+    ax = fig.add_axes([0.075, 0.6, 0.9, 0.11])
     days3 = int(round(m + w7 * 72 / 168))
     ax.imshow(im[m - 2:m + h + 3, m - 1:days3 + 1], extent=[0, 72, 0, meta.y_max * (h + 5) / h], aspect="auto",
               interpolation="nearest")
     ax.set_xlim(0, 72)
     ax.set_xticks(range(0, 73, 12))
     ax.set_yticks([])
-    ax.set_title("Test: the mean of three mice's home-cage activity in 5-min bins (Hirano et al. 2026), drawn as "
-                 "Fig 4 is drawn (first 3 of 7 days)", loc="left", color=INK, pad=4)
     for side in ("top", "right", "left"):
         ax.spines[side].set_visible(False)
     letter(ax, "C", x=-0.01)
     hh = pd.read_csv(DT / "results" / "hourly.csv")
     hh = hh[(hh.record == rec) & (hh["size"] == size) & (hh.colour == "blue") & (hh.hour < 72)]
-    ax = fig.add_axes([0.075, 0.385, 0.9, 0.15])
+    ax = fig.add_axes([0.075, 0.395, 0.9, 0.15])
     t = hh[hh.statistic == "midpoint"]
-    ax.plot(t.hour + 0.5, t.true, color="#9a9a96", lw=3.0, solid_capstyle="butt", label="the record's hourly means")
+    ax.plot(t.hour + 0.5, t.true, color="#9a9a96", lw=3.0, solid_capstyle="butt", label="Record")
     for st in ("top", "midpoint", "bottom"):
         e = hh[hh.statistic == st]
         lab, c = STAT[st]
-        ax.plot(e.hour + 0.5, e.read, color=c, lw=0.9, label=f"{lab} of the columns, hourly")
+        ax.plot(e.hour + 0.5, e.read, color=c, lw=0.9, label=lab)
     ax.set_xlim(0, 72)
     ax.set_xticks(range(0, 73, 12))
     ax.set_ylim(0, 1.25 * np.nanmax(hh.read))
-    ax.set_xlabel("hours")
-    ax.set_ylabel("counts per 5 min")
-    ax.set_title("Read back: hourly means of the record and of each column statistic", loc="left", color=INK, pad=4)
+    ax.set_xlabel("Time (h)")
+    ax.set_ylabel("Counts per 5 min")
     ax.legend(loc="upper center", ncol=4, frameon=False, fontsize=6.5, handlelength=1.5, columnspacing=1.0,
-              bbox_to_anchor=(0.5, 1.0))
+              bbox_to_anchor=(0.5, 1.02))
     style(ax)
     letter(ax, "D", x=-0.01)
     # E: the test summarised over its 36 readings
     order = ["top", "midpoint", "mean of pixels", "bottom"]
-    short = ["top", "mid", "mean", "bottom"]
-    specs = [("level", "level, read ÷ true", True), ("dark_share_error", "dark share,\nread − true", False),
-             ("acrophase_error_h", "|acrophase error| (h)", False)]
+    specs = [("level", "Level (digitised/true)", True), ("dark_share_error", "Dark-phase share error", False),
+             ("acrophase_error_h", "Absolute acrophase error (h)", False)]
     for k, (col, lab, logy) in enumerate(specs):
         ax = fig.add_axes([0.075 + k * 0.17, 0.1, 0.1, 0.2])
         for j, st in enumerate(order):
@@ -368,22 +357,21 @@ def s1_fig(out):
             ax.set_yticklabels(["0.25", "0.5", "1", "2", "4", "8"])
             ax.yaxis.set_minor_formatter(matplotlib.ticker.NullFormatter())
         ax.set_xticks(range(4))
-        ax.set_xticklabels(short, rotation=90, fontsize=6.5)
+        ax.set_xticklabels([STAT_SHORT[st] for st in order], rotation=90, fontsize=6.5)
         ax.set_xlim(-0.6, 3.6)
         ax.set_ylabel(lab, fontsize=7)
         style(ax)
         ax.grid(axis="x", visible=False)
         if k == 0:
-            ax.set_title("Test, 36 readings", loc="left", color=INK, pad=4)
             letter(ax, "E", x=-0.35)
     # F: the CD157 result in every reading
     sm = pd.read_csv(AT / "results" / "cd157_summary.csv")
     readings = list(dict.fromkeys(sm.reading))
     rcol = {"top": STAT["top"][1], "mean of pixels": STAT["mean of pixels"][1], "bottom": STAT["bottom"][1]}
     for k, (fn, lab, ylim) in enumerate([
-            (lambda q: q.acrophase_ko_minus_wt_h, "acrophase, −/− minus +/+ (h)", (-8, 0)),
-            (lambda q: q.dark_share_ko - q.dark_share_wt, "dark share, −/− minus +/+", (0, 0.25))]):
-        ax = fig.add_axes([0.635 + k * 0.205, 0.1, 0.15, 0.2])
+            (lambda q: q.acrophase_ko_minus_wt_h, "Acrophase difference (h)", (-8, 0)),
+            (lambda q: q.dark_share_ko - q.dark_share_wt, "Dark-phase share difference", (0, 0.25))]):
+        ax = fig.add_axes([0.63 + k * 0.215, 0.1, 0.145, 0.2])
         for j, rd in enumerate(readings):
             for cp, mk, dx in zip(cd157.COPIES, ("o", "s"), (-0.15, 0.15)):
                 q = sm[(sm.reading == rd) & (sm["copy"] == cp)].iloc[0]
@@ -392,15 +380,14 @@ def s1_fig(out):
         ax.axhline(0, color=MUTED, lw=0.6)
         ax.set_ylim(*ylim)
         ax.set_xticks(range(len(readings)))
-        ax.set_xticklabels([SHORT_READING.get(x, x) for x in readings], rotation=90, fontsize=6.5)
+        ax.set_xticklabels([READING[x] for x in readings], rotation=90, fontsize=6.5)
         ax.set_xlim(-0.6, len(readings) - 0.4)
         ax.set_ylabel(lab, fontsize=7)
         style(ax)
         ax.grid(axis="x", visible=False)
         if k == 0:
-            ax.set_title("CD157, every reading", loc="left", color=INK, pad=4)
             letter(ax, "F", x=-0.33)
-            ax.text(0.03, 0.04, "● PMC copy  □ journal copy", transform=ax.transAxes, fontsize=6, color=MUTED)
+            ax.text(0.03, 0.04, "● PMC  □ journal", transform=ax.transAxes, fontsize=6, color=MUTED)
     save(fig, out, "S1_Fig")
 
 

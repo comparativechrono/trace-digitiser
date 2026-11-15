@@ -1,9 +1,9 @@
 # The figures and tables of the paper
 
-Hearn TJ, Lloyd-Owen B. *Recovering circadian activity data from published figures: a validated digitiser that
-runs in the browser, applied to CD157 knockout mice* (revised for PLOS ONE). This folder draws the paper's figures and
-works out its tables from the validation sets in [`../validation`](../validation), so that every number in the paper
-can be traced to a file and a line of code.
+Hearn TJ, Lloyd-Owen B. *Recovering circadian activity data from published figures: a validated browser-based
+digitiser and its application to CD157 knockout mice* (revised for PLOS ONE). This folder draws the paper's figures
+and works out its tables from the validation sets in [`../validation`](../validation), so that every number in the
+paper can be traced to a file and a line of code.
 
 | File | What it makes |
 |---|---|

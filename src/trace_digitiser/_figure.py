@@ -26,6 +26,7 @@ from .calibration import (
 from .diagnostics import draw_panel_overlay, print_panel_summary
 from .frames import darkness_map
 from .io import load_image
+from .legend import find_legend
 from .models import Calibration
 from .panel_detection import find_plot_panels
 from .straighten import MIN_TILT_DEGREES, estimate_tilt
@@ -209,6 +210,7 @@ def prepare_figure(
     write_outputs: bool = True,
     straighten: Union[str, bool, float] = "auto",
     y_axis: str = "left",
+    legend: Union[str, bool] = "auto",
     extra_parameters: Optional[dict] = None,
     stacklevel: int = 4,
 ) -> PreparedFigure:
@@ -227,6 +229,9 @@ def prepare_figure(
             raise ValueError(f"{name} must be 'auto', 'linear' or 'log'")
     if y_axis not in ("left", "right"):
         raise ValueError("y_axis must be 'left' or 'right'")
+    if legend not in ("auto", "keep", True, False):
+        raise ValueError("legend must be 'auto' (find legends drawn inside plots and leave them out) or 'keep'")
+    find_legends = legend in ("auto", True)
     if (y_min is None) != (y_max is None):
         raise ValueError("give both y_min and y_max, or neither")
     if (x_min is None) != (x_max is None):
@@ -276,6 +281,8 @@ def prepare_figure(
     }
     if y_axis != "left":
         parameters["y_axis"] = y_axis
+    if not find_legends:
+        parameters["legend"] = "keep"
     parameters.update(extra_parameters or {})
 
     notes: list[str] = []
@@ -463,6 +470,33 @@ def prepare_figure(
             f"The x axis of {which} is not calibrated (no numeric scale could be read from its labels); the "
             "output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref."
         )
+
+    # ------------------------------------------------------------------
+    # 4. A legend drawn inside a plot is left out, as if it had been excluded
+    # ------------------------------------------------------------------
+    if find_legends:
+        found_legends = []
+        for p in panels:
+            e = p["edges"]
+            half = int(p.get("line_thickness", 1)) // 2 + 1
+            box = (
+                int(np.ceil(e["left"])) + half,
+                int(np.ceil(e["top"])) + half,
+                int(np.floor(e["right"])) - half,
+                int(np.floor(e["bottom"])) - half,
+            )
+            boxes = [tuple(float(v) for v in b) for b in find_legend(rgb, box)]
+            if boxes:
+                found_legends.extend(boxes)
+                x0, y0 = min(b[0] for b in boxes), min(b[1] for b in boxes)
+                x1, y1 = max(b[2] for b in boxes), max(b[3] for b in boxes)
+                note(
+                    f"Panel {p['panel_id']}: a legend was found inside the plot area (x {x0:.0f}-{x1:.0f}, y "
+                    f"{y0:.0f}-{y1:.0f}) and left out. If that is not a legend, pass legend='keep'."
+                )
+        if found_legends:
+            exclude_boxes = list(exclude_boxes or []) + found_legends
+            parameters["legends_found"] = found_legends
 
     return PreparedFigure(
         rgb=rgb,

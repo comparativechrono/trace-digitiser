@@ -119,6 +119,7 @@ def digitise(
     write_outputs: bool = True,
     straighten: Union[str, bool, float] = "auto",
     y_axis: str = "left",
+    legend: Union[str, bool] = "auto",
 ) -> DigitiserResult:
     """Digitise the line traces in a figure image.
 
@@ -182,6 +183,11 @@ def digitise(
     exclude : (x_left, y_top, x_right, y_bottom), or a list of them, optional
         Regions to ignore when looking for traces, e.g. a legend or an
         annotation drawn inside the plot.
+    legend : {"auto", "keep"}
+        ``"auto"`` (default) finds a legend drawn inside a plot area - two
+        or more entries, each a symbol with its label to the right - and
+        leaves it out, as if it had been given in *exclude*; a warning
+        says where. ``"keep"`` does not look for one.
     achromatic : {"auto", "always", "never"}
         Whether to look for a black or grey trace.
     ocr : bool
@@ -214,7 +220,7 @@ def digitise(
         expected_panels=expected_panels, y_min=y_min, y_max=y_max, x_min=x_min, x_max=x_max, total_days=total_days,
         output_dir=output_dir, output_prefix=output_prefix, show_debug=show_debug, save_diagnostics=save_diagnostics,
         plot_area=plot_area, y_ref=y_ref, x_ref=x_ref, y_scale=y_scale, x_scale=x_scale, exclude=exclude, ocr=ocr,
-        write_outputs=write_outputs, straighten=straighten, y_axis=y_axis,
+        write_outputs=write_outputs, straighten=straighten, y_axis=y_axis, legend=legend,
         extra_parameters={"trace_colours": list(trace_colours) if trace_colours else None, "achromatic": achromatic},
     )
     rgb, dark, panels, notes, note = fig.rgb, fig.dark, fig.panels, fig.notes, fig.note

@@ -106,7 +106,38 @@ def find_markers_in_mask(
         found = _markers_at(mask, r, origin, rgb_roi, series, min_coverage, strict=True, deep=deep)
         if found:
             return found
+    if usual and min_coverage <= 0:
+        # The colour was given, so it has markers: bigger than the size guessed, perhaps (a few markers on a thick
+        # line of their colour, whose ridge set the guess). Round lumps much bigger than that guess, all of a
+        # size, are the markers.
+        for r in [_lump_radius(filled0, usual), usual]:
+            if r:
+                found = _markers_at(
+                    mask, r, origin, rgb_roi, series, min_coverage, strict=False, deep=deep, lenient=True
+                )
+                if found:
+                    return found
     return []
+
+
+def _lump_radius(filled: np.ndarray, r: float) -> Optional[float]:
+    """The radius of the round lumps in *filled* well over twice the area of a disc of radius *r*, once lines as thick
+    as that are opened away: None if there are none, or they are not of a size."""
+    k = max(1, int(round(0.7 * r)))
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2 * k + 1, 2 * k + 1))
+    opened = cv2.morphologyEx(filled.astype(np.uint8), cv2.MORPH_OPEN, kernel)
+    n, _, stats, _ = cv2.connectedComponentsWithStats(opened, connectivity=8)
+    sizes = []
+    for i in range(1, n):
+        _, _, bw, bh, area = stats[i]
+        if area >= 2.5 * np.pi * r * r and max(bw, bh) <= 1.35 * min(bw, bh) and area >= 0.6 * bw * bh:
+            sizes.append(float(np.sqrt(area / np.pi)))
+    if not sizes:
+        return None
+    med = float(np.median(sizes))
+    if any(abs(v - med) > 0.25 * med for v in sizes):
+        return None
+    return med + 0.5
 
 
 def _peak_scales(mask: np.ndarray) -> list[float]:
@@ -377,10 +408,12 @@ def _markers_at(
     min_coverage: float,
     strict: bool,
     deep: Optional[np.ndarray] = None,
+    lenient: bool = False,
 ) -> list[Marker]:
     """The markers of radius *r* in *mask* (see :func:`find_markers_in_mask`). *strict*: the size was a guess, so
     keep the markers only if there are at least three that stand alone, all of a size. *deep*: where translucent
-    markers lie two or more deep (:func:`layer_map`)."""
+    markers lie two or more deep (:func:`layer_map`). *lenient*: the colour is known to be one of markers, so where
+    most of it is in lumps that are not markers, keep the markers there are rather than none."""
     # A thin line drawn across a marker (a dashed threshold, a gridline on top) cuts it in two: close such gaps.
     closed = (
         cv2.morphologyEx(
@@ -418,7 +451,7 @@ def _markers_at(
         else:
             merged += count
         keep.append((i, count))
-    if singles == 0:
+    if singles == 0 and not lenient:
         return []
     lone = np.array([float(stats[i, cv2.CC_STAT_AREA]) for i, c in keep if c == 1])
     alike = lone.size >= 3 and float(lone.std()) <= 0.35 * float(lone.mean())
@@ -474,6 +507,8 @@ def _markers_at(
     placed: list[tuple[int, list[tuple[float, float]]]] = []
     cluster_area = explained_area = 0.0
     supports: list[float] = []
+    unexplained: set[int] = set()
+    plain: dict[int, list[tuple[float, float]]] = {}
     for i, count in keep:
         x, y, bw, bh, area = stats[i]
         pad = int(np.ceil(rb)) + 2
@@ -523,10 +558,15 @@ def _markers_at(
         cluster_area += float(area)
         explained_area += share * float(area)
         supports.extend(f[2] for f in found if f[2] > 0)
+        if share < 0.75:
+            unexplained.add(i)
+            # markers plainly seen among what is not markers (on the thick line of a fit, with their error bars)
+            plain[i] = [(fx + b0, fy + a0) for fx, fy, sup in found if sup >= 0.4]
         if centres:
             placed.append((i, centres))
     # A colour whose blobs are mostly lumps bigger than one marker is not a colour of markers - unless the lumps are
-    # markers seen overlapping: the outlines of round markers, in whose union most of each lump lies.
+    # markers seen overlapping: the outlines of round markers, in whose union most of each lump lies. (Nor are its
+    # lumps markers, if the colour was given.)
     if merged > 3 * singles:
         seen = (
             cluster_area > 0
@@ -535,7 +575,15 @@ def _markers_at(
             and float(np.median(supports)) >= 0.33
         )
         if not seen:
-            return []
+            if not lenient:
+                return []
+            # the colour was given, and no other size of marker does better: keep the markers that stand alone, and
+            # those seen making up a lump, and leave the lumps that are something else (a thick line fitted through
+            # the markers, say)
+            placed = [(i, plain.get(i, []) if i in unexplained else c) for i, c in placed]
+            placed = [(i, c) for i, c in placed if c]
+            if not placed:
+                return []
     out: list[Marker] = []
     for i, centres in placed:
         x, y, bw, bh, area = stats[i]

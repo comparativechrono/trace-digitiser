@@ -450,7 +450,8 @@ def _markers_at(
             singles += 1
         else:
             merged += count
-        keep.append((i, count))
+        if count <= 50:  # a lump of more than fifty markers' area is a region of colour, not markers
+            keep.append((i, count))
     if singles == 0 and not lenient:
         return []
     lone = np.array([float(stats[i, cv2.CC_STAT_AREA]) for i, c in keep if c == 1])
@@ -544,12 +545,13 @@ def _markers_at(
                     centres.append(c)
         else:
             # no edges to go by: the peaks of the distance from the blob's edge, kept apart by most of a radius
-            ys, xs = np.nonzero(labels == i)
+            sub = np.where(crop, dist_filled[a0:a1, b0:b1], 0.0).astype(np.float32)
+            tops = crop & (sub >= cv2.dilate(sub, np.ones((3, 3), np.uint8))) & (sub >= 0.85 * r)
+            ys, xs = np.nonzero(tops)
+            ys, xs = ys + a0, xs + b0
             inside = dist_filled[ys, xs]
             centres = []
             for j in np.argsort(-inside):
-                if inside[j] < 0.85 * r:
-                    break
                 px, py = float(xs[j]), float(ys[j])
                 if all((px - a) ** 2 + (py - b) ** 2 >= (0.9 * r) ** 2 for a, b in centres) and _disc_like(
                     filled, px, py, r
@@ -728,10 +730,19 @@ def find_markers(
 
 
 def _ink(rgb: np.ndarray, box: tuple[int, int, int, int], threshold: float = 28.0) -> np.ndarray:
-    """Pixels of *box* that are not the paper."""
+    """Pixels of *box* that are drawn: not the paper, nor a broad band of colour shading part of the plot (the paper,
+    as far as a thin line drawn on it is concerned)."""
     x0, y0, x1, y1 = box
     roi = rgb[y0 : y1 + 1, x0 : x1 + 1]
-    return colour_distance(roi, background_colour(rgb, box)) > threshold
+    drawn = colour_distance(roi, background_colour(rgb, box)) > threshold
+    # what lies under a thin line: the colour round it, once lines up to 15 pixels across are closed over
+    k = cv2.getStructuringElement(cv2.MORPH_RECT, (15, 15))
+    under = np.stack([cv2.morphologyEx(roi[..., c], cv2.MORPH_CLOSE, k) for c in range(3)], axis=2)
+    lighter = np.stack([cv2.morphologyEx(roi[..., c], cv2.MORPH_OPEN, k) for c in range(3)], axis=2)
+    stands_out = (np.sqrt(((roi.astype(np.float32) - under) ** 2).sum(axis=2)) > threshold) | (
+        np.sqrt(((roi.astype(np.float32) - lighter) ** 2).sum(axis=2)) > threshold
+    )
+    return drawn & stands_out
 
 
 def _run(line: np.ndarray, clear: np.ndarray, start: int, step: int, skip: int, gap: int = 1) -> int:
@@ -821,6 +832,12 @@ def _bar_end(ink, clear, along_row: bool, centre_line: int, start: int, step: in
         while group[0] - 1 in caps:
             group.insert(0, group[0] - 1)
         return 0.5 * (group[0] + group[-1])
+    # no cap: a gridline broken (by a scan, by dashes) runs on beyond the gap, as a bar does not
+    k = min(max(centre_line, 0), size - 1)
+    line = ink[max(0, k - 1) : k + 2, :].any(axis=0) if along_row else ink[:, max(0, k - 1) : k + 2].any(axis=1)
+    beyond = line[end + step * 3 :: step] if step > 0 else line[: max(0, end - 2)][::-1]
+    if beyond.size >= 20 and float(beyond.mean()) >= 0.6:
+        return None
     return float(end)
 
 
@@ -889,6 +906,29 @@ def _own_colour_bar(cmask: np.ndarray, cx: int, cy: int, r: float, step: int) ->
         return None
 
 
+def _runs_on(drawn: np.ndarray, along_row: bool, centre: int, end: float, step: int) -> bool:
+    """Does a line run on, aslant, past where a bar seems to end - a line leaving the marker steeply (the line joining
+    it to the next), not an error bar, which ends there (or in a cap across it)?"""
+    h, w = drawn.shape
+    e = int(round(end))
+    hits = 0
+    for d in range(1, 5):
+        i = e + step * d
+        if along_row:
+            if not 0 <= i < w:
+                return False
+            line, n = drawn[:, i], h
+        else:
+            if not 0 <= i < h:
+                return False
+            line, n = drawn[i, :], w
+        side = [k for k in range(centre - 6, centre + 7) if 0 <= k < n and abs(k - centre) >= 2 and line[k]]
+        straight = any(line[k] for k in range(max(0, centre - 1), min(n, centre + 2)))
+        if side and not straight:
+            hits += 1
+    return hits >= 3
+
+
 def find_error_bars(
     rgb: np.ndarray,
     box: tuple[int, int, int, int],
@@ -925,6 +965,16 @@ def find_error_bars(
         if want_h:
             left = _bar_end(ink, clear, True, cy, cx, -1, skip)
             right = _bar_end(ink, clear, True, cy, cx, +1, skip)
+            w_box = ink.shape[1]
+            drawn_h = ink | (own[m.series - 1] if own is not None and m.series - 1 < len(own) else False)
+            if left is not None and _runs_on(drawn_h, True, cy, left, -1):
+                left = None
+            if right is not None and _runs_on(drawn_h, True, cy, right, +1):
+                right = None
+            if left is not None and left <= 3 and not _is_cap(ink, True, int(round(left)), cy):
+                left = None
+            if right is not None and right >= w_box - 4 and not _is_cap(ink, True, int(round(right)), cy):
+                right = None
             if left is not None:
                 found["left"] = float(left + x0)
             if right is not None:
@@ -943,6 +993,18 @@ def find_error_bars(
                 if c_own is not None:
                     top = _own_colour_bar(c_own, cx, cy, m.radius, -1)
                     bottom = _own_colour_bar(c_own, cx, cy, m.radius, +1)
+            # a line through the marker that runs on to the edge of the plot, with no cap, is a gridline or the
+            # edge of a shaded band, not an error bar; one that runs on aslant is a line leaving the marker
+            h_box = ink.shape[0]
+            drawn = ink | (own[m.series - 1] if own is not None and m.series - 1 < len(own) else False)
+            if top is not None and _runs_on(drawn, False, cx, top, -1):
+                top = None
+            if bottom is not None and _runs_on(drawn, False, cx, bottom, +1):
+                bottom = None
+            if top is not None and top <= 3 and not _is_cap(ink, False, int(round(top)), cx):
+                top = None
+            if bottom is not None and bottom >= h_box - 4 and not _is_cap(ink, False, int(round(bottom)), cx):
+                bottom = None
             if top is not None:
                 found["up"] = float(top + y0)
             if bottom is not None:

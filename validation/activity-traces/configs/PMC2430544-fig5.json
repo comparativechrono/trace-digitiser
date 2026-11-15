@@ -1,0 +1,79 @@
+{
+ "id": "PMC2430544-fig5",
+ "image": "../figures/PMC2430544-fig5.jpg",
+ "source": "https://storage.googleapis.com/jnl-up-j-jcr-files/journals/1/articles/61/submission/proof/61-10-565-1-17-20140425.jpg (the journal's copy of Figure 5, 600 x 386 px, the same size as PMC's)",
+ "reader": "lines",
+ "notes": "Fig 5a-b: wheel running (revolutions per 10 min) of one rat under 12L:12D and one under repeated light-dark reversals, 8 days each, about 1.25 px per hour. Axes read by the package; x converted from days to hours with two x ticks (0 and 8 days). The light schedules are panels c-d. The trace sits on the x axis wherever the rat was still, so the plot area runs 4 px below the axis line and the y scale is given (0 at 186, 600 at 30.7, as describe_figure read it).",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 0,
+  "light_dark": "12L:12D (dark first half of each day)",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "a 12L:12D rat",
+   "plot_area": [
+    49,
+    31,
+    288,
+    190
+   ],
+   "x_ref": [
+    [
+     48.5,
+     0
+    ],
+    [
+     288.5,
+     192
+    ]
+   ],
+   "series": {
+    "12L:12D rat": "#ff0712"
+   },
+   "y_ref": [
+    [
+     186,
+     0
+    ],
+    [
+     30.7,
+     600
+    ]
+   ]
+  },
+  {
+   "name": "b jet-lagged rat",
+   "plot_area": [
+    337,
+    31,
+    576,
+    190
+   ],
+   "x_ref": [
+    [
+     336.5,
+     0
+    ],
+    [
+     576.6,
+     192
+    ]
+   ],
+   "series": {
+    "jet-lagged rat": "#ff0611"
+   },
+   "y_ref": [
+    [
+     186,
+     0
+    ],
+    [
+     30.7,
+     600
+    ]
+   ]
+  }
+ ]
+}

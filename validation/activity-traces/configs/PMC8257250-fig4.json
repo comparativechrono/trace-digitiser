@@ -1,0 +1,28 @@
+{
+ "id": "PMC8257250-fig4",
+ "image": "../figures/PMC8257250-fig4.jpg",
+ "source": "https://iiif.elifesciences.org/lax:62928%2Felife-62928-fig4-v2.tif/full/full/0/default.jpg",
+ "reader": "lines",
+ "notes": "Fig 4D (locomotor activity, beam breaks per hour, mean and SEM of each group, drawn as markers joined by lines). Axes read by the package; colours as describe_figure lists them.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 12,
+  "light_dark": "LD 12:12, x = 0 at lights on",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "D LMA",
+   "plot_area": [
+    1561,
+    611,
+    2773,
+    1059
+   ],
+   "series": {
+    "Control": "#5d5d5c",
+    "TDCA/valine": "#df5a6f"
+   }
+  }
+ ]
+}

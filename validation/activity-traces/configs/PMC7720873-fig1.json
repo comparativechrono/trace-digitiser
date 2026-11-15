@@ -1,0 +1,47 @@
+{
+ "id": "PMC7720873-fig1",
+ "image": "../figures/PMC7720873-fig1.jpg",
+ "source": "https://pmc-oa-opendata.s3.amazonaws.com/PMC7720873.1/hyp-77-158-g001.jpg (PMC's copy, 666 x 1153 px; the publisher's site refused the request)",
+ "reader": "lines",
+ "notes": "Fig 1D: telemetered locomotor activity (counts/min; thick line the mean of 7 mice, dotted lines the spread) over about 6 baseline days, 3 weeks of high-salt diet and a week of washout, at about 0.7 px per hour. No numeric x axis: x is calibrated from the dashed lines marking the start of the high-salt diet (0 h) and the start of washout (504 h, three weeks later); y from the tick marks. The dotted lines are drawn in the mean line's colour.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": null,
+  "light_dark": "LD (lighting times not shown)",
+  "bin_h": 2
+ },
+ "panels": [
+  {
+   "name": "D locomotor",
+   "plot_area": [
+    73,
+    991,
+    655,
+    1146
+   ],
+   "x_ref": [
+    [
+     176,
+     0
+    ],
+    [
+     523,
+     504
+    ]
+   ],
+   "y_ref": [
+    [
+     1145.5,
+     0
+    ],
+    [
+     990.5,
+     600
+    ]
+   ],
+   "series": {
+    "activity": "#343737"
+   }
+  }
+ ]
+}

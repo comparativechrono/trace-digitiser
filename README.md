@@ -239,6 +239,16 @@ two ticks are clicked, and 33 of 37 points once the ticks of a slanted axis and 
 plots whose dots overlap, and tick labels that are slanted or hand-lettered still need help or remain hard; that
 folder's README has the details.
 
+**Activity traces.**
+[`validation/activity-traces`](https://github.com/comparativechrono/trace-digitiser/tree/main/validation/activity-traces)
+tests the use the package was written for: rhythm analysis of activity traces digitised from papers. It holds 57
+traces of mouse and rat activity over days from 18 open-access papers found by a literature search. For the 29
+series whose authors published the numbers behind them, the same rhythm analysis is run on the trace as read and on
+the authors' series: the Lomb–Scargle periodogram and the 24-h cosinor reach the same verdict on every series, the
+share of activity in the dark phase agrees to within 0.05 for 27, and the acrophase to within 1 h for 27. For all 18
+papers, what the authors say about their traces is checked against them: 46 of 53 statements are borne out, and
+where the authors' numbers can decide, the trace and the numbers agree on 21 of 22.
+
 ### Test it on data you know
 
 The best test of a digitisation is one on data like yours. `round_trip` draws a known series as a
@@ -285,6 +295,7 @@ pip install -e ".[dev]"
 pytest                      # the tests that need Tesseract are skipped without it
 ruff check src tests
 python validation/published-figures/run.py   # figures from papers against their authors' data (minutes)
+python validation/activity-traces/run.py      # rhythm analysis of digitised activity traces (a minute)
 ```
 
 `src/trace_digitiser/` in the order the work is done:

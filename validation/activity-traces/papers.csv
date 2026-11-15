@@ -1,0 +1,27 @@
+pmcid,cite,first_author,year,journal,doi,figure,group,rhythm_analysis,data_used,decision,note
+PMC12370043,Sayler & Hammond 2025,Sayler,2025,PLoS One,10.1371/journal.pone.0323853,Fig 2,data,"cosinor, FFT-NLLS (BioDare2)",S1 Data (pone.0323853.s001.xlsx): hourly activity of each mouse,included,
+PMC10082796,Park et al. 2023,Park,2023,Nat Commun,10.1038/s41467-023-37517-6,"Fig 2b, 2f",data,"JTK_CYCLE (MetaCycle), cosinor","Source Data (41467_2023_37517_MOESM4_ESM), sheets Figure 2b and 2f: hourly activity of each mouse",included,
+PMC6379088,Hoekstra et al. 2019,Hoekstra,2019,eLife,10.7554/eLife.43400,Fig 6A,data,ClockLab; free-running period in DD,Figure 6-source data 1: hourly activity of each mouse,included,
+PMC8257250,Quante et al. 2021,Quante,2021,eLife,10.7554/eLife.62928,Fig 4D,data,none,Figure 4-source data 1: CalR input (calorimetry records of each mouse),included,
+PMC6290015,Endo et al. 2018,Endo,2018,Commun Biol,10.1038/s42003-018-0213-5,Fig 4b,data,none,"Supplementary Data 1, sheet Fig.4b: hourly activity of each mouse",included,
+PMC11741586,Gulledge et al. 2025,Gulledge,2025,PLoS One,10.1371/journal.pone.0312794,Fig 3B,data,none (diurnal index),"S1 Data, Fig3_Data.xlsx, sheet 3B: 3-h activity of each rat",included,
+PMC9465459,Re et al. 2022,Re,2022,Front Mol Neurosci,10.3389/fnmol.2022.955799,Fig 2A,data,none,"Mendeley Data 10.17632/7zbggkpmdy.1, Table 2: 5-min Promethion records of each cage",included,
+PMC13720268,Lee et al. 2026,Lee,2026,Adv Sci,10.1002/advs.78567,Fig 2n,data,none,"Source data workbook, sheet Fig 2: hourly activity of each mouse",included,
+PMC9645659,Zhao et al. 2022,Zhao,2022,PLoS Biol,10.1371/journal.pbio.3001865,Fig 1C,no data,Lomb-Scargle periodogram (ClockLab),,included,
+PMC2430544,Rea et al. 2008,Rea,2008,J Circadian Rhythms,10.1186/1740-3391-6-7,Fig 5a-b,no data,phasor analysis (circular cross-correlation),,included,
+PMC3338649,Ashek et al. 2012,Ashek,2012,PLoS One,10.1371/journal.pone.0036311,Fig 1A,no data,chi-square periodogram,,included,
+PMC7720873,Ralph et al. 2021,Ralph,2021,Hypertension,10.1161/HYPERTENSIONAHA.120.16186,Fig 1D,no data,cosinor,,included,
+PMC2654093,Pendergast et al. 2009,Pendergast,2009,PLoS One,10.1371/journal.pone.0004860,"Fig 1B, 1D",no data,ClockLab; free-running period,,included,
+PMC4001052,Lopatina et al. 2014,Lopatina,2014,Front Behav Neurosci,10.3389/fnbeh.2014.00133,Fig 4,no data,none,,included,the figure analysed in the submission
+PMC13053757,El-Merahbi et al. 2026,El-Merahbi,2026,Mol Metab,10.1016/j.molmet.2026.102346,Fig 3L,no data,none,,included,
+PMC6718533,Chellappa et al. 2019,Chellappa,2019,Aging Cell,10.1111/acel.13014,Fig 3a-b,no data,none,,included,
+PMC11446685,Lenihan-Geels et al. 2024,Lenihan-Geels,2024,J Cachexia Sarcopenia Muscle,10.1002/jcsm.13529,Fig 6C,no data,none,,included,
+PMC12071877,Burke et al. 2025,Burke,2025,Int J Mol Sci,10.3390/ijms26094212,"Fig 5C, 5G",no data,none,,included,
+PMC10973666,Astafev et al. 2024,Astafev,2024,iScience,10.1016/j.isci.2024.109483,Fig 1D,no data,JTK_CYCLE (MetaCycle),,excluded,"a 24-h profile averaged over 5 days and double-plotted, not a continuous record"
+PMC13284233,Kim et al. 2026,Kim,2026,Sci Rep,10.1038/s41598-026-49695-6,Fig 1a,no data,"FFT periodogram, IS/IV",,excluded,"activity drawn as dense spikes whose light-phase values fall below the plotted range, so no line is drawn there"
+PMC3596351,Nakamura et al. 2013,Nakamura,2013,PLoS One,10.1371/journal.pone.0058884,Fig 1a1-d1,no data,wavelet,,excluded,"activity drawn as filled bars, not a line"
+PMC9101627,Pignatelli et al. 2022,Pignatelli,2022,Int J Mol Sci,10.3390/ijms23094679,Fig 3c,no data,MetaCycle,,excluded,"wheel running measured at five times within ZT0-12 of each day, not a continuous record"
+PMC9222106,Lamers et al. 2022,Lamers,2022,Cells,10.3390/cells11121939,Fig 1C,no data,none,,excluded,"5-min bars of individual mice, not a line"
+PMC10571829,Terry et al. 2023,Terry,2023,Cancers,10.3390/cancers15194798,Fig 3,no data,none,,excluded,"activity drawn as filled areas, not a line"
+PMC6195537,Li et al. 2018,Li,2018,Sci Rep,10.1038/s41598-018-33069-8,Fig 3a,no data,ClockLab,,excluded,"both groups drawn as black lines, told apart only by the fill of their markers"
+PMC13065827,Shi et al. 2026,Shi,2026,Nat Commun,10.1038/s41467-026-70136-5,Fig 3f,no data,none,,excluded,"the text says nothing about the activity trace, so there is no claim to check"

@@ -1,0 +1,85 @@
+{
+ "id": "PMC12071877-fig5",
+ "image": "../figures/PMC12071877-fig5.png",
+ "source": "Figure 5 as embedded in the article PDF, https://mdpi-res.com/d_attachment/ijms/ijms-26-04212/article_deploy/ijms-26-04212.pdf (1430 x 654 px; the journal's site refused the request; PMC's copy is 750 x 334 px)",
+ "reader": "lines",
+ "notes": "Fig 5C (males) and 5G (females): X+Y beam breaks of four groups (vehicle or corticosterone, normal- or high-protein diet) over 7 days, four overlapping lines at about 1.6 px per hour. No numeric x axis: x from the grey dark bars (first starts at 12 h, seventh at 156 h); y from the tick marks. Colours from describe_figure.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 12,
+  "light_dark": "LD 12:12 (grey = dark)",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "C males",
+   "plot_area": [
+    783,
+    99,
+    1052,
+    289
+   ],
+   "x_ref": [
+    [
+     793,
+     12
+    ],
+    [
+     1028,
+     156
+    ]
+   ],
+   "y_ref": [
+    [
+     289,
+     0
+    ],
+    [
+     98.5,
+     250
+    ]
+   ],
+   "series": {
+    "Veh NPD": "#010101",
+    "Veh HPD": "#02bf02",
+    "Cort NPD": "#fc0202",
+    "Cort HPD": "#0202fa"
+   }
+  },
+  {
+   "name": "G females",
+   "plot_area": [
+    793,
+    411,
+    1058,
+    601
+   ],
+   "x_ref": [
+    [
+     799,
+     12
+    ],
+    [
+     1034,
+     156
+    ]
+   ],
+   "y_ref": [
+    [
+     601,
+     0
+    ],
+    [
+     410.5,
+     250
+    ]
+   ],
+   "series": {
+    "Veh NPD": "#010101",
+    "Veh HPD": "#02bf02",
+    "Cort NPD": "#fc0202",
+    "Cort HPD": "#0202fa"
+   }
+  }
+ ]
+}

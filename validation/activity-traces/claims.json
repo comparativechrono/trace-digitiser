@@ -1,0 +1,1102 @@
+[
+ {
+  "id": "PMC12370043-1",
+  "pmcid": "PMC12370043",
+  "case": "PMC12370043-fig2",
+  "figure": "Fig 2",
+  "where": "Results",
+  "claim": "Male KO mice were less active than male WT mice (X-activity).",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "X-activity male",
+   "series": "KO"
+  },
+  "b": {
+   "panel": "X-activity male",
+   "series": "WT"
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC12370043-2",
+  "pmcid": "PMC12370043",
+  "case": "PMC12370043-fig2",
+  "figure": "Fig 2",
+  "where": "Results",
+  "claim": "Male KO mice were less active than male WT mice (Ambulatory).",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "Ambulatory male",
+   "series": "KO"
+  },
+  "b": {
+   "panel": "Ambulatory male",
+   "series": "WT"
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC12370043-3",
+  "pmcid": "PMC12370043",
+  "case": "PMC12370043-fig2",
+  "figure": "Fig 2",
+  "where": "Results",
+  "claim": "Male KO mice were less active than male WT mice (Z-activity).",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "Z-activity male",
+   "series": "KO"
+  },
+  "b": {
+   "panel": "Z-activity male",
+   "series": "WT"
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC12370043-4",
+  "pmcid": "PMC12370043",
+  "case": "PMC12370043-fig2",
+  "figure": "Fig 2",
+  "where": "Results",
+  "claim": "Rearing (Z-activity) in male KO mice was about 40% lower than in WT.",
+  "type": "ratio",
+  "metric": "mean",
+  "a": {
+   "panel": "Z-activity male",
+   "series": "KO"
+  },
+  "b": {
+   "panel": "Z-activity male",
+   "series": "WT"
+  },
+  "value": 0.6,
+  "tol": 0.1
+ },
+ {
+  "id": "PMC12370043-5",
+  "pmcid": "PMC12370043",
+  "case": "PMC12370043-fig2",
+  "figure": "Fig 2",
+  "where": "Results",
+  "claim": "The decrease in activity was not seen in female KO mice.",
+  "type": "untestable",
+  "reason": "absence of a significant difference"
+ },
+ {
+  "id": "PMC10082796-1",
+  "pmcid": "PMC10082796",
+  "case": "PMC10082796-fig2",
+  "figure": "Fig 2b",
+  "where": "Results",
+  "claim": "FK866 blunted the night-time rise in LMA, more so at the higher dose.",
+  "type": "order",
+  "metric": "night_minus_day",
+  "panel": "b LMA",
+  "series": [
+   "Control",
+   "FK866 3.3mg/kg",
+   "FK866 8mg/kg"
+  ]
+ },
+ {
+  "id": "PMC10082796-2",
+  "pmcid": "PMC10082796",
+  "case": "PMC10082796-fig2",
+  "figure": "Fig 2b",
+  "where": "Legend title",
+  "claim": "Blocking plasma eNAMPT (FK866 3.3mg/kg) abrogates the circadian rhythm of LMA.",
+  "type": "rhythmic",
+  "panel": "b LMA",
+  "series": "FK866 3.3mg/kg",
+  "expect": false
+ },
+ {
+  "id": "PMC10082796-3",
+  "pmcid": "PMC10082796",
+  "case": "PMC10082796-fig2",
+  "figure": "Fig 2b",
+  "where": "Legend title",
+  "claim": "Blocking plasma eNAMPT (FK866 8mg/kg) abrogates the circadian rhythm of LMA.",
+  "type": "rhythmic",
+  "panel": "b LMA",
+  "series": "FK866 8mg/kg",
+  "expect": false
+ },
+ {
+  "id": "PMC10082796-4",
+  "pmcid": "PMC10082796",
+  "case": "PMC10082796-fig2",
+  "figure": "Fig 2f",
+  "where": "Legend title",
+  "claim": "Blocking plasma eNAMPT (siNampt) abrogates the circadian rhythm of LMA.",
+  "type": "rhythmic",
+  "panel": "f LMA",
+  "series": "siNampt",
+  "expect": false
+ },
+ {
+  "id": "PMC10082796-5",
+  "pmcid": "PMC10082796",
+  "case": "PMC10082796-fig2",
+  "figure": "Fig 2f",
+  "where": "Results",
+  "claim": "siNampt abolished the nocturnal rise in LMA.",
+  "type": "nocturnal",
+  "panel": "f LMA",
+  "series": "siNampt",
+  "expect": false
+ },
+ {
+  "id": "PMC10082796-6",
+  "pmcid": "PMC10082796",
+  "case": "PMC10082796-fig2",
+  "figure": "Fig 2f",
+  "where": "Results",
+  "claim": "The night-time rise in LMA was smaller with siNampt than with siControl.",
+  "type": "compare",
+  "metric": "night_minus_day",
+  "a": {
+   "panel": "f LMA",
+   "series": "siNampt"
+  },
+  "b": {
+   "panel": "f LMA",
+   "series": "siControl"
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC6379088-1",
+  "pmcid": "PMC6379088",
+  "case": "PMC6379088-fig6",
+  "figure": "Fig 6A",
+  "where": "Results",
+  "claim": "Cirbp KO mice were more active than WT in the dark phase (baseline days).",
+  "type": "compare",
+  "metric": "dark_mean",
+  "a": {
+   "panel": "A LMA",
+   "series": "KO",
+   "windows": [
+    [
+     0,
+     48
+    ]
+   ]
+  },
+  "b": {
+   "panel": "A LMA",
+   "series": "WT",
+   "windows": [
+    [
+     0,
+     48
+    ]
+   ]
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC6379088-2",
+  "pmcid": "PMC6379088",
+  "case": "PMC6379088-fig6",
+  "figure": "Fig 6A",
+  "where": "Results",
+  "claim": "WT movements in the 6 h after dark onset (ZT12-18) were 463.8 (mean of the baseline days).",
+  "type": "value",
+  "metric": "mean",
+  "a": {
+   "panel": "A LMA",
+   "series": "WT",
+   "windows": [
+    [
+     12,
+     18
+    ],
+    [
+     36,
+     42
+    ]
+   ]
+  },
+  "value": 463.8,
+  "scale": 6,
+  "tol_rel": 0.2
+ },
+ {
+  "id": "PMC6379088-3",
+  "pmcid": "PMC6379088",
+  "case": "PMC6379088-fig6",
+  "figure": "Fig 6A",
+  "where": "Results",
+  "claim": "KO movements in the 6 h after dark onset (ZT12-18) were 801.8 (mean of the baseline days).",
+  "type": "value",
+  "metric": "mean",
+  "a": {
+   "panel": "A LMA",
+   "series": "KO",
+   "windows": [
+    [
+     12,
+     18
+    ],
+    [
+     36,
+     42
+    ]
+   ]
+  },
+  "value": 801.8,
+  "scale": 6,
+  "tol_rel": 0.2
+ },
+ {
+  "id": "PMC8257250-1",
+  "pmcid": "PMC8257250",
+  "case": "PMC8257250-fig4",
+  "figure": "Fig 4D",
+  "where": "Results",
+  "claim": "TDCA/valine left locomotor activity unaffected.",
+  "type": "untestable",
+  "reason": "absence of a significant difference"
+ },
+ {
+  "id": "PMC6290015-1",
+  "pmcid": "PMC6290015",
+  "case": "PMC6290015-fig4",
+  "figure": "Fig 4b",
+  "where": "Results",
+  "claim": "Isolated mice were more active than group-housed mice in the familiar environment.",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "b activity",
+   "series": "SI"
+  },
+  "b": {
+   "panel": "b activity",
+   "series": "GH"
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC6290015-2",
+  "pmcid": "PMC6290015",
+  "case": "PMC6290015-fig4",
+  "figure": "Fig 4b",
+  "where": "Results",
+  "claim": "The difference was largest at the start of each dark phase (first 3 h).",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "b activity",
+   "series": "SI",
+   "windows": [
+    [
+     20,
+     23
+    ],
+    [
+     44,
+     47
+    ],
+    [
+     68,
+     71
+    ]
+   ]
+  },
+  "b": {
+   "panel": "b activity",
+   "series": "GH",
+   "windows": [
+    [
+     20,
+     23
+    ],
+    [
+     44,
+     47
+    ],
+    [
+     68,
+     71
+    ]
+   ]
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC6290015-3",
+  "pmcid": "PMC6290015",
+  "case": "PMC6290015-fig4",
+  "figure": "Fig 4b",
+  "where": "Results",
+  "claim": "Isolated mice still showed circadian changes in activity.",
+  "type": "rhythmic",
+  "panel": "b activity",
+  "series": "SI",
+  "expect": true
+ },
+ {
+  "id": "PMC11741586-1",
+  "pmcid": "PMC11741586",
+  "case": "PMC11741586-fig3",
+  "figure": "Fig 3B",
+  "where": "Results",
+  "claim": "Withdrawal reduced the day-night difference in activity on W2 compared with baseline.",
+  "type": "compare",
+  "metric": "night_minus_day",
+  "a": {
+   "panel": "B actigraphy",
+   "series": "withdrawal",
+   "windows": [
+    [
+     72,
+     96
+    ]
+   ]
+  },
+  "b": {
+   "panel": "B actigraphy",
+   "series": "baseline",
+   "windows": [
+    [
+     0,
+     72
+    ]
+   ]
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC11741586-2",
+  "pmcid": "PMC11741586",
+  "case": "PMC11741586-fig3",
+  "figure": "Fig 3B",
+  "where": "Results",
+  "claim": "Withdrawal reduced the day-night difference in activity on W3 compared with baseline.",
+  "type": "compare",
+  "metric": "night_minus_day",
+  "a": {
+   "panel": "B actigraphy",
+   "series": "withdrawal",
+   "windows": [
+    [
+     96,
+     120
+    ]
+   ]
+  },
+  "b": {
+   "panel": "B actigraphy",
+   "series": "baseline",
+   "windows": [
+    [
+     0,
+     72
+    ]
+   ]
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC11741586-3",
+  "pmcid": "PMC11741586",
+  "case": "PMC11741586-fig3",
+  "figure": "Fig 3B",
+  "where": "Results",
+  "claim": "By W8 the day-night difference had recovered towards baseline (larger than on W2).",
+  "type": "compare",
+  "metric": "night_minus_day",
+  "a": {
+   "panel": "B actigraphy",
+   "series": "withdrawal",
+   "windows": [
+    [
+     216,
+     240
+    ]
+   ]
+  },
+  "b": {
+   "panel": "B actigraphy",
+   "series": "withdrawal",
+   "windows": [
+    [
+     72,
+     96
+    ]
+   ]
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC11741586-4",
+  "pmcid": "PMC11741586",
+  "case": "PMC11741586-fig3",
+  "figure": "Fig 3B",
+  "where": "Results",
+  "claim": "The effect of withdrawal on activity fell mainly in the lights-off phase (W2 dark-phase activity below baseline).",
+  "type": "compare",
+  "metric": "dark_mean",
+  "a": {
+   "panel": "B actigraphy",
+   "series": "withdrawal",
+   "windows": [
+    [
+     72,
+     96
+    ]
+   ]
+  },
+  "b": {
+   "panel": "B actigraphy",
+   "series": "baseline",
+   "windows": [
+    [
+     0,
+     72
+    ]
+   ]
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC9465459-1",
+  "pmcid": "PMC9465459",
+  "case": "PMC9465459-fig2",
+  "figure": "Fig 2A",
+  "where": "Results",
+  "claim": "Mice (Control) were more active at night.",
+  "type": "nocturnal",
+  "panel": "A locomotor",
+  "series": "Control",
+  "expect": true
+ },
+ {
+  "id": "PMC9465459-2",
+  "pmcid": "PMC9465459",
+  "case": "PMC9465459-fig2",
+  "figure": "Fig 2A",
+  "where": "Results",
+  "claim": "Mice (METH) were more active at night.",
+  "type": "nocturnal",
+  "panel": "A locomotor",
+  "series": "METH",
+  "expect": true
+ },
+ {
+  "id": "PMC9465459-3",
+  "pmcid": "PMC9465459",
+  "case": "PMC9465459-fig2",
+  "figure": "Fig 2A",
+  "where": "Results",
+  "claim": "Locomotor activity did not differ between METH and control mice.",
+  "type": "untestable",
+  "reason": "absence of a significant difference"
+ },
+ {
+  "id": "PMC13720268-1",
+  "pmcid": "PMC13720268",
+  "case": "PMC13720268-fig2",
+  "figure": "Fig 2n",
+  "where": "Results",
+  "claim": "Locomotor activity did not differ between genotypes.",
+  "type": "untestable",
+  "reason": "absence of a significant difference"
+ },
+ {
+  "id": "PMC9645659-1",
+  "pmcid": "PMC9645659",
+  "case": "PMC9645659-fig1",
+  "figure": "Fig 1C",
+  "where": "Results",
+  "claim": "WT locomotor activity is strongly rhythmic in LD 12:12.",
+  "type": "rhythmic",
+  "panel": "WT in LD",
+  "series": "Locomotion",
+  "expect": true
+ },
+ {
+  "id": "PMC9645659-2",
+  "pmcid": "PMC9645659",
+  "case": "PMC9645659-fig1",
+  "figure": "Fig 1C",
+  "where": "Results",
+  "claim": "WT mice keep a robust free-running rhythm in constant dim red light.",
+  "type": "rhythmic",
+  "panel": "WT in RR",
+  "series": "Locomotion",
+  "expect": true
+ },
+ {
+  "id": "PMC9645659-3",
+  "pmcid": "PMC9645659",
+  "case": "PMC9645659-fig1",
+  "figure": "Fig 1C",
+  "where": "Results",
+  "claim": "Per1/2-dko locomotor activity stays rhythmic in LD.",
+  "type": "rhythmic",
+  "panel": "Per1/2-dko in LD",
+  "series": "Locomotion",
+  "expect": true
+ },
+ {
+  "id": "PMC9645659-4",
+  "pmcid": "PMC9645659",
+  "case": "PMC9645659-fig1",
+  "figure": "Fig 1C",
+  "where": "Results",
+  "claim": "Per1/2-dko activity in constant dim red light is ultradian or arrhythmic.",
+  "type": "rhythmic",
+  "panel": "Per1/2-dko in RR",
+  "series": "Locomotion",
+  "expect": false
+ },
+ {
+  "id": "PMC9645659-5",
+  "pmcid": "PMC9645659",
+  "case": "PMC9645659-fig1",
+  "figure": "Fig 1C",
+  "where": "Results",
+  "claim": "The WT rhythm in LD has a 24-h period.",
+  "type": "period",
+  "panel": "WT in LD",
+  "series": "Locomotion",
+  "value": 24.0,
+  "tol_h": 0.5
+ },
+ {
+  "id": "PMC9645659-6",
+  "pmcid": "PMC9645659",
+  "case": "PMC9645659-fig1",
+  "figure": "Fig 1B-C",
+  "where": "Results",
+  "claim": "The WT free-running period in RR is slightly longer than 24 h (about 24.5 h).",
+  "type": "period",
+  "panel": "WT in RR",
+  "series": "Locomotion",
+  "value": 24.5,
+  "tol_h": 0.5
+ },
+ {
+  "id": "PMC2430544-1",
+  "pmcid": "PMC2430544",
+  "case": "PMC2430544-fig5",
+  "figure": "Fig 5a",
+  "where": "Results",
+  "claim": "The 12L:12D rat ran mostly in darkness.",
+  "type": "nocturnal",
+  "panel": "a 12L:12D rat",
+  "series": "12L:12D rat",
+  "expect": true
+ },
+ {
+  "id": "PMC2430544-2",
+  "pmcid": "PMC2430544",
+  "case": "PMC2430544-fig5",
+  "figure": "Fig 5a-b",
+  "where": "Results",
+  "claim": "Wheel running was much less tied to darkness in the jet-lagged rat.",
+  "type": "compare",
+  "metric": "dark_share",
+  "a": {
+   "panel": "b jet-lagged rat",
+   "series": "jet-lagged rat"
+  },
+  "b": {
+   "panel": "a 12L:12D rat",
+   "series": "12L:12D rat"
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC3338649-1",
+  "pmcid": "PMC3338649",
+  "case": "PMC3338649-fig1",
+  "figure": "Fig 1A",
+  "where": "Results",
+  "claim": "Activity had a significant, roughly circadian periodicity at baseline.",
+  "type": "rhythmic",
+  "panel": "A activity",
+  "series": "baseline (0-84 h)",
+  "expect": true
+ },
+ {
+  "id": "PMC3338649-2",
+  "pmcid": "PMC3338649",
+  "case": "PMC3338649-fig1",
+  "figure": "Fig 1A",
+  "where": "Results",
+  "claim": "The baseline period was approximately circadian.",
+  "type": "period",
+  "panel": "A activity",
+  "series": "baseline (0-84 h)",
+  "value": 24.0,
+  "tol_h": 1.0
+ },
+ {
+  "id": "PMC3338649-3",
+  "pmcid": "PMC3338649",
+  "case": "PMC3338649-fig1",
+  "figure": "Fig 1A",
+  "where": "Results",
+  "claim": "Circadian rhythmicity of activity persisted in the hypertensive (I3C) period.",
+  "type": "rhythmic",
+  "panel": "A activity",
+  "series": "I3C (84-264 h)",
+  "expect": true
+ },
+ {
+  "id": "PMC3338649-4",
+  "pmcid": "PMC3338649",
+  "case": "PMC3338649-fig1",
+  "figure": "Fig 1A",
+  "where": "Results",
+  "claim": "The day-night cycle of activity was unaffected by RAAS activation.",
+  "type": "untestable",
+  "reason": "absence of a significant difference"
+ },
+ {
+  "id": "PMC4001052-1",
+  "pmcid": "PMC4001052",
+  "case": "PMC4001052-fig4",
+  "figure": "Fig 4",
+  "where": "Results",
+  "claim": "CD157-/- activity by night was about 40% (+-4%) of CD157+/+ activity.",
+  "type": "ratio",
+  "metric": "dark_mean",
+  "a": {
+   "panel": "B CD157-/-",
+   "series": "CD157-/-"
+  },
+  "b": {
+   "panel": "A CD157+/+",
+   "series": "CD157+/+"
+  },
+  "value": 0.4,
+  "tol": 0.1
+ },
+ {
+  "id": "PMC4001052-2",
+  "pmcid": "PMC4001052",
+  "case": "PMC4001052-fig4",
+  "figure": "Fig 4",
+  "where": "Results",
+  "claim": "CD157-/- activity by day was about 40% (+-4%) of CD157+/+ activity.",
+  "type": "ratio",
+  "metric": "light_mean",
+  "a": {
+   "panel": "B CD157-/-",
+   "series": "CD157-/-"
+  },
+  "b": {
+   "panel": "A CD157+/+",
+   "series": "CD157+/+"
+  },
+  "value": 0.4,
+  "tol": 0.1
+ },
+ {
+  "id": "PMC4001052-3",
+  "pmcid": "PMC4001052",
+  "case": "PMC4001052-fig4",
+  "figure": "Fig 4",
+  "where": "Results/Discussion",
+  "claim": "CD157+/+ mice show a day-night rhythm over the 7 days.",
+  "type": "rhythmic",
+  "panel": "A CD157+/+",
+  "series": "CD157+/+",
+  "expect": true
+ },
+ {
+  "id": "PMC4001052-4",
+  "pmcid": "PMC4001052",
+  "case": "PMC4001052-fig4",
+  "figure": "Fig 4",
+  "where": "Results/Discussion",
+  "claim": "CD157-/- mice keep the same day-night rhythm (circadian rhythm not affected).",
+  "type": "rhythmic",
+  "panel": "B CD157-/-",
+  "series": "CD157-/-",
+  "expect": true
+ },
+ {
+  "id": "PMC4001052-5",
+  "pmcid": "PMC4001052",
+  "case": "PMC4001052-fig4",
+  "figure": "Fig 4",
+  "where": "Results/Discussion",
+  "claim": "CD157-/- mice, like the controls, are more active by night.",
+  "type": "nocturnal",
+  "panel": "B CD157-/-",
+  "series": "CD157-/-",
+  "expect": true
+ },
+ {
+  "id": "PMC13053757-1",
+  "pmcid": "PMC13053757",
+  "case": "PMC13053757-fig3",
+  "figure": "Fig 3L",
+  "where": "Results",
+  "claim": "ADGRF5 KO mice were markedly less active in the dark phase.",
+  "type": "compare",
+  "metric": "dark_mean",
+  "a": {
+   "panel": "L activity",
+   "series": "ADGRF5 KO"
+  },
+  "b": {
+   "panel": "L activity",
+   "series": "WT"
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC6718533-1",
+  "pmcid": "PMC6718533",
+  "case": "PMC6718533-fig3",
+  "figure": "Fig 3a-b",
+  "where": "Results",
+  "claim": "Activity was decreased in Rictor KO females (fed).",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "a female",
+   "series": "Rictor KO | fed"
+  },
+  "b": {
+   "panel": "a female",
+   "series": "Control | fed"
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC6718533-2",
+  "pmcid": "PMC6718533",
+  "case": "PMC6718533-fig3",
+  "figure": "Fig 3a-b",
+  "where": "Results",
+  "claim": "Activity was decreased in Rictor KO males (fed).",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "b male",
+   "series": "Rictor KO | fed"
+  },
+  "b": {
+   "panel": "b male",
+   "series": "Control | fed"
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC6718533-3",
+  "pmcid": "PMC6718533",
+  "case": "PMC6718533-fig3",
+  "figure": "Fig 3a-b",
+  "where": "Results",
+  "claim": "The decrease was most pronounced in females.",
+  "type": "rel_drop",
+  "metric": "mean",
+  "a": [
+   {
+    "panel": "a female",
+    "series": "Control | fed"
+   },
+   {
+    "panel": "a female",
+    "series": "Rictor KO | fed"
+   }
+  ],
+  "b": [
+   {
+    "panel": "b male",
+    "series": "Control | fed"
+   },
+   {
+    "panel": "b male",
+    "series": "Rictor KO | fed"
+   }
+  ],
+  "op": ">"
+ },
+ {
+  "id": "PMC6718533-4",
+  "pmcid": "PMC6718533",
+  "case": "PMC6718533-fig3",
+  "figure": "Fig 3a-b",
+  "where": "Results",
+  "claim": "Fasting markedly increased activity (Control females).",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "a female",
+   "series": "Control | fasted"
+  },
+  "b": {
+   "panel": "a female",
+   "series": "Control | fed"
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC6718533-5",
+  "pmcid": "PMC6718533",
+  "case": "PMC6718533-fig3",
+  "figure": "Fig 3a-b",
+  "where": "Results",
+  "claim": "Fasting markedly increased activity (Rictor KO females).",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "a female",
+   "series": "Rictor KO | fasted"
+  },
+  "b": {
+   "panel": "a female",
+   "series": "Rictor KO | fed"
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC6718533-6",
+  "pmcid": "PMC6718533",
+  "case": "PMC6718533-fig3",
+  "figure": "Fig 3a-b",
+  "where": "Results",
+  "claim": "Fasting markedly increased activity (Control males).",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "b male",
+   "series": "Control | fasted"
+  },
+  "b": {
+   "panel": "b male",
+   "series": "Control | fed"
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC6718533-7",
+  "pmcid": "PMC6718533",
+  "case": "PMC6718533-fig3",
+  "figure": "Fig 3a-b",
+  "where": "Results",
+  "claim": "Fasting markedly increased activity (Rictor KO males).",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "b male",
+   "series": "Rictor KO | fasted"
+  },
+  "b": {
+   "panel": "b male",
+   "series": "Rictor KO | fed"
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC6718533-8",
+  "pmcid": "PMC6718533",
+  "case": "PMC6718533-fig3",
+  "figure": "Fig 3a-b",
+  "where": "Results",
+  "claim": "The decreased activity of Rictor KO females remained during fasting.",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "a female",
+   "series": "Rictor KO | fasted"
+  },
+  "b": {
+   "panel": "a female",
+   "series": "Control | fasted"
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC6718533-9",
+  "pmcid": "PMC6718533",
+  "case": "PMC6718533-fig3",
+  "figure": "Fig 3a-b",
+  "where": "Results",
+  "claim": "The decreased activity of Rictor KO males remained during fasting.",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "b male",
+   "series": "Rictor KO | fasted"
+  },
+  "b": {
+   "panel": "b male",
+   "series": "Control | fasted"
+  },
+  "op": "<"
+ },
+ {
+  "id": "PMC11446685-1",
+  "pmcid": "PMC11446685",
+  "case": "PMC11446685-fig6",
+  "figure": "Fig 6C",
+  "where": "Results",
+  "claim": "p53MKO mice became more active than controls in the dark phases at the end of tamoxifen dosing (last two dark phases).",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "C activity",
+   "series": "p53MKO",
+   "windows": [
+    [
+     156,
+     168
+    ],
+    [
+     180,
+     192
+    ]
+   ]
+  },
+  "b": {
+   "panel": "C activity",
+   "series": "LOX control",
+   "windows": [
+    [
+     156,
+     168
+    ],
+    [
+     180,
+     192
+    ]
+   ]
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC7720873-1",
+  "pmcid": "PMC7720873",
+  "case": "PMC7720873-fig1",
+  "figure": "Fig 1D",
+  "where": "Results",
+  "claim": "The rhythmic amplitude of activity increased on the high-salt diet.",
+  "type": "compare",
+  "metric": "amplitude",
+  "a": {
+   "panel": "D locomotor",
+   "series": "high salt"
+  },
+  "b": {
+   "panel": "D locomotor",
+   "series": "baseline"
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC7720873-2",
+  "pmcid": "PMC7720873",
+  "case": "PMC7720873-fig1",
+  "figure": "Fig 1D, S3",
+  "where": "Results",
+  "claim": "Night-time (active-phase) activity was higher on the high-salt diet (most active 10 h of the day).",
+  "type": "compare",
+  "metric": "M10",
+  "a": {
+   "panel": "D locomotor",
+   "series": "high salt"
+  },
+  "b": {
+   "panel": "D locomotor",
+   "series": "baseline"
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC7720873-3",
+  "pmcid": "PMC7720873",
+  "case": "PMC7720873-fig1",
+  "figure": "Fig 1D",
+  "where": "Results",
+  "claim": "Overall daily activity was unaffected by diet.",
+  "type": "untestable",
+  "reason": "absence of a significant difference"
+ },
+ {
+  "id": "PMC2654093-1",
+  "pmcid": "PMC2654093",
+  "case": "PMC2654093-fig1",
+  "figure": "Fig 1B",
+  "where": "Results",
+  "claim": "With food removed at ZT3, anticipatory activity (former feeding time, ZT6-10) was minimal on day 1 and higher on day 2.",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "B food removed at ZT3",
+   "series": "activity",
+   "windows": [
+    [
+     27,
+     31
+    ]
+   ]
+  },
+  "b": {
+   "panel": "B food removed at ZT3",
+   "series": "activity",
+   "windows": [
+    [
+     3,
+     7
+    ]
+   ]
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC2654093-2",
+  "pmcid": "PMC2654093",
+  "case": "PMC2654093-fig1",
+  "figure": "Fig 1B, 1D",
+  "where": "Results",
+  "claim": "Anticipatory activity on day 1 was robust when food was removed at ZT12 but minimal when removed at ZT3.",
+  "type": "compare",
+  "metric": "mean",
+  "a": {
+   "panel": "D food removed at ZT12",
+   "series": "activity",
+   "windows": [
+    [
+     18,
+     22
+    ]
+   ]
+  },
+  "b": {
+   "panel": "B food removed at ZT3",
+   "series": "activity",
+   "windows": [
+    [
+     3,
+     7
+    ]
+   ]
+  },
+  "op": ">"
+ },
+ {
+  "id": "PMC12071877-1",
+  "pmcid": "PMC12071877",
+  "case": "PMC12071877-fig5",
+  "figure": "Fig 5C, 5G",
+  "where": "Results",
+  "claim": "Total spontaneous activity did not differ between diets or with corticosterone.",
+  "type": "untestable",
+  "reason": "absence of a significant difference"
+ }
+]

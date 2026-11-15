@@ -1,0 +1,93 @@
+{
+ "id": "PMC12370043-fig2",
+ "image": "../figures/PMC12370043-fig2.png",
+ "source": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0323853.g002",
+ "reader": "lines",
+ "notes": "Fig 2: X-activity, ambulatory and Z-activity (rearing) beam breaks of male and female WT and KO mice, hourly group means over 60 h, drawn as lines through markers with error bars. A plot area is drawn round each of the six panels; colours are describe_figure's swatches for each panel; axes read by the package. The markers overlap too much for the points reader, so the line reader reads the lines.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 0,
+  "light_dark": "LD 12:12, dark first (grey)",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "X-activity male",
+   "plot_area": [
+    162,
+    93,
+    1992,
+    552
+   ],
+   "series": {
+    "WT": "#90bff9",
+    "KO": "#f2b980"
+   }
+  },
+  {
+   "name": "X-activity female",
+   "plot_area": [
+    162,
+    691,
+    1992,
+    1150
+   ],
+   "series": {
+    "WT": "#05be78",
+    "KO": "#ff8080"
+   }
+  },
+  {
+   "name": "Ambulatory male",
+   "plot_area": [
+    162,
+    1392,
+    1992,
+    1850
+   ],
+   "series": {
+    "WT": "#90bff9",
+    "KO": "#f2b980"
+   }
+  },
+  {
+   "name": "Ambulatory female",
+   "plot_area": [
+    162,
+    2009,
+    1992,
+    2468
+   ],
+   "series": {
+    "WT": "#05be78",
+    "KO": "#ff8080"
+   }
+  },
+  {
+   "name": "Z-activity male",
+   "plot_area": [
+    162,
+    2720,
+    1992,
+    3179
+   ],
+   "series": {
+    "WT": "#90bff9",
+    "KO": "#f2b77c"
+   }
+  },
+  {
+   "name": "Z-activity female",
+   "plot_area": [
+    162,
+    3312,
+    1992,
+    3771
+   ],
+   "series": {
+    "WT": "#05be78",
+    "KO": "#ff8080"
+   }
+  }
+ ]
+}

@@ -1,0 +1,1205 @@
+panel,series,x,y,x_pixel,interpolated
+a female,Control,3,28.6765,46,True
+a female,Control,3.42857,28.6765,47,True
+a female,Control,3.85714,28.6765,48,True
+a female,Control,4.28571,28.6765,49,False
+a female,Control,4.71429,26.4706,50,False
+a female,Control,5.14286,25.7353,51,False
+a female,Control,5.57143,19.4853,52,False
+a female,Control,6,14.3382,53,False
+a female,Control,6.42857,5.14706,54,False
+a female,Control,6.85714,4.04412,55,False
+a female,Control,7.28571,3.30882,56,False
+a female,Control,7.71429,2.94118,57,False
+a female,Control,8.14286,4.04412,58,False
+a female,Control,8.57143,5.51471,59,False
+a female,Control,9,4.04412,60,False
+a female,Control,9.42857,4.04412,61,False
+a female,Control,9.85714,2.57353,62,False
+a female,Control,10.2857,3.30882,63,False
+a female,Control,10.7143,3.67647,64,False
+a female,Control,11.1429,4.41176,65,False
+a female,Control,11.5714,5.14706,66,False
+a female,Control,12,12.1324,67,False
+a female,Control,12.4286,14.3382,68,False
+a female,Control,12.8571,19.1176,69,False
+a female,Control,13.2857,23.1618,70,False
+a female,Control,13.7143,22.0588,71,False
+a female,Control,14.1429,18.75,72,False
+a female,Control,14.5714,16.9118,73,False
+a female,Control,15,23.8971,74,False
+a female,Control,15.4286,26.1029,75,False
+a female,Control,15.8571,26.1029,76,False
+a female,Control,16.2857,19.4853,77,False
+a female,Control,16.7143,15.4412,78,False
+a female,Control,17.1429,13.9706,79,False
+a female,Control,17.5714,15.4412,80,False
+a female,Control,18,14.7059,81,False
+a female,Control,18.4286,16.5441,82,False
+a female,Control,18.8571,9.92647,83,False
+a female,Control,19.2857,7.35294,84,False
+a female,Control,19.7143,8.82353,85,False
+a female,Control,20.1429,8.45588,86,False
+a female,Control,20.5714,8.45588,87,False
+a female,Control,21,10.2941,88,False
+a female,Control,21.4286,8.08824,89,False
+a female,Control,21.8571,10.2941,90,False
+a female,Control,22.2857,13.6029,91,False
+a female,Control,22.7143,15.8088,92,False
+a female,Control,23.1429,14.7059,93,False
+a female,Control,23.5714,15.8088,94,False
+a female,Control,24,16.9118,95,False
+a female,Control,24.4286,11.0294,96,False
+a female,Control,24.8571,5.14706,97,False
+a female,Control,25.2857,4.41176,98,False
+a female,Control,25.7143,4.41176,99,False
+a female,Control,26.1429,3.30882,100,False
+a female,Control,26.5714,2.94118,101,False
+a female,Control,27,4.77941,102,False
+a female,Control,27.4286,4.04412,103,False
+a female,Control,27.8571,2.57353,104,False
+a female,Control,28.2857,2.57353,105,False
+a female,Control,28.7143,2.94118,106,False
+a female,Control,29.1429,3.30882,107,False
+a female,Control,29.5714,2.94118,108,False
+a female,Control,30,5.14706,109,False
+a female,Control,30.4286,4.41176,110,False
+a female,Control,30.8571,3.67647,111,False
+a female,Control,31.2857,3.30882,112,False
+a female,Control,31.7143,6.61765,113,False
+a female,Control,32.1429,3.30882,114,False
+a female,Control,32.5714,3.30882,115,False
+a female,Control,33,4.41176,116,False
+a female,Control,33.4286,5.14706,117,False
+a female,Control,33.8571,4.41176,118,False
+a female,Control,34.2857,5.14706,119,False
+a female,Control,34.7143,4.04412,120,False
+a female,Control,35.1429,6.61765,121,False
+a female,Control,35.5714,4.77941,122,False
+a female,Control,36,4.77941,123,False
+a female,Control,36.4286,21.6912,124,False
+a female,Control,36.8571,25,125,False
+a female,Control,37.2857,22.0588,126,False
+a female,Control,37.7143,23.8971,127,False
+a female,Control,38.1429,27.5735,128,False
+a female,Control,38.5714,19.1176,129,False
+a female,Control,39,18.0147,130,False
+a female,Control,39.4286,15.4412,131,False
+a female,Control,39.8571,14.7059,132,False
+a female,Control,40.2857,18.75,133,False
+a female,Control,40.7143,19.1176,134,False
+a female,Control,41.1429,24.2647,135,False
+a female,Control,41.5714,21.6912,136,False
+a female,Control,42,20.9559,137,False
+a female,Control,42.4286,11.7647,138,False
+a female,Control,42.8571,8.45588,139,False
+a female,Control,43.2857,9.55882,140,False
+a female,Control,43.7143,11.0294,141,False
+a female,Control,44.1429,11.7647,142,False
+a female,Control,44.5714,10.6618,143,False
+a female,Control,45,12.8676,144,False
+a female,Control,45.4286,13.9706,145,False
+a female,Control,45.8571,21.3235,146,False
+a female,Control,46.2857,21.6912,147,False
+a female,Control,46.7143,19.8529,148,False
+a female,Control,47.1429,20.2206,149,False
+a female,Control,47.5714,4.41176,150,False
+a female,Control,48,5.88235,151,False
+a female,Control,48.4286,4.77941,152,False
+a female,Control,48.8571,4.04412,153,False
+a female,Control,49.2857,4.04412,154,False
+a female,Control,49.7143,4.04412,155,False
+a female,Control,50.1429,4.04412,156,False
+a female,Control,50.5714,3.67647,157,False
+a female,Control,51,4.04412,158,False
+a female,Control,51.4286,3.30882,159,False
+a female,Control,51.8571,2.57353,160,False
+a female,Control,52.2857,2.20588,161,False
+a female,Control,52.7143,2.20588,162,False
+a female,Control,53.1429,5.14706,163,False
+a female,Control,53.5714,5.14706,164,False
+a female,Control,54,4.41176,165,False
+a female,Control,54.4286,5.51471,166,False
+a female,Control,54.8571,4.04412,167,False
+a female,Control,55.2857,4.41176,168,False
+a female,Control,55.7143,2.20588,169,False
+a female,Control,56.1429,2.20588,170,False
+a female,Control,56.5714,3.67647,171,False
+a female,Control,57,5.88235,172,False
+a female,Control,57.4286,8.08824,173,False
+a female,Control,57.8571,5.51471,174,False
+a female,Control,58.2857,5.51471,175,False
+a female,Control,58.7143,2.94118,176,False
+a female,Control,59.1429,2.94118,177,False
+a female,Control,59.5714,7.35294,178,False
+a female,Control,60,7.72059,179,False
+a female,Control,60.4286,7.72059,180,False
+a female,Control,60.8571,19.1176,181,False
+a female,Control,61.2857,20.2206,182,False
+a female,Control,61.7143,25.3676,183,False
+a female,Control,62.1429,13.9706,184,False
+a female,Control,62.5714,17.6471,185,False
+a female,Control,63,15.8088,186,False
+a female,Control,63.4286,11.7647,187,False
+a female,Control,63.8571,19.1176,188,False
+a female,Control,64.2857,23.1618,189,False
+a female,Control,64.7143,17.2794,190,False
+a female,Control,65.1429,17.2794,191,False
+a female,Control,65.5714,18.3824,192,False
+a female,Control,66,25.3676,193,False
+a female,Control,66.4286,25,194,False
+a female,Control,66.8571,20.5882,195,False
+a female,Control,67.2857,18.0147,196,False
+a female,Control,67.7143,13.9706,197,False
+a female,Control,68.1429,11.7647,198,False
+a female,Control,68.5714,11.7647,199,False
+a female,Control,69,12.1324,200,False
+a female,Control,69.4286,12.1324,201,False
+a female,Control,69.8571,23.5294,202,False
+a female,Control,70.2857,24.2647,203,False
+a female,Control,70.7143,21.6912,204,False
+a female,Control,71.1429,22.0588,205,False
+a female,Control,71.5714,6.61765,206,False
+a female,Control,72,6.61765,207,False
+a female,Control,72.4286,3.67647,208,False
+a female,Control,72.8571,4.04412,209,False
+a female,Control,73.2857,3.67647,210,False
+a female,Control,73.7143,2.57353,211,False
+a female,Control,74.1429,2.94118,212,False
+a female,Control,74.5714,6.61765,213,False
+a female,Control,75,4.41176,214,False
+a female,Control,75.4286,3.30882,215,False
+a female,Control,75.8571,2.57353,216,False
+a female,Control,76.2857,2.57353,217,False
+a female,Control,76.7143,4.04412,218,False
+a female,Control,77.1429,4.77941,219,False
+a female,Control,77.5714,5.88235,220,False
+a female,Control,78,4.04412,221,False
+a female,Control,78.4286,4.04412,222,False
+a female,Control,78.8571,4.04412,223,False
+a female,Control,79.2857,3.30882,224,False
+a female,Control,79.7143,2.57353,225,False
+a female,Control,80.1429,2.94118,226,False
+a female,Control,80.5714,2.94118,227,False
+a female,Control,81,6.61765,228,False
+a female,Control,81.4286,10.6618,229,False
+a female,Control,81.8571,11.7647,230,False
+a female,Control,82.2857,7.72059,231,False
+a female,Control,82.7143,20.2206,232,False
+a female,Control,83.1429,22.0588,233,False
+a female,Control,83.5714,22.4265,234,False
+a female,Control,84,20.9559,235,False
+a female,Control,84.4286,19.1176,236,False
+a female,Control,84.8571,31.6176,237,False
+a female,Control,85.2857,43.75,238,False
+a female,Control,85.7143,50,239,False
+a female,Control,86.1429,49.2647,240,False
+a female,Control,86.5714,49.2647,241,False
+a female,Control,87,52.5735,242,False
+a female,Control,87.4286,48.1618,243,False
+a female,Control,87.8571,51.1029,244,False
+a female,Control,88.2857,51.4706,245,False
+a female,Control,88.7143,51.4706,246,False
+a female,Control,89.1429,52.5735,247,False
+a female,Control,89.5714,56.25,248,False
+a female,Control,90,56.6176,249,False
+a female,Control,90.4286,54.4118,250,False
+a female,Control,90.8571,51.8382,251,False
+a female,Control,91.2857,60.2941,252,False
+a female,Control,91.7143,55.8824,253,False
+a female,Control,92.1429,54.0441,254,False
+a female,Control,92.5714,51.4706,255,False
+a female,Control,93,49.2647,256,False
+a female,Control,93.4286,42.6471,257,False
+a female,Control,93.8571,38.2353,258,False
+a female,Control,94.2857,33.0882,259,False
+a female,Control,94.7143,31.9853,260,False
+a female,Control,95.1429,31.6176,261,False
+a female,Control,95.5714,8.82353,262,False
+a female,Control,96,8.82353,263,False
+a female,Control,96.4286,8.82353,264,False
+a female,Control,96.8571,8.82353,265,False
+a female,Control,97.2857,4.41176,266,False
+a female,Control,97.7143,4.77941,267,False
+a female,Control,98.1429,17.2794,268,False
+a female,Control,98.5714,23.5294,269,False
+a female,Control,99,20.2206,270,False
+a female,Control,99.4286,12.8676,271,False
+a female,Control,99.8571,4.77941,272,False
+a female,Control,100.286,6.25,273,False
+a female,Control,100.714,8.45588,274,False
+a female,Control,101.143,9.55882,275,False
+a female,Control,101.571,15.4412,276,False
+a female,Control,102,29.4118,277,False
+a female,Control,102.429,44.1176,278,False
+a female,Control,102.857,50.7353,279,False
+a female,Control,103.286,53.3088,280,False
+a female,Control,103.714,54.0441,281,False
+a female,Control,104.143,58.0882,282,False
+a female,Control,104.571,53.3088,283,False
+a female,Control,105,51.8382,284,False
+a female,Control,105.429,53.3088,285,False
+a female,Control,105.857,58.4559,286,False
+a female,Control,106.286,17.6471,287,False
+a female,Control,106.714,17.2794,288,False
+a female,Control,107.143,14.3382,289,False
+a female,Control,107.571,11.0294,290,False
+a female,Control,108,12.8676,291,False
+a female,Control,108.429,10.2941,292,False
+a female,Control,108.857,11.3971,293,False
+a female,Control,109.286,11.0294,294,False
+a female,Control,109.714,9.55882,295,False
+a female,Control,110.143,6.25,296,False
+a female,Control,110.571,4.41176,297,False
+a female,Control,111,4.04412,298,False
+a female,Control,111.429,3.67647,299,False
+a female,Control,111.857,4.41176,300,False
+a female,Control,112.286,4.77941,301,False
+a female,Control,112.714,3.67647,302,False
+a female,Control,113.143,8.45588,303,False
+a female,Control,113.571,6.25,304,False
+a female,Control,114,4.41176,305,False
+a female,Control,114.429,4.41176,306,False
+a female,Control,114.857,5.88235,307,False
+a female,Control,115.286,8.82353,308,False
+a female,Control,115.714,9.19118,309,False
+a female,Control,116.143,8.82353,310,False
+a female,Control,116.571,8.45588,311,False
+a female,Control,117,6.25,312,False
+a female,Control,117.429,6.25,313,False
+a female,Control,117.857,6.61765,314,False
+a female,Control,118.286,6.98529,315,False
+a female,Control,118.714,5.88235,316,False
+a female,Control,119.143,5.51471,317,False
+a female,Control,119.571,5.88235,318,False
+a female,Control,120,7.35294,319,False
+a female,Control,120.429,6.98529,320,False
+a female,Control,120.857,5.51471,321,False
+a female,Control,121.286,5.51471,322,False
+a female,Control,121.714,4.77941,323,False
+a female,Control,122.143,5.14706,324,False
+a female,Control,122.571,5.51471,325,False
+a female,Control,123,4.04412,326,False
+a female,Control,123.429,4.04412,327,False
+a female,Control,123.857,5.88235,328,False
+a female,Control,124.286,6.25,329,False
+a female,Control,124.714,4.77941,330,False
+a female,Control,125.143,4.77941,331,False
+a female,Control,125.571,5.51471,332,False
+a female,Control,126,5.14706,333,False
+a female,Control,126.429,4.04412,334,False
+a female,Control,126.857,3.67647,335,False
+a female,Control,127.286,2.57353,336,False
+a female,Control,127.714,4.41176,337,False
+a female,Control,128.143,3.30882,338,False
+a female,Control,128.571,4.04412,339,False
+a female,Control,129,4.41176,340,False
+a female,Control,129.429,5.51471,341,False
+a female,Control,129.857,5.51471,342,False
+a female,Control,130.286,5.51471,343,False
+a female,Control,130.714,5.51471,344,True
+a female,Control,131.143,5.51471,345,True
+a female,Control,131.571,5.51471,346,True
+a female,Rictor KO,3,16.1765,46,False
+a female,Rictor KO,3.42857,14.3382,47,False
+a female,Rictor KO,3.85714,15.8088,48,False
+a female,Rictor KO,4.28571,14.7059,49,False
+a female,Rictor KO,4.71429,9.19118,50,False
+a female,Rictor KO,5.14286,10.2941,51,False
+a female,Rictor KO,5.57143,4.77941,52,False
+a female,Rictor KO,6,1.83824,53,False
+a female,Rictor KO,6.42857,2.20588,54,False
+a female,Rictor KO,6.85714,2.57353,55,False
+a female,Rictor KO,7.28571,2.94118,56,False
+a female,Rictor KO,7.71429,2.57353,57,False
+a female,Rictor KO,8.14286,2.57353,58,False
+a female,Rictor KO,8.57143,2.57353,59,False
+a female,Rictor KO,9,0.735294,60,False
+a female,Rictor KO,9.42857,0.735294,61,False
+a female,Rictor KO,9.85714,1.10294,62,True
+a female,Rictor KO,10.2857,1.47059,63,False
+a female,Rictor KO,10.7143,0.735294,64,False
+a female,Rictor KO,11.1429,1.47059,65,False
+a female,Rictor KO,11.5714,2.20588,66,False
+a female,Rictor KO,12,7.72059,67,False
+a female,Rictor KO,12.4286,8.08824,68,False
+a female,Rictor KO,12.8571,8.08824,69,False
+a female,Rictor KO,13.2857,10.6618,70,False
+a female,Rictor KO,13.7143,10.6618,71,False
+a female,Rictor KO,14.1429,9.92647,72,False
+a female,Rictor KO,14.5714,8.45588,73,False
+a female,Rictor KO,15,9.55882,74,False
+a female,Rictor KO,15.4286,9.92647,75,False
+a female,Rictor KO,15.8571,6.61765,76,False
+a female,Rictor KO,16.2857,6.61765,77,False
+a female,Rictor KO,16.7143,5.51471,78,False
+a female,Rictor KO,17.1429,2.94118,79,False
+a female,Rictor KO,17.5714,2.57353,80,False
+a female,Rictor KO,18,2.20588,81,False
+a female,Rictor KO,18.4286,2.94118,82,False
+a female,Rictor KO,18.8571,2.57353,83,False
+a female,Rictor KO,19.2857,1.83824,84,False
+a female,Rictor KO,19.7143,1.83824,85,False
+a female,Rictor KO,20.1429,2.94118,86,False
+a female,Rictor KO,20.5714,5.14706,87,False
+a female,Rictor KO,21,5.88235,88,False
+a female,Rictor KO,21.4286,5.14706,89,False
+a female,Rictor KO,21.8571,8.82353,90,False
+a female,Rictor KO,22.2857,10.2941,91,False
+a female,Rictor KO,22.7143,10.6618,92,False
+a female,Rictor KO,23.1429,7.72059,93,False
+a female,Rictor KO,23.5714,6.98529,94,False
+a female,Rictor KO,24,7.35294,95,False
+a female,Rictor KO,24.4286,6.98529,96,False
+a female,Rictor KO,24.8571,5.88235,97,False
+a female,Rictor KO,25.2857,3.67647,98,True
+a female,Rictor KO,25.7143,1.47059,99,False
+a female,Rictor KO,26.1429,2.20588,100,False
+a female,Rictor KO,26.5714,1.47059,101,False
+a female,Rictor KO,27,1.83824,102,False
+a female,Rictor KO,27.4286,2.20588,103,False
+a female,Rictor KO,27.8571,2.05882,104,True
+a female,Rictor KO,28.2857,1.91176,105,True
+a female,Rictor KO,28.7143,1.76471,106,True
+a female,Rictor KO,29.1429,1.61765,107,True
+a female,Rictor KO,29.5714,1.47059,108,False
+a female,Rictor KO,30,2.20588,109,False
+a female,Rictor KO,30.4286,1.10294,110,False
+a female,Rictor KO,30.8571,4.04412,111,False
+a female,Rictor KO,31.2857,4.04412,112,False
+a female,Rictor KO,31.7143,5.51471,113,False
+a female,Rictor KO,32.1429,4.28922,114,True
+a female,Rictor KO,32.5714,3.06373,115,True
+a female,Rictor KO,33,1.83824,116,False
+a female,Rictor KO,33.4286,1.47059,117,False
+a female,Rictor KO,33.8571,1.83824,118,False
+a female,Rictor KO,34.2857,1.83824,119,False
+a female,Rictor KO,34.7143,1.47059,120,False
+a female,Rictor KO,35.1429,1.47059,121,False
+a female,Rictor KO,35.5714,4.41176,122,False
+a female,Rictor KO,36,5.14706,123,False
+a female,Rictor KO,36.4286,7.72059,124,False
+a female,Rictor KO,36.8571,10.6618,125,False
+a female,Rictor KO,37.2857,8.08824,126,False
+a female,Rictor KO,37.7143,7.72059,127,False
+a female,Rictor KO,38.1429,9.55882,128,False
+a female,Rictor KO,38.5714,3.67647,129,False
+a female,Rictor KO,39,7.35294,130,False
+a female,Rictor KO,39.4286,7.72059,131,False
+a female,Rictor KO,39.8571,6.25,132,False
+a female,Rictor KO,40.2857,5.14706,133,False
+a female,Rictor KO,40.7143,2.94118,134,False
+a female,Rictor KO,41.1429,2.57353,135,False
+a female,Rictor KO,41.5714,2.94118,136,False
+a female,Rictor KO,42,2.57353,137,False
+a female,Rictor KO,42.4286,2.57353,138,False
+a female,Rictor KO,42.8571,2.38971,139,True
+a female,Rictor KO,43.2857,2.20588,140,False
+a female,Rictor KO,43.7143,1.47059,141,False
+a female,Rictor KO,44.1429,2.20588,142,False
+a female,Rictor KO,44.5714,4.41176,143,False
+a female,Rictor KO,45,6.61765,144,False
+a female,Rictor KO,45.4286,8.45588,145,False
+a female,Rictor KO,45.8571,8.82353,146,False
+a female,Rictor KO,46.2857,8.08824,147,False
+a female,Rictor KO,46.7143,9.55882,148,False
+a female,Rictor KO,47.1429,9.92647,149,False
+a female,Rictor KO,47.5714,6.61765,150,False
+a female,Rictor KO,48,6.25,151,False
+a female,Rictor KO,48.4286,5.51471,152,False
+a female,Rictor KO,48.8571,5.20833,153,True
+a female,Rictor KO,49.2857,4.90196,154,True
+a female,Rictor KO,49.7143,4.59559,155,True
+a female,Rictor KO,50.1429,4.28922,156,True
+a female,Rictor KO,50.5714,3.98284,157,True
+a female,Rictor KO,51,3.67647,158,False
+a female,Rictor KO,51.4286,2.20588,159,False
+a female,Rictor KO,51.8571,2.57353,160,False
+a female,Rictor KO,52.2857,2.20588,161,False
+a female,Rictor KO,52.7143,2.07219,162,True
+a female,Rictor KO,53.1429,1.9385,163,True
+a female,Rictor KO,53.5714,1.80481,164,True
+a female,Rictor KO,54,1.67112,165,True
+a female,Rictor KO,54.4286,1.53743,166,True
+a female,Rictor KO,54.8571,1.40374,167,True
+a female,Rictor KO,55.2857,1.27005,168,True
+a female,Rictor KO,55.7143,1.13636,169,True
+a female,Rictor KO,56.1429,1.00267,170,True
+a female,Rictor KO,56.5714,0.868984,171,True
+a female,Rictor KO,57,0.735294,172,False
+a female,Rictor KO,57.4286,1.47059,173,False
+a female,Rictor KO,57.8571,2.57353,174,False
+a female,Rictor KO,58.2857,3.21691,175,True
+a female,Rictor KO,58.7143,3.86029,176,True
+a female,Rictor KO,59.1429,4.50368,177,True
+a female,Rictor KO,59.5714,5.14706,178,False
+a female,Rictor KO,60,5.51471,179,False
+a female,Rictor KO,60.4286,7.35294,180,False
+a female,Rictor KO,60.8571,9.55882,181,False
+a female,Rictor KO,61.2857,9.55882,182,False
+a female,Rictor KO,61.7143,12.1324,183,False
+a female,Rictor KO,62.1429,8.45588,184,False
+a female,Rictor KO,62.5714,7.35294,185,False
+a female,Rictor KO,63,6.98529,186,False
+a female,Rictor KO,63.4286,7.72059,187,False
+a female,Rictor KO,63.8571,4.77941,188,False
+a female,Rictor KO,64.2857,2.94118,189,False
+a female,Rictor KO,64.7143,5.14706,190,False
+a female,Rictor KO,65.1429,6.98529,191,False
+a female,Rictor KO,65.5714,4.77941,192,False
+a female,Rictor KO,66,3.67647,193,False
+a female,Rictor KO,66.4286,7.35294,194,False
+a female,Rictor KO,66.8571,4.04412,195,False
+a female,Rictor KO,67.2857,5.88235,196,False
+a female,Rictor KO,67.7143,7.72059,197,False
+a female,Rictor KO,68.1429,4.77941,198,False
+a female,Rictor KO,68.5714,4.41176,199,False
+a female,Rictor KO,69,4.77941,200,False
+a female,Rictor KO,69.4286,7.35294,201,False
+a female,Rictor KO,69.8571,8.45588,202,False
+a female,Rictor KO,70.2857,9.19118,203,False
+a female,Rictor KO,70.7143,9.92647,204,False
+a female,Rictor KO,71.1429,7.35294,205,False
+a female,Rictor KO,71.5714,5.88235,206,False
+a female,Rictor KO,72,6.25,207,False
+a female,Rictor KO,72.4286,5.14706,208,False
+a female,Rictor KO,72.8571,4.04412,209,False
+a female,Rictor KO,73.2857,4.04412,210,False
+a female,Rictor KO,73.7143,2.94118,211,False
+a female,Rictor KO,74.1429,3.55392,212,True
+a female,Rictor KO,74.5714,4.16667,213,True
+a female,Rictor KO,75,4.77941,214,False
+a female,Rictor KO,75.4286,3.67647,215,False
+a female,Rictor KO,75.8571,2.20588,216,False
+a female,Rictor KO,76.2857,2.20588,217,False
+a female,Rictor KO,76.7143,4.41176,218,False
+a female,Rictor KO,77.1429,4.77941,219,False
+a female,Rictor KO,77.5714,3.30882,220,False
+a female,Rictor KO,78,1.83824,221,False
+a female,Rictor KO,78.4286,1.10294,222,False
+a female,Rictor KO,78.8571,0.735294,223,False
+a female,Rictor KO,79.2857,1.34804,224,True
+a female,Rictor KO,79.7143,1.96078,225,True
+a female,Rictor KO,80.1429,2.57353,226,False
+a female,Rictor KO,80.5714,2.20588,227,False
+a female,Rictor KO,81,2.57353,228,False
+a female,Rictor KO,81.4286,2.94118,229,False
+a female,Rictor KO,81.8571,1.83824,230,False
+a female,Rictor KO,82.2857,4.04412,231,False
+a female,Rictor KO,82.7143,17.6471,232,False
+a female,Rictor KO,83.1429,15.8088,233,False
+a female,Rictor KO,83.5714,14.3382,234,False
+a female,Rictor KO,84,13.2353,235,False
+a female,Rictor KO,84.4286,17.8309,236,True
+a female,Rictor KO,84.8571,22.4265,237,False
+a female,Rictor KO,85.2857,22.4265,238,False
+a female,Rictor KO,85.7143,22.0588,239,False
+a female,Rictor KO,86.1429,21.3235,240,False
+a female,Rictor KO,86.5714,21.3235,241,False
+a female,Rictor KO,87,22.4265,242,False
+a female,Rictor KO,87.4286,19.1176,243,False
+a female,Rictor KO,87.8571,20.5882,244,False
+a female,Rictor KO,88.2857,22.0588,245,False
+a female,Rictor KO,88.7143,17.6471,246,False
+a female,Rictor KO,89.1429,18.0147,247,False
+a female,Rictor KO,89.5714,17.6471,248,False
+a female,Rictor KO,90,18.3824,249,False
+a female,Rictor KO,90.4286,13.9706,250,False
+a female,Rictor KO,90.8571,15.4412,251,False
+a female,Rictor KO,91.2857,14.7059,252,False
+a female,Rictor KO,91.7143,12.1324,253,False
+a female,Rictor KO,92.1429,11.7647,254,False
+a female,Rictor KO,92.5714,7.35294,255,False
+a female,Rictor KO,93,8.45588,256,False
+a female,Rictor KO,93.4286,8.08824,257,False
+a female,Rictor KO,93.8571,13.2353,258,False
+a female,Rictor KO,94.2857,11.7647,259,False
+a female,Rictor KO,94.7143,6.98529,260,False
+a female,Rictor KO,95.1429,6.98529,261,False
+a female,Rictor KO,95.5714,5.14706,262,False
+a female,Rictor KO,96,4.77941,263,False
+a female,Rictor KO,96.4286,3.30882,264,False
+a female,Rictor KO,96.8571,2.20588,265,False
+a female,Rictor KO,97.2857,1.83824,266,True
+a female,Rictor KO,97.7143,1.47059,267,False
+a female,Rictor KO,98.1429,1.10294,268,False
+a female,Rictor KO,98.5714,1.10294,269,False
+a female,Rictor KO,99,0.735294,270,False
+a female,Rictor KO,99.4286,1.10294,271,False
+a female,Rictor KO,99.8571,0.980392,272,True
+a female,Rictor KO,100.286,0.857843,273,True
+a female,Rictor KO,100.714,0.735294,274,False
+a female,Rictor KO,101.143,0.367647,275,False
+a female,Rictor KO,101.571,0,276,False
+a female,Rictor KO,102,0,277,False
+a female,Rictor KO,102.429,2.57353,278,False
+a female,Rictor KO,102.857,6.61765,279,False
+a female,Rictor KO,103.286,0,280,False
+a female,Rictor KO,103.714,0,281,False
+a female,Rictor KO,104.143,0.367647,282,False
+a female,Rictor KO,104.571,5.14706,283,False
+a female,Rictor KO,105,7.35294,284,False
+a female,Rictor KO,105.429,10.6618,285,False
+a female,Rictor KO,105.857,6.98529,286,False
+a female,Rictor KO,106.286,15.8088,287,False
+a female,Rictor KO,106.714,13.9706,288,False
+a female,Rictor KO,107.143,13.9706,289,False
+a female,Rictor KO,107.571,12.6225,290,True
+a female,Rictor KO,108,11.2745,291,True
+a female,Rictor KO,108.429,9.92647,292,False
+a female,Rictor KO,108.857,9.92647,293,False
+a female,Rictor KO,109.286,9.19118,294,True
+a female,Rictor KO,109.714,8.45588,295,False
+a female,Rictor KO,110.143,8.45588,296,False
+a female,Rictor KO,110.571,7.72059,297,False
+a female,Rictor KO,111,5.88235,298,False
+a female,Rictor KO,111.429,9.55882,299,False
+a female,Rictor KO,111.857,10.6618,300,False
+a female,Rictor KO,112.286,7.72059,301,False
+a female,Rictor KO,112.714,7.16912,302,True
+a female,Rictor KO,113.143,6.61765,303,True
+a female,Rictor KO,113.571,6.06618,304,True
+a female,Rictor KO,114,5.51471,305,False
+a female,Rictor KO,114.429,6.61765,306,False
+a female,Rictor KO,114.857,6.98529,307,False
+a female,Rictor KO,115.286,4.41176,308,False
+a female,Rictor KO,115.714,2.94118,309,False
+a female,Rictor KO,116.143,3.67647,310,False
+a female,Rictor KO,116.571,9.55882,311,False
+a female,Rictor KO,117,8.82353,312,False
+a female,Rictor KO,117.429,9.92647,313,False
+a female,Rictor KO,117.857,8.08824,314,False
+a female,Rictor KO,118.286,9.55882,315,False
+a female,Rictor KO,118.714,10.6618,316,False
+a female,Rictor KO,119.143,10.6618,317,False
+a female,Rictor KO,119.571,10.2941,318,False
+a female,Rictor KO,120,13.2353,319,False
+a female,Rictor KO,120.429,8.27206,320,True
+a female,Rictor KO,120.857,3.30882,321,False
+a female,Rictor KO,121.286,1.47059,322,False
+a female,Rictor KO,121.714,1.10294,323,False
+a female,Rictor KO,122.143,0.735294,324,False
+a female,Rictor KO,122.571,0.735294,325,False
+a female,Rictor KO,123,0.735294,326,False
+a female,Rictor KO,123.429,4.96324,327,True
+a female,Rictor KO,123.857,9.19118,328,False
+a female,Rictor KO,124.286,7.72059,329,False
+a female,Rictor KO,124.714,6.61765,330,False
+a female,Rictor KO,125.143,6.61765,331,False
+a female,Rictor KO,125.571,5.88235,332,True
+a female,Rictor KO,126,5.14706,333,True
+a female,Rictor KO,126.429,4.41176,334,True
+a female,Rictor KO,126.857,3.67647,335,True
+a female,Rictor KO,127.286,2.94118,336,False
+a female,Rictor KO,127.714,4.41176,337,False
+a female,Rictor KO,128.143,3.30882,338,False
+a female,Rictor KO,128.571,2.20588,339,False
+a female,Rictor KO,129,2.20588,340,False
+a female,Rictor KO,129.429,6.61765,341,False
+a female,Rictor KO,129.857,6.61765,342,False
+a female,Rictor KO,130.286,3.67647,343,False
+a female,Rictor KO,130.714,3.67647,344,False
+a female,Rictor KO,131.143,3.67647,345,True
+a female,Rictor KO,131.571,3.67647,346,True
+b male,Control,2.23009,24.7059,46,True
+b male,Control,2.65487,24.7059,47,True
+b male,Control,3.07965,24.7059,48,True
+b male,Control,3.50442,24.7059,49,False
+b male,Control,3.9292,17.2059,50,False
+b male,Control,4.35398,12.7941,51,False
+b male,Control,4.77876,6.83824,52,False
+b male,Control,5.20354,3.08824,53,False
+b male,Control,5.62832,1.76471,54,False
+b male,Control,6.0531,2.64706,55,False
+b male,Control,6.47788,4.41176,56,False
+b male,Control,6.90265,1.98529,57,False
+b male,Control,7.32743,1.32353,58,False
+b male,Control,7.75221,1.32353,59,False
+b male,Control,8.17699,1.54412,60,False
+b male,Control,8.60177,2.20588,61,True
+b male,Control,9.02655,2.86765,62,False
+b male,Control,9.45133,3.75,63,False
+b male,Control,9.87611,3.97059,64,False
+b male,Control,10.3009,1.54412,65,False
+b male,Control,10.7257,2.86765,66,True
+b male,Control,11.1504,4.19118,67,False
+b male,Control,11.5752,18.3088,68,False
+b male,Control,12,18.5294,69,False
+b male,Control,12.4248,18.9706,70,False
+b male,Control,12.8496,18.3088,71,False
+b male,Control,13.2743,10.3676,72,False
+b male,Control,13.6991,11.4706,73,False
+b male,Control,14.1239,13.2353,74,False
+b male,Control,14.5487,13.0147,75,False
+b male,Control,14.9735,11.6912,76,False
+b male,Control,15.3982,7.05882,77,False
+b male,Control,15.823,3.75,78,False
+b male,Control,16.2478,4.63235,79,False
+b male,Control,16.6726,7.27941,80,False
+b male,Control,17.0973,10.1471,81,False
+b male,Control,17.5221,10.3676,82,False
+b male,Control,17.9469,8.16176,83,False
+b male,Control,18.3717,6.61765,84,False
+b male,Control,18.7965,7.05882,85,False
+b male,Control,19.2212,4.63235,86,False
+b male,Control,19.646,4.85294,87,False
+b male,Control,20.0708,7.05882,88,False
+b male,Control,20.4956,6.83824,89,False
+b male,Control,20.9204,8.60294,90,False
+b male,Control,21.3451,6.61765,91,False
+b male,Control,21.7699,7.94118,92,False
+b male,Control,22.1947,10.1471,93,False
+b male,Control,22.6195,11.0294,94,False
+b male,Control,23.0442,10.5882,95,False
+b male,Control,23.469,9.26471,96,False
+b male,Control,23.8938,3.30882,97,False
+b male,Control,24.3186,3.52941,98,False
+b male,Control,24.7434,2.64706,99,False
+b male,Control,25.1681,2.20588,100,False
+b male,Control,25.5929,2.20588,101,False
+b male,Control,26.0177,3.97059,102,False
+b male,Control,26.4425,4.85294,103,False
+b male,Control,26.8673,2.42647,104,False
+b male,Control,27.292,1.54412,105,False
+b male,Control,27.7168,3.97059,106,False
+b male,Control,28.1416,6.17647,107,False
+b male,Control,28.5664,4.41176,108,True
+b male,Control,28.9912,2.64706,109,True
+b male,Control,29.4159,0.882353,110,False
+b male,Control,29.8407,1.76471,111,False
+b male,Control,30.2655,3.97059,112,False
+b male,Control,30.6903,1.32353,113,False
+b male,Control,31.115,1.10294,114,False
+b male,Control,31.5398,1.32353,115,False
+b male,Control,31.9646,2.42647,116,False
+b male,Control,32.3894,2.86765,117,False
+b male,Control,32.8142,3.97059,118,False
+b male,Control,33.2389,4.19118,119,False
+b male,Control,33.6637,2.86765,120,False
+b male,Control,34.0885,2.86765,121,False
+b male,Control,34.5133,3.30882,122,False
+b male,Control,34.9381,3.30882,123,False
+b male,Control,35.3628,10.5882,124,False
+b male,Control,35.7876,10.5882,125,False
+b male,Control,36.2124,12.3529,126,False
+b male,Control,36.6372,11.25,127,False
+b male,Control,37.0619,11.25,128,False
+b male,Control,37.4867,7.27941,129,False
+b male,Control,37.9115,9.26471,130,False
+b male,Control,38.3363,9.26471,131,False
+b male,Control,38.7611,9.04412,132,False
+b male,Control,39.1858,7.94118,133,False
+b male,Control,39.6106,5.07353,134,False
+b male,Control,40.0354,5.95588,135,False
+b male,Control,40.4602,4.63235,136,False
+b male,Control,40.885,7.05882,137,False
+b male,Control,41.3097,10.1471,138,False
+b male,Control,41.7345,4.85294,139,False
+b male,Control,42.1593,2.86765,140,False
+b male,Control,42.5841,2.64706,141,False
+b male,Control,43.0088,4.85294,142,False
+b male,Control,43.4336,3.52941,143,False
+b male,Control,43.8584,5.07353,144,False
+b male,Control,44.2832,6.83824,145,False
+b male,Control,44.708,8.16176,146,False
+b male,Control,45.1327,8.16176,147,False
+b male,Control,45.5575,9.48529,148,False
+b male,Control,45.9823,9.04412,149,False
+b male,Control,46.4071,8.82353,150,False
+b male,Control,46.8319,8.60294,151,False
+b male,Control,47.2566,5.29412,152,False
+b male,Control,47.6814,4.63235,153,False
+b male,Control,48.1062,3.97059,154,False
+b male,Control,48.531,4.19118,155,False
+b male,Control,48.9558,4.41176,156,False
+b male,Control,49.3805,2.64706,157,False
+b male,Control,49.8053,1.76471,158,False
+b male,Control,50.2301,1.76471,159,False
+b male,Control,50.6549,1.10294,160,False
+b male,Control,51.0796,1.10294,161,False
+b male,Control,51.5044,1.54412,162,False
+b male,Control,51.9292,2.42647,163,False
+b male,Control,52.354,4.41176,164,False
+b male,Control,52.7788,2.86765,165,False
+b male,Control,53.2035,1.98529,166,False
+b male,Control,53.6283,2.20588,167,False
+b male,Control,54.0531,1.10294,168,False
+b male,Control,54.4779,1.54412,169,False
+b male,Control,54.9027,1.98529,170,False
+b male,Control,55.3274,4.19118,171,False
+b male,Control,55.7522,1.10294,172,False
+b male,Control,56.177,0.882353,173,False
+b male,Control,56.6018,1.32353,174,False
+b male,Control,57.0265,1.98529,175,False
+b male,Control,57.4513,3.52941,176,False
+b male,Control,57.8761,3.30882,177,False
+b male,Control,58.3009,3.08824,178,False
+b male,Control,58.7257,3.52941,179,False
+b male,Control,59.1504,4.41176,180,False
+b male,Control,59.5752,5.73529,181,True
+b male,Control,60,7.05882,182,True
+b male,Control,60.4248,8.38235,183,True
+b male,Control,60.8496,9.70588,184,True
+b male,Control,61.2743,11.0294,185,False
+b male,Control,61.6991,11.25,186,False
+b male,Control,62.1239,10.1471,187,False
+b male,Control,62.5487,8.38235,188,False
+b male,Control,62.9735,9.92647,189,False
+b male,Control,63.3982,8.82353,190,False
+b male,Control,63.823,7.94118,191,False
+b male,Control,64.2478,4.63235,192,False
+b male,Control,64.6726,6.83824,193,False
+b male,Control,65.0973,8.60294,194,False
+b male,Control,65.5221,8.60294,195,False
+b male,Control,65.9469,7.05882,196,False
+b male,Control,66.3717,5.51471,197,False
+b male,Control,66.7965,3.97059,198,False
+b male,Control,67.2212,3.52941,199,False
+b male,Control,67.646,4.63235,200,False
+b male,Control,68.0708,6.83824,201,False
+b male,Control,68.4956,7.05882,202,False
+b male,Control,68.9204,7.5,203,False
+b male,Control,69.3451,8.16176,204,False
+b male,Control,69.7699,9.48529,205,False
+b male,Control,70.1947,11.25,206,False
+b male,Control,70.6195,10.8088,207,False
+b male,Control,71.0442,9.04412,208,False
+b male,Control,71.469,7.72059,209,False
+b male,Control,71.8938,5.29412,210,False
+b male,Control,72.3186,4.41176,211,False
+b male,Control,72.7434,1.32353,212,False
+b male,Control,73.1681,1.76471,213,False
+b male,Control,73.5929,4.63235,214,False
+b male,Control,74.0177,1.76471,215,False
+b male,Control,74.4425,1.32353,216,False
+b male,Control,74.8673,1.76471,217,False
+b male,Control,75.292,1.10294,218,False
+b male,Control,75.7168,0.882353,219,False
+b male,Control,76.1416,3.52941,220,False
+b male,Control,76.5664,1.98529,221,False
+b male,Control,76.9912,0.882353,222,False
+b male,Control,77.4159,1.10294,223,False
+b male,Control,77.8407,1.76471,224,False
+b male,Control,78.2655,1.76471,225,False
+b male,Control,78.6903,1.76471,226,False
+b male,Control,79.115,1.76471,227,False
+b male,Control,79.5398,1.54412,228,False
+b male,Control,79.9646,1.76471,229,False
+b male,Control,80.3894,1.32353,230,False
+b male,Control,80.8142,2.42647,231,False
+b male,Control,81.2389,6.68067,232,True
+b male,Control,81.6637,10.9349,233,True
+b male,Control,82.0885,15.1891,234,True
+b male,Control,82.5133,19.4433,235,True
+b male,Control,82.9381,23.6975,236,True
+b male,Control,83.3628,27.9517,237,True
+b male,Control,83.7876,32.2059,238,False
+b male,Control,84.2124,33.75,239,False
+b male,Control,84.6372,33.5294,240,False
+b male,Control,85.0619,31.3235,241,False
+b male,Control,85.4867,33.75,242,False
+b male,Control,85.9115,33.9706,243,False
+b male,Control,86.3363,34.8529,244,False
+b male,Control,86.7611,36.8382,245,False
+b male,Control,87.1858,30.4412,246,False
+b male,Control,87.6106,35.5147,247,False
+b male,Control,88.0354,31.7647,248,False
+b male,Control,88.4602,34.6324,249,False
+b male,Control,88.885,33.9706,250,False
+b male,Control,89.3097,30,251,False
+b male,Control,89.7345,29.5588,252,False
+b male,Control,90.1593,30.8824,253,False
+b male,Control,90.5841,29.1176,254,False
+b male,Control,91.0088,30.2206,255,False
+b male,Control,91.4336,30.4412,256,False
+b male,Control,91.8584,33.75,257,False
+b male,Control,92.2832,34.8529,258,False
+b male,Control,92.708,30.2206,259,False
+b male,Control,93.1327,21.6176,260,False
+b male,Control,93.5575,20.2941,261,False
+b male,Control,93.9823,18.3088,262,False
+b male,Control,94.4071,16.9853,263,False
+b male,Control,94.8319,21.1765,264,False
+b male,Control,95.2566,18.5294,265,False
+b male,Control,95.6814,9.48529,266,False
+b male,Control,96.1062,9.04412,267,False
+b male,Control,96.531,9.70588,268,False
+b male,Control,96.9558,12.3529,269,False
+b male,Control,97.3805,11.4706,270,False
+b male,Control,97.8053,7.94118,271,False
+b male,Control,98.2301,8.60294,272,False
+b male,Control,98.6549,8.38235,273,False
+b male,Control,99.0796,9.92647,274,False
+b male,Control,99.5044,9.04412,275,False
+b male,Control,99.9292,14.1176,276,False
+b male,Control,100.354,18.0882,277,False
+b male,Control,100.779,20.0735,278,False
+b male,Control,101.204,19.6324,279,False
+b male,Control,101.628,22.9412,280,False
+b male,Control,102.053,13.8971,281,False
+b male,Control,102.478,11.6912,282,False
+b male,Control,102.903,12.3529,283,False
+b male,Control,103.327,10.5882,284,False
+b male,Control,103.752,10.5882,285,False
+b male,Control,104.177,3.97059,286,False
+b male,Control,104.602,6.61765,287,False
+b male,Control,105.027,16.7647,288,False
+b male,Control,105.451,18.9706,289,False
+b male,Control,105.876,11.0294,290,False
+b male,Control,106.301,8.82353,291,False
+b male,Control,106.726,6.61765,292,False
+b male,Control,107.15,7.05882,293,False
+b male,Control,107.575,6.83824,294,False
+b male,Control,108,7.05882,295,False
+b male,Control,108.425,6.83824,296,False
+b male,Control,108.85,6.39706,297,False
+b male,Control,109.274,5.95588,298,False
+b male,Control,109.699,5.95588,299,False
+b male,Control,110.124,1.76471,300,False
+b male,Control,110.549,4.63235,301,False
+b male,Control,110.973,4.41176,302,False
+b male,Control,111.398,4.41176,303,False
+b male,Control,111.823,3.08824,304,False
+b male,Control,112.248,3.75,305,False
+b male,Control,112.673,3.52941,306,False
+b male,Control,113.097,4.19118,307,False
+b male,Control,113.522,5.07353,308,False
+b male,Control,113.947,7.05882,309,False
+b male,Control,114.372,7.05882,310,False
+b male,Control,114.796,6.39706,311,False
+b male,Control,115.221,5.95588,312,False
+b male,Control,115.646,6.39706,313,False
+b male,Control,116.071,5.95588,314,False
+b male,Control,116.496,6.39706,315,False
+b male,Control,116.92,6.39706,316,False
+b male,Control,117.345,7.27941,317,False
+b male,Control,117.77,8.38235,318,False
+b male,Control,118.195,8.38235,319,False
+b male,Control,118.619,8.16176,320,False
+b male,Control,119.044,8.16176,321,False
+b male,Control,119.469,8.16176,322,False
+b male,Control,119.894,0.882353,323,False
+b male,Control,120.319,1.10294,324,False
+b male,Control,120.743,1.32353,325,False
+b male,Control,121.168,2.42647,326,False
+b male,Control,121.593,2.20588,327,False
+b male,Control,122.018,2.64706,328,False
+b male,Control,122.442,4.19118,329,False
+b male,Control,122.867,2.64706,330,False
+b male,Control,123.292,1.10294,331,False
+b male,Control,123.717,1.32353,332,False
+b male,Control,124.142,1.54412,333,False
+b male,Control,124.566,1.32353,334,False
+b male,Control,124.991,1.32353,335,False
+b male,Control,125.416,1.98529,336,False
+b male,Control,125.841,2.86765,337,False
+b male,Control,126.265,1.32353,338,False
+b male,Control,126.69,1.54412,339,False
+b male,Control,127.115,1.10294,340,False
+b male,Control,127.54,1.76471,341,False
+b male,Control,127.965,3.52941,342,False
+b male,Control,128.389,5.07353,343,False
+b male,Control,128.814,5.07353,344,True
+b male,Control,129.239,5.07353,345,True
+b male,Control,129.664,5.07353,346,True
+b male,Rictor KO,2.23009,15,46,True
+b male,Rictor KO,2.65487,15,47,False
+b male,Rictor KO,3.07965,16.7647,48,False
+b male,Rictor KO,3.50442,16.5441,49,False
+b male,Rictor KO,3.9292,12.5735,50,False
+b male,Rictor KO,4.35398,9.92647,51,False
+b male,Rictor KO,4.77876,8.82353,52,False
+b male,Rictor KO,5.20354,5.73529,53,True
+b male,Rictor KO,5.62832,2.64706,54,False
+b male,Rictor KO,6.0531,2.64706,55,False
+b male,Rictor KO,6.47788,2.20588,56,False
+b male,Rictor KO,6.90265,2.86765,57,False
+b male,Rictor KO,7.32743,3.08824,58,False
+b male,Rictor KO,7.75221,2.86765,59,False
+b male,Rictor KO,8.17699,2.64706,60,False
+b male,Rictor KO,8.60177,3.52941,61,False
+b male,Rictor KO,9.02655,2.42647,62,False
+b male,Rictor KO,9.45133,2.86765,63,False
+b male,Rictor KO,9.87611,4.19118,64,False
+b male,Rictor KO,10.3009,2.86765,65,False
+b male,Rictor KO,10.7257,4.85294,66,False
+b male,Rictor KO,11.1504,6.61765,67,False
+b male,Rictor KO,11.5752,9.26471,68,False
+b male,Rictor KO,12,11.9118,69,False
+b male,Rictor KO,12.4248,11.0294,70,False
+b male,Rictor KO,12.8496,11.25,71,False
+b male,Rictor KO,13.2743,11.9118,72,False
+b male,Rictor KO,13.6991,9.48529,73,False
+b male,Rictor KO,14.1239,9.48529,74,False
+b male,Rictor KO,14.5487,9.26471,75,False
+b male,Rictor KO,14.9735,7.5,76,False
+b male,Rictor KO,15.3982,4.85294,77,False
+b male,Rictor KO,15.823,5.73529,78,False
+b male,Rictor KO,16.2478,6.39706,79,False
+b male,Rictor KO,16.6726,5.51471,80,False
+b male,Rictor KO,17.0973,3.52941,81,False
+b male,Rictor KO,17.5221,0.220588,82,False
+b male,Rictor KO,17.9469,2.64706,83,False
+b male,Rictor KO,18.3717,9.26471,84,False
+b male,Rictor KO,18.7965,10.1471,85,False
+b male,Rictor KO,19.2212,8.38235,86,False
+b male,Rictor KO,19.646,7.05882,87,False
+b male,Rictor KO,20.0708,7.05882,88,False
+b male,Rictor KO,20.4956,7.5,89,False
+b male,Rictor KO,20.9204,8.38235,90,False
+b male,Rictor KO,21.3451,9.26471,91,False
+b male,Rictor KO,21.7699,7.27941,92,False
+b male,Rictor KO,22.1947,8.60294,93,False
+b male,Rictor KO,22.6195,9.04412,94,False
+b male,Rictor KO,23.0442,8.38235,95,False
+b male,Rictor KO,23.469,4.41176,96,False
+b male,Rictor KO,23.8938,3.30882,97,False
+b male,Rictor KO,24.3186,1.32353,98,False
+b male,Rictor KO,24.7434,0.882353,99,False
+b male,Rictor KO,25.1681,3.75,100,False
+b male,Rictor KO,25.5929,3.30882,101,False
+b male,Rictor KO,26.0177,3.30882,102,False
+b male,Rictor KO,26.4425,2.42647,103,False
+b male,Rictor KO,26.8673,3.75,104,False
+b male,Rictor KO,27.292,3.97059,105,False
+b male,Rictor KO,27.7168,6.39706,106,False
+b male,Rictor KO,28.1416,7.94118,107,False
+b male,Rictor KO,28.5664,7.72059,108,False
+b male,Rictor KO,28.9912,1.10294,109,False
+b male,Rictor KO,29.4159,1.10294,110,False
+b male,Rictor KO,29.8407,1.76471,111,False
+b male,Rictor KO,30.2655,2.20588,112,False
+b male,Rictor KO,30.6903,1.76471,113,False
+b male,Rictor KO,31.115,1.54412,114,False
+b male,Rictor KO,31.5398,2.20588,115,False
+b male,Rictor KO,31.9646,1.10294,116,False
+b male,Rictor KO,32.3894,1.10294,117,False
+b male,Rictor KO,32.8142,1.76471,118,False
+b male,Rictor KO,33.2389,2.64706,119,False
+b male,Rictor KO,33.6637,5.29412,120,False
+b male,Rictor KO,34.0885,4.41176,121,False
+b male,Rictor KO,34.5133,3.30882,122,False
+b male,Rictor KO,34.9381,3.75,123,False
+b male,Rictor KO,35.3628,7.94118,124,False
+b male,Rictor KO,35.7876,8.82353,125,False
+b male,Rictor KO,36.2124,10.1471,126,False
+b male,Rictor KO,36.6372,9.92647,127,False
+b male,Rictor KO,37.0619,8.82353,128,False
+b male,Rictor KO,37.4867,5.95588,129,False
+b male,Rictor KO,37.9115,7.27941,130,False
+b male,Rictor KO,38.3363,5.73529,131,False
+b male,Rictor KO,38.7611,5.95588,132,False
+b male,Rictor KO,39.1858,5.95588,133,False
+b male,Rictor KO,39.6106,2.20588,134,False
+b male,Rictor KO,40.0354,0.661765,135,False
+b male,Rictor KO,40.4602,2.20588,136,False
+b male,Rictor KO,40.885,6.83824,137,False
+b male,Rictor KO,41.3097,5.95588,138,False
+b male,Rictor KO,41.7345,4.63235,139,False
+b male,Rictor KO,42.1593,3.97059,140,False
+b male,Rictor KO,42.5841,4.41176,141,False
+b male,Rictor KO,43.0088,7.05882,142,False
+b male,Rictor KO,43.4336,8.38235,143,False
+b male,Rictor KO,43.8584,6.61765,144,False
+b male,Rictor KO,44.2832,7.94118,145,False
+b male,Rictor KO,44.708,5.29412,146,False
+b male,Rictor KO,45.1327,5.95588,147,False
+b male,Rictor KO,45.5575,7.27941,148,False
+b male,Rictor KO,45.9823,7.27941,149,False
+b male,Rictor KO,46.4071,5.95588,150,False
+b male,Rictor KO,46.8319,4.63235,151,False
+b male,Rictor KO,47.2566,9.92647,152,False
+b male,Rictor KO,47.6814,2.86765,153,False
+b male,Rictor KO,48.1062,1.54412,154,False
+b male,Rictor KO,48.531,1.98529,155,False
+b male,Rictor KO,48.9558,2.64706,156,False
+b male,Rictor KO,49.3805,2.68382,157,True
+b male,Rictor KO,49.8053,2.72059,158,True
+b male,Rictor KO,50.2301,2.75735,159,True
+b male,Rictor KO,50.6549,2.79412,160,True
+b male,Rictor KO,51.0796,2.83088,161,True
+b male,Rictor KO,51.5044,2.86765,162,False
+b male,Rictor KO,51.9292,2.64706,163,False
+b male,Rictor KO,52.354,2.42647,164,False
+b male,Rictor KO,52.7788,3.75,165,False
+b male,Rictor KO,53.2035,3.08824,166,False
+b male,Rictor KO,53.6283,3.30882,167,False
+b male,Rictor KO,54.0531,1.98529,168,False
+b male,Rictor KO,54.4779,2.20588,169,False
+b male,Rictor KO,54.9027,2.64706,170,False
+b male,Rictor KO,55.3274,2.20588,171,False
+b male,Rictor KO,55.7522,2.35294,172,True
+b male,Rictor KO,56.177,2.5,173,True
+b male,Rictor KO,56.6018,2.64706,174,False
+b male,Rictor KO,57.0265,3.52941,175,False
+b male,Rictor KO,57.4513,5.73529,176,False
+b male,Rictor KO,57.8761,5.29412,177,False
+b male,Rictor KO,58.3009,2.42647,178,False
+b male,Rictor KO,58.7257,3.75,179,False
+b male,Rictor KO,59.1504,5.29412,180,False
+b male,Rictor KO,59.5752,9.26471,181,False
+b male,Rictor KO,60,10.3676,182,False
+b male,Rictor KO,60.4248,8.60294,183,False
+b male,Rictor KO,60.8496,7.94118,184,False
+b male,Rictor KO,61.2743,5.73529,185,False
+b male,Rictor KO,61.6991,6.61765,186,False
+b male,Rictor KO,62.1239,6.17647,187,False
+b male,Rictor KO,62.5487,5.73529,188,False
+b male,Rictor KO,62.9735,4.85294,189,False
+b male,Rictor KO,63.3982,4.63235,190,False
+b male,Rictor KO,63.823,4.19118,191,False
+b male,Rictor KO,64.2478,2.86765,192,False
+b male,Rictor KO,64.6726,1.32353,193,False
+b male,Rictor KO,65.0973,3.30882,194,False
+b male,Rictor KO,65.5221,4.41176,195,False
+b male,Rictor KO,65.9469,5.95588,196,False
+b male,Rictor KO,66.3717,7.05882,197,False
+b male,Rictor KO,66.7965,3.97059,198,False
+b male,Rictor KO,67.2212,5.07353,199,False
+b male,Rictor KO,67.646,3.30882,200,False
+b male,Rictor KO,68.0708,6.61765,201,False
+b male,Rictor KO,68.4956,4.85294,202,False
+b male,Rictor KO,68.9204,4.19118,203,False
+b male,Rictor KO,69.3451,5.95588,204,False
+b male,Rictor KO,69.7699,7.27941,205,False
+b male,Rictor KO,70.1947,9.04412,206,False
+b male,Rictor KO,70.6195,6.39706,207,False
+b male,Rictor KO,71.0442,4.85294,208,False
+b male,Rictor KO,71.469,3.08824,209,False
+b male,Rictor KO,71.8938,2.86765,210,False
+b male,Rictor KO,72.3186,1.98529,211,False
+b male,Rictor KO,72.7434,1.76471,212,False
+b male,Rictor KO,73.1681,1.32353,213,True
+b male,Rictor KO,73.5929,0.882353,214,False
+b male,Rictor KO,74.0177,0.882353,215,False
+b male,Rictor KO,74.4425,0.926471,216,True
+b male,Rictor KO,74.8673,0.970588,217,True
+b male,Rictor KO,75.292,1.01471,218,True
+b male,Rictor KO,75.7168,1.05882,219,True
+b male,Rictor KO,76.1416,1.10294,220,False
+b male,Rictor KO,76.5664,0.882353,221,False
+b male,Rictor KO,76.9912,1.10294,222,False
+b male,Rictor KO,77.4159,1.10294,223,False
+b male,Rictor KO,77.8407,0.882353,224,False
+b male,Rictor KO,78.2655,0.661765,225,False
+b male,Rictor KO,78.6903,1.98529,226,True
+b male,Rictor KO,79.115,3.30882,227,False
+b male,Rictor KO,79.5398,2.64706,228,False
+b male,Rictor KO,79.9646,0.882353,229,False
+b male,Rictor KO,80.3894,0.882353,230,False
+b male,Rictor KO,80.8142,1.76471,231,False
+b male,Rictor KO,81.2389,3.97059,232,False
+b male,Rictor KO,81.6637,14.3382,233,False
+b male,Rictor KO,82.0885,13.4559,234,False
+b male,Rictor KO,82.5133,4.63235,235,False
+b male,Rictor KO,82.9381,6.83824,236,False
+b male,Rictor KO,83.3628,15.8824,237,False
+b male,Rictor KO,83.7876,16.3235,238,False
+b male,Rictor KO,84.2124,16.3235,239,False
+b male,Rictor KO,84.6372,16.5441,240,False
+b male,Rictor KO,85.0619,13.4559,241,False
+b male,Rictor KO,85.4867,15.4412,242,False
+b male,Rictor KO,85.9115,13.4559,243,False
+b male,Rictor KO,86.3363,13.4559,244,False
+b male,Rictor KO,86.7611,14.5588,245,False
+b male,Rictor KO,87.1858,15.2206,246,False
+b male,Rictor KO,87.6106,11.9118,247,False
+b male,Rictor KO,88.0354,12.5735,248,False
+b male,Rictor KO,88.4602,11.4706,249,False
+b male,Rictor KO,88.885,10.5882,250,False
+b male,Rictor KO,89.3097,9.70588,251,False
+b male,Rictor KO,89.7345,9.70588,252,False
+b male,Rictor KO,90.1593,6.83824,253,False
+b male,Rictor KO,90.5841,7.5,254,False
+b male,Rictor KO,91.0088,7.27941,255,False
+b male,Rictor KO,91.4336,2.86765,256,False
+b male,Rictor KO,91.8584,3.75,257,False
+b male,Rictor KO,92.2832,12.7941,258,False
+b male,Rictor KO,92.708,11.9118,259,False
+b male,Rictor KO,93.1327,7.5,260,False
+b male,Rictor KO,93.5575,2.64706,261,False
+b male,Rictor KO,93.9823,4.63235,262,False
+b male,Rictor KO,94.4071,2.42647,263,False
+b male,Rictor KO,94.8319,1.32353,264,False
+b male,Rictor KO,95.2566,3.30882,265,False
+b male,Rictor KO,95.6814,5.73529,266,False
+b male,Rictor KO,96.1062,2.64706,267,False
+b male,Rictor KO,96.531,0.441176,268,False
+b male,Rictor KO,96.9558,0.220588,269,False
+b male,Rictor KO,97.3805,3.30882,270,False
+b male,Rictor KO,97.8053,3.08824,271,False
+b male,Rictor KO,98.2301,2.42647,272,False
+b male,Rictor KO,98.6549,1.76471,273,False
+b male,Rictor KO,99.0796,1.76471,274,False
+b male,Rictor KO,99.5044,3.75,275,False
+b male,Rictor KO,99.9292,3.52941,276,False
+b male,Rictor KO,100.354,2.42647,277,False
+b male,Rictor KO,100.779,6.61765,278,False
+b male,Rictor KO,101.204,7.05882,279,False
+b male,Rictor KO,101.628,0.441176,280,False
+b male,Rictor KO,102.053,0.661765,281,False
+b male,Rictor KO,102.478,0.441176,282,False
+b male,Rictor KO,102.903,0.661765,283,False
+b male,Rictor KO,103.327,0.220588,284,False
+b male,Rictor KO,103.752,0.220588,285,False
+b male,Rictor KO,104.177,8.38235,286,False
+b male,Rictor KO,104.602,11.25,287,False
+b male,Rictor KO,105.027,19.4118,288,False
+b male,Rictor KO,105.451,21.1765,289,False
+b male,Rictor KO,105.876,14.8897,290,True
+b male,Rictor KO,106.301,8.60294,291,False
+b male,Rictor KO,106.726,8.38235,292,False
+b male,Rictor KO,107.15,9.70588,293,False
+b male,Rictor KO,107.575,8.82353,294,False
+b male,Rictor KO,108,8.82353,295,False
+b male,Rictor KO,108.425,9.70588,296,False
+b male,Rictor KO,108.85,9.26471,297,False
+b male,Rictor KO,109.274,4.85294,298,False
+b male,Rictor KO,109.699,4.19118,299,False
+b male,Rictor KO,110.124,3.08824,300,False
+b male,Rictor KO,110.549,5.07353,301,False
+b male,Rictor KO,110.973,7.5,302,False
+b male,Rictor KO,111.398,7.05882,303,False
+b male,Rictor KO,111.823,4.41176,304,False
+b male,Rictor KO,112.248,4.41176,305,False
+b male,Rictor KO,112.673,2.64706,306,False
+b male,Rictor KO,113.097,2.20588,307,False
+b male,Rictor KO,113.522,1.98529,308,False
+b male,Rictor KO,113.947,1.76471,309,False
+b male,Rictor KO,114.372,3.52941,310,False
+b male,Rictor KO,114.796,8.38235,311,False
+b male,Rictor KO,115.221,7.05882,312,False
+b male,Rictor KO,115.646,7.72059,313,False
+b male,Rictor KO,116.071,8.60294,314,False
+b male,Rictor KO,116.496,8.16176,315,False
+b male,Rictor KO,116.92,3.75,316,False
+b male,Rictor KO,117.345,5.07353,317,False
+b male,Rictor KO,117.77,11.0294,318,False
+b male,Rictor KO,118.195,11.0294,319,False
+b male,Rictor KO,118.619,10.3676,320,False
+b male,Rictor KO,119.044,7.72059,321,False
+b male,Rictor KO,119.469,10.8088,322,False
+b male,Rictor KO,119.894,1.10294,323,False
+b male,Rictor KO,120.319,1.10294,324,False
+b male,Rictor KO,120.743,1.76471,325,False
+b male,Rictor KO,121.168,2.20588,326,False
+b male,Rictor KO,121.593,3.75,327,False
+b male,Rictor KO,122.018,1.76471,328,False
+b male,Rictor KO,122.442,2.20588,329,False
+b male,Rictor KO,122.867,2.20588,330,False
+b male,Rictor KO,123.292,0.882353,331,False
+b male,Rictor KO,123.717,1.32353,332,False
+b male,Rictor KO,124.142,3.08824,333,False
+b male,Rictor KO,124.566,3.08824,334,False
+b male,Rictor KO,124.991,2.64706,335,False
+b male,Rictor KO,125.416,1.10294,336,False
+b male,Rictor KO,125.841,3.52941,337,False
+b male,Rictor KO,126.265,2.20588,338,False
+b male,Rictor KO,126.69,2.86765,339,False
+b male,Rictor KO,127.115,1.10294,340,False
+b male,Rictor KO,127.54,1.76471,341,False
+b male,Rictor KO,127.965,3.97059,342,False
+b male,Rictor KO,128.389,5.29412,343,False
+b male,Rictor KO,128.814,3.97059,344,False
+b male,Rictor KO,129.239,3.97059,345,True
+b male,Rictor KO,129.664,3.97059,346,True

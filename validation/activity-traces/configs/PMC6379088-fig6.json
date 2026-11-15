@@ -1,0 +1,46 @@
+{
+ "id": "PMC6379088-fig6",
+ "image": "../figures/PMC6379088-fig6.jpg",
+ "source": "https://iiif.elifesciences.org/lax:43400%2Felife-43400-fig6-v2.tif/full/full/0/default.jpg",
+ "reader": "lines",
+ "notes": "Top trace of Fig 6A (LMA, movements per hour; the Waking and TDW traces below share the x axis and are left out by the plot area). Each group is a mean line inside a shaded SEM band whose edges are drawn in the same colour; the colour clicked is the mean line's. The x labels sit under the bottom trace, outside this plot area, so two x ticks are given (24 h and 72 h, as read by describe_figure on the whole figure). The legend inside the plot area is excluded.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 12,
+  "light_dark": "LD 12:12; sleep deprivation 48-54 h",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "A LMA",
+   "plot_area": [
+    339,
+    182,
+    2704,
+    742
+   ],
+   "series": {
+    "WT": "#231f20",
+    "KO": "#2ca12c"
+   },
+   "x_ref": [
+    [
+     930,
+     24
+    ],
+    [
+     2112,
+     72
+    ]
+   ],
+   "exclude": [
+    [
+     340,
+     250,
+     690,
+     395
+    ]
+   ]
+  }
+ ]
+}

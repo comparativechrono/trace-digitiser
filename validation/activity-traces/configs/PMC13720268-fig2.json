@@ -1,0 +1,48 @@
+{
+ "id": "PMC13720268-fig2",
+ "image": "../figures/PMC13720268-fig2.png",
+ "source": "PMC copy of Figure 2 (ADVS-9999-e78567-g006.webp, 685 x 999 px; the publisher's site refused the request), converted to PNG",
+ "reader": "lines",
+ "notes": "Fig 2n (locomotor activity counts per hour, mean and SEM, Ube3a con n=9 and NKO n=5, 48 h) at low resolution: the panel is about 120 x 90 px. The x labels (0 12 0 12) wrap and could not be read, so two x ticks are given (ZT0 and ZT48, at the tick marks). The plot area's top stops below the legend. Colours as describe_figure lists them.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 12,
+  "light_dark": "LD 12:12 as drawn (ZT12-24 dark bars)",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "n locomotor",
+   "plot_area": [
+    561.5,
+    395,
+    683,
+    473.4
+   ],
+   "x_ref": [
+    [
+     563,
+     0
+    ],
+    [
+     681,
+     48
+    ]
+   ],
+   "y_ref": [
+    [
+     473.7,
+     0
+    ],
+    [
+     385,
+     25000
+    ]
+   ],
+   "series": {
+    "Ube3a con": "#4f5558",
+    "Ube3a NKO": "#7a9dc3"
+   }
+  }
+ ]
+}

@@ -1,0 +1,92 @@
+{
+ "id": "PMC11446685-fig6",
+ "image": "../figures/PMC11446685-fig6.jpg",
+ "source": "https://pmc-oa-opendata.s3.amazonaws.com/PMC11446685.1/JCSM-15-1772-g003.jpg (PMC's copy of Figure 6, 656 x 945 px; the publisher's site refused the request)",
+ "reader": "lines",
+ "notes": "Fig 6C: activity counts (XT+YT; mean line and SEM band) of LOX control (black) and p53MKO (blue) mice over 8 days of tamoxifen dosing and calorimetry, about 2.8 px per hour. No numeric x axis: x from the grey dark bars (dark from 12 h; the eighth dark bar starts at 180 h). y as describe_figure read it. The significance asterisks and triangles, drawn in black like the control series, are excluded.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 12,
+  "light_dark": "LD 12:12 (grey = dark)",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "C activity",
+   "plot_area": [
+    129,
+    635,
+    651,
+    913
+   ],
+   "x_ref": [
+    [
+     154,
+     12
+    ],
+    [
+     618,
+     180
+    ]
+   ],
+   "y_ref": [
+    [
+     912,
+     0
+    ],
+    [
+     636.5,
+     8000
+    ]
+   ],
+   "exclude": [
+    [
+     130,
+     815,
+     152,
+     845
+    ],
+    [
+     212,
+     805,
+     228,
+     836
+    ],
+    [
+     234,
+     805,
+     252,
+     836
+    ],
+    [
+     409,
+     765,
+     428,
+     798
+    ],
+    [
+     549,
+     710,
+     575,
+     773
+    ],
+    [
+     580,
+     842,
+     612,
+     873
+    ],
+    [
+     619,
+     712,
+     652,
+     783
+    ]
+   ],
+   "series": {
+    "LOX control": "#4e5051",
+    "p53MKO": "#8aaed9"
+   }
+  }
+ ]
+}

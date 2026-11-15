@@ -1,0 +1,79 @@
+{
+ "id": "PMC2654093-fig1",
+ "image": "../figures/PMC2654093-fig1.png",
+ "source": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0004860.g001",
+ "reader": "lines",
+ "notes": "Fig 1B and 1D: mean wheel-running activity (counts/min, black line, grey SEM band) of wild-type mice over 48 h of food deprivation starting at ZT3 (B) or ZT12 (D), after restricted feeding at ZT6-10. Axes from describe_figure; colour sampled from the line itself (pure black): describe_figure's swatches (#232323, #363636) lose the line where it runs close to the axis. The dashed boxes marking the former feeding time are drawn in the trace's colour. Where the mice were still the trace lies on the x axis, so the plot areas run 4 px below the axis line and the y scales are given (as describe_figure read them).",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 9,
+  "light_dark": "12L:12D",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "B food removed at ZT3",
+   "plot_area": [
+    835,
+    89,
+    1481,
+    421
+   ],
+   "series": {
+    "activity": "#000000"
+   },
+   "y_ref": [
+    [
+     416.7,
+     0
+    ],
+    [
+     97,
+     80
+    ]
+   ],
+   "x_ref": [
+    [
+     834.6,
+     0
+    ],
+    [
+     1481.5,
+     48
+    ]
+   ]
+  },
+  {
+   "name": "D food removed at ZT12",
+   "plot_area": [
+    835,
+    770,
+    1481,
+    1102
+   ],
+   "series": {
+    "activity": "#000000"
+   },
+   "y_ref": [
+    [
+     1097.8,
+     0
+    ],
+    [
+     778,
+     80
+    ]
+   ],
+   "x_ref": [
+    [
+     834.6,
+     0
+    ],
+    [
+     1481.4,
+     48
+    ]
+   ]
+  }
+ ]
+}

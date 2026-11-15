@@ -1,0 +1,81 @@
+{
+ "id": "PMC6718533-fig3",
+ "image": "../figures/PMC6718533-fig3.jpg",
+ "source": "https://pmc-oa-opendata.s3.amazonaws.com/PMC6718533.1/ACEL-18-e13014-g003.jpg (PMC's copy, 709 x 1008 px; the publisher's site refused the request)",
+ "reader": "lines",
+ "notes": "Fig 3a (female) and 3b (male): beam-break activity (mean and SEM) of control and Rictor Nkx2.1 KO mice, fed (3 days), fasted (1 day from dark onset) and refed, about 2.3 px per hour. No numeric x axis: x from the grey dark boxes (first starts at 12 h, fifth at 108 h); y from the tick marks. Colours sampled from the traces (describe_figure's swatches are blends of the two series).",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 12,
+  "light_dark": "LD 12:12 (boxes = dark)",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "a female",
+   "plot_area": [
+    47,
+    30,
+    346,
+    166
+   ],
+   "x_ref": [
+    [
+     67,
+     12
+    ],
+    [
+     291,
+     108
+    ]
+   ],
+   "y_ref": [
+    [
+     166,
+     0
+    ],
+    [
+     30,
+     100
+    ]
+   ],
+   "series": {
+    "Control": "#808070",
+    "Rictor KO": "#a03080"
+   }
+  },
+  {
+   "name": "b male",
+   "plot_area": [
+    47,
+    276,
+    346,
+    412
+   ],
+   "x_ref": [
+    [
+     69,
+     12
+    ],
+    [
+     295,
+     108
+    ]
+   ],
+   "y_ref": [
+    [
+     412,
+     0
+    ],
+    [
+     276,
+     60
+    ]
+   ],
+   "series": {
+    "Control": "#202020",
+    "Rictor KO": "#303080"
+   }
+  }
+ ]
+}

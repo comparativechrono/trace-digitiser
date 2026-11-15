@@ -1,0 +1,46 @@
+{
+ "id": "PMC6290015-fig4",
+ "image": "../figures/PMC6290015-fig4.png",
+ "source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs42003-018-0213-5/MediaObjects/42003_2018_213_Fig4_HTML.png",
+ "reader": "lines",
+ "notes": "Fig 4b (activity, cm/min, hourly mean and SEM of each group over days 2-4). The clock-time labels wrap at midnight, so two x ticks are given (8:00 on day 2 = 8 h, 8:00 on day 5 = 80 h), at the tick marks. The plot area starts below the day bar; the legend is excluded.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 20,
+  "light_dark": "LD 12:12, lights off 20:00",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "b activity",
+   "plot_area": [
+    134,
+    732,
+    1350,
+    1191
+   ],
+   "x_ref": [
+    [
+     154.5,
+     8
+    ],
+    [
+     1345,
+     80
+    ]
+   ],
+   "exclude": [
+    [
+     985,
+     752,
+     1325,
+     800
+    ]
+   ],
+   "series": {
+    "GH": "#ff2800",
+    "SI": "#0041ff"
+   }
+  }
+ ]
+}

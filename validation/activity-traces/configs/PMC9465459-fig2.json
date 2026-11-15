@@ -1,0 +1,38 @@
+{
+ "id": "PMC9465459-fig2",
+ "image": "../figures/PMC9465459-fig2.jpg",
+ "source": "https://www.frontiersin.org/files/Articles/955799/fnmol-15-955799-HTML/image_m/fnmol-15-955799-g002.jpg",
+ "reader": "lines",
+ "notes": "Fig 2A (locomotor activity, mean and SEM of Control n=4 and METH n=3 mice, hourly, 72 h from midnight; night shaded 19:00-07:00). y axis read by the package; the x labels were read only when the panel was cut out of the figure, so two x ticks are given (0 and 66 h, at the tick marks); colours sampled from the mean lines (the swatches describe_figure lists are blends of the two error-bar colours).",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 19,
+  "light_dark": "LD 12:12, lights off 19:00; x = 0 at midnight",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "A locomotor",
+   "plot_area": [
+    344,
+    116,
+    2421,
+    1112
+   ],
+   "series": {
+    "Control": "#5484e4",
+    "METH": "#c078e4"
+   },
+   "x_ref": [
+    [
+     350,
+     0
+    ],
+    [
+     2271,
+     66
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,48 @@
+{
+ "id": "PMC13053757-fig3",
+ "image": "../figures/PMC13053757-fig3.jpg",
+ "source": "https://ars.els-cdn.com/content/image/1-s2.0-S221287782600030X-gr3_lrg.jpg",
+ "reader": "lines",
+ "notes": "Fig 3L: locomotor activity (counts, mean and SEM, WT and ADGRF5 KO) over the last 3 days of a 22-to-8 degree ramp and the following days at 8 degrees, 168 h from lights off. Plot area and axis ticks as describe_figure read them on panel L cut out of the figure (offset back to the whole figure); colours from describe_figure.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 0,
+  "light_dark": "LD 12:12, x = 0 at lights off",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "L activity",
+   "plot_area": [
+    2252,
+    1497,
+    3122,
+    1994
+   ],
+   "x_ref": [
+    [
+     2252.1,
+     0
+    ],
+    [
+     3122,
+     168
+    ]
+   ],
+   "y_ref": [
+    [
+     1993.2,
+     0
+    ],
+    [
+     1497,
+     3000
+    ]
+   ],
+   "series": {
+    "WT": "#404fa0",
+    "ADGRF5 KO": "#e61b0d"
+   }
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+{
+ "a 12L:12D rat": [
+  "Panel 1 trace 1: 43% of columns had no trace pixels and were interpolated."
+ ],
+ "b jet-lagged rat": [
+  "Panel 1 trace 1: 40% of columns had no trace pixels and were interpolated."
+ ]
+}

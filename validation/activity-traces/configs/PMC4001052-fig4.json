@@ -1,0 +1,59 @@
+{
+ "id": "PMC4001052-fig4",
+ "image": "../figures/PMC4001052-fig4.jpg",
+ "source": "https://pmc-oa-opendata.s3.amazonaws.com/PMC4001052.1/fnbeh-08-00133-g0004.jpg (PMC's copy, 630 x 597 px; the submission used the journal's 397 x 376 px copy)",
+ "reader": "lines",
+ "notes": "Fig 4A-B (Lopatina et al. 2014): home-cage activity (cm/s) of CD157+/+ and CD157-/- mice over 7 days, labelled 1N, 1D, ... 7D (night first) with no numeric x axis; as in the submission, the plot's width is taken as 168 h starting at the first night. Axes and colours from describe_figure.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 0,
+  "light_dark": "LD 12:12, night first",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "A CD157+/+",
+   "plot_area": [
+    64.5,
+    36,
+    615.1,
+    253.1
+   ],
+   "x_ref": [
+    [
+     64.5,
+     0
+    ],
+    [
+     615.1,
+     168
+    ]
+   ],
+   "series": {
+    "CD157+/+": "#6f9bd4"
+   }
+  },
+  {
+   "name": "B CD157-/-",
+   "plot_area": [
+    64.5,
+    346.8,
+    616,
+    563.3
+   ],
+   "x_ref": [
+    [
+     64.5,
+     0
+    ],
+    [
+     616,
+     168
+    ]
+   ],
+   "series": {
+    "CD157-/-": "#d9a09f"
+   }
+  }
+ ]
+}

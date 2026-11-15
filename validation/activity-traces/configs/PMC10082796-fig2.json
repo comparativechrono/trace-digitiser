@@ -1,0 +1,64 @@
+{
+ "id": "PMC10082796-fig2",
+ "image": "../figures/PMC10082796-fig2.png",
+ "source": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41467-023-37517-w/MediaObjects/41467_2023_37517_Fig2_HTML.png",
+ "reader": "lines",
+ "notes": "x axes are labelled 12 24 12 24 (b) and 0 12 24 12 24 (f): continuous Zeitgeber time, so two x ticks are given, placed at the ends of the light/dark bar under each panel. y axes are labelled (x10^2) counts/h.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 12,
+  "light_dark": "LD 12:12, ZT0 lights on",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "b LMA",
+   "plot_area": [
+    529,
+    133,
+    741,
+    371
+   ],
+   "x_ref": [
+    [
+     530,
+     12
+    ],
+    [
+     727.5,
+     48
+    ]
+   ],
+   "y_scale": 100,
+   "series": {
+    "Control": "#595757",
+    "FK866 3.3mg/kg": "#df6017",
+    "FK866 8mg/kg": "#00d11f"
+   }
+  },
+  {
+   "name": "f LMA",
+   "plot_area": [
+    574,
+    685,
+    786,
+    939
+   ],
+   "x_ref": [
+    [
+     574,
+     0
+    ],
+    [
+     786,
+     48
+    ]
+   ],
+   "y_scale": 100,
+   "series": {
+    "siControl": "#595757",
+    "siNampt": "#254d9c"
+   }
+  }
+ ]
+}

@@ -1,0 +1,121 @@
+{
+ "id": "PMC4001052-fig4-gridlines-left-out",
+ "image": "../figures/PMC4001052-fig4.jpg",
+ "source": "https://pmc-oa-opendata.s3.amazonaws.com/PMC4001052.1/fnbeh-08-00133-g0004.jpg (PMC's copy, 630 x 597 px; the submission used the journal's 397 x 376 px copy)",
+ "reader": "lines",
+ "notes": "Lopatina et al. 2014, Fig 4, read as PMC4001052-fig4 (PMC's copy) is, except that in panel B the gridlines and the sides of the frame are left out (exclude). The knockout's trace is pale pink, and the grey of most of those lines lies within the line reader's colour tolerance (60) of it, so that they are otherwise read as part of the trace: colour distances 47-62 for the gridlines and 57 for the frame's left side, against 72 or more for the wild type's blue in panel A. The rows left out are those of the gridlines the reader finds in the panel (panel_metadata.gridline_y), 1.5 px either side; the columns, those of the frame's sides. The last box is the strip of the x axis's labels (1N, 1D ... 7D), which this figure draws inside the top of each plot area (rows 357-368, values of about 270-286): their grey edges also lie within the tolerance of the pale pink, and in some columns would be read as the top of the knockout's trace, which lies far below them. For cd157.py; not one of the validation cases.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 0,
+  "light_dark": "LD 12:12, night first",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "A CD157+/+",
+   "plot_area": [
+    64.5,
+    36,
+    615.1,
+    253.1
+   ],
+   "x_ref": [
+    [
+     64.5,
+     0
+    ],
+    [
+     615.1,
+     168
+    ]
+   ],
+   "series": {
+    "CD157+/+": "#6f9bd4"
+   }
+  },
+  {
+   "name": "B CD157-/-",
+   "plot_area": [
+    64.5,
+    346.8,
+    616,
+    563.3
+   ],
+   "x_ref": [
+    [
+     64.5,
+     0
+    ],
+    [
+     616,
+     168
+    ]
+   ],
+   "series": {
+    "CD157-/-": "#d9a09f"
+   },
+   "exclude": [
+    [
+     62.5,
+     345.5,
+     618,
+     348.5
+    ],
+    [
+     62.5,
+     381.5,
+     618,
+     384.5
+    ],
+    [
+     62.5,
+     417.5,
+     618,
+     420.5
+    ],
+    [
+     62.5,
+     453.5,
+     618,
+     456.5
+    ],
+    [
+     62.5,
+     490.5,
+     618,
+     493.5
+    ],
+    [
+     62.5,
+     525.5,
+     618,
+     528.5
+    ],
+    [
+     62.5,
+     561.5,
+     618,
+     564.5
+    ],
+    [
+     62.5,
+     344.8,
+     65.5,
+     565.3
+    ],
+    [
+     614.5,
+     344.8,
+     618.0,
+     565.3
+    ],
+    [
+     62.5,
+     354.5,
+     618,
+     371.5
+    ]
+   ]
+  }
+ ]
+}

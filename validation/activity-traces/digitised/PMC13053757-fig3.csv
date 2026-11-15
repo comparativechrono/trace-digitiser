@@ -1,0 +1,1743 @@
+panel,series,x,y,x_pixel,interpolated
+L activity,WT,-0.0193126,379.081,2252,False
+L activity,WT,0.173813,500,2253,False
+L activity,WT,0.366939,636.034,2254,False
+L activity,WT,0.560064,756.953,2255,False
+L activity,WT,0.75319,892.987,2256,False
+L activity,WT,0.946316,1022.97,2257,False
+L activity,WT,1.13944,1116.69,2258,False
+L activity,WT,1.33257,1249.7,2259,False
+L activity,WT,1.52569,1337.36,2260,False
+L activity,WT,1.71882,1409.92,2261,False
+L activity,WT,1.91194,1515.72,2262,False
+L activity,WT,2.10507,1497.58,2263,False
+L activity,WT,2.2982,1476.42,2264,False
+L activity,WT,2.49132,1443.17,2265,False
+L activity,WT,2.68445,1434.1,2266,False
+L activity,WT,2.87757,1388.75,2267,False
+L activity,WT,3.0707,1422.01,2268,False
+L activity,WT,3.26382,1464.33,2269,False
+L activity,WT,3.45695,1482.47,2270,False
+L activity,WT,3.65007,1539.9,2271,False
+L activity,WT,3.8432,1582.22,2272,False
+L activity,WT,4.03633,1591.29,2273,False
+L activity,WT,4.22945,1663.85,2274,False
+L activity,WT,4.42258,1700.12,2275,False
+L activity,WT,4.6157,1766.63,2276,False
+L activity,WT,4.80883,1760.58,2277,False
+L activity,WT,5.00195,1827.09,2278,False
+L activity,WT,5.19508,1842.2,2279,False
+L activity,WT,5.38821,1839.18,2280,False
+L activity,WT,5.58133,1845.22,2281,False
+L activity,WT,5.77446,1839.18,2282,False
+L activity,WT,5.96758,1842.2,2283,False
+L activity,WT,6.16071,1688.03,2284,False
+L activity,WT,6.35383,1536.88,2285,False
+L activity,WT,6.54696,1425.03,2286,False
+L activity,WT,6.74009,1358.52,2287,False
+L activity,WT,6.93321,1192.26,2288,False
+L activity,WT,7.12634,1004.84,2289,False
+L activity,WT,7.31946,844.619,2290,False
+L activity,WT,7.51259,675.333,2291,False
+L activity,WT,7.70571,475.816,2292,False
+L activity,WT,7.89884,388.15,2293,False
+L activity,WT,8.09196,363.966,2294,False
+L activity,WT,8.28509,379.081,2295,False
+L activity,WT,8.47822,406.288,2296,False
+L activity,WT,8.67134,412.334,2297,False
+L activity,WT,8.86447,463.724,2298,False
+L activity,WT,9.05759,620.919,2299,False
+L activity,WT,9.25072,744.861,2300,False
+L activity,WT,9.44384,914.148,2301,False
+L activity,WT,9.63697,989.722,2302,False
+L activity,WT,9.8301,1035.07,2303,False
+L activity,WT,10.0232,1128.78,2304,False
+L activity,WT,10.2163,1080.41,2305,False
+L activity,WT,10.4095,986.699,2306,False
+L activity,WT,10.6026,947.4,2307,False
+L activity,WT,10.7957,941.354,2308,False
+L activity,WT,10.9888,938.331,2309,False
+L activity,WT,11.182,1001.81,2310,False
+L activity,WT,11.3751,1125.76,2311,False
+L activity,WT,11.5682,1219.47,2312,False
+L activity,WT,11.7614,1267.84,2313,False
+L activity,WT,11.9545,1328.3,2314,False
+L activity,WT,12.1476,1234.58,2315,False
+L activity,WT,12.3407,1168.08,2316,False
+L activity,WT,12.5339,1065.3,2317,False
+L activity,WT,12.727,1019.95,2318,False
+L activity,WT,12.9201,859.734,2319,False
+L activity,WT,13.1132,762.999,2320,False
+L activity,WT,13.3064,657.195,2321,False
+L activity,WT,13.4995,503.023,2322,False
+L activity,WT,13.6926,394.196,2323,False
+L activity,WT,13.8857,360.943,2324,False
+L activity,WT,14.0789,391.173,2325,False
+L activity,WT,14.272,500,2326,False
+L activity,WT,14.4651,636.034,2327,False
+L activity,WT,14.6582,690.447,2328,False
+L activity,WT,14.8514,717.654,2329,False
+L activity,WT,15.0445,811.366,2330,False
+L activity,WT,15.2376,811.366,2331,False
+L activity,WT,15.4307,805.32,2332,False
+L activity,WT,15.6239,802.297,2333,False
+L activity,WT,15.817,787.183,2334,False
+L activity,WT,16.0101,784.16,2335,False
+L activity,WT,16.2032,787.183,2336,False
+L activity,WT,16.3964,793.229,2337,False
+L activity,WT,16.5895,790.206,2338,False
+L activity,WT,16.7826,684.401,2339,False
+L activity,WT,16.9757,699.516,2340,False
+L activity,WT,17.1689,648.126,2341,False
+L activity,WT,17.362,518.138,2342,False
+L activity,WT,17.5551,418.38,2343,False
+L activity,WT,17.7482,327.69,2344,False
+L activity,WT,17.9414,342.805,2345,False
+L activity,WT,18.1345,481.862,2346,False
+L activity,WT,18.3276,705.562,2347,False
+L activity,WT,18.5207,853.688,2348,False
+L activity,WT,18.7139,1065.3,2349,False
+L activity,WT,18.907,1068.32,2350,False
+L activity,WT,19.1001,899.033,2351,False
+L activity,WT,19.2933,636.034,2352,False
+L activity,WT,19.4864,515.115,2353,False
+L activity,WT,19.6795,212.817,2354,False
+L activity,WT,19.8726,158.404,2355,False
+L activity,WT,20.0658,179.565,2356,False
+L activity,WT,20.2589,318.622,2357,False
+L activity,WT,20.452,430.472,2358,False
+L activity,WT,20.6451,536.276,2359,False
+L activity,WT,20.8383,629.988,2360,False
+L activity,WT,21.0314,702.539,2361,False
+L activity,WT,21.2245,708.585,2362,False
+L activity,WT,21.4176,711.608,2363,False
+L activity,WT,21.6108,720.677,2364,False
+L activity,WT,21.8039,711.608,2365,False
+L activity,WT,21.997,687.424,2366,False
+L activity,WT,22.1901,620.919,2367,False
+L activity,WT,22.3833,521.161,2368,False
+L activity,WT,22.5764,445.586,2369,False
+L activity,WT,22.7695,348.851,2370,False
+L activity,WT,22.9626,360.943,2371,False
+L activity,WT,23.1558,400.242,2372,False
+L activity,WT,23.3489,472.793,2373,False
+L activity,WT,23.542,533.253,2374,False
+L activity,WT,23.7351,575.574,2375,False
+L activity,WT,23.9283,626.965,2376,False
+L activity,WT,24.1214,778.114,2377,False
+L activity,WT,24.3145,835.55,2378,False
+L activity,WT,24.5076,944.377,2379,False
+L activity,WT,24.7008,1047.16,2380,False
+L activity,WT,24.8939,1056.23,2381,False
+L activity,WT,25.087,1056.23,2382,False
+L activity,WT,25.2801,1026,2383,False
+L activity,WT,25.4733,995.768,2384,False
+L activity,WT,25.6664,983.676,2385,False
+L activity,WT,25.8595,953.446,2386,False
+L activity,WT,26.0526,1004.84,2387,False
+L activity,WT,26.2458,1038.09,2388,False
+L activity,WT,26.4389,1092.5,2389,False
+L activity,WT,26.632,1125.76,2390,False
+L activity,WT,26.8252,1180.17,2391,False
+L activity,WT,27.0183,1264.81,2392,False
+L activity,WT,27.2114,1304.11,2393,False
+L activity,WT,27.4045,1385.73,2394,False
+L activity,WT,27.5977,1473.4,2395,False
+L activity,WT,27.7908,1558.04,2396,False
+L activity,WT,27.9839,1651.75,2397,False
+L activity,WT,28.177,1697.1,2398,False
+L activity,WT,28.3702,1769.65,2399,False
+L activity,WT,28.5633,1878.48,2400,False
+L activity,WT,28.7564,1960.1,2401,False
+L activity,WT,28.9495,1990.33,2402,False
+L activity,WT,29.1427,1993.35,2403,False
+L activity,WT,29.3358,1996.37,2404,False
+L activity,WT,29.5289,1996.37,2405,False
+L activity,WT,29.722,2014.51,2406,False
+L activity,WT,29.9152,2059.85,2407,False
+L activity,WT,30.1083,1824.06,2408,False
+L activity,WT,30.3014,1552,2409,False
+L activity,WT,30.4945,1567.11,2410,False
+L activity,WT,30.6877,1343.41,2411,False
+L activity,WT,30.8808,1328.3,2412,False
+L activity,WT,31.0739,1189.24,2413,False
+L activity,WT,31.267,1092.5,2414,False
+L activity,WT,31.4602,1001.81,2415,False
+L activity,WT,31.6533,877.872,2416,False
+L activity,WT,31.8464,796.252,2417,False
+L activity,WT,32.0395,762.999,2418,False
+L activity,WT,32.2327,753.93,2419,False
+L activity,WT,32.4258,756.953,2420,False
+L activity,WT,32.6189,738.815,2421,False
+L activity,WT,32.812,744.861,2422,False
+L activity,WT,33.0052,720.677,2423,False
+L activity,WT,33.1983,696.493,2424,False
+L activity,WT,33.3914,696.493,2425,False
+L activity,WT,33.5845,681.378,2426,False
+L activity,WT,33.7777,678.356,2427,False
+L activity,WT,33.9708,784.16,2428,False
+L activity,WT,34.1639,1001.81,2429,False
+L activity,WT,34.3571,1579.2,2430,False
+L activity,WT,34.5502,1452.24,2431,False
+L activity,WT,34.7433,1567.11,2432,False
+L activity,WT,34.9364,1624.55,2433,False
+L activity,WT,35.1296,1724.3,2434,False
+L activity,WT,35.3227,1963.12,2435,False
+L activity,WT,35.5158,1872.43,2436,False
+L activity,WT,35.7089,2002.42,2437,False
+L activity,WT,35.9021,1990.33,2438,False
+L activity,WT,36.0952,1972.19,2439,False
+L activity,WT,36.2883,1972.19,2440,False
+L activity,WT,36.4814,1963.12,2441,False
+L activity,WT,36.6746,2093.11,2442,False
+L activity,WT,36.8677,1926.84,2443,False
+L activity,WT,37.0608,1476.42,2444,False
+L activity,WT,37.2539,1479.44,2445,False
+L activity,WT,37.4471,509.069,2446,False
+L activity,WT,37.6402,608.827,2447,False
+L activity,WT,37.8333,327.69,2448,False
+L activity,WT,38.0264,243.047,2449,False
+L activity,WT,38.2196,243.047,2450,False
+L activity,WT,38.4127,237.001,2451,False
+L activity,WT,38.6058,237.001,2452,False
+L activity,WT,38.7989,240.024,2453,False
+L activity,WT,38.9921,249.093,2454,False
+L activity,WT,39.1852,279.323,2455,False
+L activity,WT,39.3783,406.288,2456,False
+L activity,WT,39.5714,448.609,2457,False
+L activity,WT,39.7646,490.931,2458,False
+L activity,WT,39.9577,518.138,2459,False
+L activity,WT,40.1508,554.414,2460,False
+L activity,WT,40.3439,566.505,2461,False
+L activity,WT,40.5371,575.574,2462,False
+L activity,WT,40.7302,584.643,2463,False
+L activity,WT,40.9233,596.735,2464,False
+L activity,WT,41.1165,596.735,2465,False
+L activity,WT,41.3096,593.712,2466,False
+L activity,WT,41.5027,593.712,2467,False
+L activity,WT,41.6958,587.666,2468,False
+L activity,WT,41.889,569.528,2469,False
+L activity,WT,42.0821,442.563,2470,False
+L activity,WT,42.2752,315.599,2471,False
+L activity,WT,42.4683,261.185,2472,False
+L activity,WT,42.6615,140.266,2473,False
+L activity,WT,42.8546,146.312,2474,False
+L activity,WT,43.0477,188.634,2475,False
+L activity,WT,43.2408,288.392,2476,False
+L activity,WT,43.434,406.288,2477,False
+L activity,WT,43.6271,469.77,2478,False
+L activity,WT,43.8202,560.459,2479,False
+L activity,WT,44.0133,503.023,2480,False
+L activity,WT,44.2065,448.609,2481,False
+L activity,WT,44.3996,385.127,2482,False
+L activity,WT,44.5927,348.851,2483,False
+L activity,WT,44.7858,315.599,2484,False
+L activity,WT,44.979,294.438,2485,False
+L activity,WT,45.1721,303.507,2486,False
+L activity,WT,45.3652,312.576,2487,False
+L activity,WT,45.5583,318.622,2488,False
+L activity,WT,45.7515,348.851,2489,False
+L activity,WT,45.9446,357.92,2490,False
+L activity,WT,46.1377,363.966,2491,False
+L activity,WT,46.3308,370.012,2492,False
+L activity,WT,46.524,376.058,2493,False
+L activity,WT,46.7171,373.035,2494,False
+L activity,WT,46.9102,397.219,2495,False
+L activity,WT,47.1033,418.38,2496,False
+L activity,WT,47.2965,415.357,2497,False
+L activity,WT,47.4896,421.403,2498,False
+L activity,WT,47.6827,424.426,2499,False
+L activity,WT,47.8758,478.839,2500,False
+L activity,WT,48.069,614.873,2501,False
+L activity,WT,48.2621,711.608,2502,False
+L activity,WT,48.4552,950.423,2503,False
+L activity,WT,48.6484,1026,2504,False
+L activity,WT,48.8415,1098.55,2505,False
+L activity,WT,49.0346,1165.05,2506,False
+L activity,WT,49.2277,1174.12,2507,False
+L activity,WT,49.4209,1213.42,2508,False
+L activity,WT,49.614,1216.44,2509,False
+L activity,WT,49.8071,1264.81,2510,False
+L activity,WT,50.0002,1503.63,2511,False
+L activity,WT,50.1934,1669.89,2512,False
+L activity,WT,50.3865,1836.15,2513,False
+L activity,WT,50.5796,2029.63,2514,False
+L activity,WT,50.7727,2065.9,2515,False
+L activity,WT,50.9659,2189.84,2516,False
+L activity,WT,51.159,2171.7,2517,False
+L activity,WT,51.3521,2120.31,2518,False
+L activity,WT,51.5452,2102.18,2519,False
+L activity,WT,51.7384,2020.56,2520,False
+L activity,WT,51.9315,1960.1,2521,False
+L activity,WT,52.1246,1784.76,2522,False
+L activity,WT,52.3177,1660.82,2523,False
+L activity,WT,52.5109,1524.79,2524,False
+L activity,WT,52.704,1473.4,2525,False
+L activity,WT,52.8971,1255.74,2526,False
+L activity,WT,53.0902,1252.72,2527,False
+L activity,WT,53.2834,1207.38,2528,False
+L activity,WT,53.4765,1159.01,2529,False
+L activity,WT,53.6696,1155.99,2530,False
+L activity,WT,53.8627,1162.03,2531,False
+L activity,WT,54.0559,1149.94,2532,False
+L activity,WT,54.249,1165.05,2533,False
+L activity,WT,54.4421,1210.4,2534,False
+L activity,WT,54.6352,1213.42,2535,False
+L activity,WT,54.8284,1146.92,2536,False
+L activity,WT,55.0215,1162.03,2537,False
+L activity,WT,55.2146,1122.73,2538,False
+L activity,WT,55.4077,1038.09,2539,False
+L activity,WT,55.6009,986.699,2540,False
+L activity,WT,55.794,947.4,2541,False
+L activity,WT,55.9871,865.78,2542,False
+L activity,WT,56.1803,844.619,2543,False
+L activity,WT,56.3734,799.274,2544,False
+L activity,WT,56.5665,769.045,2545,False
+L activity,WT,56.7596,796.252,2546,False
+L activity,WT,56.9528,793.229,2547,False
+L activity,WT,57.1459,817.412,2548,False
+L activity,WT,57.339,880.895,2549,False
+L activity,WT,57.5321,926.239,2550,False
+L activity,WT,57.7253,911.125,2551,False
+L activity,WT,57.9184,974.607,2552,False
+L activity,WT,58.1115,971.584,2553,False
+L activity,WT,58.3046,971.584,2554,False
+L activity,WT,58.4978,971.584,2555,False
+L activity,WT,58.6909,977.63,2556,False
+L activity,WT,58.884,1074.37,2557,False
+L activity,WT,59.0771,1201.33,2558,False
+L activity,WT,59.2703,1355.5,2559,False
+L activity,WT,59.4634,1509.67,2560,False
+L activity,WT,59.6565,1718.26,2561,False
+L activity,WT,59.8496,1730.35,2562,False
+L activity,WT,60.0428,1730.35,2563,False
+L activity,WT,60.2359,1727.33,2564,False
+L activity,WT,60.429,1727.33,2565,False
+L activity,WT,60.6221,1724.3,2566,False
+L activity,WT,60.8153,1470.37,2567,False
+L activity,WT,61.0084,1415.96,2568,False
+L activity,WT,61.2015,1331.32,2569,False
+L activity,WT,61.3946,1140.87,2570,False
+L activity,WT,61.5878,947.4,2571,False
+L activity,WT,61.7809,762.999,2572,False
+L activity,WT,61.974,696.493,2573,False
+L activity,WT,62.1671,666.264,2574,False
+L activity,WT,62.3603,599.758,2575,False
+L activity,WT,62.5534,554.414,2576,False
+L activity,WT,62.7465,506.046,2577,False
+L activity,WT,62.9396,496.977,2578,False
+L activity,WT,63.1328,496.977,2579,False
+L activity,WT,63.3259,500,2580,False
+L activity,WT,63.519,500,2581,False
+L activity,WT,63.7122,500,2582,False
+L activity,WT,63.9053,530.23,2583,False
+L activity,WT,64.0984,536.276,2584,False
+L activity,WT,64.2915,569.528,2585,False
+L activity,WT,64.4847,596.735,2586,False
+L activity,WT,64.6778,614.873,2587,False
+L activity,WT,64.8709,527.207,2588,False
+L activity,WT,65.064,475.816,2589,False
+L activity,WT,65.2572,391.173,2590,False
+L activity,WT,65.4503,285.369,2591,False
+L activity,WT,65.6434,197.703,2592,False
+L activity,WT,65.8365,188.634,2593,False
+L activity,WT,66.0297,197.703,2594,False
+L activity,WT,66.2228,221.886,2595,False
+L activity,WT,66.4159,243.047,2596,False
+L activity,WT,66.609,270.254,2597,False
+L activity,WT,66.8022,300.484,2598,False
+L activity,WT,66.9953,321.644,2599,False
+L activity,WT,67.1884,297.461,2600,False
+L activity,WT,67.3815,406.288,2601,False
+L activity,WT,67.5747,421.403,2602,False
+L activity,WT,67.7678,351.874,2603,False
+L activity,WT,67.9609,406.288,2604,False
+L activity,WT,68.154,373.035,2605,False
+L activity,WT,68.3472,285.369,2606,False
+L activity,WT,68.5403,261.185,2607,False
+L activity,WT,68.7334,224.909,2608,False
+L activity,WT,68.9265,258.162,2609,False
+L activity,WT,69.1197,297.461,2610,False
+L activity,WT,69.3128,354.897,2611,False
+L activity,WT,69.5059,403.265,2612,False
+L activity,WT,69.699,463.724,2613,False
+L activity,WT,69.8922,442.563,2614,False
+L activity,WT,70.0853,388.15,2615,False
+L activity,WT,70.2784,363.966,2616,False
+L activity,WT,70.4715,246.07,2617,False
+L activity,WT,70.6647,233.978,2618,False
+L activity,WT,70.8578,224.909,2619,False
+L activity,WT,71.0509,252.116,2620,False
+L activity,WT,71.2441,339.782,2621,False
+L activity,WT,71.4372,366.989,2622,False
+L activity,WT,71.6303,436.518,2623,False
+L activity,WT,71.8234,515.115,2624,False
+L activity,WT,72.0166,720.677,2625,False
+L activity,WT,72.2097,1137.85,2626,False
+L activity,WT,72.4028,1137.85,2627,False
+L activity,WT,72.5959,1325.27,2628,False
+L activity,WT,72.7891,1319.23,2629,False
+L activity,WT,72.9822,1264.81,2630,False
+L activity,WT,73.1753,1243.65,2631,False
+L activity,WT,73.3684,1165.05,2632,False
+L activity,WT,73.5616,1122.73,2633,False
+L activity,WT,73.7547,1104.59,2634,False
+L activity,WT,73.9478,1143.89,2635,False
+L activity,WT,74.1409,1207.38,2636,False
+L activity,WT,74.3341,1261.79,2637,False
+L activity,WT,74.5272,1298.07,2638,False
+L activity,WT,74.7203,1364.57,2639,False
+L activity,WT,74.9134,1346.43,2640,False
+L activity,WT,75.1066,1316.2,2641,False
+L activity,WT,75.2997,1276.9,2642,False
+L activity,WT,75.4928,1258.77,2643,False
+L activity,WT,75.6859,1201.33,2644,False
+L activity,WT,75.8791,1246.67,2645,False
+L activity,WT,76.0722,1400.85,2646,False
+L activity,WT,76.2653,1464.33,2647,False
+L activity,WT,76.4584,1576.18,2648,False
+L activity,WT,76.6516,1739.42,2649,False
+L activity,WT,76.8447,1718.26,2650,False
+L activity,WT,77.0378,1688.03,2651,False
+L activity,WT,77.2309,1663.85,2652,False
+L activity,WT,77.4241,1639.66,2653,False
+L activity,WT,77.6172,1639.66,2654,False
+L activity,WT,77.8103,1621.52,2655,False
+L activity,WT,78.0034,1642.68,2656,False
+L activity,WT,78.1966,1654.78,2657,False
+L activity,WT,78.3897,1666.87,2658,False
+L activity,WT,78.5828,1672.91,2659,False
+L activity,WT,78.776,1675.94,2660,False
+L activity,WT,78.9691,1555.02,2661,False
+L activity,WT,79.1622,1409.92,2662,False
+L activity,WT,79.3553,1298.07,2663,False
+L activity,WT,79.5485,1243.65,2664,False
+L activity,WT,79.7416,1086.46,2665,False
+L activity,WT,79.9347,1013.91,2666,False
+L activity,WT,80.1278,941.354,2667,False
+L activity,WT,80.321,968.561,2668,False
+L activity,WT,80.5141,772.068,2669,False
+L activity,WT,80.7072,772.068,2670,False
+L activity,WT,80.9003,769.045,2671,False
+L activity,WT,81.0935,790.206,2672,False
+L activity,WT,81.2866,841.596,2673,False
+L activity,WT,81.4797,862.757,2674,False
+L activity,WT,81.6728,862.757,2675,False
+L activity,WT,81.866,923.216,2676,False
+L activity,WT,82.0591,920.193,2677,False
+L activity,WT,82.2522,917.17,2678,False
+L activity,WT,82.4453,914.148,2679,False
+L activity,WT,82.6385,914.148,2680,False
+L activity,WT,82.8316,962.515,2681,False
+L activity,WT,83.0247,1125.76,2682,False
+L activity,WT,83.2178,1228.54,2683,False
+L activity,WT,83.411,1397.82,2684,False
+L activity,WT,83.6041,1449.21,2685,False
+L activity,WT,83.7972,1633.62,2686,False
+L activity,WT,83.9903,1685.01,2687,False
+L activity,WT,84.1835,1748.49,2688,False
+L activity,WT,84.3766,1845.22,2689,False
+L activity,WT,84.5697,1869.41,2690,False
+L activity,WT,84.7628,1703.14,2691,False
+L activity,WT,84.956,1506.65,2692,False
+L activity,WT,85.1491,1222.49,2693,False
+L activity,WT,85.3422,832.527,2694,False
+L activity,WT,85.5353,463.724,2695,False
+L activity,WT,85.7285,252.116,2696,False
+L activity,WT,85.9216,233.978,2697,False
+L activity,WT,86.1147,233.978,2698,False
+L activity,WT,86.3079,240.024,2699,False
+L activity,WT,86.501,246.07,2700,False
+L activity,WT,86.6941,264.208,2701,False
+L activity,WT,86.8872,324.667,2702,False
+L activity,WT,87.0804,472.793,2703,False
+L activity,WT,87.2735,587.666,2704,False
+L activity,WT,87.4666,735.792,2705,False
+L activity,WT,87.6597,787.183,2706,False
+L activity,WT,87.8529,772.068,2707,False
+L activity,WT,88.046,684.401,2708,False
+L activity,WT,88.2391,578.597,2709,False
+L activity,WT,88.4322,451.632,2710,False
+L activity,WT,88.6254,397.219,2711,False
+L activity,WT,88.8185,370.012,2712,False
+L activity,WT,89.0116,400.242,2713,False
+L activity,WT,89.2047,478.839,2714,False
+L activity,WT,89.3979,551.391,2715,False
+L activity,WT,89.591,584.643,2716,False
+L activity,WT,89.7841,617.896,2717,False
+L activity,WT,89.9772,605.804,2718,False
+L activity,WT,90.1704,575.574,2719,False
+L activity,WT,90.3635,554.414,2720,False
+L activity,WT,90.5566,548.368,2721,False
+L activity,WT,90.7497,493.954,2722,False
+L activity,WT,90.9429,500,2723,False
+L activity,WT,91.136,490.931,2724,False
+L activity,WT,91.3291,463.724,2725,False
+L activity,WT,91.5222,451.632,2726,False
+L activity,WT,91.7154,412.334,2727,False
+L activity,WT,91.9085,388.15,2728,False
+L activity,WT,92.1016,376.058,2729,False
+L activity,WT,92.2947,345.828,2730,False
+L activity,WT,92.4879,336.759,2731,False
+L activity,WT,92.681,327.69,2732,False
+L activity,WT,92.8741,306.53,2733,False
+L activity,WT,93.0672,300.484,2734,False
+L activity,WT,93.2604,306.53,2735,False
+L activity,WT,93.4535,300.484,2736,False
+L activity,WT,93.6466,333.736,2737,False
+L activity,WT,93.8398,354.897,2738,False
+L activity,WT,94.0329,385.127,2739,False
+L activity,WT,94.226,466.747,2740,False
+L activity,WT,94.4191,524.184,2741,False
+L activity,WT,94.6123,572.551,2742,False
+L activity,WT,94.8054,572.551,2743,False
+L activity,WT,94.9985,554.414,2744,False
+L activity,WT,95.1916,496.977,2745,False
+L activity,WT,95.3848,442.563,2746,False
+L activity,WT,95.5779,409.311,2747,False
+L activity,WT,95.771,412.334,2748,False
+L activity,WT,95.9641,569.528,2749,False
+L activity,WT,96.1573,666.264,2750,False
+L activity,WT,96.3504,832.527,2751,False
+L activity,WT,96.5435,1007.86,2752,False
+L activity,WT,96.7366,992.745,2753,False
+L activity,WT,96.9298,983.676,2754,False
+L activity,WT,97.1229,929.262,2755,False
+L activity,WT,97.316,883.918,2756,False
+L activity,WT,97.5091,850.665,2757,False
+L activity,WT,97.7023,829.504,2758,False
+L activity,WT,97.8954,865.78,2759,False
+L activity,WT,98.0885,886.941,2760,False
+L activity,WT,98.2816,944.377,2761,False
+L activity,WT,98.4748,974.607,2762,False
+L activity,WT,98.6679,1022.97,2763,False
+L activity,WT,98.861,1113.66,2764,False
+L activity,WT,99.0541,1149.94,2765,False
+L activity,WT,99.2473,1237.61,2766,False
+L activity,WT,99.4404,1313.18,2767,False
+L activity,WT,99.6335,1397.82,2768,False
+L activity,WT,99.8266,1449.21,2769,False
+L activity,WT,100.02,1464.33,2770,False
+L activity,WT,100.213,1509.67,2771,False
+L activity,WT,100.406,1567.11,2772,False
+L activity,WT,100.599,1615.48,2773,False
+L activity,WT,100.792,1669.89,2774,False
+L activity,WT,100.985,1681.98,2775,False
+L activity,WT,101.179,1730.35,2776,False
+L activity,WT,101.372,1790.81,2777,False
+L activity,WT,101.565,1833.13,2778,False
+L activity,WT,101.758,1775.7,2779,False
+L activity,WT,101.951,1742.44,2780,False
+L activity,WT,102.144,1627.57,2781,False
+L activity,WT,102.337,1564.09,2782,False
+L activity,WT,102.53,1446.19,2783,False
+L activity,WT,102.724,1470.37,2784,False
+L activity,WT,102.917,1285.97,2785,False
+L activity,WT,103.11,1062.27,2786,False
+L activity,WT,103.303,1068.32,2787,False
+L activity,WT,103.496,932.285,2788,False
+L activity,WT,103.689,826.481,2789,False
+L activity,WT,103.882,790.206,2790,False
+L activity,WT,104.075,781.137,2791,False
+L activity,WT,104.269,784.16,2792,False
+L activity,WT,104.462,766.022,2793,False
+L activity,WT,104.655,778.114,2794,False
+L activity,WT,104.848,729.746,2795,False
+L activity,WT,105.041,717.654,2796,False
+L activity,WT,105.234,684.401,2797,False
+L activity,WT,105.427,663.241,2798,False
+L activity,WT,105.62,654.172,2799,False
+L activity,WT,105.814,696.493,2800,False
+L activity,WT,106.007,762.999,2801,False
+L activity,WT,106.2,883.918,2802,False
+L activity,WT,106.393,917.17,2803,False
+L activity,WT,106.586,1019.95,2804,False
+L activity,WT,106.779,1053.2,2805,False
+L activity,WT,106.972,1149.94,2806,False
+L activity,WT,107.165,1198.31,2807,False
+L activity,WT,107.359,1289,2808,False
+L activity,WT,107.552,1400.85,2809,False
+L activity,WT,107.745,1428.05,2810,False
+L activity,WT,107.938,1509.67,2811,False
+L activity,WT,108.131,1542.93,2812,False
+L activity,WT,108.324,1612.45,2813,False
+L activity,WT,108.517,1796.86,2814,False
+L activity,WT,108.71,1715.24,2815,False
+L activity,WT,108.904,1394.8,2816,False
+L activity,WT,109.097,920.193,2817,False
+L activity,WT,109.29,896.01,2818,False
+L activity,WT,109.483,744.861,2819,False
+L activity,WT,109.676,548.368,2820,False
+L activity,WT,109.869,490.931,2821,False
+L activity,WT,110.062,503.023,2822,False
+L activity,WT,110.255,382.104,2823,False
+L activity,WT,110.449,391.173,2824,False
+L activity,WT,110.642,373.035,2825,False
+L activity,WT,110.835,382.104,2826,False
+L activity,WT,111.028,509.069,2827,False
+L activity,WT,111.221,530.23,2828,False
+L activity,WT,111.414,660.218,2829,False
+L activity,WT,111.607,784.16,2830,False
+L activity,WT,111.8,775.091,2831,False
+L activity,WT,111.994,663.241,2832,False
+L activity,WT,112.187,623.942,2833,False
+L activity,WT,112.38,560.459,2834,False
+L activity,WT,112.573,500,2835,False
+L activity,WT,112.766,481.862,2836,False
+L activity,WT,112.959,472.793,2837,False
+L activity,WT,113.152,463.724,2838,False
+L activity,WT,113.345,460.701,2839,False
+L activity,WT,113.539,454.655,2840,False
+L activity,WT,113.732,427.449,2841,False
+L activity,WT,113.925,382.104,2842,False
+L activity,WT,114.118,333.736,2843,False
+L activity,WT,114.311,294.438,2844,False
+L activity,WT,114.504,279.323,2845,False
+L activity,WT,114.697,227.932,2846,False
+L activity,WT,114.89,252.116,2847,False
+L activity,WT,115.084,276.3,2848,False
+L activity,WT,115.277,312.576,2849,False
+L activity,WT,115.47,315.599,2850,False
+L activity,WT,115.663,333.736,2851,False
+L activity,WT,115.856,306.53,2852,False
+L activity,WT,116.049,273.277,2853,False
+L activity,WT,116.242,218.863,2854,False
+L activity,WT,116.435,203.748,2855,False
+L activity,WT,116.629,182.588,2856,False
+L activity,WT,116.822,167.473,2857,False
+L activity,WT,117.015,167.473,2858,False
+L activity,WT,117.208,173.519,2859,False
+L activity,WT,117.401,176.542,2860,False
+L activity,WT,117.594,170.496,2861,False
+L activity,WT,117.787,173.519,2862,False
+L activity,WT,117.98,173.519,2863,False
+L activity,WT,118.174,173.519,2864,False
+L activity,WT,118.367,173.519,2865,False
+L activity,WT,118.56,173.519,2866,False
+L activity,WT,118.753,209.794,2867,False
+L activity,WT,118.946,240.024,2868,False
+L activity,WT,119.139,279.323,2869,False
+L activity,WT,119.332,321.644,2870,False
+L activity,WT,119.525,339.782,2871,False
+L activity,WT,119.719,412.334,2872,False
+L activity,WT,119.912,533.253,2873,False
+L activity,WT,120.105,629.988,2874,False
+L activity,WT,120.298,772.068,2875,False
+L activity,WT,120.491,817.412,2876,False
+L activity,WT,120.684,914.148,2877,False
+L activity,WT,120.877,995.768,2878,False
+L activity,WT,121.07,1038.09,2879,False
+L activity,WT,121.264,1104.59,2880,False
+L activity,WT,121.457,1110.64,2881,False
+L activity,WT,121.65,944.377,2882,False
+L activity,WT,121.843,1095.53,2883,False
+L activity,WT,122.036,1035.07,2884,False
+L activity,WT,122.229,956.469,2885,False
+L activity,WT,122.422,917.17,2886,False
+L activity,WT,122.615,902.056,2887,False
+L activity,WT,122.809,847.642,2888,False
+L activity,WT,123.002,847.642,2889,False
+L activity,WT,123.195,847.642,2890,False
+L activity,WT,123.388,850.665,2891,False
+L activity,WT,123.581,877.872,2892,False
+L activity,WT,123.774,923.216,2893,False
+L activity,WT,123.967,1019.95,2894,False
+L activity,WT,124.16,1122.73,2895,False
+L activity,WT,124.354,1228.54,2896,False
+L activity,WT,124.547,1279.93,2897,False
+L activity,WT,124.74,1385.73,2898,False
+L activity,WT,124.933,1397.82,2899,False
+L activity,WT,125.126,1406.89,2900,False
+L activity,WT,125.319,1422.01,2901,False
+L activity,WT,125.512,1409.92,2902,False
+L activity,WT,125.705,1461.31,2903,False
+L activity,WT,125.899,1488.51,2904,False
+L activity,WT,126.092,1524.79,2905,False
+L activity,WT,126.285,1570.13,2906,False
+L activity,WT,126.478,1585.25,2907,False
+L activity,WT,126.671,1443.17,2908,False
+L activity,WT,126.864,1418.98,2909,False
+L activity,WT,127.057,1295.04,2910,False
+L activity,WT,127.25,1159.01,2911,False
+L activity,WT,127.444,983.676,2912,False
+L activity,WT,127.637,874.849,2913,False
+L activity,WT,127.83,823.458,2914,False
+L activity,WT,128.023,805.32,2915,False
+L activity,WT,128.216,756.953,2916,False
+L activity,WT,128.409,726.723,2917,False
+L activity,WT,128.602,714.631,2918,False
+L activity,WT,128.795,714.631,2919,False
+L activity,WT,128.989,726.723,2920,False
+L activity,WT,129.182,766.022,2921,False
+L activity,WT,129.375,784.16,2922,False
+L activity,WT,129.568,850.665,2923,False
+L activity,WT,129.761,899.033,2924,False
+L activity,WT,129.954,932.285,2925,False
+L activity,WT,130.147,1004.84,2926,False
+L activity,WT,130.34,1062.27,2927,False
+L activity,WT,130.534,1131.8,2928,False
+L activity,WT,130.727,1231.56,2929,False
+L activity,WT,130.92,1279.93,2930,False
+L activity,WT,131.113,1397.82,2931,False
+L activity,WT,131.306,1488.51,2932,False
+L activity,WT,131.499,1621.52,2933,False
+L activity,WT,131.692,1618.5,2934,False
+L activity,WT,131.886,1618.5,2935,False
+L activity,WT,132.079,1588.27,2936,False
+L activity,WT,132.272,1564.09,2937,False
+L activity,WT,132.465,1548.97,2938,False
+L activity,WT,132.658,1270.86,2939,False
+L activity,WT,132.851,1222.49,2940,False
+L activity,WT,133.044,1098.55,2941,False
+L activity,WT,133.237,808.343,2942,False
+L activity,WT,133.431,596.735,2943,False
+L activity,WT,133.624,469.77,2944,False
+L activity,WT,133.817,439.541,2945,False
+L activity,WT,134.01,454.655,2946,False
+L activity,WT,134.203,509.069,2947,False
+L activity,WT,134.396,536.276,2948,False
+L activity,WT,134.589,512.092,2949,False
+L activity,WT,134.782,472.793,2950,False
+L activity,WT,134.976,424.426,2951,False
+L activity,WT,135.169,309.553,2952,False
+L activity,WT,135.362,230.955,2953,False
+L activity,WT,135.555,158.404,2954,False
+L activity,WT,135.748,158.404,2955,False
+L activity,WT,135.941,161.427,2956,False
+L activity,WT,136.134,300.484,2957,False
+L activity,WT,136.327,394.196,2958,False
+L activity,WT,136.521,469.77,2959,False
+L activity,WT,136.714,460.701,2960,False
+L activity,WT,136.907,448.609,2961,False
+L activity,WT,137.1,421.403,2962,False
+L activity,WT,137.293,412.334,2963,False
+L activity,WT,137.486,385.127,2964,False
+L activity,WT,137.679,391.173,2965,False
+L activity,WT,137.872,409.311,2966,False
+L activity,WT,138.066,418.38,2967,False
+L activity,WT,138.259,433.495,2968,False
+L activity,WT,138.452,457.678,2969,False
+L activity,WT,138.645,451.632,2970,False
+L activity,WT,138.838,412.334,2971,False
+L activity,WT,139.031,394.196,2972,False
+L activity,WT,139.224,318.622,2973,False
+L activity,WT,139.417,285.369,2974,False
+L activity,WT,139.611,252.116,2975,False
+L activity,WT,139.804,230.955,2976,False
+L activity,WT,139.997,230.955,2977,False
+L activity,WT,140.19,227.932,2978,False
+L activity,WT,140.383,221.886,2979,False
+L activity,WT,140.576,212.817,2980,False
+L activity,WT,140.769,237.001,2981,False
+L activity,WT,140.962,243.047,2982,False
+L activity,WT,141.156,243.047,2983,False
+L activity,WT,141.349,246.07,2984,False
+L activity,WT,141.542,264.208,2985,False
+L activity,WT,141.735,270.254,2986,False
+L activity,WT,141.928,246.07,2987,False
+L activity,WT,142.121,224.909,2988,False
+L activity,WT,142.314,206.771,2989,False
+L activity,WT,142.507,194.68,2990,False
+L activity,WT,142.701,200.726,2991,False
+L activity,WT,142.894,246.07,2992,False
+L activity,WT,143.087,267.231,2993,False
+L activity,WT,143.28,330.713,2994,False
+L activity,WT,143.473,403.265,2995,False
+L activity,WT,143.666,433.495,2996,False
+L activity,WT,143.859,551.391,2997,False
+L activity,WT,144.052,696.493,2998,False
+L activity,WT,144.246,738.815,2999,False
+L activity,WT,144.439,896.01,3000,False
+L activity,WT,144.632,905.079,3001,False
+L activity,WT,144.825,944.377,3002,False
+L activity,WT,145.018,956.469,3003,False
+L activity,WT,145.211,965.538,3004,False
+L activity,WT,145.404,980.653,3005,False
+L activity,WT,145.597,1007.86,3006,False
+L activity,WT,145.791,1068.32,3007,False
+L activity,WT,145.984,1107.62,3008,False
+L activity,WT,146.177,1192.26,3009,False
+L activity,WT,146.37,1219.47,3010,False
+L activity,WT,146.563,1301.09,3011,False
+L activity,WT,146.756,1337.36,3012,False
+L activity,WT,146.949,1328.3,3013,False
+L activity,WT,147.142,1464.33,3014,False
+L activity,WT,147.336,1449.21,3015,False
+L activity,WT,147.529,1515.72,3016,False
+L activity,WT,147.722,1512.7,3017,False
+L activity,WT,147.915,1666.87,3018,False
+L activity,WT,148.108,1745.47,3019,False
+L activity,WT,148.301,1833.13,3020,False
+L activity,WT,148.494,1972.19,3021,False
+L activity,WT,148.687,1957.07,3022,False
+L activity,WT,148.881,2008.46,3023,False
+L activity,WT,149.074,2065.9,3024,False
+L activity,WT,149.267,2068.92,3025,False
+L activity,WT,149.46,2056.83,3026,False
+L activity,WT,149.653,2090.08,3027,False
+L activity,WT,149.846,1990.33,3028,False
+L activity,WT,150.039,1878.48,3029,False
+L activity,WT,150.232,1775.7,3030,False
+L activity,WT,150.426,1724.3,3031,False
+L activity,WT,150.619,1603.39,3032,False
+L activity,WT,150.812,1449.21,3033,False
+L activity,WT,151.005,1282.95,3034,False
+L activity,WT,151.198,1134.82,3035,False
+L activity,WT,151.391,1056.23,3036,False
+L activity,WT,151.584,886.941,3037,False
+L activity,WT,151.777,820.435,3038,False
+L activity,WT,151.971,762.999,3039,False
+L activity,WT,152.164,714.631,3040,False
+L activity,WT,152.357,675.333,3041,False
+L activity,WT,152.55,623.942,3042,False
+L activity,WT,152.743,614.873,3043,False
+L activity,WT,152.936,617.896,3044,False
+L activity,WT,153.129,623.942,3045,False
+L activity,WT,153.322,620.919,3046,False
+L activity,WT,153.516,672.31,3047,False
+L activity,WT,153.709,729.746,3048,False
+L activity,WT,153.902,826.481,3049,False
+L activity,WT,154.095,959.492,3050,False
+L activity,WT,154.288,1065.3,3051,False
+L activity,WT,154.481,1104.59,3052,False
+L activity,WT,154.674,1216.44,3053,False
+L activity,WT,154.867,1298.07,3054,False
+L activity,WT,155.061,1364.57,3055,False
+L activity,WT,155.254,1431.08,3056,False
+L activity,WT,155.447,1458.28,3057,False
+L activity,WT,155.64,1515.72,3058,False
+L activity,WT,155.833,1548.97,3059,False
+L activity,WT,156.026,1567.11,3060,False
+L activity,WT,156.219,1606.41,3061,False
+L activity,WT,156.412,1600.36,3062,False
+L activity,WT,156.606,1636.64,3063,False
+L activity,WT,156.799,1316.2,3064,False
+L activity,WT,156.992,1098.55,3065,False
+L activity,WT,157.185,823.458,3066,False
+L activity,WT,157.378,515.115,3067,False
+L activity,WT,157.571,366.989,3068,False
+L activity,WT,157.764,357.92,3069,False
+L activity,WT,157.957,373.035,3070,False
+L activity,WT,158.151,415.357,3071,False
+L activity,WT,158.344,427.449,3072,False
+L activity,WT,158.537,403.265,3073,False
+L activity,WT,158.73,403.265,3074,False
+L activity,WT,158.923,366.989,3075,False
+L activity,WT,159.116,294.438,3076,False
+L activity,WT,159.309,261.185,3077,False
+L activity,WT,159.502,233.978,3078,False
+L activity,WT,159.696,252.116,3079,False
+L activity,WT,159.889,348.851,3080,False
+L activity,WT,160.082,454.655,3081,False
+L activity,WT,160.275,533.253,3082,False
+L activity,WT,160.468,563.482,3083,False
+L activity,WT,160.661,599.758,3084,False
+L activity,WT,160.854,572.551,3085,False
+L activity,WT,161.047,484.885,3086,False
+L activity,WT,161.241,427.449,3087,False
+L activity,WT,161.434,397.219,3088,False
+L activity,WT,161.627,406.288,3089,False
+L activity,WT,161.82,478.839,3090,False
+L activity,WT,162.013,626.965,3091,False
+L activity,WT,162.206,753.93,3092,False
+L activity,WT,162.399,832.527,3093,False
+L activity,WT,162.592,838.573,3094,False
+L activity,WT,162.786,847.642,3095,False
+L activity,WT,162.979,811.366,3096,False
+L activity,WT,163.172,699.516,3097,False
+L activity,WT,163.365,669.287,3098,False
+L activity,WT,163.558,693.47,3099,False
+L activity,WT,163.751,938.331,3100,False
+L activity,WT,163.944,1403.87,3101,False
+L activity,WT,164.137,1778.72,3102,False
+L activity,WT,164.331,2183.8,3103,False
+L activity,WT,164.524,2492.14,3104,False
+L activity,WT,164.717,2513.3,3105,False
+L activity,WT,164.91,2513.3,3106,False
+L activity,WT,165.103,2516.32,3107,False
+L activity,WT,165.296,2513.3,3108,False
+L activity,WT,165.489,2516.32,3109,False
+L activity,WT,165.682,2516.32,3110,True
+L activity,WT,165.876,2516.32,3111,True
+L activity,WT,166.069,2516.32,3112,True
+L activity,WT,166.262,2516.32,3113,True
+L activity,WT,166.455,2516.32,3114,True
+L activity,WT,166.648,2516.32,3115,True
+L activity,WT,166.841,2516.32,3116,True
+L activity,WT,167.034,2516.32,3117,True
+L activity,WT,167.227,2516.32,3118,True
+L activity,WT,167.421,2516.32,3119,True
+L activity,WT,167.614,2516.32,3120,True
+L activity,WT,167.807,2516.32,3121,True
+L activity,WT,168,2516.32,3122,True
+L activity,ADGRF5 KO,-0.0193126,1198.31,2252,False
+L activity,ADGRF5 KO,0.173813,1195.28,2253,False
+L activity,ADGRF5 KO,0.366939,1195.28,2254,False
+L activity,ADGRF5 KO,0.560064,1192.26,2255,False
+L activity,ADGRF5 KO,0.75319,1143.89,2256,False
+L activity,ADGRF5 KO,0.946316,1258.77,2257,False
+L activity,ADGRF5 KO,1.13944,1331.32,2258,False
+L activity,ADGRF5 KO,1.33257,1633.62,2259,False
+L activity,ADGRF5 KO,1.52569,1633.62,2260,False
+L activity,ADGRF5 KO,1.71882,1535.15,2261,True
+L activity,ADGRF5 KO,1.91194,1436.69,2262,True
+L activity,ADGRF5 KO,2.10507,1338.23,2263,True
+L activity,ADGRF5 KO,2.2982,1239.77,2264,True
+L activity,ADGRF5 KO,2.49132,1141.3,2265,True
+L activity,ADGRF5 KO,2.68445,1042.84,2266,True
+L activity,ADGRF5 KO,2.87757,944.377,2267,False
+L activity,ADGRF5 KO,3.0707,1246.67,2268,False
+L activity,ADGRF5 KO,3.26382,1246.67,2269,False
+L activity,ADGRF5 KO,3.45695,1246.67,2270,False
+L activity,ADGRF5 KO,3.65007,1243.65,2271,False
+L activity,ADGRF5 KO,3.8432,1186.22,2272,False
+L activity,ADGRF5 KO,4.03633,1128.78,2273,False
+L activity,ADGRF5 KO,4.22945,1189.24,2274,False
+L activity,ADGRF5 KO,4.42258,1171.1,2275,False
+L activity,ADGRF5 KO,4.6157,1152.96,2276,False
+L activity,ADGRF5 KO,4.80883,1140.87,2277,False
+L activity,ADGRF5 KO,5.00195,1098.55,2278,False
+L activity,ADGRF5 KO,5.19508,1174.12,2279,False
+L activity,ADGRF5 KO,5.38821,1137.85,2280,False
+L activity,ADGRF5 KO,5.58133,1140.87,2281,False
+L activity,ADGRF5 KO,5.77446,1110.64,2282,False
+L activity,ADGRF5 KO,5.96758,1047.16,2283,False
+L activity,ADGRF5 KO,6.16071,1808.95,2284,False
+L activity,ADGRF5 KO,6.35383,1787.79,2285,False
+L activity,ADGRF5 KO,6.54696,1700.12,2286,False
+L activity,ADGRF5 KO,6.74009,1751.51,2287,False
+L activity,ADGRF5 KO,6.93321,1899.64,2288,False
+L activity,ADGRF5 KO,7.12634,1651.75,2289,False
+L activity,ADGRF5 KO,7.31946,1458.28,2290,False
+L activity,ADGRF5 KO,7.51259,1285.97,2291,False
+L activity,ADGRF5 KO,7.70571,1110.64,2292,False
+L activity,ADGRF5 KO,7.89884,953.446,2293,False
+L activity,ADGRF5 KO,8.09196,850.665,2294,False
+L activity,ADGRF5 KO,8.28509,762.999,2295,False
+L activity,ADGRF5 KO,8.47822,687.424,2296,False
+L activity,ADGRF5 KO,8.67134,660.218,2297,False
+L activity,ADGRF5 KO,8.86447,896.01,2298,False
+L activity,ADGRF5 KO,9.05759,883.918,2299,False
+L activity,ADGRF5 KO,9.25072,512.092,2300,False
+L activity,ADGRF5 KO,9.44384,669.287,2301,False
+L activity,ADGRF5 KO,9.63697,735.792,2302,False
+L activity,ADGRF5 KO,9.8301,744.861,2303,False
+L activity,ADGRF5 KO,10.0232,796.252,2304,False
+L activity,ADGRF5 KO,10.2163,793.229,2305,False
+L activity,ADGRF5 KO,10.4095,793.229,2306,False
+L activity,ADGRF5 KO,10.6026,795.244,2307,True
+L activity,ADGRF5 KO,10.7957,797.259,2308,True
+L activity,ADGRF5 KO,10.9888,799.274,2309,False
+L activity,ADGRF5 KO,11.182,796.252,2310,False
+L activity,ADGRF5 KO,11.3751,814.389,2311,False
+L activity,ADGRF5 KO,11.5682,796.252,2312,False
+L activity,ADGRF5 KO,11.7614,799.274,2313,False
+L activity,ADGRF5 KO,11.9545,1004.84,2314,False
+L activity,ADGRF5 KO,12.1476,1004.84,2315,False
+L activity,ADGRF5 KO,12.3407,1004.84,2316,False
+L activity,ADGRF5 KO,12.5339,883.918,2317,False
+L activity,ADGRF5 KO,12.727,924.224,2318,True
+L activity,ADGRF5 KO,12.9201,964.53,2319,True
+L activity,ADGRF5 KO,13.1132,1004.84,2320,False
+L activity,ADGRF5 KO,13.3064,920.193,2321,False
+L activity,ADGRF5 KO,13.4995,886.941,2322,False
+L activity,ADGRF5 KO,13.6926,880.895,2323,False
+L activity,ADGRF5 KO,13.8857,802.297,2324,False
+L activity,ADGRF5 KO,14.0789,744.861,2325,False
+L activity,ADGRF5 KO,14.272,738.815,2326,False
+L activity,ADGRF5 KO,14.4651,717.654,2327,False
+L activity,ADGRF5 KO,14.6582,388.15,2328,False
+L activity,ADGRF5 KO,14.8514,400.242,2329,False
+L activity,ADGRF5 KO,15.0445,394.196,2330,False
+L activity,ADGRF5 KO,15.2376,394.196,2331,False
+L activity,ADGRF5 KO,15.4307,394.196,2332,False
+L activity,ADGRF5 KO,15.6239,394.196,2333,False
+L activity,ADGRF5 KO,15.817,427.449,2334,False
+L activity,ADGRF5 KO,16.0101,400.242,2335,False
+L activity,ADGRF5 KO,16.2032,578.597,2336,False
+L activity,ADGRF5 KO,16.3964,551.391,2337,False
+L activity,ADGRF5 KO,16.5895,521.161,2338,False
+L activity,ADGRF5 KO,16.7826,394.196,2339,False
+L activity,ADGRF5 KO,16.9757,394.196,2340,False
+L activity,ADGRF5 KO,17.1689,370.012,2341,False
+L activity,ADGRF5 KO,17.362,146.312,2342,False
+L activity,ADGRF5 KO,17.5551,119.105,2343,False
+L activity,ADGRF5 KO,17.7482,107.013,2344,False
+L activity,ADGRF5 KO,17.9414,119.105,2345,False
+L activity,ADGRF5 KO,18.1345,125.151,2346,False
+L activity,ADGRF5 KO,18.3276,237.001,2347,False
+L activity,ADGRF5 KO,18.5207,306.53,2348,False
+L activity,ADGRF5 KO,18.7139,312.576,2349,False
+L activity,ADGRF5 KO,18.907,366.989,2350,False
+L activity,ADGRF5 KO,19.1001,388.15,2351,False
+L activity,ADGRF5 KO,19.2933,379.081,2352,False
+L activity,ADGRF5 KO,19.4864,451.632,2353,True
+L activity,ADGRF5 KO,19.6795,524.184,2354,False
+L activity,ADGRF5 KO,19.8726,524.184,2355,False
+L activity,ADGRF5 KO,20.0658,469.77,2356,False
+L activity,ADGRF5 KO,20.2589,218.863,2357,False
+L activity,ADGRF5 KO,20.452,285.369,2358,False
+L activity,ADGRF5 KO,20.6451,218.863,2359,False
+L activity,ADGRF5 KO,20.8383,200.726,2360,False
+L activity,ADGRF5 KO,21.0314,224.909,2361,False
+L activity,ADGRF5 KO,21.2245,312.576,2362,False
+L activity,ADGRF5 KO,21.4176,397.219,2363,False
+L activity,ADGRF5 KO,21.6108,472.793,2364,False
+L activity,ADGRF5 KO,21.8039,530.23,2365,False
+L activity,ADGRF5 KO,21.997,539.299,2366,False
+L activity,ADGRF5 KO,22.1901,478.839,2367,False
+L activity,ADGRF5 KO,22.3833,441.354,2368,True
+L activity,ADGRF5 KO,22.5764,403.869,2369,True
+L activity,ADGRF5 KO,22.7695,366.385,2370,True
+L activity,ADGRF5 KO,22.9626,328.9,2371,True
+L activity,ADGRF5 KO,23.1558,291.415,2372,False
+L activity,ADGRF5 KO,23.3489,291.415,2373,False
+L activity,ADGRF5 KO,23.542,291.415,2374,False
+L activity,ADGRF5 KO,23.7351,294.438,2375,False
+L activity,ADGRF5 KO,23.9283,291.415,2376,False
+L activity,ADGRF5 KO,24.1214,297.461,2377,False
+L activity,ADGRF5 KO,24.3145,696.493,2378,False
+L activity,ADGRF5 KO,24.5076,766.022,2379,False
+L activity,ADGRF5 KO,24.7008,905.079,2380,False
+L activity,ADGRF5 KO,24.8939,1370.62,2381,False
+L activity,ADGRF5 KO,25.087,1373.64,2382,False
+L activity,ADGRF5 KO,25.2801,1349.46,2383,False
+L activity,ADGRF5 KO,25.4733,1307.13,2384,False
+L activity,ADGRF5 KO,25.6664,1334.34,2385,False
+L activity,ADGRF5 KO,25.8595,1455.26,2386,False
+L activity,ADGRF5 KO,26.0526,1292.02,2387,False
+L activity,ADGRF5 KO,26.2458,1355.5,2388,False
+L activity,ADGRF5 KO,26.4389,1379.69,2389,False
+L activity,ADGRF5 KO,26.632,1379.69,2390,False
+L activity,ADGRF5 KO,26.8252,1216.44,2391,False
+L activity,ADGRF5 KO,27.0183,702.539,2392,False
+L activity,ADGRF5 KO,27.2114,971.584,2393,False
+L activity,ADGRF5 KO,27.4045,971.584,2394,False
+L activity,ADGRF5 KO,27.5977,971.584,2395,False
+L activity,ADGRF5 KO,27.7908,871.826,2396,False
+L activity,ADGRF5 KO,27.9839,986.699,2397,False
+L activity,ADGRF5 KO,28.177,1113.66,2398,False
+L activity,ADGRF5 KO,28.3702,1168.08,2399,False
+L activity,ADGRF5 KO,28.5633,1246.67,2400,False
+L activity,ADGRF5 KO,28.7564,1276.9,2401,False
+L activity,ADGRF5 KO,28.9495,1234.58,2402,False
+L activity,ADGRF5 KO,29.1427,1201.33,2403,False
+L activity,ADGRF5 KO,29.3358,1131.8,2404,False
+L activity,ADGRF5 KO,29.5289,1059.25,2405,False
+L activity,ADGRF5 KO,29.722,935.308,2406,False
+L activity,ADGRF5 KO,29.9152,938.331,2407,False
+L activity,ADGRF5 KO,30.1083,938.331,2408,False
+L activity,ADGRF5 KO,30.3014,938.331,2409,False
+L activity,ADGRF5 KO,30.4945,941.354,2410,False
+L activity,ADGRF5 KO,30.6877,841.596,2411,False
+L activity,ADGRF5 KO,30.8808,826.481,2412,False
+L activity,ADGRF5 KO,31.0739,1246.67,2413,False
+L activity,ADGRF5 KO,31.267,1509.67,2414,False
+L activity,ADGRF5 KO,31.4602,1509.67,2415,False
+L activity,ADGRF5 KO,31.6533,1440.15,2416,False
+L activity,ADGRF5 KO,31.8464,1497.58,2417,False
+L activity,ADGRF5 KO,32.0395,1279.93,2418,False
+L activity,ADGRF5 KO,32.2327,1128.78,2419,False
+L activity,ADGRF5 KO,32.4258,920.193,2420,False
+L activity,ADGRF5 KO,32.6189,1515.72,2421,False
+L activity,ADGRF5 KO,32.812,1515.72,2422,False
+L activity,ADGRF5 KO,33.0052,484.885,2423,False
+L activity,ADGRF5 KO,33.1983,484.885,2424,False
+L activity,ADGRF5 KO,33.3914,484.885,2425,False
+L activity,ADGRF5 KO,33.5845,484.885,2426,False
+L activity,ADGRF5 KO,33.7777,484.885,2427,True
+L activity,ADGRF5 KO,33.9708,484.885,2428,True
+L activity,ADGRF5 KO,34.1639,484.885,2429,False
+L activity,ADGRF5 KO,34.3571,705.562,2430,False
+L activity,ADGRF5 KO,34.5502,750.907,2431,False
+L activity,ADGRF5 KO,34.7433,877.872,2432,False
+L activity,ADGRF5 KO,34.9364,896.01,2433,False
+L activity,ADGRF5 KO,35.1296,932.285,2434,False
+L activity,ADGRF5 KO,35.3227,965.538,2435,False
+L activity,ADGRF5 KO,35.5158,995.768,2436,False
+L activity,ADGRF5 KO,35.7089,1035.07,2437,False
+L activity,ADGRF5 KO,35.9021,1065.3,2438,False
+L activity,ADGRF5 KO,36.0952,1216.44,2439,False
+L activity,ADGRF5 KO,36.2883,1295.04,2440,False
+L activity,ADGRF5 KO,36.4814,1379.69,2441,False
+L activity,ADGRF5 KO,36.6746,1367.59,2442,False
+L activity,ADGRF5 KO,36.8677,1334.34,2443,False
+L activity,ADGRF5 KO,37.0608,1289,2444,False
+L activity,ADGRF5 KO,37.2539,1591.29,2445,False
+L activity,ADGRF5 KO,37.4471,1570.13,2446,False
+L activity,ADGRF5 KO,37.6402,1065.3,2447,False
+L activity,ADGRF5 KO,37.8333,892.987,2448,False
+L activity,ADGRF5 KO,38.0264,986.699,2449,False
+L activity,ADGRF5 KO,38.2196,1104.59,2450,False
+L activity,ADGRF5 KO,38.4127,1213.42,2451,False
+L activity,ADGRF5 KO,38.6058,1325.27,2452,False
+L activity,ADGRF5 KO,38.7989,1588.27,2453,False
+L activity,ADGRF5 KO,38.9921,1555.02,2454,False
+L activity,ADGRF5 KO,39.1852,1195.28,2455,False
+L activity,ADGRF5 KO,39.3783,1071.34,2456,False
+L activity,ADGRF5 KO,39.5714,962.515,2457,False
+L activity,ADGRF5 KO,39.7646,1506.65,2458,False
+L activity,ADGRF5 KO,39.9577,200.726,2459,False
+L activity,ADGRF5 KO,40.1508,723.7,2460,False
+L activity,ADGRF5 KO,40.3439,723.7,2461,False
+L activity,ADGRF5 KO,40.5371,723.7,2462,False
+L activity,ADGRF5 KO,40.7302,215.84,2463,False
+L activity,ADGRF5 KO,40.9233,188.634,2464,False
+L activity,ADGRF5 KO,41.1165,224.909,2465,False
+L activity,ADGRF5 KO,41.3096,221.886,2466,False
+L activity,ADGRF5 KO,41.5027,224.909,2467,False
+L activity,ADGRF5 KO,41.6958,221.886,2468,False
+L activity,ADGRF5 KO,41.889,218.863,2469,False
+L activity,ADGRF5 KO,42.0821,282.346,2470,False
+L activity,ADGRF5 KO,42.2752,457.678,2471,False
+L activity,ADGRF5 KO,42.4683,442.563,2472,False
+L activity,ADGRF5 KO,42.6615,442.563,2473,False
+L activity,ADGRF5 KO,42.8546,472.793,2474,False
+L activity,ADGRF5 KO,43.0477,457.678,2475,False
+L activity,ADGRF5 KO,43.2408,460.701,2476,False
+L activity,ADGRF5 KO,43.434,462.717,2477,True
+L activity,ADGRF5 KO,43.6271,464.732,2478,True
+L activity,ADGRF5 KO,43.8202,466.747,2479,True
+L activity,ADGRF5 KO,44.0133,468.763,2480,True
+L activity,ADGRF5 KO,44.2065,470.778,2481,True
+L activity,ADGRF5 KO,44.3996,472.793,2482,False
+L activity,ADGRF5 KO,44.5927,454.655,2483,False
+L activity,ADGRF5 KO,44.7858,451.632,2484,False
+L activity,ADGRF5 KO,44.979,503.023,2485,False
+L activity,ADGRF5 KO,45.1721,503.023,2486,False
+L activity,ADGRF5 KO,45.3652,503.023,2487,False
+L activity,ADGRF5 KO,45.5583,453.648,2488,True
+L activity,ADGRF5 KO,45.7515,404.272,2489,True
+L activity,ADGRF5 KO,45.9446,354.897,2490,False
+L activity,ADGRF5 KO,46.1377,357.92,2491,False
+L activity,ADGRF5 KO,46.3308,273.277,2492,False
+L activity,ADGRF5 KO,46.524,357.92,2493,False
+L activity,ADGRF5 KO,46.7171,243.047,2494,False
+L activity,ADGRF5 KO,46.9102,299.11,2495,True
+L activity,ADGRF5 KO,47.1033,355.172,2496,True
+L activity,ADGRF5 KO,47.2965,411.234,2497,True
+L activity,ADGRF5 KO,47.4896,467.297,2498,True
+L activity,ADGRF5 KO,47.6827,523.359,2499,True
+L activity,ADGRF5 KO,47.8758,579.422,2500,True
+L activity,ADGRF5 KO,48.069,635.484,2501,True
+L activity,ADGRF5 KO,48.2621,691.547,2502,True
+L activity,ADGRF5 KO,48.4552,747.609,2503,True
+L activity,ADGRF5 KO,48.6484,803.672,2504,True
+L activity,ADGRF5 KO,48.8415,859.734,2505,False
+L activity,ADGRF5 KO,49.0346,1044.14,2506,False
+L activity,ADGRF5 KO,49.2277,1038.09,2507,False
+L activity,ADGRF5 KO,49.4209,1026,2508,False
+L activity,ADGRF5 KO,49.614,941.354,2509,False
+L activity,ADGRF5 KO,49.8071,889.964,2510,False
+L activity,ADGRF5 KO,50.0002,1026,2511,False
+L activity,ADGRF5 KO,50.1934,1026,2512,False
+L activity,ADGRF5 KO,50.3865,1026,2513,False
+L activity,ADGRF5 KO,50.5796,1026,2514,False
+L activity,ADGRF5 KO,50.7727,1026,2515,False
+L activity,ADGRF5 KO,50.9659,947.4,2516,False
+L activity,ADGRF5 KO,51.159,908.102,2517,False
+L activity,ADGRF5 KO,51.3521,844.619,2518,False
+L activity,ADGRF5 KO,51.5452,802.297,2519,False
+L activity,ADGRF5 KO,51.7384,738.815,2520,False
+L activity,ADGRF5 KO,51.9315,750.907,2521,False
+L activity,ADGRF5 KO,52.1246,753.93,2522,False
+L activity,ADGRF5 KO,52.3177,802.297,2523,False
+L activity,ADGRF5 KO,52.5109,820.435,2524,False
+L activity,ADGRF5 KO,52.704,784.16,2525,False
+L activity,ADGRF5 KO,52.8971,826.481,2526,False
+L activity,ADGRF5 KO,53.0902,829.504,2527,False
+L activity,ADGRF5 KO,53.2834,790.206,2528,False
+L activity,ADGRF5 KO,53.4765,753.93,2529,False
+L activity,ADGRF5 KO,53.6696,735.792,2530,False
+L activity,ADGRF5 KO,53.8627,705.562,2531,False
+L activity,ADGRF5 KO,54.0559,781.137,2532,False
+L activity,ADGRF5 KO,54.249,729.746,2533,False
+L activity,ADGRF5 KO,54.4421,714.631,2534,False
+L activity,ADGRF5 KO,54.6352,714.631,2535,False
+L activity,ADGRF5 KO,54.8284,714.631,2536,False
+L activity,ADGRF5 KO,55.0215,714.631,2537,False
+L activity,ADGRF5 KO,55.2146,717.654,2538,False
+L activity,ADGRF5 KO,55.4077,732.769,2539,False
+L activity,ADGRF5 KO,55.6009,793.229,2540,False
+L activity,ADGRF5 KO,55.794,490.931,2541,False
+L activity,ADGRF5 KO,55.9871,469.77,2542,False
+L activity,ADGRF5 KO,56.1803,469.77,2543,False
+L activity,ADGRF5 KO,56.3734,469.77,2544,False
+L activity,ADGRF5 KO,56.5665,469.77,2545,False
+L activity,ADGRF5 KO,56.7596,490.931,2546,False
+L activity,ADGRF5 KO,56.9528,472.793,2547,False
+L activity,ADGRF5 KO,57.1459,762.999,2548,False
+L activity,ADGRF5 KO,57.339,769.045,2549,False
+L activity,ADGRF5 KO,57.5321,769.045,2550,False
+L activity,ADGRF5 KO,57.7253,762.999,2551,False
+L activity,ADGRF5 KO,57.9184,1177.15,2552,False
+L activity,ADGRF5 KO,58.1115,1180.17,2553,False
+L activity,ADGRF5 KO,58.3046,1180.17,2554,False
+L activity,ADGRF5 KO,58.4978,1180.17,2555,False
+L activity,ADGRF5 KO,58.6909,1361.55,2556,False
+L activity,ADGRF5 KO,58.884,1340.39,2557,False
+L activity,ADGRF5 KO,59.0771,1615.48,2558,False
+L activity,ADGRF5 KO,59.2703,1615.48,2559,False
+L activity,ADGRF5 KO,59.4634,1639.66,2560,False
+L activity,ADGRF5 KO,59.6565,1364.57,2561,False
+L activity,ADGRF5 KO,59.8496,1292.02,2562,False
+L activity,ADGRF5 KO,60.0428,1328.3,2563,False
+L activity,ADGRF5 KO,60.2359,1322.25,2564,False
+L activity,ADGRF5 KO,60.429,1394.8,2565,False
+L activity,ADGRF5 KO,60.6221,1361.55,2566,False
+L activity,ADGRF5 KO,60.8153,1122.73,2567,False
+L activity,ADGRF5 KO,61.0084,1059.25,2568,False
+L activity,ADGRF5 KO,61.2015,920.193,2569,False
+L activity,ADGRF5 KO,61.3946,669.287,2570,False
+L activity,ADGRF5 KO,61.5878,569.528,2571,False
+L activity,ADGRF5 KO,61.7809,520.153,2572,True
+L activity,ADGRF5 KO,61.974,470.778,2573,True
+L activity,ADGRF5 KO,62.1671,421.403,2574,False
+L activity,ADGRF5 KO,62.3603,409.311,2575,False
+L activity,ADGRF5 KO,62.5534,409.311,2576,False
+L activity,ADGRF5 KO,62.7465,493.404,2577,True
+L activity,ADGRF5 KO,62.9396,577.498,2578,True
+L activity,ADGRF5 KO,63.1328,661.592,2579,True
+L activity,ADGRF5 KO,63.3259,745.685,2580,True
+L activity,ADGRF5 KO,63.519,829.779,2581,True
+L activity,ADGRF5 KO,63.7122,913.873,2582,True
+L activity,ADGRF5 KO,63.9053,997.966,2583,True
+L activity,ADGRF5 KO,64.0984,1082.06,2584,True
+L activity,ADGRF5 KO,64.2915,1166.15,2585,True
+L activity,ADGRF5 KO,64.4847,1250.25,2586,True
+L activity,ADGRF5 KO,64.6778,1334.34,2587,False
+L activity,ADGRF5 KO,64.8709,1334.34,2588,False
+L activity,ADGRF5 KO,65.064,859.734,2589,False
+L activity,ADGRF5 KO,65.2572,962.515,2590,False
+L activity,ADGRF5 KO,65.4503,1095.53,2591,False
+L activity,ADGRF5 KO,65.6434,1364.57,2592,False
+L activity,ADGRF5 KO,65.8365,1255.74,2593,False
+L activity,ADGRF5 KO,66.0297,1243.65,2594,False
+L activity,ADGRF5 KO,66.2228,1195.28,2595,False
+L activity,ADGRF5 KO,66.4159,1143.89,2596,False
+L activity,ADGRF5 KO,66.609,1128.78,2597,False
+L activity,ADGRF5 KO,66.8022,1237.61,2598,False
+L activity,ADGRF5 KO,66.9953,899.033,2599,False
+L activity,ADGRF5 KO,67.1884,817.412,2600,False
+L activity,ADGRF5 KO,67.3815,871.826,2601,False
+L activity,ADGRF5 KO,67.5747,1016.93,2602,False
+L activity,ADGRF5 KO,67.7678,1010.88,2603,False
+L activity,ADGRF5 KO,67.9609,708.585,2604,False
+L activity,ADGRF5 KO,68.154,633.011,2605,False
+L activity,ADGRF5 KO,68.3472,648.126,2606,False
+L activity,ADGRF5 KO,68.5403,657.195,2607,False
+L activity,ADGRF5 KO,68.7334,723.7,2608,False
+L activity,ADGRF5 KO,68.9265,608.827,2609,False
+L activity,ADGRF5 KO,69.1197,587.666,2610,False
+L activity,ADGRF5 KO,69.3128,587.666,2611,False
+L activity,ADGRF5 KO,69.5059,696.493,2612,False
+L activity,ADGRF5 KO,69.699,681.378,2613,False
+L activity,ADGRF5 KO,69.8922,636.034,2614,False
+L activity,ADGRF5 KO,70.0853,626.965,2615,False
+L activity,ADGRF5 KO,70.2784,587.666,2616,False
+L activity,ADGRF5 KO,70.4715,551.391,2617,False
+L activity,ADGRF5 KO,70.6647,617.896,2618,False
+L activity,ADGRF5 KO,70.8578,620.919,2619,False
+L activity,ADGRF5 KO,71.0509,551.391,2620,False
+L activity,ADGRF5 KO,71.2441,527.207,2621,False
+L activity,ADGRF5 KO,71.4372,611.85,2622,False
+L activity,ADGRF5 KO,71.6303,623.942,2623,False
+L activity,ADGRF5 KO,71.8234,762.999,2624,False
+L activity,ADGRF5 KO,72.0166,391.173,2625,False
+L activity,ADGRF5 KO,72.2097,391.173,2626,False
+L activity,ADGRF5 KO,72.4028,669.287,2627,False
+L activity,ADGRF5 KO,72.5959,805.32,2628,False
+L activity,ADGRF5 KO,72.7891,799.274,2629,False
+L activity,ADGRF5 KO,72.9822,871.826,2630,False
+L activity,ADGRF5 KO,73.1753,868.803,2631,False
+L activity,ADGRF5 KO,73.3684,871.826,2632,False
+L activity,ADGRF5 KO,73.5616,859.734,2633,False
+L activity,ADGRF5 KO,73.7547,799.274,2634,False
+L activity,ADGRF5 KO,73.9478,844.619,2635,False
+L activity,ADGRF5 KO,74.1409,844.619,2636,False
+L activity,ADGRF5 KO,74.3341,844.619,2637,False
+L activity,ADGRF5 KO,74.5272,862.757,2638,False
+L activity,ADGRF5 KO,74.7203,811.366,2639,False
+L activity,ADGRF5 KO,74.9134,793.229,2640,False
+L activity,ADGRF5 KO,75.1066,772.068,2641,False
+L activity,ADGRF5 KO,75.2997,750.907,2642,False
+L activity,ADGRF5 KO,75.4928,762.999,2643,False
+L activity,ADGRF5 KO,75.6859,681.378,2644,False
+L activity,ADGRF5 KO,75.8791,684.401,2645,False
+L activity,ADGRF5 KO,76.0722,708.585,2646,False
+L activity,ADGRF5 KO,76.2653,705.562,2647,False
+L activity,ADGRF5 KO,76.4584,708.585,2648,False
+L activity,ADGRF5 KO,76.6516,705.562,2649,False
+L activity,ADGRF5 KO,76.8447,723.7,2650,False
+L activity,ADGRF5 KO,77.0378,747.884,2651,False
+L activity,ADGRF5 KO,77.2309,753.93,2652,False
+L activity,ADGRF5 KO,77.4241,747.884,2653,False
+L activity,ADGRF5 KO,77.6172,744.861,2654,False
+L activity,ADGRF5 KO,77.8103,793.229,2655,False
+L activity,ADGRF5 KO,78.0034,762.999,2656,False
+L activity,ADGRF5 KO,78.1966,756.953,2657,False
+L activity,ADGRF5 KO,78.3897,741.838,2658,False
+L activity,ADGRF5 KO,78.5828,738.815,2659,False
+L activity,ADGRF5 KO,78.776,696.493,2660,False
+L activity,ADGRF5 KO,78.9691,666.264,2661,False
+L activity,ADGRF5 KO,79.1622,651.149,2662,False
+L activity,ADGRF5 KO,79.3553,626.965,2663,False
+L activity,ADGRF5 KO,79.5485,605.804,2664,False
+L activity,ADGRF5 KO,79.7416,551.391,2665,False
+L activity,ADGRF5 KO,79.9347,566.505,2666,False
+L activity,ADGRF5 KO,80.1278,566.505,2667,False
+L activity,ADGRF5 KO,80.321,566.505,2668,False
+L activity,ADGRF5 KO,80.5141,566.505,2669,False
+L activity,ADGRF5 KO,80.7072,512.092,2670,False
+L activity,ADGRF5 KO,80.9003,518.138,2671,False
+L activity,ADGRF5 KO,81.0935,527.207,2672,False
+L activity,ADGRF5 KO,81.2866,503.023,2673,False
+L activity,ADGRF5 KO,81.4797,503.023,2674,False
+L activity,ADGRF5 KO,81.6728,460.701,2675,False
+L activity,ADGRF5 KO,81.866,506.046,2676,False
+L activity,ADGRF5 KO,82.0591,515.115,2677,False
+L activity,ADGRF5 KO,82.2522,545.345,2678,False
+L activity,ADGRF5 KO,82.4453,569.528,2679,False
+L activity,ADGRF5 KO,82.6385,569.528,2680,False
+L activity,ADGRF5 KO,82.8316,581.62,2681,False
+L activity,ADGRF5 KO,83.0247,693.47,2682,False
+L activity,ADGRF5 KO,83.2178,769.045,2683,False
+L activity,ADGRF5 KO,83.411,817.412,2684,False
+L activity,ADGRF5 KO,83.6041,832.527,2685,False
+L activity,ADGRF5 KO,83.7972,787.183,2686,False
+L activity,ADGRF5 KO,83.9903,971.584,2687,False
+L activity,ADGRF5 KO,84.1835,980.653,2688,False
+L activity,ADGRF5 KO,84.3766,971.584,2689,False
+L activity,ADGRF5 KO,84.5697,974.607,2690,False
+L activity,ADGRF5 KO,84.7628,980.653,2691,False
+L activity,ADGRF5 KO,84.956,929.262,2692,False
+L activity,ADGRF5 KO,85.1491,832.527,2693,False
+L activity,ADGRF5 KO,85.3422,590.689,2694,False
+L activity,ADGRF5 KO,85.5353,681.378,2695,True
+L activity,ADGRF5 KO,85.7285,772.068,2696,False
+L activity,ADGRF5 KO,85.9216,569.528,2697,False
+L activity,ADGRF5 KO,86.1147,566.505,2698,False
+L activity,ADGRF5 KO,86.3079,545.345,2699,False
+L activity,ADGRF5 KO,86.501,539.299,2700,False
+L activity,ADGRF5 KO,86.6941,530.23,2701,False
+L activity,ADGRF5 KO,86.8872,617.896,2702,False
+L activity,ADGRF5 KO,87.0804,762.999,2703,False
+L activity,ADGRF5 KO,87.2735,832.527,2704,False
+L activity,ADGRF5 KO,87.4666,1125.76,2705,False
+L activity,ADGRF5 KO,87.6597,1292.02,2706,False
+L activity,ADGRF5 KO,87.8529,1134.82,2707,False
+L activity,ADGRF5 KO,88.046,1113.66,2708,False
+L activity,ADGRF5 KO,88.2391,944.377,2709,False
+L activity,ADGRF5 KO,88.4322,926.239,2710,False
+L activity,ADGRF5 KO,88.6254,938.331,2711,False
+L activity,ADGRF5 KO,88.8185,781.137,2712,False
+L activity,ADGRF5 KO,89.0116,769.045,2713,False
+L activity,ADGRF5 KO,89.2047,766.022,2714,False
+L activity,ADGRF5 KO,89.3979,772.068,2715,False
+L activity,ADGRF5 KO,89.591,841.596,2716,False
+L activity,ADGRF5 KO,89.7841,835.55,2717,False
+L activity,ADGRF5 KO,89.9772,920.193,2718,False
+L activity,ADGRF5 KO,90.1704,947.4,2719,False
+L activity,ADGRF5 KO,90.3635,1019.95,2720,False
+L activity,ADGRF5 KO,90.5566,1092.5,2721,False
+L activity,ADGRF5 KO,90.7497,1149.94,2722,False
+L activity,ADGRF5 KO,90.9429,1022.97,2723,False
+L activity,ADGRF5 KO,91.136,853.688,2724,False
+L activity,ADGRF5 KO,91.3291,750.907,2725,False
+L activity,ADGRF5 KO,91.5222,1128.78,2726,False
+L activity,ADGRF5 KO,91.7154,578.597,2727,False
+L activity,ADGRF5 KO,91.9085,590.689,2728,False
+L activity,ADGRF5 KO,92.1016,463.724,2729,False
+L activity,ADGRF5 KO,92.2947,463.724,2730,False
+L activity,ADGRF5 KO,92.4879,466.747,2731,False
+L activity,ADGRF5 KO,92.681,587.666,2732,False
+L activity,ADGRF5 KO,92.8741,578.597,2733,False
+L activity,ADGRF5 KO,93.0672,575.574,2734,False
+L activity,ADGRF5 KO,93.2604,551.391,2735,False
+L activity,ADGRF5 KO,93.4535,563.482,2736,False
+L activity,ADGRF5 KO,93.6466,554.414,2737,False
+L activity,ADGRF5 KO,93.8398,590.689,2738,False
+L activity,ADGRF5 KO,94.0329,584.643,2739,False
+L activity,ADGRF5 KO,94.226,584.643,2740,False
+L activity,ADGRF5 KO,94.4191,687.424,2741,False
+L activity,ADGRF5 KO,94.6123,759.976,2742,False
+L activity,ADGRF5 KO,94.8054,793.229,2743,False
+L activity,ADGRF5 KO,94.9985,687.424,2744,False
+L activity,ADGRF5 KO,95.1916,566.505,2745,False
+L activity,ADGRF5 KO,95.3848,566.505,2746,False
+L activity,ADGRF5 KO,95.5779,563.482,2747,False
+L activity,ADGRF5 KO,95.771,602.781,2748,False
+L activity,ADGRF5 KO,95.9641,563.482,2749,True
+L activity,ADGRF5 KO,96.1573,524.184,2750,False
+L activity,ADGRF5 KO,96.3504,539.299,2751,False
+L activity,ADGRF5 KO,96.5435,693.47,2752,False
+L activity,ADGRF5 KO,96.7366,663.241,2753,False
+L activity,ADGRF5 KO,96.9298,657.195,2754,False
+L activity,ADGRF5 KO,97.1229,663.241,2755,False
+L activity,ADGRF5 KO,97.316,690.447,2756,False
+L activity,ADGRF5 KO,97.5091,678.356,2757,False
+L activity,ADGRF5 KO,97.7023,572.551,2758,False
+L activity,ADGRF5 KO,97.8954,617.896,2759,False
+L activity,ADGRF5 KO,98.0885,681.378,2760,False
+L activity,ADGRF5 KO,98.2816,702.539,2761,False
+L activity,ADGRF5 KO,98.4748,678.356,2762,False
+L activity,ADGRF5 KO,98.6679,690.447,2763,False
+L activity,ADGRF5 KO,98.861,769.045,2764,False
+L activity,ADGRF5 KO,99.0541,778.114,2765,False
+L activity,ADGRF5 KO,99.2473,775.091,2766,False
+L activity,ADGRF5 KO,99.4404,775.091,2767,False
+L activity,ADGRF5 KO,99.6335,729.746,2768,False
+L activity,ADGRF5 KO,99.8266,759.976,2769,False
+L activity,ADGRF5 KO,100.02,790.206,2770,False
+L activity,ADGRF5 KO,100.213,781.137,2771,False
+L activity,ADGRF5 KO,100.406,787.183,2772,False
+L activity,ADGRF5 KO,100.599,729.746,2773,False
+L activity,ADGRF5 KO,100.792,808.343,2774,False
+L activity,ADGRF5 KO,100.985,835.55,2775,False
+L activity,ADGRF5 KO,101.179,883.918,2776,False
+L activity,ADGRF5 KO,101.372,944.377,2777,False
+L activity,ADGRF5 KO,101.565,971.584,2778,False
+L activity,ADGRF5 KO,101.758,974.607,2779,False
+L activity,ADGRF5 KO,101.951,965.538,2780,False
+L activity,ADGRF5 KO,102.144,923.216,2781,False
+L activity,ADGRF5 KO,102.337,880.895,2782,False
+L activity,ADGRF5 KO,102.53,759.976,2783,False
+L activity,ADGRF5 KO,102.724,705.562,2784,False
+L activity,ADGRF5 KO,102.917,620.919,2785,False
+L activity,ADGRF5 KO,103.11,617.896,2786,False
+L activity,ADGRF5 KO,103.303,617.896,2787,False
+L activity,ADGRF5 KO,103.496,617.896,2788,False
+L activity,ADGRF5 KO,103.689,439.541,2789,False
+L activity,ADGRF5 KO,103.882,397.219,2790,False
+L activity,ADGRF5 KO,104.075,633.011,2791,False
+L activity,ADGRF5 KO,104.269,639.057,2792,False
+L activity,ADGRF5 KO,104.462,442.563,2793,False
+L activity,ADGRF5 KO,104.655,412.334,2794,False
+L activity,ADGRF5 KO,104.848,370.012,2795,False
+L activity,ADGRF5 KO,105.041,370.012,2796,False
+L activity,ADGRF5 KO,105.234,373.035,2797,False
+L activity,ADGRF5 KO,105.427,403.265,2798,False
+L activity,ADGRF5 KO,105.62,379.081,2799,False
+L activity,ADGRF5 KO,105.814,394.196,2800,False
+L activity,ADGRF5 KO,106.007,403.265,2801,False
+L activity,ADGRF5 KO,106.2,542.322,2802,False
+L activity,ADGRF5 KO,106.393,587.666,2803,False
+L activity,ADGRF5 KO,106.586,669.287,2804,False
+L activity,ADGRF5 KO,106.779,690.447,2805,False
+L activity,ADGRF5 KO,106.972,663.241,2806,False
+L activity,ADGRF5 KO,107.165,663.241,2807,False
+L activity,ADGRF5 KO,107.359,657.195,2808,False
+L activity,ADGRF5 KO,107.552,623.942,2809,False
+L activity,ADGRF5 KO,107.745,645.103,2810,False
+L activity,ADGRF5 KO,107.938,702.539,2811,False
+L activity,ADGRF5 KO,108.131,744.861,2812,False
+L activity,ADGRF5 KO,108.324,775.091,2813,False
+L activity,ADGRF5 KO,108.517,835.55,2814,False
+L activity,ADGRF5 KO,108.71,823.458,2815,False
+L activity,ADGRF5 KO,108.904,744.861,2816,False
+L activity,ADGRF5 KO,109.097,575.574,2817,False
+L activity,ADGRF5 KO,109.29,382.104,2818,False
+L activity,ADGRF5 KO,109.483,246.07,2819,False
+L activity,ADGRF5 KO,109.676,291.415,2820,False
+L activity,ADGRF5 KO,109.869,243.047,2821,False
+L activity,ADGRF5 KO,110.062,243.047,2822,False
+L activity,ADGRF5 KO,110.255,243.047,2823,False
+L activity,ADGRF5 KO,110.449,243.047,2824,False
+L activity,ADGRF5 KO,110.642,297.461,2825,True
+L activity,ADGRF5 KO,110.835,351.874,2826,True
+L activity,ADGRF5 KO,111.028,406.288,2827,False
+L activity,ADGRF5 KO,111.221,436.518,2828,False
+L activity,ADGRF5 KO,111.414,436.518,2829,False
+L activity,ADGRF5 KO,111.607,424.426,2830,False
+L activity,ADGRF5 KO,111.8,415.357,2831,False
+L activity,ADGRF5 KO,111.994,454.655,2832,False
+L activity,ADGRF5 KO,112.187,572.551,2833,False
+L activity,ADGRF5 KO,112.38,666.264,2834,False
+L activity,ADGRF5 KO,112.573,678.356,2835,False
+L activity,ADGRF5 KO,112.766,766.022,2836,False
+L activity,ADGRF5 KO,112.959,708.585,2837,False
+L activity,ADGRF5 KO,113.152,705.562,2838,False
+L activity,ADGRF5 KO,113.345,708.585,2839,False
+L activity,ADGRF5 KO,113.539,714.631,2840,False
+L activity,ADGRF5 KO,113.732,796.252,2841,False
+L activity,ADGRF5 KO,113.925,672.31,2842,False
+L activity,ADGRF5 KO,114.118,629.988,2843,False
+L activity,ADGRF5 KO,114.311,599.758,2844,False
+L activity,ADGRF5 KO,114.504,581.62,2845,False
+L activity,ADGRF5 KO,114.697,572.551,2846,False
+L activity,ADGRF5 KO,114.89,560.459,2847,False
+L activity,ADGRF5 KO,115.084,560.459,2848,False
+L activity,ADGRF5 KO,115.277,560.459,2849,False
+L activity,ADGRF5 KO,115.47,560.459,2850,False
+L activity,ADGRF5 KO,115.663,602.781,2851,False
+L activity,ADGRF5 KO,115.856,560.459,2852,False
+L activity,ADGRF5 KO,116.049,551.391,2853,False
+L activity,ADGRF5 KO,116.242,551.391,2854,False
+L activity,ADGRF5 KO,116.435,533.253,2855,False
+L activity,ADGRF5 KO,116.629,503.023,2856,False
+L activity,ADGRF5 KO,116.822,512.092,2857,False
+L activity,ADGRF5 KO,117.015,515.115,2858,False
+L activity,ADGRF5 KO,117.208,512.092,2859,False
+L activity,ADGRF5 KO,117.401,512.092,2860,False
+L activity,ADGRF5 KO,117.594,509.069,2861,False
+L activity,ADGRF5 KO,117.787,527.207,2862,False
+L activity,ADGRF5 KO,117.98,521.161,2863,False
+L activity,ADGRF5 KO,118.174,521.161,2864,False
+L activity,ADGRF5 KO,118.367,521.161,2865,False
+L activity,ADGRF5 KO,118.56,530.23,2866,False
+L activity,ADGRF5 KO,118.753,530.23,2867,False
+L activity,ADGRF5 KO,118.946,509.069,2868,False
+L activity,ADGRF5 KO,119.139,500,2869,False
+L activity,ADGRF5 KO,119.332,500,2870,False
+L activity,ADGRF5 KO,119.525,527.207,2871,False
+L activity,ADGRF5 KO,119.719,590.689,2872,False
+L activity,ADGRF5 KO,119.912,602.781,2873,True
+L activity,ADGRF5 KO,120.105,614.873,2874,True
+L activity,ADGRF5 KO,120.298,626.965,2875,False
+L activity,ADGRF5 KO,120.491,657.195,2876,False
+L activity,ADGRF5 KO,120.684,654.172,2877,False
+L activity,ADGRF5 KO,120.877,781.137,2878,False
+L activity,ADGRF5 KO,121.07,796.252,2879,False
+L activity,ADGRF5 KO,121.264,829.504,2880,False
+L activity,ADGRF5 KO,121.457,626.965,2881,False
+L activity,ADGRF5 KO,121.65,629.988,2882,False
+L activity,ADGRF5 KO,121.843,636.034,2883,False
+L activity,ADGRF5 KO,122.036,636.034,2884,False
+L activity,ADGRF5 KO,122.229,636.034,2885,False
+L activity,ADGRF5 KO,122.422,636.034,2886,False
+L activity,ADGRF5 KO,122.615,563.482,2887,False
+L activity,ADGRF5 KO,122.809,642.08,2888,False
+L activity,ADGRF5 KO,123.002,663.241,2889,False
+L activity,ADGRF5 KO,123.195,660.218,2890,False
+L activity,ADGRF5 KO,123.388,663.241,2891,False
+L activity,ADGRF5 KO,123.581,675.333,2892,False
+L activity,ADGRF5 KO,123.774,672.31,2893,False
+L activity,ADGRF5 KO,123.967,693.47,2894,False
+L activity,ADGRF5 KO,124.16,744.861,2895,False
+L activity,ADGRF5 KO,124.354,717.654,2896,False
+L activity,ADGRF5 KO,124.547,672.31,2897,False
+L activity,ADGRF5 KO,124.74,759.976,2898,False
+L activity,ADGRF5 KO,124.933,778.114,2899,False
+L activity,ADGRF5 KO,125.126,856.711,2900,False
+L activity,ADGRF5 KO,125.319,935.308,2901,False
+L activity,ADGRF5 KO,125.512,950.423,2902,False
+L activity,ADGRF5 KO,125.705,962.515,2903,False
+L activity,ADGRF5 KO,125.899,899.033,2904,False
+L activity,ADGRF5 KO,126.092,808.343,2905,False
+L activity,ADGRF5 KO,126.285,735.792,2906,False
+L activity,ADGRF5 KO,126.478,639.057,2907,False
+L activity,ADGRF5 KO,126.671,524.184,2908,False
+L activity,ADGRF5 KO,126.864,500,2909,False
+L activity,ADGRF5 KO,127.057,478.839,2910,False
+L activity,ADGRF5 KO,127.25,442.563,2911,False
+L activity,ADGRF5 KO,127.444,421.403,2912,False
+L activity,ADGRF5 KO,127.637,388.15,2913,False
+L activity,ADGRF5 KO,127.83,351.874,2914,False
+L activity,ADGRF5 KO,128.023,351.874,2915,False
+L activity,ADGRF5 KO,128.216,351.874,2916,False
+L activity,ADGRF5 KO,128.409,351.874,2917,False
+L activity,ADGRF5 KO,128.602,348.851,2918,False
+L activity,ADGRF5 KO,128.795,385.127,2919,False
+L activity,ADGRF5 KO,128.989,373.035,2920,False
+L activity,ADGRF5 KO,129.182,481.862,2921,False
+L activity,ADGRF5 KO,129.375,515.115,2922,False
+L activity,ADGRF5 KO,129.568,512.092,2923,False
+L activity,ADGRF5 KO,129.761,496.977,2924,False
+L activity,ADGRF5 KO,129.954,548.368,2925,False
+L activity,ADGRF5 KO,130.147,518.138,2926,False
+L activity,ADGRF5 KO,130.34,509.069,2927,False
+L activity,ADGRF5 KO,130.534,493.954,2928,False
+L activity,ADGRF5 KO,130.727,548.368,2929,False
+L activity,ADGRF5 KO,130.92,596.735,2930,False
+L activity,ADGRF5 KO,131.113,675.333,2931,False
+L activity,ADGRF5 KO,131.306,769.045,2932,False
+L activity,ADGRF5 KO,131.499,796.252,2933,False
+L activity,ADGRF5 KO,131.692,862.757,2934,False
+L activity,ADGRF5 KO,131.886,862.757,2935,False
+L activity,ADGRF5 KO,132.079,826.481,2936,False
+L activity,ADGRF5 KO,132.272,784.16,2937,False
+L activity,ADGRF5 KO,132.465,772.068,2938,False
+L activity,ADGRF5 KO,132.658,732.769,2939,False
+L activity,ADGRF5 KO,132.851,651.149,2940,False
+L activity,ADGRF5 KO,133.044,611.85,2941,False
+L activity,ADGRF5 KO,133.237,527.207,2942,False
+L activity,ADGRF5 KO,133.431,529.558,2943,True
+L activity,ADGRF5 KO,133.624,531.909,2944,True
+L activity,ADGRF5 KO,133.817,534.26,2945,True
+L activity,ADGRF5 KO,134.01,536.612,2946,True
+L activity,ADGRF5 KO,134.203,538.963,2947,True
+L activity,ADGRF5 KO,134.396,541.314,2948,True
+L activity,ADGRF5 KO,134.589,543.665,2949,True
+L activity,ADGRF5 KO,134.782,546.016,2950,True
+L activity,ADGRF5 KO,134.976,548.368,2951,False
+L activity,ADGRF5 KO,135.169,500,2952,False
+L activity,ADGRF5 KO,135.362,490.931,2953,False
+L activity,ADGRF5 KO,135.555,445.586,2954,False
+L activity,ADGRF5 KO,135.748,448.609,2955,False
+L activity,ADGRF5 KO,135.941,445.586,2956,False
+L activity,ADGRF5 KO,136.134,448.609,2957,False
+L activity,ADGRF5 KO,136.327,446.997,2958,True
+L activity,ADGRF5 KO,136.521,445.385,2959,True
+L activity,ADGRF5 KO,136.714,443.773,2960,True
+L activity,ADGRF5 KO,136.907,442.16,2961,True
+L activity,ADGRF5 KO,137.1,440.548,2962,True
+L activity,ADGRF5 KO,137.293,438.936,2963,True
+L activity,ADGRF5 KO,137.486,437.324,2964,True
+L activity,ADGRF5 KO,137.679,435.711,2965,True
+L activity,ADGRF5 KO,137.872,434.099,2966,True
+L activity,ADGRF5 KO,138.066,432.487,2967,True
+L activity,ADGRF5 KO,138.259,430.875,2968,True
+L activity,ADGRF5 KO,138.452,429.262,2969,True
+L activity,ADGRF5 KO,138.645,427.65,2970,True
+L activity,ADGRF5 KO,138.838,426.038,2971,True
+L activity,ADGRF5 KO,139.031,424.426,2972,False
+L activity,ADGRF5 KO,139.224,427.449,2973,False
+L activity,ADGRF5 KO,139.417,427.449,2974,False
+L activity,ADGRF5 KO,139.611,433.495,2975,False
+L activity,ADGRF5 KO,139.804,448.609,2976,False
+L activity,ADGRF5 KO,139.997,436.518,2977,False
+L activity,ADGRF5 KO,140.19,427.449,2978,False
+L activity,ADGRF5 KO,140.383,424.426,2979,False
+L activity,ADGRF5 KO,140.576,451.632,2980,False
+L activity,ADGRF5 KO,140.769,415.357,2981,False
+L activity,ADGRF5 KO,140.962,418.38,2982,False
+L activity,ADGRF5 KO,141.156,421.403,2983,False
+L activity,ADGRF5 KO,141.349,421.403,2984,False
+L activity,ADGRF5 KO,141.542,427.449,2985,False
+L activity,ADGRF5 KO,141.735,406.288,2986,False
+L activity,ADGRF5 KO,141.928,382.104,2987,False
+L activity,ADGRF5 KO,142.121,376.058,2988,False
+L activity,ADGRF5 KO,142.314,382.104,2989,False
+L activity,ADGRF5 KO,142.507,430.472,2990,False
+L activity,ADGRF5 KO,142.701,469.77,2991,False
+L activity,ADGRF5 KO,142.894,448.609,2992,False
+L activity,ADGRF5 KO,143.087,448.609,2993,False
+L activity,ADGRF5 KO,143.28,527.207,2994,False
+L activity,ADGRF5 KO,143.473,584.643,2995,False
+L activity,ADGRF5 KO,143.666,596.735,2996,False
+L activity,ADGRF5 KO,143.859,617.896,2997,False
+L activity,ADGRF5 KO,144.052,593.712,2998,True
+L activity,ADGRF5 KO,144.246,569.528,2999,False
+L activity,ADGRF5 KO,144.439,602.781,3000,False
+L activity,ADGRF5 KO,144.632,633.011,3001,False
+L activity,ADGRF5 KO,144.825,629.988,3002,False
+L activity,ADGRF5 KO,145.018,639.057,3003,False
+L activity,ADGRF5 KO,145.211,648.126,3004,False
+L activity,ADGRF5 KO,145.404,651.149,3005,False
+L activity,ADGRF5 KO,145.597,623.942,3006,False
+L activity,ADGRF5 KO,145.791,639.057,3007,False
+L activity,ADGRF5 KO,145.984,623.942,3008,False
+L activity,ADGRF5 KO,146.177,590.689,3009,False
+L activity,ADGRF5 KO,146.37,587.666,3010,False
+L activity,ADGRF5 KO,146.563,551.391,3011,False
+L activity,ADGRF5 KO,146.756,575.574,3012,False
+L activity,ADGRF5 KO,146.949,590.689,3013,False
+L activity,ADGRF5 KO,147.142,614.873,3014,False
+L activity,ADGRF5 KO,147.336,629.988,3015,False
+L activity,ADGRF5 KO,147.529,669.287,3016,False
+L activity,ADGRF5 KO,147.722,666.264,3017,False
+L activity,ADGRF5 KO,147.915,735.792,3018,False
+L activity,ADGRF5 KO,148.108,769.045,3019,False
+L activity,ADGRF5 KO,148.301,799.274,3020,False
+L activity,ADGRF5 KO,148.494,850.665,3021,False
+L activity,ADGRF5 KO,148.687,841.596,3022,False
+L activity,ADGRF5 KO,148.881,835.55,3023,False
+L activity,ADGRF5 KO,149.074,835.55,3024,False
+L activity,ADGRF5 KO,149.267,835.55,3025,False
+L activity,ADGRF5 KO,149.46,832.527,3026,False
+L activity,ADGRF5 KO,149.653,823.458,3027,False
+L activity,ADGRF5 KO,149.846,835.55,3028,False
+L activity,ADGRF5 KO,150.039,835.55,3029,False
+L activity,ADGRF5 KO,150.232,835.55,3030,False
+L activity,ADGRF5 KO,150.426,835.55,3031,False
+L activity,ADGRF5 KO,150.619,808.343,3032,False
+L activity,ADGRF5 KO,150.812,735.792,3033,False
+L activity,ADGRF5 KO,151.005,645.103,3034,False
+L activity,ADGRF5 KO,151.198,578.597,3035,False
+L activity,ADGRF5 KO,151.391,493.954,3036,False
+L activity,ADGRF5 KO,151.584,457.678,3037,False
+L activity,ADGRF5 KO,151.777,509.069,3038,False
+L activity,ADGRF5 KO,151.971,533.253,3039,False
+L activity,ADGRF5 KO,152.164,560.459,3040,False
+L activity,ADGRF5 KO,152.357,817.412,3041,False
+L activity,ADGRF5 KO,152.55,953.446,3042,False
+L activity,ADGRF5 KO,152.743,793.229,3043,False
+L activity,ADGRF5 KO,152.936,243.047,3044,False
+L activity,ADGRF5 KO,153.129,409.311,3045,False
+L activity,ADGRF5 KO,153.322,333.736,3046,False
+L activity,ADGRF5 KO,153.516,288.392,3047,False
+L activity,ADGRF5 KO,153.709,243.047,3048,False
+L activity,ADGRF5 KO,153.902,252.116,3049,False
+L activity,ADGRF5 KO,154.095,267.231,3050,False
+L activity,ADGRF5 KO,154.288,273.277,3051,False
+L activity,ADGRF5 KO,154.481,279.323,3052,False
+L activity,ADGRF5 KO,154.674,366.989,3053,False
+L activity,ADGRF5 KO,154.867,409.311,3054,False
+L activity,ADGRF5 KO,155.061,457.678,3055,False
+L activity,ADGRF5 KO,155.254,512.092,3056,False
+L activity,ADGRF5 KO,155.447,524.184,3057,False
+L activity,ADGRF5 KO,155.64,626.965,3058,False
+L activity,ADGRF5 KO,155.833,666.264,3059,False
+L activity,ADGRF5 KO,156.026,708.585,3060,False
+L activity,ADGRF5 KO,156.219,750.907,3061,False
+L activity,ADGRF5 KO,156.412,759.976,3062,False
+L activity,ADGRF5 KO,156.606,802.297,3063,False
+L activity,ADGRF5 KO,156.799,772.068,3064,False
+L activity,ADGRF5 KO,156.992,744.861,3065,False
+L activity,ADGRF5 KO,157.185,654.172,3066,False
+L activity,ADGRF5 KO,157.378,889.964,3067,False
+L activity,ADGRF5 KO,157.571,778.114,3068,False
+L activity,ADGRF5 KO,157.764,654.172,3069,False
+L activity,ADGRF5 KO,157.957,654.172,3070,False
+L activity,ADGRF5 KO,158.151,654.172,3071,False
+L activity,ADGRF5 KO,158.344,654.172,3072,False
+L activity,ADGRF5 KO,158.537,732.769,3073,False
+L activity,ADGRF5 KO,158.73,614.873,3074,False
+L activity,ADGRF5 KO,158.923,599.758,3075,False
+L activity,ADGRF5 KO,159.116,599.758,3076,False
+L activity,ADGRF5 KO,159.309,602.781,3077,False
+L activity,ADGRF5 KO,159.502,699.516,3078,False
+L activity,ADGRF5 KO,159.696,702.539,3079,False
+L activity,ADGRF5 KO,159.889,623.942,3080,False
+L activity,ADGRF5 KO,160.082,636.034,3081,False
+L activity,ADGRF5 KO,160.275,1041.11,3082,False
+L activity,ADGRF5 KO,160.468,977.63,3083,False
+L activity,ADGRF5 KO,160.661,1041.11,3084,False
+L activity,ADGRF5 KO,160.854,1026,3085,False
+L activity,ADGRF5 KO,161.047,929.262,3086,False
+L activity,ADGRF5 KO,161.241,956.469,3087,False
+L activity,ADGRF5 KO,161.434,1119.71,3088,False
+L activity,ADGRF5 KO,161.627,1007.86,3089,False
+L activity,ADGRF5 KO,161.82,1016.93,3090,False
+L activity,ADGRF5 KO,162.013,914.148,3091,False
+L activity,ADGRF5 KO,162.206,1035.07,3092,False
+L activity,ADGRF5 KO,162.399,1685.01,3093,False
+L activity,ADGRF5 KO,162.592,1681.98,3094,False
+L activity,ADGRF5 KO,162.786,1391.78,3095,False
+L activity,ADGRF5 KO,162.979,1391.78,3096,False
+L activity,ADGRF5 KO,163.172,1391.78,3097,False
+L activity,ADGRF5 KO,163.365,1391.78,3098,False
+L activity,ADGRF5 KO,163.558,1307.13,3099,False
+L activity,ADGRF5 KO,163.751,1142.38,3100,True
+L activity,ADGRF5 KO,163.944,977.63,3101,False
+L activity,ADGRF5 KO,164.137,977.63,3102,False
+L activity,ADGRF5 KO,164.331,1548.97,3103,False
+L activity,ADGRF5 KO,164.524,1639.66,3104,False
+L activity,ADGRF5 KO,164.717,1666.87,3105,False
+L activity,ADGRF5 KO,164.91,1666.87,3106,False
+L activity,ADGRF5 KO,165.103,1666.87,3107,False
+L activity,ADGRF5 KO,165.296,1666.87,3108,False
+L activity,ADGRF5 KO,165.489,1666.87,3109,False
+L activity,ADGRF5 KO,165.682,1666.87,3110,True
+L activity,ADGRF5 KO,165.876,1666.87,3111,True
+L activity,ADGRF5 KO,166.069,1666.87,3112,True
+L activity,ADGRF5 KO,166.262,1666.87,3113,True
+L activity,ADGRF5 KO,166.455,1666.87,3114,True
+L activity,ADGRF5 KO,166.648,1666.87,3115,True
+L activity,ADGRF5 KO,166.841,1666.87,3116,True
+L activity,ADGRF5 KO,167.034,1666.87,3117,True
+L activity,ADGRF5 KO,167.227,1666.87,3118,True
+L activity,ADGRF5 KO,167.421,1666.87,3119,True
+L activity,ADGRF5 KO,167.614,1666.87,3120,True
+L activity,ADGRF5 KO,167.807,1666.87,3121,True
+L activity,ADGRF5 KO,168,1666.87,3122,True

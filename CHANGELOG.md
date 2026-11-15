@@ -4,6 +4,32 @@ All notable changes to trace-digitiser are recorded here.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
 and the project uses [semantic versioning](https://semver.org/).
 
+## [Unreleased]
+
+### Added
+
+- **A validation set of activity traces**
+  ([`validation/activity-traces`](https://github.com/comparativechrono/trace-digitiser/tree/main/validation/activity-traces)):
+  57 traces of mouse and rat activity over days, from the figures of 18
+  open-access papers found by a search of Europe PMC, read with 2.2.0 as a
+  workbench user would read them. For the 8 papers that published the numbers
+  behind their figures, the same rhythm analysis is run on the trace as read
+  and on the authors' series: the Lomb-Scargle periodogram and the 24-h
+  cosinor reach the same verdict for all 29 series, the share of activity in
+  the dark phase is within 0.05 for 27 of 29. For all 18, what the papers say
+  about their traces is checked against them. Not part of the package.
+- **A test of dense traces**
+  ([`validation/dense-traces`](https://github.com/comparativechrono/trace-digitiser/tree/main/validation/dense-traces)):
+  nine real activity records, kept every minute or every 5 minutes, drawn as
+  a week across a few hundred pixels (so that each pixel column is a stroke
+  from the lowest to the highest sample within it) and read back. Averaged
+  within each hour, `center_estimate` (the midpoint of each column) puts the
+  acrophase within 0.36 h of the record's (median) and reads the level 1.19
+  times too high; `upper_envelope` times the rhythm as well but reads the
+  level about twice too high. Every column statistic but the lower envelope
+  understates the share of activity in the dark phase. Not part of the
+  package.
+
 ## [2.2.0] - 2026-11-15
 
 Tested on the figures of published papers whose underlying numbers are
@@ -222,6 +248,7 @@ First version tracked in this repository; identical to the 1.2.0 files on PyPI.
 Releases 0.1.0 to 1.0.0 (6-7 June 2026) were uploaded to PyPI directly and are
 not recorded here.
 
+[Unreleased]: https://github.com/comparativechrono/trace-digitiser/compare/v2.2.0...HEAD
 [2.2.0]: https://github.com/comparativechrono/trace-digitiser/compare/v2.1.0...v2.2.0
 [2.1.0]: https://github.com/comparativechrono/trace-digitiser/compare/v2.0.0...v2.1.0
 [2.0.0]: https://github.com/comparativechrono/trace-digitiser/compare/1d34f75...v2.0.0

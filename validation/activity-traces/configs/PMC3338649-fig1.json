@@ -1,0 +1,47 @@
+{
+ "id": "PMC3338649-fig1",
+ "image": "../figures/PMC3338649-fig1.png",
+ "source": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0036311.g001",
+ "reader": "lines",
+ "notes": "Fig 1A: telemetered activity (A.U.) of transgenic rats, hourly means smoothed with a 5-point rolling average, 4 baseline days then 7 days of I3C (shaded from 84 h). The panel shares one x axis, at the bottom of the figure, with B and C, so two x ticks (0 and 264 h) and two y ticks (0 and 5) are given, at their tick marks. Colour sampled from the line itself: describe_figure's swatch (#453e3f, a blend of the line's edges) loses the line on the shaded background.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": null,
+  "light_dark": "LD (lighting times not shown in the figure)",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "A activity",
+   "plot_area": [
+    380,
+    15,
+    1520,
+    495
+   ],
+   "x_ref": [
+    [
+     413,
+     0
+    ],
+    [
+     1506,
+     264
+    ]
+   ],
+   "y_ref": [
+    [
+     483,
+     0
+    ],
+    [
+     18,
+     5
+    ]
+   ],
+   "series": {
+    "activity": "#040607"
+   }
+  }
+ ]
+}

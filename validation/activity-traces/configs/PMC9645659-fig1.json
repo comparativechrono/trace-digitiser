@@ -1,0 +1,117 @@
+{
+ "id": "PMC9645659-fig1",
+ "image": "../figures/PMC9645659-fig1.png",
+ "source": "https://journals.plos.org/plosbiology/article/figure/image?size=large&id=10.1371/journal.pbio.3001865.g001",
+ "reader": "lines",
+ "notes": "Fig 1C: locomotion (purple) and feeding (orange), normalised counts, one week in LD 12:12 and one in constant dim red light (RR) for WT and Per1/2-dko mice. Only the bottom panel has x labels, so two x ticks are given for all four (0 and 168 h, as describe_figure read them). Panel 3's y labels could not be read, so its 0 and 1 ticks are given (at its tick marks). Feeding is read too, so that its trace is not mistaken for locomotion, but only locomotion is analysed.",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 20,
+  "light_dark": "LD 12:12 (dark 20-32 h, ...) or RR",
+  "bin_h": 1
+ },
+ "panels": [
+  {
+   "name": "WT in LD",
+   "plot_area": [
+    2515,
+    42,
+    3742,
+    515
+   ],
+   "x_ref": [
+    [
+     2515,
+     0
+    ],
+    [
+     3741.8,
+     168
+    ]
+   ],
+   "series": {
+    "Locomotion": "#5f3f96",
+    "Feeding": "#e2642c"
+   }
+  },
+  {
+   "name": "WT in RR",
+   "plot_area": [
+    2515,
+    596,
+    3742,
+    1069
+   ],
+   "x_ref": [
+    [
+     2515,
+     0
+    ],
+    [
+     3741.8,
+     168
+    ]
+   ],
+   "series": {
+    "Locomotion": "#5f3f96",
+    "Feeding": "#e2642c"
+   }
+  },
+  {
+   "name": "Per1/2-dko in LD",
+   "plot_area": [
+    2515,
+    1152,
+    3742,
+    1625
+   ],
+   "x_ref": [
+    [
+     2515,
+     0
+    ],
+    [
+     3741.8,
+     168
+    ]
+   ],
+   "y_ref": [
+    [
+     1625.5,
+     0
+    ],
+    [
+     1152.5,
+     1
+    ]
+   ],
+   "series": {
+    "Locomotion": "#5f3f96",
+    "Feeding": "#e2642c"
+   }
+  },
+  {
+   "name": "Per1/2-dko in RR",
+   "plot_area": [
+    2515,
+    1706,
+    3742,
+    2179
+   ],
+   "x_ref": [
+    [
+     2515,
+     0
+    ],
+    [
+     3741.8,
+     168
+    ]
+   ],
+   "series": {
+    "Locomotion": "#5f3f96",
+    "Feeding": "#e2642c"
+   }
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "C males": [
+  "Panel 1 trace 2: 50% of columns had no trace pixels and were interpolated.",
+  "Panel 1 trace 3: 27% of columns had no trace pixels and were interpolated.",
+  "Panel 1 trace 4: 66% of columns had no trace pixels and were interpolated."
+ ],
+ "G females": [
+  "Panel 1 trace 2: 32% of columns had no trace pixels and were interpolated.",
+  "Panel 1 trace 3: 39% of columns had no trace pixels and were interpolated.",
+  "Panel 1 trace 4: 75% of columns had no trace pixels and were interpolated."
+ ]
+}

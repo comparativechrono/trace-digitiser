@@ -1,0 +1,1049 @@
+panel,series,x,y,x_pixel,interpolated
+C activity,LOX control,2.58621,232.305,128,True
+C activity,LOX control,2.94828,232.305,129,True
+C activity,LOX control,3.31034,232.305,130,True
+C activity,LOX control,3.67241,232.305,131,True
+C activity,LOX control,4.03448,232.305,132,False
+C activity,LOX control,4.39655,406.534,133,False
+C activity,LOX control,4.75862,145.191,134,False
+C activity,LOX control,5.12069,145.191,135,True
+C activity,LOX control,5.48276,145.191,136,False
+C activity,LOX control,5.84483,595.281,137,False
+C activity,LOX control,6.2069,522.686,138,False
+C activity,LOX control,6.56897,1553.54,139,False
+C activity,LOX control,6.93103,1088.93,140,False
+C activity,LOX control,7.2931,929.22,141,False
+C activity,LOX control,7.65517,667.877,142,False
+C activity,LOX control,8.01724,566.243,143,False
+C activity,LOX control,8.37931,754.991,144,False
+C activity,LOX control,8.74138,842.105,145,False
+C activity,LOX control,9.10345,450.091,146,False
+C activity,LOX control,9.46552,595.281,147,False
+C activity,LOX control,9.82759,159.71,148,False
+C activity,LOX control,10.1897,145.191,149,False
+C activity,LOX control,10.5517,319.419,150,False
+C activity,LOX control,10.9138,667.877,151,False
+C activity,LOX control,11.2759,667.877,152,False
+C activity,LOX control,11.6379,1960.07,153,False
+C activity,LOX control,12,2932.85,154,False
+C activity,LOX control,12.3621,3905.63,155,False
+C activity,LOX control,12.7241,4065.34,156,False
+C activity,LOX control,13.0862,2105.26,157,False
+C activity,LOX control,13.4483,2453.72,158,False
+C activity,LOX control,13.8103,1785.84,159,False
+C activity,LOX control,14.1724,2381.13,160,False
+C activity,LOX control,14.5345,3078.04,161,False
+C activity,LOX control,14.8966,2555.35,162,False
+C activity,LOX control,15.2586,1974.59,163,False
+C activity,LOX control,15.6207,1205.08,164,False
+C activity,LOX control,15.9828,1771.32,165,False
+C activity,LOX control,16.3448,1480.94,166,False
+C activity,LOX control,16.7069,2569.87,167,False
+C activity,LOX control,17.069,1902,168,False
+C activity,LOX control,17.431,900.181,169,False
+C activity,LOX control,17.7931,1785.84,170,False
+C activity,LOX control,18.1552,2235.93,171,False
+C activity,LOX control,18.5172,2366.61,172,False
+C activity,LOX control,18.8793,2816.7,173,False
+C activity,LOX control,19.2414,2047.19,174,False
+C activity,LOX control,19.6034,1248.64,175,False
+C activity,LOX control,19.9655,1974.59,176,False
+C activity,LOX control,20.3276,1858.44,177,False
+C activity,LOX control,20.6897,2584.39,178,False
+C activity,LOX control,21.0517,1974.59,179,False
+C activity,LOX control,21.4138,1713.25,180,False
+C activity,LOX control,21.7759,2134.3,181,False
+C activity,LOX control,22.1379,2569.87,182,False
+C activity,LOX control,22.5,3121.6,183,False
+C activity,LOX control,22.8621,1176.04,184,False
+C activity,LOX control,23.2241,1829.4,185,False
+C activity,LOX control,23.5862,2497.28,186,False
+C activity,LOX control,23.9483,1016.33,187,False
+C activity,LOX control,24.3103,1437.39,188,False
+C activity,LOX control,24.6724,551.724,189,False
+C activity,LOX control,25.0345,464.61,190,False
+C activity,LOX control,25.3966,493.648,191,False
+C activity,LOX control,25.7586,464.61,192,False
+C activity,LOX control,26.1207,232.305,193,False
+C activity,LOX control,26.4828,290.381,194,False
+C activity,LOX control,26.8448,609.8,195,False
+C activity,LOX control,27.2069,493.648,196,False
+C activity,LOX control,27.569,696.915,197,False
+C activity,LOX control,27.931,667.877,198,False
+C activity,LOX control,28.2931,769.51,199,False
+C activity,LOX control,28.6552,275.862,200,False
+C activity,LOX control,29.0172,421.053,201,False
+C activity,LOX control,29.3793,479.129,202,False
+C activity,LOX control,29.7414,551.724,203,False
+C activity,LOX control,30.1034,406.534,204,False
+C activity,LOX control,30.4655,304.9,205,False
+C activity,LOX control,30.8276,203.267,206,False
+C activity,LOX control,31.1897,246.824,207,False
+C activity,LOX control,31.5517,203.267,208,False
+C activity,LOX control,31.9138,217.786,209,False
+C activity,LOX control,32.2759,145.191,210,False
+C activity,LOX control,32.6379,362.976,211,False
+C activity,LOX control,33,435.572,212,False
+C activity,LOX control,33.3621,740.472,213,False
+C activity,LOX control,33.7241,333.938,214,False
+C activity,LOX control,34.0862,624.319,215,False
+C activity,LOX control,34.4483,406.534,216,False
+C activity,LOX control,34.8103,885.662,217,False
+C activity,LOX control,35.1724,1074.41,218,False
+C activity,LOX control,35.5345,1451.91,219,False
+C activity,LOX control,35.8966,1422.87,220,False
+C activity,LOX control,36.2586,1364.79,221,False
+C activity,LOX control,36.6207,1597.1,222,False
+C activity,LOX control,36.9828,827.586,223,False
+C activity,LOX control,37.3448,1001.81,224,False
+C activity,LOX control,37.7069,900.181,225,False
+C activity,LOX control,38.069,754.991,226,False
+C activity,LOX control,38.431,1306.72,227,False
+C activity,LOX control,38.7931,1088.93,228,False
+C activity,LOX control,39.1552,900.181,229,False
+C activity,LOX control,39.5172,653.358,230,False
+C activity,LOX control,39.8793,609.8,231,False
+C activity,LOX control,40.2414,493.648,232,False
+C activity,LOX control,40.6034,653.358,233,False
+C activity,LOX control,40.9655,798.548,234,False
+C activity,LOX control,41.3276,784.029,235,False
+C activity,LOX control,41.6897,929.22,236,False
+C activity,LOX control,42.0517,929.22,237,False
+C activity,LOX control,42.4138,1190.56,238,False
+C activity,LOX control,42.7759,1045.37,239,False
+C activity,LOX control,43.1379,1074.41,240,False
+C activity,LOX control,43.5,1103.45,241,False
+C activity,LOX control,43.8621,1306.72,242,False
+C activity,LOX control,44.2241,1422.87,243,False
+C activity,LOX control,44.5862,1771.32,244,False
+C activity,LOX control,44.9483,1306.72,245,False
+C activity,LOX control,45.3103,1074.41,246,False
+C activity,LOX control,45.6724,580.762,247,False
+C activity,LOX control,46.0345,551.724,248,False
+C activity,LOX control,46.3966,813.067,249,False
+C activity,LOX control,46.7586,987.296,250,False
+C activity,LOX control,47.1207,1176.04,251,False
+C activity,LOX control,47.4828,1597.1,252,False
+C activity,LOX control,47.8448,784.029,253,False
+C activity,LOX control,48.2069,871.143,254,False
+C activity,LOX control,48.569,319.419,255,False
+C activity,LOX control,48.931,246.824,256,True
+C activity,LOX control,49.2931,174.229,257,False
+C activity,LOX control,49.6552,193.587,258,True
+C activity,LOX control,50.0172,212.946,259,True
+C activity,LOX control,50.3793,232.305,260,False
+C activity,LOX control,50.7414,682.396,261,False
+C activity,LOX control,51.1034,1147.01,262,False
+C activity,LOX control,51.4655,1684.21,263,False
+C activity,LOX control,51.8276,1509.98,264,False
+C activity,LOX control,52.1897,1466.42,265,False
+C activity,LOX control,52.5517,1364.79,266,False
+C activity,LOX control,52.9138,1248.64,267,False
+C activity,LOX control,53.2759,1248.64,268,False
+C activity,LOX control,53.6379,987.296,269,False
+C activity,LOX control,54,929.22,270,False
+C activity,LOX control,54.3621,638.838,271,False
+C activity,LOX control,54.7241,754.991,272,False
+C activity,LOX control,55.0862,784.029,273,False
+C activity,LOX control,55.4483,1161.52,274,False
+C activity,LOX control,55.8103,798.548,275,False
+C activity,LOX control,56.1724,551.724,276,False
+C activity,LOX control,56.5345,609.8,277,False
+C activity,LOX control,56.8966,754.991,278,False
+C activity,LOX control,57.2586,1074.41,279,False
+C activity,LOX control,57.6207,725.953,280,False
+C activity,LOX control,57.9828,740.472,281,False
+C activity,LOX control,58.3448,188.748,282,False
+C activity,LOX control,58.7069,638.838,283,False
+C activity,LOX control,59.069,609.8,284,False
+C activity,LOX control,59.431,871.143,285,False
+C activity,LOX control,59.7931,1422.87,286,False
+C activity,LOX control,60.1552,1234.12,287,False
+C activity,LOX control,60.5172,1626.13,288,False
+C activity,LOX control,60.8793,1422.87,289,False
+C activity,LOX control,61.2414,842.105,290,False
+C activity,LOX control,61.6034,1335.75,291,False
+C activity,LOX control,61.9655,1001.81,292,False
+C activity,LOX control,62.3276,871.143,293,False
+C activity,LOX control,62.6897,1509.98,294,False
+C activity,LOX control,63.0517,1495.46,295,False
+C activity,LOX control,63.4138,1858.44,296,False
+C activity,LOX control,63.7759,2163.34,297,False
+C activity,LOX control,64.1379,2802.18,298,False
+C activity,LOX control,64.5,3208.71,299,False
+C activity,LOX control,64.8621,2177.86,300,False
+C activity,LOX control,65.2241,2773.14,301,False
+C activity,LOX control,65.5862,1829.4,302,False
+C activity,LOX control,65.9483,1684.21,303,False
+C activity,LOX control,66.3103,1771.32,304,False
+C activity,LOX control,66.6724,1248.64,305,False
+C activity,LOX control,67.0345,1161.52,306,False
+C activity,LOX control,67.3966,958.258,307,False
+C activity,LOX control,67.7586,1553.54,308,False
+C activity,LOX control,68.1207,2192.38,309,False
+C activity,LOX control,68.4828,2148.82,310,False
+C activity,LOX control,68.8448,1742.29,311,False
+C activity,LOX control,69.2069,1306.72,312,False
+C activity,LOX control,69.569,1364.79,313,False
+C activity,LOX control,69.931,1858.44,314,False
+C activity,LOX control,70.2931,1902,315,False
+C activity,LOX control,70.6552,1626.13,316,False
+C activity,LOX control,71.0172,1931.03,317,False
+C activity,LOX control,71.3793,1451.91,318,False
+C activity,LOX control,71.7414,580.762,319,False
+C activity,LOX control,72.1034,696.915,320,False
+C activity,LOX control,72.4655,304.9,321,False
+C activity,LOX control,72.8276,232.305,322,False
+C activity,LOX control,73.1897,261.343,323,False
+C activity,LOX control,73.5517,725.953,324,False
+C activity,LOX control,73.9138,1030.85,325,False
+C activity,LOX control,74.2759,1422.87,326,False
+C activity,LOX control,74.6379,1335.75,327,False
+C activity,LOX control,75,958.258,328,False
+C activity,LOX control,75.3621,406.534,329,False
+C activity,LOX control,75.7241,682.396,330,False
+C activity,LOX control,76.0862,784.029,331,False
+C activity,LOX control,76.4483,1306.72,332,False
+C activity,LOX control,76.8103,740.472,333,False
+C activity,LOX control,77.1724,667.877,334,False
+C activity,LOX control,77.5345,1030.85,335,False
+C activity,LOX control,77.8966,696.915,336,False
+C activity,LOX control,78.2586,1030.85,337,False
+C activity,LOX control,78.6207,900.181,338,False
+C activity,LOX control,78.9828,580.762,339,False
+C activity,LOX control,79.3448,1161.52,340,False
+C activity,LOX control,79.7069,696.915,341,False
+C activity,LOX control,80.069,580.762,342,False
+C activity,LOX control,80.431,290.381,343,False
+C activity,LOX control,80.7931,203.267,344,False
+C activity,LOX control,81.1552,203.267,345,False
+C activity,LOX control,81.5172,333.938,346,False
+C activity,LOX control,81.8793,232.305,347,False
+C activity,LOX control,82.2414,319.419,348,False
+C activity,LOX control,82.6034,754.991,349,False
+C activity,LOX control,82.9655,551.724,350,False
+C activity,LOX control,83.3276,1132.49,351,False
+C activity,LOX control,83.6897,1234.12,352,False
+C activity,LOX control,84.0517,1393.83,353,False
+C activity,LOX control,84.4138,1553.54,354,False
+C activity,LOX control,84.7759,1451.91,355,False
+C activity,LOX control,85.1379,1350.27,356,False
+C activity,LOX control,85.5,1176.04,357,False
+C activity,LOX control,85.8621,1335.75,358,False
+C activity,LOX control,86.2241,1437.39,359,False
+C activity,LOX control,86.5862,1945.55,360,False
+C activity,LOX control,86.9483,2148.82,361,False
+C activity,LOX control,87.3103,2323.05,362,False
+C activity,LOX control,87.6724,1597.1,363,False
+C activity,LOX control,88.0345,1713.25,364,False
+C activity,LOX control,88.3966,1161.52,365,False
+C activity,LOX control,88.7586,842.105,366,False
+C activity,LOX control,89.1207,987.296,367,False
+C activity,LOX control,89.4828,1147.01,368,False
+C activity,LOX control,89.8448,1422.87,369,False
+C activity,LOX control,90.2069,1771.32,370,False
+C activity,LOX control,90.569,1887.48,371,False
+C activity,LOX control,90.931,2482.76,372,False
+C activity,LOX control,91.2931,2308.53,373,False
+C activity,LOX control,91.6552,1902,374,False
+C activity,LOX control,92.0172,1843.92,375,False
+C activity,LOX control,92.3793,1480.94,376,False
+C activity,LOX control,92.7414,2119.78,377,False
+C activity,LOX control,93.1034,2235.93,378,False
+C activity,LOX control,93.4655,1902,379,False
+C activity,LOX control,93.8276,2250.45,380,False
+C activity,LOX control,94.1897,3339.38,381,False
+C activity,LOX control,94.5517,2758.62,382,False
+C activity,LOX control,94.9138,2061.71,383,False
+C activity,LOX control,95.2759,1045.37,384,False
+C activity,LOX control,95.6379,1074.41,385,False
+C activity,LOX control,96,566.243,386,False
+C activity,LOX control,96.3621,130.672,387,False
+C activity,LOX control,96.7241,145.191,388,False
+C activity,LOX control,97.0862,159.71,389,False
+C activity,LOX control,97.4483,159.71,390,False
+C activity,LOX control,97.8103,145.191,391,False
+C activity,LOX control,98.1724,174.229,392,False
+C activity,LOX control,98.5345,275.862,393,False
+C activity,LOX control,98.8966,537.205,394,False
+C activity,LOX control,99.2586,566.243,395,False
+C activity,LOX control,99.6207,319.419,396,False
+C activity,LOX control,99.9828,784.029,397,False
+C activity,LOX control,100.345,522.686,398,False
+C activity,LOX control,100.707,566.243,399,False
+C activity,LOX control,101.069,377.495,400,False
+C activity,LOX control,101.431,203.267,401,False
+C activity,LOX control,101.793,222.626,402,True
+C activity,LOX control,102.155,241.984,403,True
+C activity,LOX control,102.517,261.343,404,False
+C activity,LOX control,102.879,232.305,405,False
+C activity,LOX control,103.241,348.457,406,False
+C activity,LOX control,103.603,464.61,407,False
+C activity,LOX control,103.966,377.495,408,False
+C activity,LOX control,104.328,450.091,409,False
+C activity,LOX control,104.69,261.343,410,False
+C activity,LOX control,105.052,246.824,411,False
+C activity,LOX control,105.414,261.343,412,False
+C activity,LOX control,105.776,203.267,413,False
+C activity,LOX control,106.138,522.686,414,False
+C activity,LOX control,106.5,479.129,415,False
+C activity,LOX control,106.862,435.572,416,False
+C activity,LOX control,107.224,827.586,417,False
+C activity,LOX control,107.586,1611.62,418,False
+C activity,LOX control,107.948,1408.35,419,False
+C activity,LOX control,108.31,1887.48,420,False
+C activity,LOX control,108.672,2439.2,421,False
+C activity,LOX control,109.034,2134.3,422,False
+C activity,LOX control,109.397,1568.06,423,False
+C activity,LOX control,109.759,1655.17,424,False
+C activity,LOX control,110.121,1611.62,425,False
+C activity,LOX control,110.483,1539.02,426,False
+C activity,LOX control,110.845,1379.31,427,False
+C activity,LOX control,111.207,1234.12,428,False
+C activity,LOX control,111.569,1568.06,429,False
+C activity,LOX control,111.931,1858.44,430,False
+C activity,LOX control,112.293,2235.93,431,False
+C activity,LOX control,112.655,1829.4,432,False
+C activity,LOX control,113.017,2148.82,433,False
+C activity,LOX control,113.379,2656.99,434,False
+C activity,LOX control,113.741,1829.4,435,False
+C activity,LOX control,114.103,2047.19,436,False
+C activity,LOX control,114.466,1364.79,437,False
+C activity,LOX control,114.828,1843.92,438,False
+C activity,LOX control,115.19,1814.88,439,False
+C activity,LOX control,115.552,1408.35,440,False
+C activity,LOX control,115.914,1713.25,441,False
+C activity,LOX control,116.276,972.777,442,False
+C activity,LOX control,116.638,1916.52,443,False
+C activity,LOX control,117,1974.59,444,False
+C activity,LOX control,117.362,2061.71,445,False
+C activity,LOX control,117.724,1684.21,446,False
+C activity,LOX control,118.086,1814.88,447,False
+C activity,LOX control,118.448,1974.59,448,False
+C activity,LOX control,118.81,2061.71,449,False
+C activity,LOX control,119.172,2032.67,450,False
+C activity,LOX control,119.534,1059.89,451,False
+C activity,LOX control,119.897,1219.6,452,False
+C activity,LOX control,120.259,595.281,453,False
+C activity,LOX control,120.621,493.648,454,False
+C activity,LOX control,120.983,754.991,455,False
+C activity,LOX control,121.345,784.029,456,False
+C activity,LOX control,121.707,624.319,457,False
+C activity,LOX control,122.069,1190.56,458,False
+C activity,LOX control,122.431,725.953,459,False
+C activity,LOX control,122.793,885.662,460,False
+C activity,LOX control,123.155,1117.97,461,False
+C activity,LOX control,123.517,885.662,462,False
+C activity,LOX control,123.879,871.143,463,False
+C activity,LOX control,124.241,348.457,464,False
+C activity,LOX control,124.603,246.824,465,False
+C activity,LOX control,124.966,319.419,466,False
+C activity,LOX control,125.328,261.343,467,False
+C activity,LOX control,125.69,450.091,468,False
+C activity,LOX control,126.052,653.358,469,False
+C activity,LOX control,126.414,508.167,470,False
+C activity,LOX control,126.776,392.015,471,False
+C activity,LOX control,127.138,319.419,472,False
+C activity,LOX control,127.5,203.267,473,False
+C activity,LOX control,127.862,174.229,474,False
+C activity,LOX control,128.224,333.938,475,False
+C activity,LOX control,128.586,319.419,476,False
+C activity,LOX control,128.948,537.205,477,False
+C activity,LOX control,129.31,333.938,478,False
+C activity,LOX control,129.672,464.61,479,False
+C activity,LOX control,130.034,464.61,480,False
+C activity,LOX control,130.397,929.22,481,False
+C activity,LOX control,130.759,754.991,482,False
+C activity,LOX control,131.121,1219.6,483,False
+C activity,LOX control,131.483,1568.06,484,False
+C activity,LOX control,131.845,1655.17,485,False
+C activity,LOX control,132.207,1800.36,486,False
+C activity,LOX control,132.569,1800.36,487,False
+C activity,LOX control,132.931,1960.07,488,False
+C activity,LOX control,133.293,1902,489,False
+C activity,LOX control,133.655,1655.17,490,False
+C activity,LOX control,134.017,1539.02,491,False
+C activity,LOX control,134.379,1742.29,492,False
+C activity,LOX control,134.741,1655.17,493,False
+C activity,LOX control,135.103,1989.11,494,False
+C activity,LOX control,135.466,1916.52,495,False
+C activity,LOX control,135.828,1742.29,496,False
+C activity,LOX control,136.19,1713.25,497,False
+C activity,LOX control,136.552,1495.46,498,False
+C activity,LOX control,136.914,1466.42,499,False
+C activity,LOX control,137.276,1742.29,500,False
+C activity,LOX control,137.638,2047.19,501,False
+C activity,LOX control,138,2468.24,502,False
+C activity,LOX control,138.362,2453.72,503,False
+C activity,LOX control,138.724,2337.57,504,False
+C activity,LOX control,139.086,2221.42,505,False
+C activity,LOX control,139.448,1684.21,506,False
+C activity,LOX control,139.81,1655.17,507,False
+C activity,LOX control,140.172,1611.62,508,False
+C activity,LOX control,140.534,1713.25,509,False
+C activity,LOX control,140.897,1887.48,510,False
+C activity,LOX control,141.259,2047.19,511,False
+C activity,LOX control,141.621,2032.67,512,False
+C activity,LOX control,141.983,2134.3,513,False
+C activity,LOX control,142.345,1916.52,514,False
+C activity,LOX control,142.707,1597.1,515,False
+C activity,LOX control,143.069,1756.81,516,False
+C activity,LOX control,143.431,1132.49,517,False
+C activity,LOX control,143.793,1103.45,518,False
+C activity,LOX control,144.155,246.824,519,False
+C activity,LOX control,144.517,145.191,520,False
+C activity,LOX control,144.879,174.229,521,False
+C activity,LOX control,145.241,174.229,522,False
+C activity,LOX control,145.603,203.267,523,False
+C activity,LOX control,145.966,232.305,524,False
+C activity,LOX control,146.328,174.229,525,False
+C activity,LOX control,146.69,159.71,526,False
+C activity,LOX control,147.052,182.94,527,True
+C activity,LOX control,147.414,206.171,528,True
+C activity,LOX control,147.776,229.401,529,True
+C activity,LOX control,148.138,252.632,530,True
+C activity,LOX control,148.5,275.862,531,False
+C activity,LOX control,148.862,217.786,532,False
+C activity,LOX control,149.224,290.381,533,False
+C activity,LOX control,149.586,333.938,534,False
+C activity,LOX control,149.948,406.534,535,False
+C activity,LOX control,150.31,348.457,536,False
+C activity,LOX control,150.672,261.343,537,False
+C activity,LOX control,151.034,319.419,538,False
+C activity,LOX control,151.397,566.243,539,False
+C activity,LOX control,151.759,725.953,540,False
+C activity,LOX control,152.121,638.838,541,False
+C activity,LOX control,152.483,406.534,542,False
+C activity,LOX control,152.845,638.838,543,False
+C activity,LOX control,153.207,450.091,544,False
+C activity,LOX control,153.569,406.534,545,False
+C activity,LOX control,153.931,551.724,546,False
+C activity,LOX control,154.293,900.181,547,False
+C activity,LOX control,154.655,711.434,548,False
+C activity,LOX control,155.017,1655.17,549,False
+C activity,LOX control,155.379,2758.62,550,False
+C activity,LOX control,155.741,2715.06,551,False
+C activity,LOX control,156.103,2932.85,552,False
+C activity,LOX control,156.466,2497.28,553,False
+C activity,LOX control,156.828,2337.57,554,False
+C activity,LOX control,157.19,2148.82,555,False
+C activity,LOX control,157.552,1858.44,556,False
+C activity,LOX control,157.914,2018.15,557,False
+C activity,LOX control,158.276,1843.92,558,False
+C activity,LOX control,158.638,2018.15,559,False
+C activity,LOX control,159,2308.53,560,False
+C activity,LOX control,159.362,2206.9,561,False
+C activity,LOX control,159.724,1945.55,562,False
+C activity,LOX control,160.086,1945.55,563,False
+C activity,LOX control,160.448,1829.4,564,False
+C activity,LOX control,160.81,2526.32,565,False
+C activity,LOX control,161.172,2395.64,566,False
+C activity,LOX control,161.534,2119.78,567,False
+C activity,LOX control,161.897,2018.15,568,False
+C activity,LOX control,162.259,1539.02,569,False
+C activity,LOX control,162.621,1480.94,570,False
+C activity,LOX control,162.983,1408.35,571,False
+C activity,LOX control,163.345,1829.4,572,False
+C activity,LOX control,163.707,1568.06,573,False
+C activity,LOX control,164.069,2497.28,574,False
+C activity,LOX control,164.431,1916.52,575,False
+C activity,LOX control,164.793,1829.4,576,False
+C activity,LOX control,165.155,1916.52,577,False
+C activity,LOX control,165.517,2134.3,578,False
+C activity,LOX control,165.879,2598.91,579,False
+C activity,LOX control,166.241,2526.32,580,False
+C activity,LOX control,166.603,2308.53,581,False
+C activity,LOX control,166.966,2337.57,582,False
+C activity,LOX control,167.328,1408.35,583,False
+C activity,LOX control,167.69,900.181,584,False
+C activity,LOX control,168.052,203.267,585,False
+C activity,LOX control,168.414,188.748,586,False
+C activity,LOX control,168.776,174.229,587,False
+C activity,LOX control,169.138,174.229,588,False
+C activity,LOX control,169.5,188.748,589,False
+C activity,LOX control,169.862,188.748,590,True
+C activity,LOX control,170.224,188.748,591,True
+C activity,LOX control,170.586,188.748,592,True
+C activity,LOX control,170.948,188.748,593,True
+C activity,LOX control,171.31,188.748,594,False
+C activity,LOX control,171.672,261.343,595,False
+C activity,LOX control,172.034,203.267,596,False
+C activity,LOX control,172.397,261.343,597,False
+C activity,LOX control,172.759,145.191,598,False
+C activity,LOX control,173.121,174.229,599,True
+C activity,LOX control,173.483,203.267,600,False
+C activity,LOX control,173.845,174.229,601,False
+C activity,LOX control,174.207,246.824,602,False
+C activity,LOX control,174.569,203.267,603,False
+C activity,LOX control,174.931,406.534,604,False
+C activity,LOX control,175.293,319.419,605,False
+C activity,LOX control,175.655,275.862,606,False
+C activity,LOX control,176.017,275.862,607,False
+C activity,LOX control,176.379,333.938,608,False
+C activity,LOX control,176.741,275.862,609,False
+C activity,LOX control,177.103,377.495,610,False
+C activity,LOX control,177.466,406.534,611,False
+C activity,LOX control,177.828,493.648,612,False
+C activity,LOX control,178.19,871.143,613,False
+C activity,LOX control,178.552,682.396,614,False
+C activity,LOX control,178.914,1698.73,615,False
+C activity,LOX control,179.276,2686.03,616,False
+C activity,LOX control,179.638,2656.99,617,False
+C activity,LOX control,180,4094.37,618,False
+C activity,LOX control,180.362,2366.61,619,False
+C activity,LOX control,180.724,2439.2,620,False
+C activity,LOX control,181.086,1437.39,621,False
+C activity,LOX control,181.448,1945.55,622,False
+C activity,LOX control,181.81,2845.74,623,False
+C activity,LOX control,182.172,2410.16,624,False
+C activity,LOX control,182.534,2323.05,625,False
+C activity,LOX control,182.897,2119.78,626,False
+C activity,LOX control,183.259,1829.4,627,False
+C activity,LOX control,183.621,1611.62,628,False
+C activity,LOX control,183.983,1103.45,629,False
+C activity,LOX control,184.345,1916.52,630,False
+C activity,LOX control,184.707,1989.11,631,False
+C activity,LOX control,185.069,2221.42,632,False
+C activity,LOX control,185.431,2816.7,633,False
+C activity,LOX control,185.793,3078.04,634,False
+C activity,LOX control,186.155,2700.54,635,False
+C activity,LOX control,186.517,2686.03,636,False
+C activity,LOX control,186.879,2134.3,637,False
+C activity,LOX control,187.241,2003.63,638,False
+C activity,LOX control,187.603,2119.78,639,False
+C activity,LOX control,187.966,2119.78,640,False
+C activity,LOX control,188.328,1858.44,641,False
+C activity,LOX control,188.69,1698.73,642,False
+C activity,LOX control,189.052,1350.27,643,False
+C activity,LOX control,189.414,1945.55,644,False
+C activity,LOX control,189.776,3034.48,645,False
+C activity,LOX control,190.138,2424.68,646,False
+C activity,LOX control,190.5,2032.67,647,False
+C activity,LOX control,190.862,2032.67,648,True
+C activity,LOX control,191.224,2032.67,649,True
+C activity,LOX control,191.586,2032.67,650,True
+C activity,LOX control,191.948,2032.67,651,True
+C activity,p53MKO,2.58621,406.534,128,True
+C activity,p53MKO,2.94828,406.534,129,True
+C activity,p53MKO,3.31034,406.534,130,True
+C activity,p53MKO,3.67241,406.534,131,True
+C activity,p53MKO,4.03448,406.534,132,True
+C activity,p53MKO,4.39655,406.534,133,False
+C activity,p53MKO,4.75862,508.167,134,False
+C activity,p53MKO,5.12069,914.701,135,False
+C activity,p53MKO,5.48276,1132.49,136,False
+C activity,p53MKO,5.84483,1147.01,137,False
+C activity,p53MKO,6.2069,1611.62,138,False
+C activity,p53MKO,6.56897,348.457,139,False
+C activity,p53MKO,6.93103,333.938,140,False
+C activity,p53MKO,7.2931,402.385,141,True
+C activity,p53MKO,7.65517,470.832,142,True
+C activity,p53MKO,8.01724,539.279,143,True
+C activity,p53MKO,8.37931,607.726,144,True
+C activity,p53MKO,8.74138,676.173,145,True
+C activity,p53MKO,9.10345,744.62,146,True
+C activity,p53MKO,9.46552,813.067,147,False
+C activity,p53MKO,9.82759,653.358,148,False
+C activity,p53MKO,10.1897,740.472,149,False
+C activity,p53MKO,10.5517,725.953,150,False
+C activity,p53MKO,10.9138,1292.2,151,False
+C activity,p53MKO,11.2759,1727.77,152,False
+C activity,p53MKO,11.6379,892.922,153,True
+C activity,p53MKO,12,58.0762,154,False
+C activity,p53MKO,12.3621,1640.65,155,False
+C activity,p53MKO,12.7241,1814.88,156,False
+C activity,p53MKO,13.0862,4007.26,157,False
+C activity,p53MKO,13.4483,3571.69,158,False
+C activity,p53MKO,13.8103,3266.79,159,False
+C activity,p53MKO,14.1724,3411.98,160,False
+C activity,p53MKO,14.5345,2235.93,161,False
+C activity,p53MKO,14.8966,914.701,162,False
+C activity,p53MKO,15.2586,3165.15,163,False
+C activity,p53MKO,15.6207,2250.45,164,False
+C activity,p53MKO,15.9828,2439.2,165,False
+C activity,p53MKO,16.3448,58.0762,166,False
+C activity,p53MKO,16.7069,1582.58,167,False
+C activity,p53MKO,17.069,2424.68,168,False
+C activity,p53MKO,17.431,2410.16,169,False
+C activity,p53MKO,17.7931,2773.14,170,False
+C activity,p53MKO,18.1552,3542.65,171,False
+C activity,p53MKO,18.5172,3716.88,172,False
+C activity,p53MKO,18.8793,3774.95,173,False
+C activity,p53MKO,19.2414,3557.17,174,False
+C activity,p53MKO,19.6034,3165.15,175,False
+C activity,p53MKO,19.9655,3005.44,176,False
+C activity,p53MKO,20.3276,2656.99,177,False
+C activity,p53MKO,20.6897,1756.81,178,False
+C activity,p53MKO,21.0517,2889.29,179,False
+C activity,p53MKO,21.4138,2816.7,180,False
+C activity,p53MKO,21.7759,3049,181,False
+C activity,p53MKO,22.1379,3513.61,182,False
+C activity,p53MKO,22.5,2729.58,183,False
+C activity,p53MKO,22.8621,2715.06,184,False
+C activity,p53MKO,23.2241,2860.25,185,False
+C activity,p53MKO,23.5862,3745.92,186,False
+C activity,p53MKO,23.9483,3484.57,187,False
+C activity,p53MKO,24.3103,2468.24,188,False
+C activity,p53MKO,24.6724,1546.28,189,True
+C activity,p53MKO,25.0345,624.319,190,False
+C activity,p53MKO,25.3966,667.877,191,False
+C activity,p53MKO,25.7586,624.319,192,False
+C activity,p53MKO,26.1207,609.8,193,False
+C activity,p53MKO,26.4828,667.877,194,False
+C activity,p53MKO,26.8448,929.22,195,False
+C activity,p53MKO,27.2069,1277.68,196,False
+C activity,p53MKO,27.569,1393.83,197,False
+C activity,p53MKO,27.931,1263.16,198,False
+C activity,p53MKO,28.2931,1350.27,199,False
+C activity,p53MKO,28.6552,1196.37,200,True
+C activity,p53MKO,29.0172,1042.47,201,True
+C activity,p53MKO,29.3793,888.566,202,True
+C activity,p53MKO,29.7414,734.664,203,True
+C activity,p53MKO,30.1034,580.762,204,False
+C activity,p53MKO,30.4655,508.167,205,False
+C activity,p53MKO,30.8276,479.129,206,False
+C activity,p53MKO,31.1897,522.686,207,False
+C activity,p53MKO,31.5517,464.61,208,False
+C activity,p53MKO,31.9138,392.015,209,False
+C activity,p53MKO,32.2759,377.495,210,False
+C activity,p53MKO,32.6379,353.297,211,True
+C activity,p53MKO,33,329.099,212,True
+C activity,p53MKO,33.3621,304.9,213,True
+C activity,p53MKO,33.7241,280.702,214,True
+C activity,p53MKO,34.0862,256.503,215,True
+C activity,p53MKO,34.4483,232.305,216,False
+C activity,p53MKO,34.8103,319.419,217,False
+C activity,p53MKO,35.1724,333.938,218,False
+C activity,p53MKO,35.5345,667.877,219,False
+C activity,p53MKO,35.8966,784.029,220,False
+C activity,p53MKO,36.2586,1103.45,221,False
+C activity,p53MKO,36.6207,885.662,222,False
+C activity,p53MKO,36.9828,617.06,223,True
+C activity,p53MKO,37.3448,348.457,224,False
+C activity,p53MKO,37.7069,333.938,225,False
+C activity,p53MKO,38.069,362.976,226,False
+C activity,p53MKO,38.431,450.091,227,False
+C activity,p53MKO,38.7931,362.976,228,False
+C activity,p53MKO,39.1552,290.381,229,False
+C activity,p53MKO,39.5172,290.381,230,False
+C activity,p53MKO,39.8793,784.029,231,False
+C activity,p53MKO,40.2414,943.739,232,False
+C activity,p53MKO,40.6034,1001.81,233,False
+C activity,p53MKO,40.9655,275.862,234,False
+C activity,p53MKO,41.3276,261.343,235,False
+C activity,p53MKO,41.6897,348.457,236,False
+C activity,p53MKO,42.0517,435.572,237,False
+C activity,p53MKO,42.4138,435.572,238,False
+C activity,p53MKO,42.7759,435.572,239,False
+C activity,p53MKO,43.1379,362.976,240,False
+C activity,p53MKO,43.5,319.419,241,False
+C activity,p53MKO,43.8621,261.343,242,False
+C activity,p53MKO,44.2241,246.824,243,False
+C activity,p53MKO,44.5862,421.053,244,False
+C activity,p53MKO,44.9483,275.862,245,False
+C activity,p53MKO,45.3103,275.862,246,False
+C activity,p53MKO,45.6724,1103.45,247,False
+C activity,p53MKO,46.0345,1205.08,248,False
+C activity,p53MKO,46.3966,1306.72,249,False
+C activity,p53MKO,46.7586,1553.54,250,False
+C activity,p53MKO,47.1207,479.129,251,False
+C activity,p53MKO,47.4828,537.205,252,False
+C activity,p53MKO,47.8448,640.29,253,True
+C activity,p53MKO,48.2069,743.376,254,True
+C activity,p53MKO,48.569,846.461,255,True
+C activity,p53MKO,48.931,949.546,256,True
+C activity,p53MKO,49.2931,1052.63,257,True
+C activity,p53MKO,49.6552,1155.72,258,True
+C activity,p53MKO,50.0172,1258.8,259,True
+C activity,p53MKO,50.3793,1361.89,260,True
+C activity,p53MKO,50.7414,1464.97,261,True
+C activity,p53MKO,51.1034,1568.06,262,False
+C activity,p53MKO,51.4655,1655.17,263,False
+C activity,p53MKO,51.8276,1350.27,264,False
+C activity,p53MKO,52.1897,1451.91,265,False
+C activity,p53MKO,52.5517,1509.98,266,False
+C activity,p53MKO,52.9138,1161.52,267,False
+C activity,p53MKO,53.2759,871.143,268,False
+C activity,p53MKO,53.6379,653.358,269,False
+C activity,p53MKO,54,635.209,270,True
+C activity,p53MKO,54.3621,617.06,271,True
+C activity,p53MKO,54.7241,598.911,272,True
+C activity,p53MKO,55.0862,580.762,273,False
+C activity,p53MKO,55.4483,667.877,274,False
+C activity,p53MKO,55.8103,1219.6,275,False
+C activity,p53MKO,56.1724,1132.49,276,False
+C activity,p53MKO,56.5345,1161.52,277,False
+C activity,p53MKO,56.8966,1147.01,278,False
+C activity,p53MKO,57.2586,580.762,279,False
+C activity,p53MKO,57.6207,638.838,280,False
+C activity,p53MKO,57.9828,493.648,281,False
+C activity,p53MKO,58.3448,479.129,282,False
+C activity,p53MKO,58.7069,813.067,283,False
+C activity,p53MKO,59.069,1306.72,284,False
+C activity,p53MKO,59.431,1568.06,285,False
+C activity,p53MKO,59.7931,2845.74,286,False
+C activity,p53MKO,60.1552,3716.88,287,False
+C activity,p53MKO,60.5172,3760.44,288,False
+C activity,p53MKO,60.8793,3571.69,289,False
+C activity,p53MKO,61.2414,2787.66,290,False
+C activity,p53MKO,61.6034,2177.86,291,False
+C activity,p53MKO,61.9655,2308.53,292,False
+C activity,p53MKO,62.3276,2381.13,293,False
+C activity,p53MKO,62.6897,2279.49,294,False
+C activity,p53MKO,63.0517,1974.59,295,False
+C activity,p53MKO,63.4138,1422.87,296,False
+C activity,p53MKO,63.7759,1248.64,297,False
+C activity,p53MKO,64.1379,1364.79,298,False
+C activity,p53MKO,64.5,1611.62,299,False
+C activity,p53MKO,64.8621,1640.65,300,False
+C activity,p53MKO,65.2241,1597.1,301,False
+C activity,p53MKO,65.5862,1524.5,302,False
+C activity,p53MKO,65.9483,1422.87,303,False
+C activity,p53MKO,66.3103,580.762,304,False
+C activity,p53MKO,66.6724,406.534,305,False
+C activity,p53MKO,67.0345,1568.06,306,False
+C activity,p53MKO,67.3966,1466.42,307,False
+C activity,p53MKO,67.7586,116.152,308,False
+C activity,p53MKO,68.1207,58.0762,309,False
+C activity,p53MKO,68.4828,58.0762,310,False
+C activity,p53MKO,68.8448,58.0762,311,False
+C activity,p53MKO,69.2069,1756.81,312,False
+C activity,p53MKO,69.569,2076.23,313,False
+C activity,p53MKO,69.931,2656.99,314,False
+C activity,p53MKO,70.2931,2961.89,315,False
+C activity,p53MKO,70.6552,2903.81,316,False
+C activity,p53MKO,71.0172,2802.18,317,False
+C activity,p53MKO,71.3793,2569.87,318,False
+C activity,p53MKO,71.7414,2192.38,319,False
+C activity,p53MKO,72.1034,1539.02,320,False
+C activity,p53MKO,72.4655,624.319,321,False
+C activity,p53MKO,72.8276,588.828,322,True
+C activity,p53MKO,73.1897,553.337,323,True
+C activity,p53MKO,73.5517,517.846,324,True
+C activity,p53MKO,73.9138,482.355,325,True
+C activity,p53MKO,74.2759,446.864,326,True
+C activity,p53MKO,74.6379,411.373,327,True
+C activity,p53MKO,75,375.882,328,True
+C activity,p53MKO,75.3621,340.391,329,True
+C activity,p53MKO,75.7241,304.9,330,False
+C activity,p53MKO,76.0862,319.419,331,False
+C activity,p53MKO,76.4483,377.495,332,False
+C activity,p53MKO,76.8103,435.572,333,False
+C activity,p53MKO,77.1724,304.9,334,False
+C activity,p53MKO,77.5345,304.9,335,False
+C activity,p53MKO,77.8966,435.572,336,False
+C activity,p53MKO,78.2586,392.015,337,False
+C activity,p53MKO,78.6207,203.267,338,False
+C activity,p53MKO,78.9828,203.267,339,False
+C activity,p53MKO,79.3448,174.229,340,False
+C activity,p53MKO,79.7069,130.672,341,False
+C activity,p53MKO,80.069,116.152,342,False
+C activity,p53MKO,80.431,508.167,343,False
+C activity,p53MKO,80.7931,435.572,344,False
+C activity,p53MKO,81.1552,421.053,345,False
+C activity,p53MKO,81.5172,464.61,346,False
+C activity,p53MKO,81.8793,101.633,347,False
+C activity,p53MKO,82.2414,130.672,348,False
+C activity,p53MKO,82.6034,159.71,349,False
+C activity,p53MKO,82.9655,116.152,350,False
+C activity,p53MKO,83.3276,1756.81,351,False
+C activity,p53MKO,83.6897,2381.13,352,False
+C activity,p53MKO,84.0517,2729.58,353,False
+C activity,p53MKO,84.4138,2831.22,354,False
+C activity,p53MKO,84.7759,2686.03,355,False
+C activity,p53MKO,85.1379,2482.76,356,False
+C activity,p53MKO,85.5,2279.49,357,False
+C activity,p53MKO,85.8621,2308.53,358,False
+C activity,p53MKO,86.2241,2323.05,359,False
+C activity,p53MKO,86.5862,2453.72,360,False
+C activity,p53MKO,86.9483,1176.04,361,False
+C activity,p53MKO,87.3103,1074.41,362,False
+C activity,p53MKO,87.6724,972.777,363,False
+C activity,p53MKO,88.0345,2206.9,364,False
+C activity,p53MKO,88.3966,1974.59,365,False
+C activity,p53MKO,88.7586,1902,366,False
+C activity,p53MKO,89.1207,1843.92,367,False
+C activity,p53MKO,89.4828,1945.55,368,False
+C activity,p53MKO,89.8448,1960.07,369,False
+C activity,p53MKO,90.2069,653.358,370,False
+C activity,p53MKO,90.569,696.915,371,False
+C activity,p53MKO,90.931,1030.85,372,False
+C activity,p53MKO,91.2931,1263.16,373,False
+C activity,p53MKO,91.6552,987.296,374,False
+C activity,p53MKO,92.0172,58.0762,375,False
+C activity,p53MKO,92.3793,1509.98,376,False
+C activity,p53MKO,92.7414,1219.6,377,False
+C activity,p53MKO,93.1034,1219.6,378,False
+C activity,p53MKO,93.4655,1292.2,379,False
+C activity,p53MKO,93.8276,1350.27,380,False
+C activity,p53MKO,94.1897,1713.25,381,False
+C activity,p53MKO,94.5517,1364.79,382,False
+C activity,p53MKO,94.9138,2903.81,383,False
+C activity,p53MKO,95.2759,2627.95,384,False
+C activity,p53MKO,95.6379,2206.9,385,False
+C activity,p53MKO,96,1030.85,386,False
+C activity,p53MKO,96.3621,333.938,387,False
+C activity,p53MKO,96.7241,261.343,388,False
+C activity,p53MKO,97.0862,232.305,389,False
+C activity,p53MKO,97.4483,275.862,390,False
+C activity,p53MKO,97.8103,261.343,391,False
+C activity,p53MKO,98.1724,232.305,392,False
+C activity,p53MKO,98.5345,260.226,393,True
+C activity,p53MKO,98.8966,288.147,394,True
+C activity,p53MKO,99.2586,316.069,395,True
+C activity,p53MKO,99.6207,343.99,396,True
+C activity,p53MKO,99.9828,371.911,397,True
+C activity,p53MKO,100.345,399.832,398,True
+C activity,p53MKO,100.707,427.754,399,True
+C activity,p53MKO,101.069,455.675,400,True
+C activity,p53MKO,101.431,483.596,401,True
+C activity,p53MKO,101.793,511.518,402,True
+C activity,p53MKO,102.155,539.439,403,True
+C activity,p53MKO,102.517,567.36,404,True
+C activity,p53MKO,102.879,595.281,405,False
+C activity,p53MKO,103.241,290.381,406,False
+C activity,p53MKO,103.603,406.534,407,False
+C activity,p53MKO,103.966,464.61,408,False
+C activity,p53MKO,104.328,203.267,409,False
+C activity,p53MKO,104.69,296.189,410,True
+C activity,p53MKO,105.052,389.111,411,True
+C activity,p53MKO,105.414,482.033,412,True
+C activity,p53MKO,105.776,574.955,413,True
+C activity,p53MKO,106.138,667.877,414,False
+C activity,p53MKO,106.5,856.624,415,False
+C activity,p53MKO,106.862,1161.52,416,False
+C activity,p53MKO,107.224,1684.21,417,False
+C activity,p53MKO,107.586,2497.28,418,False
+C activity,p53MKO,107.948,2947.37,419,False
+C activity,p53MKO,108.31,2381.13,420,False
+C activity,p53MKO,108.672,2264.97,421,False
+C activity,p53MKO,109.034,2584.39,422,False
+C activity,p53MKO,109.397,2540.83,423,False
+C activity,p53MKO,109.759,2395.64,424,False
+C activity,p53MKO,110.121,2294.01,425,False
+C activity,p53MKO,110.483,2264.97,426,False
+C activity,p53MKO,110.845,2076.23,427,False
+C activity,p53MKO,111.207,2206.9,428,False
+C activity,p53MKO,111.569,2482.76,429,False
+C activity,p53MKO,111.931,2744.1,430,False
+C activity,p53MKO,112.293,2656.99,431,False
+C activity,p53MKO,112.655,2511.8,432,False
+C activity,p53MKO,113.017,2061.71,433,False
+C activity,p53MKO,113.379,1350.27,434,False
+C activity,p53MKO,113.741,1161.52,435,False
+C activity,p53MKO,114.103,1263.16,436,False
+C activity,p53MKO,114.466,1872.96,437,False
+C activity,p53MKO,114.828,2540.83,438,False
+C activity,p53MKO,115.19,1321.23,439,False
+C activity,p53MKO,115.552,2584.39,440,False
+C activity,p53MKO,115.914,2250.45,441,False
+C activity,p53MKO,116.276,2119.78,442,False
+C activity,p53MKO,116.638,2468.24,443,False
+C activity,p53MKO,117,2932.85,444,False
+C activity,p53MKO,117.362,3049,445,False
+C activity,p53MKO,117.724,2860.25,446,False
+C activity,p53MKO,118.086,2918.33,447,False
+C activity,p53MKO,118.448,3049,448,False
+C activity,p53MKO,118.81,2845.74,449,False
+C activity,p53MKO,119.172,2511.8,450,False
+C activity,p53MKO,119.534,2221.42,451,False
+C activity,p53MKO,119.897,101.633,452,False
+C activity,p53MKO,120.259,319.419,453,True
+C activity,p53MKO,120.621,537.205,454,False
+C activity,p53MKO,120.983,493.648,455,False
+C activity,p53MKO,121.345,290.381,456,False
+C activity,p53MKO,121.707,537.205,457,False
+C activity,p53MKO,122.069,667.877,458,False
+C activity,p53MKO,122.431,987.296,459,False
+C activity,p53MKO,122.793,406.534,460,False
+C activity,p53MKO,123.155,500.907,461,True
+C activity,p53MKO,123.517,595.281,462,True
+C activity,p53MKO,123.879,689.655,463,True
+C activity,p53MKO,124.241,784.029,464,False
+C activity,p53MKO,124.603,682.396,465,False
+C activity,p53MKO,124.966,754.991,466,False
+C activity,p53MKO,125.328,871.143,467,False
+C activity,p53MKO,125.69,842.105,468,False
+C activity,p53MKO,126.052,871.143,469,False
+C activity,p53MKO,126.414,827.586,470,False
+C activity,p53MKO,126.776,769.51,471,False
+C activity,p53MKO,127.138,696.915,472,False
+C activity,p53MKO,127.5,609.8,473,False
+C activity,p53MKO,127.862,696.915,474,False
+C activity,p53MKO,128.224,696.915,475,False
+C activity,p53MKO,128.586,696.915,476,False
+C activity,p53MKO,128.948,769.51,477,False
+C activity,p53MKO,129.31,798.548,478,False
+C activity,p53MKO,129.672,784.029,479,False
+C activity,p53MKO,130.034,754.991,480,False
+C activity,p53MKO,130.397,1114.34,481,True
+C activity,p53MKO,130.759,1473.68,482,True
+C activity,p53MKO,131.121,1833.03,483,True
+C activity,p53MKO,131.483,2192.38,484,False
+C activity,p53MKO,131.845,2482.76,485,False
+C activity,p53MKO,132.207,2686.03,486,False
+C activity,p53MKO,132.569,2787.66,487,False
+C activity,p53MKO,132.931,2889.29,488,False
+C activity,p53MKO,133.293,2903.81,489,False
+C activity,p53MKO,133.655,2627.95,490,False
+C activity,p53MKO,134.017,2323.05,491,False
+C activity,p53MKO,134.379,2148.82,492,False
+C activity,p53MKO,134.741,58.0762,493,False
+C activity,p53MKO,135.103,1379.31,494,False
+C activity,p53MKO,135.466,2686.03,495,False
+C activity,p53MKO,135.828,2802.18,496,False
+C activity,p53MKO,136.19,2671.51,497,False
+C activity,p53MKO,136.552,2453.72,498,False
+C activity,p53MKO,136.914,2250.45,499,False
+C activity,p53MKO,137.276,2235.93,500,False
+C activity,p53MKO,137.638,1263.16,501,False
+C activity,p53MKO,138,1539.02,502,False
+C activity,p53MKO,138.362,1945.55,503,False
+C activity,p53MKO,138.724,2163.34,504,False
+C activity,p53MKO,139.086,2192.38,505,False
+C activity,p53MKO,139.448,2497.28,506,False
+C activity,p53MKO,139.81,2323.05,507,False
+C activity,p53MKO,140.172,2410.16,508,False
+C activity,p53MKO,140.534,2598.91,509,False
+C activity,p53MKO,140.897,2802.18,510,False
+C activity,p53MKO,141.259,2802.18,511,False
+C activity,p53MKO,141.621,2497.28,512,False
+C activity,p53MKO,141.983,2497.28,513,False
+C activity,p53MKO,142.345,2584.39,514,False
+C activity,p53MKO,142.707,2584.39,515,False
+C activity,p53MKO,143.069,2327.89,516,True
+C activity,p53MKO,143.431,2071.39,517,True
+C activity,p53MKO,143.793,1814.88,518,False
+C activity,p53MKO,144.155,1030.85,519,False
+C activity,p53MKO,144.517,464.61,520,False
+C activity,p53MKO,144.879,450.091,521,False
+C activity,p53MKO,145.241,522.686,522,False
+C activity,p53MKO,145.603,522.686,523,False
+C activity,p53MKO,145.966,580.762,524,False
+C activity,p53MKO,146.328,508.167,525,False
+C activity,p53MKO,146.69,479.129,526,False
+C activity,p53MKO,147.052,435.572,527,False
+C activity,p53MKO,147.414,450.091,528,False
+C activity,p53MKO,147.776,479.129,529,False
+C activity,p53MKO,148.138,406.534,530,False
+C activity,p53MKO,148.5,479.129,531,False
+C activity,p53MKO,148.862,522.686,532,False
+C activity,p53MKO,149.224,682.396,533,False
+C activity,p53MKO,149.586,696.915,534,False
+C activity,p53MKO,149.948,696.915,535,False
+C activity,p53MKO,150.31,696.915,536,False
+C activity,p53MKO,150.672,638.838,537,False
+C activity,p53MKO,151.034,609.8,538,False
+C activity,p53MKO,151.397,885.662,539,False
+C activity,p53MKO,151.759,754.991,540,False
+C activity,p53MKO,152.121,667.877,541,False
+C activity,p53MKO,152.483,813.067,542,False
+C activity,p53MKO,152.845,769.51,543,False
+C activity,p53MKO,153.207,595.281,544,False
+C activity,p53MKO,153.569,551.724,545,False
+C activity,p53MKO,153.931,914.701,546,False
+C activity,p53MKO,154.293,1161.52,547,False
+C activity,p53MKO,154.655,1524.5,548,False
+C activity,p53MKO,155.017,2352.09,549,False
+C activity,p53MKO,155.379,3862.07,550,False
+C activity,p53MKO,155.741,6025.41,551,False
+C activity,p53MKO,156.103,6039.93,552,False
+C activity,p53MKO,156.466,5996.37,553,False
+C activity,p53MKO,156.828,3760.44,554,False
+C activity,p53MKO,157.19,3281.31,555,False
+C activity,p53MKO,157.552,3049,556,False
+C activity,p53MKO,157.914,2889.29,557,False
+C activity,p53MKO,158.276,3019.96,558,False
+C activity,p53MKO,158.638,3121.6,559,False
+C activity,p53MKO,159,3165.15,560,False
+C activity,p53MKO,159.362,3136.12,561,False
+C activity,p53MKO,159.724,3049,562,False
+C activity,p53MKO,160.086,3107.08,563,False
+C activity,p53MKO,160.448,3266.79,564,False
+C activity,p53MKO,160.81,3455.54,565,False
+C activity,p53MKO,161.172,3470.05,566,False
+C activity,p53MKO,161.534,3353.9,567,False
+C activity,p53MKO,161.897,3179.67,568,False
+C activity,p53MKO,162.259,3121.6,569,False
+C activity,p53MKO,162.621,3034.48,570,False
+C activity,p53MKO,162.983,2787.66,571,False
+C activity,p53MKO,163.345,2773.14,572,False
+C activity,p53MKO,163.707,2656.99,573,False
+C activity,p53MKO,164.069,2976.41,574,False
+C activity,p53MKO,164.431,3223.23,575,False
+C activity,p53MKO,164.793,3411.98,576,False
+C activity,p53MKO,165.155,3571.69,577,False
+C activity,p53MKO,165.517,3513.61,578,False
+C activity,p53MKO,165.879,3339.38,579,False
+C activity,p53MKO,166.241,2642.47,580,False
+C activity,p53MKO,166.603,2715.06,581,False
+C activity,p53MKO,166.966,2990.93,582,False
+C activity,p53MKO,167.328,2874.77,583,False
+C activity,p53MKO,167.69,2627.95,584,False
+C activity,p53MKO,168.052,871.143,585,False
+C activity,p53MKO,168.414,682.396,586,False
+C activity,p53MKO,168.776,653.358,587,False
+C activity,p53MKO,169.138,595.281,588,False
+C activity,p53MKO,169.5,508.167,589,False
+C activity,p53MKO,169.862,479.129,590,False
+C activity,p53MKO,170.224,522.686,591,False
+C activity,p53MKO,170.586,493.648,592,False
+C activity,p53MKO,170.948,566.243,593,False
+C activity,p53MKO,171.31,725.953,594,False
+C activity,p53MKO,171.672,769.51,595,False
+C activity,p53MKO,172.034,784.029,596,False
+C activity,p53MKO,172.397,725.953,597,False
+C activity,p53MKO,172.759,537.205,598,False
+C activity,p53MKO,173.121,406.534,599,False
+C activity,p53MKO,173.483,421.053,600,False
+C activity,p53MKO,173.845,493.648,601,False
+C activity,p53MKO,174.207,537.205,602,False
+C activity,p53MKO,174.569,638.838,603,False
+C activity,p53MKO,174.931,725.953,604,False
+C activity,p53MKO,175.293,725.953,605,False
+C activity,p53MKO,175.655,754.991,606,False
+C activity,p53MKO,176.017,754.991,607,False
+C activity,p53MKO,176.379,725.953,608,False
+C activity,p53MKO,176.741,784.029,609,False
+C activity,p53MKO,177.103,813.067,610,False
+C activity,p53MKO,177.466,871.143,611,False
+C activity,p53MKO,177.828,900.181,612,False
+C activity,p53MKO,178.19,1509.98,613,False
+C activity,p53MKO,178.552,1931.03,614,False
+C activity,p53MKO,178.914,2802.18,615,False
+C activity,p53MKO,179.276,4399.27,616,False
+C activity,p53MKO,179.638,5343.01,617,False
+C activity,p53MKO,180,5560.8,618,False
+C activity,p53MKO,180.362,6228.68,619,False
+C activity,p53MKO,180.724,3353.9,620,False
+C activity,p53MKO,181.086,3295.83,621,False
+C activity,p53MKO,181.448,3353.9,622,False
+C activity,p53MKO,181.81,3441.02,623,False
+C activity,p53MKO,182.172,3455.54,624,False
+C activity,p53MKO,182.534,3295.83,625,False
+C activity,p53MKO,182.897,3266.79,626,False
+C activity,p53MKO,183.259,3107.08,627,False
+C activity,p53MKO,183.621,2889.29,628,False
+C activity,p53MKO,183.983,2686.03,629,False
+C activity,p53MKO,184.345,2773.14,630,False
+C activity,p53MKO,184.707,3019.96,631,False
+C activity,p53MKO,185.069,3208.71,632,False
+C activity,p53MKO,185.431,1684.21,633,False
+C activity,p53MKO,185.793,1539.02,634,False
+C activity,p53MKO,186.155,1422.87,635,False
+C activity,p53MKO,186.517,1292.2,636,False
+C activity,p53MKO,186.879,1393.83,637,False
+C activity,p53MKO,187.241,2526.32,638,False
+C activity,p53MKO,187.603,2802.18,639,False
+C activity,p53MKO,187.966,3034.48,640,False
+C activity,p53MKO,188.328,3049,641,False
+C activity,p53MKO,188.69,2787.66,642,False
+C activity,p53MKO,189.052,3005.44,643,False
+C activity,p53MKO,189.414,3382.94,644,False
+C activity,p53MKO,189.776,3484.57,645,False
+C activity,p53MKO,190.138,3470.05,646,False
+C activity,p53MKO,190.5,3470.05,647,False
+C activity,p53MKO,190.862,3281.31,648,False
+C activity,p53MKO,191.224,58.0762,649,False
+C activity,p53MKO,191.586,58.0762,650,False
+C activity,p53MKO,191.948,58.0762,651,False

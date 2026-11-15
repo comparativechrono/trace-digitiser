@@ -1,0 +1,8 @@
+{
+ "A CD157+/+": [
+  "Panel 1: the y-axis scale was read from 7 of 7 tick labels (300, 250, 200, 150, 100, 50, 0); the print is only 6 pixels high. Confidence in it is medium: check those values against the figure, or give y_min and y_max."
+ ],
+ "B CD157-/-": [
+  "Panel 1: the y-axis scale was read from 6 of 7 tick labels (300, 250, 200, 100, 50, 0); the print is only 6 pixels high. Confidence in it is medium: check those values against the figure, or give y_min and y_max."
+ ]
+}

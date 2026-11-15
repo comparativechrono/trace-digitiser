@@ -1,0 +1,48 @@
+{
+ "id": "PMC11741586-fig3",
+ "image": "../figures/PMC11741586-fig3.png",
+ "source": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0312794.g003",
+ "reader": "lines",
+ "notes": "Fig 3B (actigraphy counts, thousands per 3-h bin, mean and SEM of 11 rats) over baseline days B4-B6 (blue) and withdrawal days W2-W8 (red), laid end to end with no numeric x axis. x is taken as hours along the plotted record: the dark shading of the first and last days starts at ZT12 (12 h and 228 h); the colour clicked is each mean line's. The y labels could not be read inside this plot area, so two y ticks are given (0 and 5, as describe_figure read them on the whole figure).",
+ "time": {
+  "unit": "h",
+  "dark_start_h": 12,
+  "light_dark": "LD 12:12; days B4-B6 then W2-W8 plotted end to end",
+  "bin_h": 3
+ },
+ "panels": [
+  {
+   "name": "B actigraphy",
+   "plot_area": [
+    515,
+    1005,
+    3716,
+    1558
+   ],
+   "x_ref": [
+    [
+     656,
+     12
+    ],
+    [
+     3554,
+     228
+    ]
+   ],
+   "series": {
+    "baseline": "#0202ff",
+    "withdrawal": "#801818"
+   },
+   "y_ref": [
+    [
+     1558.5,
+     0
+    ],
+    [
+     1010,
+     5
+    ]
+   ]
+  }
+ ]
+}

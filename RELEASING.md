@@ -58,6 +58,21 @@ plans). Now that the repository is public, one can be added:
 
    Look into any case marked WORSE before going on. Commit the new results,
    and update the table in that folder's README (`--markdown` prints it).
+
+   Then run the activity-trace set
+   ([`validation/activity-traces`](validation/activity-traces/README.md)),
+   which needs pandas, openpyxl, SciPy and matplotlib besides:
+
+   ```bash
+   python validation/activity-traces/run.py
+   git diff --stat validation/activity-traces
+   ```
+
+   Its readings and results are kept in git (the script records the
+   release in `digitised/VERSION`), so the diff shows what the release
+   changed. Look into any change in `results/agreement_*.csv` or in the
+   verdicts of `results/claims_checked.csv`, and update the numbers in that
+   folder's README (`tables.py` prints its tables).
 4. Merge to `main` and wait for the *Tests* workflow to pass.
 5. On GitHub: *Releases -> Draft a new release*, create the tag `vX.Y.Z`
    (matching the version exactly, with a leading `v`) on `main`, and publish.

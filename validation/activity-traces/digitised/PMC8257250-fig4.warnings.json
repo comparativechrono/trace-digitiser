@@ -1,0 +1,5 @@
+{
+ "D LMA": [
+  "Panel 1: the x-axis scale was read from 19 of 20 tick labels (0, 6, 12, 18, 24, 30, 36, 42, 48, 66, 72, 78, 84, 90, 96, 102, 108, 114, 120). Confidence in it is medium: check those values against the figure, or give x_min and x_max."
+ ]
+}

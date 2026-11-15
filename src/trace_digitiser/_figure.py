@@ -26,8 +26,9 @@ from .calibration import (
 from .diagnostics import draw_panel_overlay, print_panel_summary
 from .frames import darkness_map
 from .io import load_image
+from .legend import find_legend
 from .models import Calibration
-from .panel_detection import find_plot_panels
+from .panel_detection import find_plot_panels, split_stack
 from .straighten import MIN_TILT_DEGREES, estimate_tilt
 from .straighten import straighten as _turn_upright
 from .x_calibration import calibrate_x, x_calibration_from_points, x_calibration_from_range
@@ -209,6 +210,7 @@ def prepare_figure(
     write_outputs: bool = True,
     straighten: Union[str, bool, float] = "auto",
     y_axis: str = "left",
+    legend: Union[str, bool] = "auto",
     extra_parameters: Optional[dict] = None,
     stacklevel: int = 4,
 ) -> PreparedFigure:
@@ -227,6 +229,9 @@ def prepare_figure(
             raise ValueError(f"{name} must be 'auto', 'linear' or 'log'")
     if y_axis not in ("left", "right"):
         raise ValueError("y_axis must be 'left' or 'right'")
+    if legend not in ("auto", "keep", True, False):
+        raise ValueError("legend must be 'auto' (find legends drawn inside plots and leave them out) or 'keep'")
+    find_legends = legend in ("auto", True)
     if (y_min is None) != (y_max is None):
         raise ValueError("give both y_min and y_max, or neither")
     if (x_min is None) != (x_max is None):
@@ -276,6 +281,8 @@ def prepare_figure(
     }
     if y_axis != "left":
         parameters["y_axis"] = y_axis
+    if not find_legends:
+        parameters["legend"] = "keep"
     parameters.update(extra_parameters or {})
 
     notes: list[str] = []
@@ -389,6 +396,41 @@ def prepare_figure(
             cal = normalised_calibration(p)
         p["y_calibration"] = cal.to_dict()
 
+    # Plots stacked with no gap between them make one frame, whose tick labels then do not agree on a scale (they
+    # repeat, one set to a plot). Where lines as dark as the frame's sides run across it, and the plots between them
+    # each read as an axis of their own, they are taken as plots of their own.
+    if y_ref is None and y_min is None and ocr and plot_boxes is None:
+        split_any = False
+        result: list[dict] = []
+        for p in panels:
+            cal = p["y_calibration"]
+            weak = cal["scale_type"] == "normalised_0_to_1" or cal.get("confidence") == "low"
+            if p.get("stack_cuts") and weak:
+                subs = split_stack(rgb, p)
+                for k, sub in enumerate(subs):
+                    sub["panel_id"] = k + 1
+                    sub["y_calibration"] = calibrate_y(
+                        rgb, dark, sub, limit=limits[p["panel_id"]][0], scale=y_scale, verbose=show_debug,
+                        axis="y2" if y_axis == "right" else "y",
+                    ).to_dict()
+                if all(sub["y_calibration"]["scale_type"] != "normalised_0_to_1" for sub in subs):
+                    result.extend(subs)
+                    split_any = True
+                    note(
+                        f"Panel {p['panel_id']} is {len(subs)} plots stacked one above another, with no gap "
+                        "between them; each is read as a plot of its own."
+                    )
+                    continue
+            result.append(p)
+        if split_any:
+            result.sort(key=lambda d: (round(d["y_top"]), d["x0"]))
+            for k, sub in enumerate(result, start=1):
+                sub["panel_id"] = k
+                sub.setdefault("layout_mode", layout_mode)
+            panels = result
+            limits = _neighbour_limits(panels, right=(y_axis == "right"))
+            n_panels = len(panels)
+
     if y_ref is None and y_min is None:
         panels = propagate_y_calibration_across_rows(panels, verbose=show_debug)
 
@@ -463,6 +505,33 @@ def prepare_figure(
             f"The x axis of {which} is not calibrated (no numeric scale could be read from its labels); the "
             "output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref."
         )
+
+    # ------------------------------------------------------------------
+    # 4. A legend drawn inside a plot is left out, as if it had been excluded
+    # ------------------------------------------------------------------
+    if find_legends:
+        found_legends = []
+        for p in panels:
+            e = p["edges"]
+            half = int(p.get("line_thickness", 1)) // 2 + 1
+            box = (
+                int(np.ceil(e["left"])) + half,
+                int(np.ceil(e["top"])) + half,
+                int(np.floor(e["right"])) - half,
+                int(np.floor(e["bottom"])) - half,
+            )
+            boxes = [tuple(float(v) for v in b) for b in find_legend(rgb, box)]
+            if boxes:
+                found_legends.extend(boxes)
+                x0, y0 = min(b[0] for b in boxes), min(b[1] for b in boxes)
+                x1, y1 = max(b[2] for b in boxes), max(b[3] for b in boxes)
+                note(
+                    f"Panel {p['panel_id']}: a legend was found inside the plot area (x {x0:.0f}-{x1:.0f}, y "
+                    f"{y0:.0f}-{y1:.0f}) and left out. If that is not a legend, pass legend='keep'."
+                )
+        if found_legends:
+            exclude_boxes = list(exclude_boxes or []) + found_legends
+            parameters["legends_found"] = found_legends
 
     return PreparedFigure(
         rgb=rgb,

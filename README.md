@@ -215,7 +215,7 @@ three typefaces; JPEG compression and blur).
 | Height of the labels | axes | read correctly | declined | read wrongly, with a warning | read wrongly, no warning |
 |---|---|---|---|---|---|
 | 8 pixels or more | 477 | 464 | 13 | 0 | 0 |
-| under 8 pixels | 273 | 257 (all with a warning to check them) | 15 | 1 | 0 |
+| under 8 pixels | 273 | 260 (all with a warning to check them) | 12 | 1 | 0 |
 
 *Declined* means that no scale was offered. All of those at 8 pixels or more are logarithmic axes
 whose raised exponents are too small to read, though the rest of the label is not. The outcome for small
@@ -231,13 +231,15 @@ your figure has such labels, enlarging the image does not help; typing in two nu
 [`validation/published-figures`](https://github.com/comparativechrono/trace-digitiser/tree/main/validation/published-figures)
 holds seven figures from four papers whose authors published the numbers behind them — markers with error bars, a
 line over shaded bands, ten bar charts, dot plots, and a scanned page from 1920 — and reads them with nothing given
-and with the help a user can give. With nothing given, 2.2.0 reads all 35 bars of the bar charts to within 0.3 % of
-the axis, and the 29 points of a scatter plot of four series to within 0.5 % (2.1.0 read none of either); with two
-ticks clicked on each axis and the dots' colour, the census dots of the 1920 figure to within 0.9 %. On the figures
-of a paper held out until the changes were made, with the plot area drawn, it reads 24 bars to within 0.4 % once
-two ticks are clicked, and 33 of 37 points once the ticks of a slanted axis and the colours are. Stacked plots with no gap between them, dot
-plots whose dots overlap, and tick labels that are slanted or hand-lettered still need help or remain hard; that
-folder's README has the details.
+and with the help a user can give. With nothing given, 2.3.0 reads all 35 bars of the bar charts to within 0.3 % of
+the axis, the 29 points of a scatter plot of four series to within 0.5 %, the 9 points of a phase-response curve whose
+tick labels are set close together, and each of three line plots stacked with no gap between them to within 0.6 %;
+with two ticks clicked on each axis and the dots' colour, it reads the census dots of the 1920 figure to within
+0.9 %. In four dot plots of translucent dots that overlap, it finds 386 of the 497 dots compared once their colours
+are clicked (2.2.0: 143). The figures of one of the papers were held out until 2.2.0 was made; 2.3.0 was made while
+looking at them too, so they are a held-out test of 2.2.0 only. Tick labels that are slanted or hand-lettered, and
+series of one colour told apart only by the shape of their markers, still need help; that folder's README has the
+details, case by case.
 
 **Activity traces.**
 [`validation/activity-traces`](https://github.com/comparativechrono/trace-digitiser/tree/main/validation/activity-traces)

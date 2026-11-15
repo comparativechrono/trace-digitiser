@@ -71,6 +71,7 @@ class Frame:
     ticks_x: list[float] = field(default_factory=list)
     source: str = "axis_lines"
     from_edges: bool = False  # its left or bottom side is the edge of a filled area, not a line
+    stack_cuts: list[float] = field(default_factory=list)  # lines across it that may part plots stacked in it
 
     @property
     def width(self) -> float:
@@ -384,6 +385,37 @@ def _filter_frames(frames: list[Frame], image_w: int, image_h: int) -> list[Fram
     return _reading_order(kept)
 
 
+def _find_stack_cuts(frames: list[Frame], horizontal: list[AxisLine], tol: float) -> None:
+    """Note the lines that may part plots stacked with no gap between them, in each frame's ``stack_cuts``.
+
+    Stacked plots that share their y-axis line (one line down the side of all of them) make a single frame: its
+    corner is the bottom plot's. The lines between them run right across, as dark and as thick as the frame's own
+    sides - as a dark gridline may, too: whether the frame is one plot or several is decided by its tick labels
+    (see :func:`trace_digitiser.panel_detection.split_stack`).
+    """
+    for f in frames:
+        if f.kind != "box" or f.height < 60:
+            continue
+        sides = [ln for ln in horizontal if abs(ln.pos - f.bottom) <= tol or abs(ln.pos - f.top) <= tol]
+        if not sides:
+            continue
+        side_dark = min(ln.darkness for ln in sides)
+        side_thick = min(ln.thickness for ln in sides)
+        cuts = []
+        for ln in horizontal:
+            if not (f.top + 0.15 * f.height < ln.pos < f.bottom - 0.15 * f.height):
+                continue
+            if abs(ln.start - f.left) > tol + ln.thickness or abs(ln.end - f.right) > tol + ln.thickness:
+                continue  # it does not run from side to side
+            if ln.darkness < 0.85 * side_dark or ln.thickness < max(1, side_thick):
+                continue  # a gridline
+            cuts.append(float(ln.pos))
+        cuts = sorted(set(round(c, 1) for c in cuts))
+        edges = [f.top] + cuts + [f.bottom]
+        if cuts and min(b - a for a, b in zip(edges, edges[1:])) >= 0.15 * f.height:
+            f.stack_cuts = cuts
+
+
 def _reading_order(frames: list[Frame]) -> list[Frame]:
     """Sort frames row by row, left to right, treating nearly equal tops as one row."""
     if not frames:
@@ -497,6 +529,10 @@ def _add_gridlines_and_ticks(frame: Frame, dark: np.ndarray, sat: np.ndarray) ->
         is_stub = (run >= min_run) & (run < strip.shape[1])
         return [0.5 * (b0 + b1) for b0, b1 in _runs(is_stub) if b1 - b0 + 1 <= max_thick]
 
+    # A tick is darker than what it is drawn on - the paper, or a pale band shading part of the plot (which is
+    # neutral ink too, and would make every row inside the axis a run of ink).
+    lum = 255.0 - dark.astype(np.float32)
+    ink = ink & ((cv2.dilate(lum, np.ones((15, 15), np.uint8)) - lum) > 50.0)
     xl = int(round(frame.left))
     yb = int(round(frame.bottom))
     half = t // 2 + 1
@@ -534,6 +570,7 @@ def find_frames_and_lines(rgb: np.ndarray) -> tuple[list[Frame], list[AxisLine],
     tol = float(max(3, int(round(0.012 * min(h, w)))))
 
     frames = _filter_frames(_assemble_frames(horizontal, vertical, tol), w, h)
+    _find_stack_cuts(frames, horizontal, tol)
     sat = _saturation(rgb)
     for frame in frames:
         _add_gridlines_and_ticks(frame, dark, sat)

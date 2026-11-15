@@ -23,7 +23,7 @@ from trace_digitiser import (
     pixels_to_values,
 )
 from trace_digitiser.axis_labels import tesseract_available
-from trace_digitiser.markers import find_markers, marker_radius
+from trace_digitiser.markers import colour_mask, find_markers, marker_radius, under_ink
 
 warnings.simplefilter("ignore")
 
@@ -121,6 +121,22 @@ def test_find_markers_box_and_exclude():
     assert [round(m.x) for m in found] == [15, 40, 65]
     found = find_markers(rgb, (0, 0, 79, 49), [(0, 0, 200)], exclude=[(55, 0, 79, 49)])
     assert [round(m.x) for m in found] == [15, 40]
+
+
+def test_markers_under_a_black_bar():
+    # the mean's bar of a dot plot, drawn across two dots: the dots go on under it, the bar beyond them does not
+    rgb = np.full((40, 90, 3), 255, np.uint8)
+    yy, xx = np.ogrid[:40, :90]
+    for cx in (25, 60):
+        rgb[(yy - 20) ** 2 + (xx - cx) ** 2 <= 64] = (236, 71, 57)
+    rgb[18:22, 5:85] = 0
+    colour = (236, 71, 57)
+    hidden = under_ink(rgb, colour, colour_mask(rgb, colour))
+    assert hidden[18:22, 20:30].all() and hidden[18:22, 55:65].all()
+    assert not hidden[:, :15].any() and not hidden[:, 36:50].any() and not hidden[:, 70:].any()
+    found = find_markers(rgb, (0, 0, 89, 39), [colour])
+    assert [(round(m.x), round(m.y)) for m in found] == [(25, 20), (60, 20)]
+    assert not under_ink(rgb, (0, 0, 0), colour_mask(rgb, (0, 0, 0))).any()  # black markers: the bar is theirs
 
 
 # --------------------------------------------------------------------- bars

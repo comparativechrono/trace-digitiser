@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "trace-digitiser"
-version = "2.2.0"
+version = "2.3.0"
 description = "Recover the data from figure images - lines, points, bars, actograms, heat maps - on your own computer: no uploads, no AI model."
 readme = "README.md"
 license = "MIT"

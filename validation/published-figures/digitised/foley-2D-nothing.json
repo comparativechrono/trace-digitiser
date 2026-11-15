@@ -1,0 +1,19 @@
+{
+ "case": "foley-2D-nothing",
+ "known": "foley-2D",
+ "given": "nothing",
+ "parts": [
+  {
+   "box": [
+    2773.0,
+    2537.0,
+    3342.0,
+    3137.0
+   ],
+   "series": null,
+   "panel_id": 5,
+   "x_calibrated": false,
+   "y_calibrated": true
+  }
+ ]
+}

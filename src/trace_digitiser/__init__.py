@@ -61,6 +61,7 @@ from .diagnostics import (
 )
 from .digitise import digitise_trace_mask
 from .io import build_panel_metadata, load_image, save_outputs  # noqa: F401  (load_image: as before)
+from .legend import drop_text, find_text_rows
 from .models import Calibration, DigitiserResult, Panel, ResampledResult, Trace, XLabel
 from .ocr import detect_x_labels
 from .provenance import build_provenance, package_version, write_provenance
@@ -119,6 +120,7 @@ def digitise(
     write_outputs: bool = True,
     straighten: Union[str, bool, float] = "auto",
     y_axis: str = "left",
+    legend: Union[str, bool] = "auto",
 ) -> DigitiserResult:
     """Digitise the line traces in a figure image.
 
@@ -182,6 +184,11 @@ def digitise(
     exclude : (x_left, y_top, x_right, y_bottom), or a list of them, optional
         Regions to ignore when looking for traces, e.g. a legend or an
         annotation drawn inside the plot.
+    legend : {"auto", "keep"}
+        ``"auto"`` (default) finds a legend drawn inside a plot area - two
+        or more entries, each a symbol with its label to the right - and
+        leaves it out, as if it had been given in *exclude*; a warning
+        says where. ``"keep"`` does not look for one.
     achromatic : {"auto", "always", "never"}
         Whether to look for a black or grey trace.
     ocr : bool
@@ -214,7 +221,7 @@ def digitise(
         expected_panels=expected_panels, y_min=y_min, y_max=y_max, x_min=x_min, x_max=x_max, total_days=total_days,
         output_dir=output_dir, output_prefix=output_prefix, show_debug=show_debug, save_diagnostics=save_diagnostics,
         plot_area=plot_area, y_ref=y_ref, x_ref=x_ref, y_scale=y_scale, x_scale=x_scale, exclude=exclude, ocr=ocr,
-        write_outputs=write_outputs, straighten=straighten, y_axis=y_axis,
+        write_outputs=write_outputs, straighten=straighten, y_axis=y_axis, legend=legend,
         extra_parameters={"trace_colours": list(trace_colours) if trace_colours else None, "achromatic": achromatic},
     )
     rgb, dark, panels, notes, note = fig.rgb, fig.dark, fig.panels, fig.notes, fig.note
@@ -233,6 +240,15 @@ def digitise(
             rgb, p, colours=trace_colours, exclude=exclude_boxes, achromatic=achromatic, darkness=dark,
             lines_only=True,
         )
+        # words written in the plot in a trace's colour (a panel's label, say) are not trace; words are found in
+        # black or grey print, so only a black or grey trace can hold them
+        grey = [tr for tr in masks if np.ptp(np.asarray(tr.get("median_rgb", (0, 0, 0)), float)) <= 60]
+        rows = find_text_rows(rgb, (p["x0"], p["y_top"], p["x1"], p["y_bottom"])) if grey else []
+        if rows:
+            for tr in grey:
+                tr["mask"] = drop_text(tr["mask"], (p["x0"], p["y_top"]), rows)
+                tr["pixel_count"] = int(tr["mask"].sum())
+            masks = [tr for tr in masks if tr["pixel_count"] > 0]
         if show_debug:
             print(f"Panel {p['panel_id']}: detected {len(masks)} trace(s)")
         if not masks:

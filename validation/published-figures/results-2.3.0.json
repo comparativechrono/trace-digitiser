@@ -1,0 +1,2465 @@
+{
+ "environment": {
+  "trace_digitiser": "2.3.0",
+  "python": "3.13.18",
+  "date": "2026-11-15",
+  "numpy": "2.5.4",
+  "pandas": "3.1.1",
+  "opencv": "5.0.0",
+  "tesseract": "5.3.4"
+ },
+ "cases": {
+  "leypunskiy-1C-nothing": {
+   "figure": "leypunskiy-2017-fig1.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "12/12 points, y error 0.31% (worst 0.70%), error bars 6/12 (0.87%)",
+   "score": 12,
+   "of": 12,
+   "seconds": 23.3,
+   "details": {
+    "known": 12,
+    "found": 12,
+    "matched": 12,
+    "extra": 0,
+    "x_median": 0.061776161553522835,
+    "x_worst": 0.27212118541720676,
+    "y_median": 0.3051235765995586,
+    "y_worst": 0.6981590777949132,
+    "errbars_known": 12,
+    "errbars_found": 6,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.8652354226167076,
+    "errbar_worst": 1.5012667951233662
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 2 of 3 tick labels (12312, 816). Confidence in it is low: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: the y axis is not calibrated - 5 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 3: the y-axis scale was read from 5 of 5 tick labels (24, 18, 12, 6, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 4: the y axis is not calibrated - 9 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 5: the y axis is not calibrated - 4 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "The x axis of panels 2, 4 and 5 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 15 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 4: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 5: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-1C-colour": {
+   "figure": "leypunskiy-2017-fig1.jpg",
+   "reader": "points",
+   "given": "the colour",
+   "options": {
+    "colours": [
+     "#e91f28"
+    ]
+   },
+   "held_out": false,
+   "summary": "12/12 points, y error 0.31% (worst 0.70%), error bars 6/12 (0.87%)",
+   "score": 12,
+   "of": 12,
+   "seconds": 21.5,
+   "details": {
+    "known": 12,
+    "found": 12,
+    "matched": 12,
+    "extra": 0,
+    "x_median": 0.061776161553522835,
+    "x_worst": 0.27212118541720676,
+    "y_median": 0.3051235765995586,
+    "y_worst": 0.6981590777949132,
+    "errbars_known": 12,
+    "errbars_found": 6,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.8652354226167076,
+    "errbar_worst": 1.5012667951233662
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 2 of 3 tick labels (12312, 816). Confidence in it is low: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: the y axis is not calibrated - 5 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 3: the y-axis scale was read from 5 of 5 tick labels (24, 18, 12, 6, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 4: the y axis is not calibrated - 9 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "Panel 5: the y axis is not calibrated - 4 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "The x axis of panels 2, 4 and 5 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 4: 2 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "leypunskiy-2B-nothing": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "lines",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "18:6: 0.58% (worst 1.1%); 12:12: 0.37% (worst 1.4%); 6:18: 0.19% (worst 0.9%)",
+   "score": 3,
+   "of": 3,
+   "seconds": 17.0,
+   "details": [
+    {
+     "18:6": {
+      "coverage": 0.9705882352941176,
+      "median": 0.5814457431820207,
+      "worst": 1.1009121821444363
+     }
+    },
+    {
+     "12:12": {
+      "coverage": 0.9705882352941176,
+      "median": 0.3667157215884913,
+      "worst": 1.3722297233098573
+     }
+    },
+    {
+     "6:18": {
+      "coverage": 0.9705882352941176,
+      "median": 0.18560755928442063,
+      "worst": 0.9423324522234301
+     }
+    }
+   ],
+   "warnings": [
+    "Panel 1 is 3 plots stacked one above another, with no gap between them; each is read as a plot of its own.",
+    "Panel 1: the y-axis scale was read from 3 of 3 tick labels (75, 50, 25). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: the y-axis scale was read from 3 of 3 tick labels (75, 50, 25). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 4: the x-axis scale was read from 5 of 6 tick labels (12, 24, 48, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 1: its x axis has no labels that could be read, so it was given the x scale of panel 4, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 2: its x axis has no labels that could be read, so it was given the x scale of panel 4, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 3 trace 1: 48% of columns had no trace pixels and were interpolated.",
+    "Panel 3 trace 2: 58% of columns had no trace pixels and were interpolated.",
+    "Panel 3 trace 3: 48% of columns had no trace pixels and were interpolated."
+   ]
+  },
+  "leypunskiy-2B-areas": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "lines",
+   "given": "the plot areas",
+   "options": {
+    "plot_area": [
+     [
+      1529,
+      65,
+      2545,
+      608.5
+     ],
+     [
+      1529,
+      608.5,
+      2545,
+      1153
+     ],
+     [
+      1529,
+      1153,
+      2545,
+      1696
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "18:6: 0.60% (worst 1.1%); 12:12: 0.29% (worst 1.5%); 6:18: 0.24% (worst 0.9%)",
+   "score": 3,
+   "of": 3,
+   "seconds": 10.2,
+   "details": [
+    {
+     "18:6": {
+      "coverage": 1.0,
+      "median": 0.6038150557358222,
+      "worst": 1.1477434285714356
+     }
+    },
+    {
+     "12:12": {
+      "coverage": 1.0,
+      "median": 0.2879849465173763,
+      "worst": 1.461459643842763
+     }
+    },
+    {
+     "6:18": {
+      "coverage": 1.0,
+      "median": 0.2371076344288549,
+      "worst": 0.9492820514967661
+     }
+    }
+   ],
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 3 of 3 tick labels (75, 50, 25). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 3: the x-axis scale was read from 5 of 6 tick labels (12, 24, 48, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 1: its x axis has no labels that could be read, so it was given the x scale of panel 3, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 2: its x axis has no labels that could be read, so it was given the x scale of panel 3, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref."
+   ]
+  },
+  "leypunskiy-2B-areas-colour": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "lines",
+   "given": "the plot areas, the line's colour",
+   "options": {
+    "plot_area": [
+     [
+      1529,
+      65,
+      2545,
+      608.5
+     ],
+     [
+      1529,
+      608.5,
+      2545,
+      1153
+     ],
+     [
+      1529,
+      1153,
+      2545,
+      1696
+     ]
+    ],
+    "trace_colours": [
+     "#232022"
+    ]
+   },
+   "held_out": false,
+   "summary": "18:6: 0.65% (worst 1.2%); 12:12: 0.35% (worst 1.3%); 6:18: 0.21% (worst 0.9%)",
+   "score": 3,
+   "of": 3,
+   "seconds": 10.1,
+   "details": [
+    {
+     "18:6": {
+      "coverage": 1.0,
+      "median": 0.6477745243873775,
+      "worst": 1.1636933472035955
+     }
+    },
+    {
+     "12:12": {
+      "coverage": 1.0,
+      "median": 0.34954760541885815,
+      "worst": 1.2648079435886928
+     }
+    },
+    {
+     "6:18": {
+      "coverage": 1.0,
+      "median": 0.21316755773629364,
+      "worst": 0.8816545932101955
+     }
+    }
+   ],
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 3 of 3 tick labels (75, 50, 25). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 3: the x-axis scale was read from 5 of 6 tick labels (12, 24, 48, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 1: its x axis has no labels that could be read, so it was given the x scale of panel 3, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 2: its x axis has no labels that could be read, so it was given the x scale of panel 3, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref."
+   ]
+  },
+  "leypunskiy-2B-points": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "points",
+   "given": "the plot areas, the markers' colour",
+   "options": {
+    "plot_area": [
+     [
+      1529,
+      65,
+      2545,
+      608.5
+     ],
+     [
+      1529,
+      608.5,
+      2545,
+      1153
+     ],
+     [
+      1529,
+      1153,
+      2545,
+      1696
+     ]
+    ],
+    "colours": [
+     "black"
+    ]
+   },
+   "held_out": false,
+   "summary": "99/102 points, y error 0.60% (worst 1.11%)",
+   "score": 99,
+   "of": 102,
+   "seconds": 10.7,
+   "details": [
+    {
+     "known": 34,
+     "found": 33,
+     "matched": 33,
+     "extra": 0,
+     "x_median": 0.12926702176639937,
+     "x_worst": 0.3089708557353285,
+     "y_median": 0.5960962962963001,
+     "y_worst": 1.1080982403628288,
+     "errbars_known": 0,
+     "errbars_found": 0,
+     "errbars_unexpected": 0
+    },
+    {
+     "known": 34,
+     "found": 33,
+     "matched": 33,
+     "extra": 0,
+     "x_median": 0.12222870010667464,
+     "x_worst": 0.3050112969137597,
+     "y_median": 0.33838294158710647,
+     "y_worst": 0.4985227118566249,
+     "errbars_known": 0,
+     "errbars_found": 0,
+     "errbars_unexpected": 0
+    },
+    {
+     "known": 34,
+     "found": 33,
+     "matched": 33,
+     "extra": 0,
+     "x_median": 0.12866382830332146,
+     "x_worst": 0.3107844312381994,
+     "y_median": 0.21989553683192664,
+     "y_worst": 0.33417794777469423,
+     "errbars_known": 0,
+     "errbars_found": 0,
+     "errbars_unexpected": 0
+    }
+   ],
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 3 of 3 tick labels (75, 50, 25). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 3: the x-axis scale was read from 5 of 6 tick labels (12, 24, 48, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 1: its x axis has no labels that could be read, so it was given the x scale of panel 3, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 2: its x axis has no labels that could be read, so it was given the x scale of panel 3, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref."
+   ]
+  },
+  "leypunskiy-2C-nothing": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "29/29 points (+1 extra), y error 0.07% (worst 0.46%), error bars 22/29 (0.33%)",
+   "score": 29,
+   "of": 29,
+   "seconds": 18.3,
+   "details": {
+    "known": 29,
+    "found": 30,
+    "matched": 29,
+    "extra": 1,
+    "x_median": 0.05960237905448529,
+    "x_worst": 0.27516391166549914,
+    "y_median": 0.07083507433456315,
+    "y_worst": 0.46096170441286555,
+    "errbars_known": 29,
+    "errbars_found": 22,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.3276447772242448,
+    "errbar_worst": 0.5658554584305864
+   },
+   "warnings": [
+    "Panel 1 is 3 plots stacked one above another, with no gap between them; each is read as a plot of its own.",
+    "Panel 1: the y-axis scale was read from 3 of 3 tick labels (75, 50, 25). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: the y-axis scale was read from 3 of 3 tick labels (75, 50, 25). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 4: the x-axis scale was read from 5 of 6 tick labels (12, 24, 48, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 1: its x axis has no labels that could be read, so it was given the x scale of panel 4, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 2: its x axis has no labels that could be read, so it was given the x scale of panel 4, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 2: 5 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 2 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "leypunskiy-2C-colours": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "points",
+   "given": "the colours",
+   "options": {
+    "colours": [
+     "#e81828",
+     "#0898d8",
+     "#08a8e8",
+     "black"
+    ]
+   },
+   "held_out": false,
+   "summary": "29/29 points (+1 extra), y error 0.07% (worst 0.64%), error bars 18/29 (0.35%)",
+   "score": 29,
+   "of": 29,
+   "seconds": 19.4,
+   "details": {
+    "known": 29,
+    "found": 30,
+    "matched": 29,
+    "extra": 1,
+    "x_median": 0.04529281220006509,
+    "x_worst": 0.29753018019894606,
+    "y_median": 0.07083507433456315,
+    "y_worst": 0.6419353493175239,
+    "errbars_known": 29,
+    "errbars_found": 18,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.35249500358177965,
+    "errbar_worst": 0.5658554584305864
+   },
+   "warnings": [
+    "Panel 1 is 3 plots stacked one above another, with no gap between them; each is read as a plot of its own.",
+    "Panel 1: the y-axis scale was read from 3 of 3 tick labels (75, 50, 25). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: the y-axis scale was read from 3 of 3 tick labels (75, 50, 25). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 4: the x-axis scale was read from 5 of 6 tick labels (12, 24, 48, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 1: its x axis has no labels that could be read, so it was given the x scale of panel 4, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 2: its x axis has no labels that could be read, so it was given the x scale of panel 4, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 3: 2 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "leypunskiy-2C-colours-size": {
+   "figure": "leypunskiy-2017-fig2.jpg",
+   "reader": "points",
+   "given": "the colours, the marker size",
+   "options": {
+    "colours": [
+     "#e81828",
+     "#0898d8",
+     "#08a8e8",
+     "black"
+    ],
+    "marker_size": 15
+   },
+   "held_out": false,
+   "summary": "29/29 points (+3 extra), y error 0.08% (worst 0.64%), error bars 21/29 (0.36%)",
+   "score": 29,
+   "of": 29,
+   "seconds": 17.3,
+   "details": {
+    "known": 29,
+    "found": 32,
+    "matched": 29,
+    "extra": 3,
+    "x_median": 0.05790657703586555,
+    "x_worst": 0.32238051967604653,
+    "y_median": 0.07670065121745395,
+    "y_worst": 0.6419353493175239,
+    "errbars_known": 29,
+    "errbars_found": 21,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.3572797073719568,
+    "errbar_worst": 0.5812649173775151
+   },
+   "warnings": [
+    "Panel 1 is 3 plots stacked one above another, with no gap between them; each is read as a plot of its own.",
+    "Panel 1: the y-axis scale was read from 3 of 3 tick labels (75, 50, 25). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: the y-axis scale was read from 3 of 3 tick labels (75, 50, 25). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 4: the x-axis scale was read from 5 of 6 tick labels (12, 24, 48, 60, 72). Confidence in it is medium: check those values against the figure, or give x_min and x_max.",
+    "Panel 1: its x axis has no labels that could be read, so it was given the x scale of panel 4, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 2: its x axis has no labels that could be read, so it was given the x scale of panel 4, which has the same left and right edges (a shared x axis). If the two do not share an axis, give x_min and x_max, or x_ref.",
+    "Panel 3: 4 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "leypunskiy-5A-nothing": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "9/9 points (+3 extra), y error 0.04% (worst 0.25%), error bars 8/9 (0.02%)",
+   "score": 9,
+   "of": 9,
+   "seconds": 13.0,
+   "details": {
+    "known": 9,
+    "found": 12,
+    "matched": 9,
+    "extra": 3,
+    "x_median": 0.026454588726476658,
+    "x_worst": 0.1369512843794718,
+    "y_median": 0.03536768052478101,
+    "y_worst": 0.25382781907227203,
+    "errbars_known": 9,
+    "errbars_found": 8,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.017328433987416857,
+    "errbar_worst": 0.2434041669454795
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 7 tick labels (8, 4, 0, -4, -8). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: a legend was found inside the plot area (x 1639-1807, y 765-944) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 2088-2488, y 2758-3096) and left out. If that is not a legend, pass legend='keep'."
+   ]
+  },
+  "leypunskiy-5A-ticks": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "the plot area, two ticks on each axis",
+   "options": {
+    "plot_area": [
+     [
+      224.9,
+      730.0,
+      1192.6,
+      1799.3
+     ]
+    ],
+    "y_ref": [
+     [
+      882.5,
+      12
+     ],
+     [
+      1646.5,
+      -8
+     ]
+    ],
+    "x_ref": [
+     [
+      293.5,
+      36
+     ],
+     [
+      1123.5,
+      60
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "9/9 points (+3 extra), y error 0.04% (worst 0.25%), error bars 8/9 (0.02%)",
+   "score": 9,
+   "of": 9,
+   "seconds": 1.9,
+   "details": {
+    "known": 9,
+    "found": 12,
+    "matched": 9,
+    "extra": 3,
+    "x_median": 0.03582612387889039,
+    "x_worst": 0.15404475043037102,
+    "y_median": 0.04087012204514462,
+    "y_worst": 0.254899287376191,
+    "errbars_known": 9,
+    "errbars_found": 8,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.016839195950667008,
+    "errbar_worst": 0.24766323484688899
+   },
+   "warnings": []
+  },
+  "leypunskiy-5A-ticks-colour-size": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "the plot area, ticks, the colour, the marker size",
+   "options": {
+    "plot_area": [
+     [
+      224.9,
+      730.0,
+      1192.6,
+      1799.3
+     ]
+    ],
+    "y_ref": [
+     [
+      882.5,
+      12
+     ],
+     [
+      1646.5,
+      -8
+     ]
+    ],
+    "x_ref": [
+     [
+      293.5,
+      36
+     ],
+     [
+      1123.5,
+      60
+     ]
+    ],
+    "colours": [
+     "black"
+    ],
+    "marker_size": 15
+   },
+   "held_out": false,
+   "summary": "9/9 points (+5 extra), y error 0.03% (worst 0.25%), error bars 8/9 (0.26%)",
+   "score": 9,
+   "of": 9,
+   "seconds": 1.8,
+   "details": {
+    "known": 9,
+    "found": 14,
+    "matched": 9,
+    "extra": 5,
+    "x_median": 0.030120481927786713,
+    "x_worst": 0.09036144578322691,
+    "y_median": 0.03385871145992342,
+    "y_worst": 0.254899287376191,
+    "errbars_known": 9,
+    "errbars_found": 8,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.26285494296184525,
+    "errbar_worst": 2.6598062601990504
+   },
+   "warnings": [
+    "Panel 1: 2 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "leypunskiy-5B-nothing": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "5/10 points, y error 0.01% (worst 0.14%), error bars 5/5 (0.02%)",
+   "score": 5,
+   "of": 10,
+   "seconds": 13.0,
+   "details": {
+    "known": 10,
+    "found": 5,
+    "matched": 5,
+    "extra": 0,
+    "x_median": 0.01988876437385434,
+    "x_worst": 0.17546998262547575,
+    "y_median": 0.010824815637128227,
+    "y_worst": 0.14266838995179443,
+    "errbars_known": 5,
+    "errbars_found": 5,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.024754761049261553,
+    "errbar_worst": 23.829812972972608
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 7 tick labels (8, 4, 0, -4, -8). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: a legend was found inside the plot area (x 1639-1807, y 765-944) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 2088-2488, y 2758-3096) and left out. If that is not a legend, pass legend='keep'."
+   ]
+  },
+  "leypunskiy-5B-colour-size": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "the colour, the marker size",
+   "options": {
+    "colours": [
+     "#383898"
+    ],
+    "marker_size": 15
+   },
+   "held_out": false,
+   "summary": "10/10 points (+19 extra), y error 0.09% (worst 0.20%), error bars 8/10 (0.20%)",
+   "score": 10,
+   "of": 10,
+   "seconds": 10.1,
+   "details": {
+    "known": 10,
+    "found": 29,
+    "matched": 10,
+    "extra": 19,
+    "x_median": 0.05483197090988545,
+    "x_worst": 0.14392840301959975,
+    "y_median": 0.0910229759140688,
+    "y_worst": 0.19998588700737008,
+    "errbars_known": 10,
+    "errbars_found": 8,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.1968889319636402,
+    "errbar_worst": 25.742889068001983
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 7 tick labels (8, 4, 0, -4, -8). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: a legend was found inside the plot area (x 1639-1807, y 765-944) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 2088-2488, y 2758-3096) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: 16 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "leypunskiy-5C-nothing": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "15/19 points (+1 extra), y error 0.03% (worst 0.40%), error bars 14/15 (0.34%)",
+   "score": 15,
+   "of": 19,
+   "seconds": 13.0,
+   "details": {
+    "known": 19,
+    "found": 16,
+    "matched": 15,
+    "extra": 1,
+    "x_median": 0.015404973314681047,
+    "x_worst": 0.20520419272676005,
+    "y_median": 0.03270796976926338,
+    "y_worst": 0.40456179991674723,
+    "errbars_known": 15,
+    "errbars_found": 14,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.3376402817553995,
+    "errbar_worst": 10.037700497004769
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 7 tick labels (8, 4, 0, -4, -8). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: a legend was found inside the plot area (x 1639-1807, y 765-944) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 2088-2488, y 2758-3096) and left out. If that is not a legend, pass legend='keep'."
+   ]
+  },
+  "leypunskiy-5C-colours": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "the colours",
+   "options": {
+    "colours": [
+     "#e81828",
+     "#d8d828",
+     "#08a888",
+     "#0868b8",
+     "#c81888"
+    ]
+   },
+   "held_out": false,
+   "summary": "17/19 points (+14 extra), y error 0.03% (worst 0.60%), error bars 13/17 (0.34%)",
+   "score": 17,
+   "of": 19,
+   "seconds": 11.7,
+   "details": {
+    "known": 19,
+    "found": 31,
+    "matched": 17,
+    "extra": 14,
+    "x_median": 0.023288847736302465,
+    "x_worst": 0.5009210841840472,
+    "y_median": 0.03158175867339352,
+    "y_worst": 0.6004763742856856,
+    "errbars_known": 17,
+    "errbars_found": 13,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.3424240686018182,
+    "errbar_worst": 11.108067366891632
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 7 tick labels (8, 4, 0, -4, -8). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: a legend was found inside the plot area (x 1639-1807, y 765-944) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 2088-2488, y 2758-3096) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 3: 10 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "leypunskiy-5C-colours-size": {
+   "figure": "leypunskiy-2017-fig5.jpg",
+   "reader": "points",
+   "given": "the colours, the marker size",
+   "options": {
+    "colours": [
+     "#e81828",
+     "#d8d828",
+     "#08a888",
+     "#0868b8",
+     "#c81888"
+    ],
+    "marker_size": 15
+   },
+   "held_out": false,
+   "summary": "17/19 points (+17 extra), y error 0.05% (worst 0.26%), error bars 15/17 (0.34%)",
+   "score": 17,
+   "of": 19,
+   "seconds": 11.6,
+   "details": {
+    "known": 19,
+    "found": 34,
+    "matched": 17,
+    "extra": 17,
+    "x_median": 0.029709332367411356,
+    "x_worst": 0.25380991396872776,
+    "y_median": 0.046366177708945244,
+    "y_worst": 0.2596561243719764,
+    "errbars_known": 17,
+    "errbars_found": 15,
+    "errbars_unexpected": 0,
+    "errbar_median": 0.3424240686018182,
+    "errbar_worst": 17.921197185472
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 7 tick labels (8, 4, 0, -4, -8). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 2: a legend was found inside the plot area (x 1639-1807, y 765-944) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 2088-2488, y 2758-3096) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 2: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them.",
+    "Panel 3: 10 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "foley-2C-25C-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "6/6 bars within 1%, error 0.13% (worst 0.22%), error bars 3/6 (0.08%)",
+   "score": 6,
+   "of": 6,
+   "seconds": 21.9,
+   "details": {
+    "known": 6,
+    "found": 6,
+    "pairs": [
+     [
+      "PsiRNAiGD/+ (25\u00b0C)",
+      24.20508474576271,
+      24.202531645569607
+     ],
+     [
+      "PsiRNAiKK/+ (25\u00b0C)",
+      24.024528301886793,
+      24.020253164556948
+     ],
+     [
+      "w1118 (25\u00b0C)",
+      24.057971014492754,
+      24.058467044106
+     ],
+     [
+      "TD2/+ (25\u00b0C)",
+      24.799999999999997,
+      24.79839647510382
+     ],
+     [
+      "TD2/PsiRNAiGD (25\u00b0C)",
+      23.715789473684207,
+      23.71139240506328
+     ],
+     [
+      "TD2/PsiRNAiKK (25\u00b0C)",
+      23.64814814814815,
+      23.645569620253156
+     ]
+    ],
+    "within": 6,
+    "median": 0.1282907022024382,
+    "worst": 0.21985343104642396,
+    "errbars_known": 6,
+    "errbars_found": 3,
+    "errbar_median": 0.07952893243217685,
+    "errbar_worst": 0.23727306840998497
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 3: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 4: 4 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 5: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 6: 1 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 7: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 9: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 11: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "foley-2C-30C-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "5/5 bars within 1%, error 0.15% (worst 0.29%), error bars 4/5 (0.07%)",
+   "score": 5,
+   "of": 5,
+   "seconds": 21.9,
+   "details": {
+    "known": 5,
+    "found": 5,
+    "pairs": [
+     [
+      "TD2/+ (30\u00b0C)",
+      23.65294117647059,
+      23.652428675179515
+     ],
+     [
+      "PsiRNAiGD/+ (30\u00b0C)",
+      23.616666666666664,
+      23.613636363636346
+     ],
+     [
+      "TD2/PsiRNAiGD (30\u00b0C)",
+      23.058823529411764,
+      23.05303030303029
+     ],
+     [
+      "PsiRNAiKK/+ (30\u00b0C)",
+      23.525000000000002,
+      23.52272727272726
+     ],
+     [
+      "TD2/PsiRNAiKK (30\u00b0C)",
+      22.841176470588238,
+      22.835858585858574
+     ]
+    ],
+    "within": 5,
+    "median": 0.1515151515159019,
+    "worst": 0.2896613190737085,
+    "errbars_known": 5,
+    "errbars_found": 4,
+    "errbar_median": 0.06967658068656898,
+    "errbar_worst": 0.21807751479115955
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 3: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 4: 4 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 5: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 6: 1 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 7: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 9: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 11: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "foley-2D-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "3/3 bars within 1%, error 0.10% (worst 0.10%), error bars 3/3 (0.06%)",
+   "score": 3,
+   "of": 3,
+   "seconds": 21.9,
+   "details": {
+    "known": 3,
+    "found": 3,
+    "pairs": [
+     [
+      "PD2/+",
+      24.8515625,
+      24.850618007019285
+     ],
+     [
+      "PD2/PsiRNAiGD",
+      24.185185185185187,
+      24.183104357638467
+     ],
+     [
+      "PD2/PsiRNAiKK",
+      24.65952380952381,
+      24.6575111024291
+     ]
+    ],
+    "within": 3,
+    "median": 0.10063535473552321,
+    "worst": 0.10404137733601715,
+    "errbars_known": 3,
+    "errbars_found": 3,
+    "errbar_median": 0.05547667713435185,
+    "errbar_worst": 0.07421382007919905
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 3: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 4: 4 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 5: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 6: 1 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 7: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 9: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 11: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "foley-2E-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "3/3 bars within 1%, error 0.15% (worst 0.26%), error bars 2/3 (0.42%)",
+   "score": 3,
+   "of": 3,
+   "seconds": 21.9,
+   "details": {
+    "known": 3,
+    "found": 3,
+    "pairs": [
+     [
+      "TD2/+; PdfGAL80/+",
+      24.46333333333333,
+      24.461288642407645
+     ],
+     [
+      "TD2/PsiRNAiGD; PdfGAL80/+",
+      23.78333333333333,
+      23.778054862842886
+     ],
+     [
+      "TD2/PsiRNAiKK; PdfGAL80/+",
+      24.005405405405405,
+      24.002493765586028
+     ]
+    ],
+    "within": 3,
+    "median": 0.14558199096885716,
+    "worst": 0.2639235245222693,
+    "errbars_known": 3,
+    "errbars_found": 2,
+    "errbar_median": 0.4221229283514316,
+    "errbar_worst": 0.757233980137409
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 3: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 4: 4 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 5: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 6: 1 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 7: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 9: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 11: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "foley-2F-period-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "3/3 bars within 1%, error 0.06% (worst 0.14%), error bars 3/3 (0.02%)",
+   "score": 3,
+   "of": 3,
+   "seconds": 21.9,
+   "details": {
+    "known": 3,
+    "found": 3,
+    "pairs": [
+     [
+      "UAS-Psi/+",
+      24.206349206349206,
+      24.204484704803857
+     ],
+     [
+      "TG4/+",
+      25.225,
+      25.23061462890893
+     ],
+     [
+      "TG4/+; UAS-Psi/+",
+      25.871428571428574,
+      25.87377506989841
+     ]
+    ],
+    "within": 3,
+    "median": 0.058662461745928596,
+    "worst": 0.14036572272324577,
+    "errbars_known": 3,
+    "errbars_found": 3,
+    "errbar_median": 0.018790373543930462,
+    "errbar_worst": 0.18474829778070861
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 3: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 4: 4 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 5: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 6: 1 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 7: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 9: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 11: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "foley-2F-rhythmic-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "3/3 bars within 1%, error 0.23% (worst 0.25%)",
+   "score": 3,
+   "of": 3,
+   "seconds": 21.9,
+   "details": {
+    "known": 3,
+    "found": 3,
+    "pairs": [
+     [
+      "UAS-Psi/+",
+      78.75,
+      79.0009685259406
+     ],
+     [
+      "TG4/+",
+      88.23529411764706,
+      88.00147496389968
+     ],
+     [
+      "TG4/+; UAS-Psi/+",
+      16.225165562913908,
+      15.992194477810813
+     ]
+    ],
+    "within": 3,
+    "median": 0.23381915374737616,
+    "worst": 0.2509685259406069,
+    "errbars_known": 0,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 3: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 4: 4 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 5: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 6: 1 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 7: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 9: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 11: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "foley-2G-period-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "3/3 bars within 1%, error 0.09% (worst 0.09%), error bars 3/3 (0.08%)",
+   "score": 3,
+   "of": 3,
+   "seconds": 21.9,
+   "details": {
+    "known": 3,
+    "found": 3,
+    "pairs": [
+     [
+      "UAS-Psi/+",
+      24.206349206349206,
+      24.21013521273032
+     ],
+     [
+      "PG4/+",
+      25.028000000000002,
+      25.026695761641804
+     ],
+     [
+      "PG4/+; UAS-Psi/+",
+      25.186486486486487,
+      25.189888033365296
+     ]
+    ],
+    "within": 3,
+    "median": 0.08503867197022785,
+    "worst": 0.09465015952789813,
+    "errbars_known": 3,
+    "errbars_found": 3,
+    "errbar_median": 0.08029680163870873,
+    "errbar_worst": 0.16776880597741267
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 3: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 4: 4 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 5: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 6: 1 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 7: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 9: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 11: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "foley-2G-rhythmic-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "3/3 bars within 1%, error 0.10% (worst 0.24%)",
+   "score": 3,
+   "of": 3,
+   "seconds": 21.9,
+   "details": {
+    "known": 3,
+    "found": 3,
+    "pairs": [
+     [
+      "UAS-Psi/+",
+      78.75,
+      78.98618166188987
+     ],
+     [
+      "PG4/+",
+      96.15384615384616,
+      96.13300212345791
+     ],
+     [
+      "PG4/+; UAS-Psi/+",
+      77.08333333333333,
+      76.98622026526687
+     ]
+    ],
+    "within": 3,
+    "median": 0.09711306806646292,
+    "worst": 0.23618166188987288,
+    "errbars_known": 0,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 3: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 4: 4 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 5: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 6: 1 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 7: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 9: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 11: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "foley-2H-period-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "3/3 bars within 1%, error 0.13% (worst 0.19%), error bars 3/3 (0.17%)",
+   "score": 3,
+   "of": 3,
+   "seconds": 21.9,
+   "details": {
+    "known": 3,
+    "found": 3,
+    "pairs": [
+     [
+      "UAS-Psi/+",
+      24.206349206349206,
+      24.206373009300485
+     ],
+     [
+      "TG4/+; PdfGAL80/+",
+      24.55483870967742,
+      24.562277764292062
+     ],
+     [
+      "TG4/+; PdfGAL80/UAS-Psi",
+      24.88,
+      24.885122893815232
+     ]
+    ],
+    "within": 3,
+    "median": 0.12807234538083634,
+    "worst": 0.18597636536608064,
+    "errbars_known": 3,
+    "errbars_found": 3,
+    "errbar_median": 0.17037340142563756,
+    "errbar_worst": 0.23699740887022647
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 3: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 4: 4 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 5: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 6: 1 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 7: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 9: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 11: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "foley-2H-rhythmic-nothing": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "3/3 bars within 1%, error 0.20% (worst 0.23%)",
+   "score": 3,
+   "of": 3,
+   "seconds": 21.9,
+   "details": {
+    "known": 3,
+    "found": 3,
+    "pairs": [
+     [
+      "UAS-Psi/+",
+      78.75,
+      78.98378518491336
+     ],
+     [
+      "TG4/+; PdfGAL80/+",
+      83.78378378378379,
+      83.98492788797398
+     ],
+     [
+      "TG4/+; PdfGAL80/UAS-Psi",
+      11.206896551724139,
+      11.025444482532748
+     ]
+    ],
+    "within": 3,
+    "median": 0.20114410419019177,
+    "worst": 0.23378518491335853,
+    "errbars_known": 0,
+    "errbars_found": 0
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 9 of 9 tick labels (1, 2, 3, 4, 5, 6, 7, 8, 9). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: the y axis was read as running downwards, from 0.446 at the top of the plot area to 9.52 at the bottom. If its labels are negative numbers, their minus signs were not read: give y_min and y_max.",
+    "The x axis of panels 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 and 12 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 3 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 2: 2 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 3: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 4: 4 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 5: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 6: 1 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 7: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 9: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end.",
+    "Panel 11: 3 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "foley-2C-25C-area": {
+   "figure": "foley-2019-fig2.jpg",
+   "reader": "bars",
+   "given": "the plot area",
+   "options": {
+    "plot_area": [
+     [
+      159,
+      2543,
+      1218,
+      3137
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "6/6 bars within 1%, error 0.18% (worst 0.28%), error bars 5/6 (0.08%)",
+   "score": 6,
+   "of": 6,
+   "seconds": 4.2,
+   "details": {
+    "known": 6,
+    "found": 6,
+    "pairs": [
+     [
+      "PsiRNAiGD/+ (25\u00b0C)",
+      24.20508474576271,
+      24.201943280123196
+     ],
+     [
+      "PsiRNAiKK/+ (25\u00b0C)",
+      24.024528301886793,
+      24.019433872145747
+     ],
+     [
+      "w1118 (25\u00b0C)",
+      24.057971014492754,
+      24.05769616451439
+     ],
+     [
+      "TD2/+ (25\u00b0C)",
+      24.799999999999997,
+      24.79856300543966
+     ],
+     [
+      "TD2/PsiRNAiGD (25\u00b0C)",
+      23.715789473684207,
+      23.71018181973951
+     ],
+     [
+      "TD2/PsiRNAiKK (25\u00b0C)",
+      23.64814814814815,
+      23.644275644636544
+     ]
+    ],
+    "within": 6,
+    "median": 0.17534922877802117,
+    "worst": 0.2803826972348489,
+    "errbars_known": 6,
+    "errbars_found": 5,
+    "errbar_median": 0.07745932687413526,
+    "errbar_worst": 0.23126736150920651
+   },
+   "warnings": [
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 5 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "pearl-reed-3-curve-nothing": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "lines",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "logistic: x and y axes not read",
+   "score": 0,
+   "of": 1,
+   "seconds": 12.0,
+   "details": {
+    "error": "x and y axes not read",
+    "found": 972
+   },
+   "warnings": [
+    "Panel 1: the y axis is not calibrated - 6 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref."
+   ]
+  },
+  "pearl-reed-3-dots-nothing": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": false,
+   "summary": "x and y axes not read",
+   "score": 0,
+   "of": 13,
+   "seconds": 12.2,
+   "details": {
+    "error": "x and y axes not read",
+    "found": 0
+   },
+   "warnings": [
+    "Panel 1: the y axis is not calibrated - 6 tick labels were found, but too few of them could be read for their values to agree on a scale. Values run from 0 at the bottom of the plot area to 1 at the top. Give y_min and y_max, or y_ref.",
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "pearl-reed-3-curve-ticks": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "lines",
+   "given": "two ticks on each axis",
+   "options": {
+    "y_ref": [
+     [
+      845.18,
+      0
+     ],
+     [
+      54.73,
+      100000000
+     ]
+    ],
+    "x_ref": [
+     [
+      263.04,
+      1790
+     ],
+     [
+      1095.94,
+      1910
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "logistic: 0.38% (worst 66.9%)",
+   "score": 1,
+   "of": 1,
+   "seconds": 1.4,
+   "details": {
+    "logistic": {
+     "coverage": 1.0,
+     "median": 0.38488260267592966,
+     "worst": 66.85209161472791
+    }
+   },
+   "warnings": []
+  },
+  "pearl-reed-3-curve-ticks-exclude": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "lines",
+   "given": "ticks, the equation excluded",
+   "options": {
+    "y_ref": [
+     [
+      845.18,
+      0
+     ],
+     [
+      54.73,
+      100000000
+     ]
+    ],
+    "x_ref": [
+     [
+      263.04,
+      1790
+     ],
+     [
+      1095.94,
+      1910
+     ]
+    ],
+    "exclude": [
+     [
+      280,
+      230,
+      620,
+      320
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "logistic: 0.17% (worst 40.0%)",
+   "score": 1,
+   "of": 1,
+   "seconds": 1.3,
+   "details": {
+    "logistic": {
+     "coverage": 1.0,
+     "median": 0.1671262878095964,
+     "worst": 40.0480832453956
+    }
+   },
+   "warnings": []
+  },
+  "pearl-reed-3-dots-ticks": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "points",
+   "given": "two ticks on each axis",
+   "options": {
+    "y_ref": [
+     [
+      845.18,
+      0
+     ],
+     [
+      54.73,
+      100000000
+     ]
+    ],
+    "x_ref": [
+     [
+      263.04,
+      1790
+     ],
+     [
+      1095.94,
+      1910
+     ]
+    ]
+   },
+   "held_out": false,
+   "summary": "0/13 points",
+   "score": 0,
+   "of": 13,
+   "seconds": 1.3,
+   "details": {
+    "known": 13,
+    "found": 0,
+    "matched": 0
+   },
+   "warnings": [
+    "Panel 1: no markers were found. Give colours (and marker_size) if the points are an unusual colour or very small, or exclude a legend that hides them."
+   ]
+  },
+  "pearl-reed-3-dots-ticks-colour": {
+   "figure": "pearl-reed-1920-fig3.png",
+   "reader": "points",
+   "given": "ticks, the colour",
+   "options": {
+    "y_ref": [
+     [
+      845.18,
+      0
+     ],
+     [
+      54.73,
+      100000000
+     ]
+    ],
+    "x_ref": [
+     [
+      263.04,
+      1790
+     ],
+     [
+      1095.94,
+      1910
+     ]
+    ],
+    "colours": [
+     "#404040"
+    ]
+   },
+   "held_out": false,
+   "summary": "13/13 points (+5 extra), y error 0.08% (worst 0.88%), error bars on 10 points that have none",
+   "score": 13,
+   "of": 13,
+   "seconds": 1.1,
+   "details": {
+    "known": 13,
+    "found": 18,
+    "matched": 13,
+    "extra": 5,
+    "x_median": 0.2952371053837055,
+    "x_worst": 0.43156987087797916,
+    "y_median": 0.07564681572437282,
+    "y_worst": 0.8810028114997703,
+    "errbars_known": 0,
+    "errbars_found": 0,
+    "errbars_unexpected": 10
+   },
+   "warnings": [
+    "Panel 1: 4 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "andreani-1B-area": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "points",
+   "given": "the plot area",
+   "options": {
+    "plot_area": [
+     [
+      1143,
+      160,
+      1853,
+      521
+     ]
+    ]
+   },
+   "held_out": true,
+   "summary": "x axis not read",
+   "score": 0,
+   "of": 37,
+   "seconds": 3.6,
+   "details": {
+    "error": "x axis not read",
+    "found": 3
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 5 tick labels (40, 30, 20, 10, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: a legend was found inside the plot area (x 1157-1509, y 189-269) and left out. If that is not a legend, pass legend='keep'."
+   ]
+  },
+  "andreani-1B-area-colours": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "points",
+   "given": "the plot area, the colours",
+   "options": {
+    "plot_area": [
+     [
+      1143,
+      160,
+      1853,
+      521
+     ]
+    ],
+    "colours": [
+     "#236333",
+     "#f26930",
+     "#542484"
+    ]
+   },
+   "held_out": true,
+   "summary": "x axis not read",
+   "score": 0,
+   "of": 37,
+   "seconds": 3.5,
+   "details": {
+    "error": "x axis not read",
+    "found": 34
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 5 tick labels (40, 30, 20, 10, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: a legend was found inside the plot area (x 1157-1509, y 189-269) and left out. If that is not a legend, pass legend='keep'."
+   ]
+  },
+  "andreani-1B-area-ticks": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "points",
+   "given": "the plot area, two ticks on the x axis",
+   "options": {
+    "plot_area": [
+     [
+      1143,
+      160,
+      1853,
+      521
+     ]
+    ],
+    "x_ref": [
+     [
+      1165,
+      0.0
+     ],
+     [
+      1829,
+      11.5
+     ]
+    ]
+   },
+   "held_out": true,
+   "summary": "0/37 points (+3 extra)",
+   "score": 0,
+   "of": 37,
+   "seconds": 3.7,
+   "details": {
+    "known": 37,
+    "found": 3,
+    "matched": 0,
+    "extra": 3
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 5 tick labels (40, 30, 20, 10, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: a legend was found inside the plot area (x 1157-1509, y 189-269) and left out. If that is not a legend, pass legend='keep'."
+   ]
+  },
+  "andreani-1B-area-ticks-colours": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "points",
+   "given": "the plot area, x ticks, the colours",
+   "options": {
+    "plot_area": [
+     [
+      1143,
+      160,
+      1853,
+      521
+     ]
+    ],
+    "x_ref": [
+     [
+      1165,
+      0.0
+     ],
+     [
+      1829,
+      11.5
+     ]
+    ],
+    "colours": [
+     "#236333",
+     "#f26930",
+     "#542484"
+    ]
+   },
+   "held_out": true,
+   "summary": "34/37 points, y error 0.27% (worst 1.31%), error bars on 5 points that have none",
+   "score": 34,
+   "of": 37,
+   "seconds": 3.5,
+   "details": {
+    "known": 37,
+    "found": 34,
+    "matched": 34,
+    "extra": 0,
+    "x_median": 0.07927665548325413,
+    "x_worst": 0.33067050811955156,
+    "y_median": 0.27252222283264405,
+    "y_worst": 1.3141691397180142,
+    "errbars_known": 0,
+    "errbars_found": 0,
+    "errbars_unexpected": 5
+   },
+   "warnings": [
+    "Panel 1: the y-axis scale was read from 5 of 5 tick labels (40, 30, 20, 10, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+    "Panel 1: a legend was found inside the plot area (x 1157-1509, y 189-269) and left out. If that is not a legend, pass legend='keep'."
+   ]
+  },
+  "andreani-1C-nothing": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "lines",
+   "given": "nothing",
+   "options": {},
+   "held_out": true,
+   "summary": "control: 0.60% (worst 2.7%); FD: 0.99% (worst 19.5%)",
+   "score": 2,
+   "of": 2,
+   "seconds": 1.7,
+   "details": {
+    "control": {
+     "coverage": 1.0,
+     "median": 0.6028751638012286,
+     "worst": 2.7231304689990523
+    },
+    "FD": {
+     "coverage": 1.0,
+     "median": 0.9898232829568947,
+     "worst": 19.5319212334971
+    }
+   },
+   "warnings": [
+    "Panel 1: a legend was found inside the plot area (x 392-516, y 861-920) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 1 trace 2: 62% of columns had no trace pixels and were interpolated.",
+    "Panel 1 trace 3: 66% of columns had no trace pixels and were interpolated."
+   ]
+  },
+  "andreani-1E-area": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "bars",
+   "given": "the plot area",
+   "options": {
+    "plot_area": [
+     [
+      946,
+      826,
+      1896,
+      1092
+     ]
+    ]
+   },
+   "held_out": true,
+   "summary": "24/24 bars within 1%, error 0.17% (worst 0.39%), error bars 22/24 (0.15%)",
+   "score": 24,
+   "of": 24,
+   "seconds": 10.4,
+   "details": {
+    "known": 24,
+    "found": 24,
+    "pairs": [
+     [
+      "bar 1",
+      88.93333333333334,
+      88.86200286958126
+     ],
+     [
+      "bar 2",
+      51.03448275862069,
+      50.41870383250057
+     ],
+     [
+      "bar 3",
+      24.6,
+      24.45716146893983
+     ],
+     [
+      "bar 4",
+      118.36666666666666,
+      117.8398569906069
+     ],
+     [
+      "bar 5",
+      85.65217391304348,
+      85.04912732734101
+     ],
+     [
+      "bar 6",
+      43.32142857142857,
+      42.770472048717124
+     ],
+     [
+      "bar 7",
+      41.44827586206897,
+      41.26746508791496
+     ],
+     [
+      "bar 8",
+      85.83333333333333,
+      85.81170243578902
+     ],
+     [
+      "bar 9",
+      56.708333333333336,
+      56.49386846370999
+     ],
+     [
+      "bar 10",
+      37.172413793103445,
+      36.658246844381324
+     ],
+     [
+      "bar 11",
+      134.6,
+      134.2808057453866
+     ],
+     [
+      "bar 12",
+      70.54166666666667,
+      70.19666920698114
+     ],
+     [
+      "bar 13",
+      44.22222222222222,
+      44.293748874004564
+     ],
+     [
+      "bar 14",
+      85.48148148148148,
+      84.70658756228829
+     ],
+     [
+      "bar 15",
+      77.6923076923077,
+      77.09752246269431
+     ],
+     [
+      "bar 16",
+      52.25,
+      51.96908083826247
+     ],
+     [
+      "bar 17",
+      28.346153846153847,
+      28.311379622268873
+     ],
+     [
+      "bar 18",
+      133.1304347826087,
+      132.77550649795796
+     ],
+     [
+      "bar 19",
+      63.8,
+      63.34804983282663
+     ],
+     [
+      "bar 20",
+      35.95238095238095,
+      35.89111043462549
+     ],
+     [
+      "bar 21",
+      128.0,
+      127.42057948843978
+     ],
+     [
+      "bar 22",
+      79.86666666666666,
+      79.71110156820475
+     ],
+     [
+      "bar 23",
+      34.8,
+      34.388150017714224
+     ],
+     [
+      "bar 24",
+      44.5,
+      44.31370456722641
+     ]
+    ],
+    "within": 24,
+    "median": 0.16604792857473072,
+    "worst": 0.3874469595965948,
+    "errbars_known": 24,
+    "errbars_found": 22,
+    "errbar_median": 0.15101689747979563,
+    "errbar_worst": 1.8190736651867843
+   },
+   "warnings": [
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 1 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 1: 22 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "andreani-1E-area-ticks": {
+   "figure": "andreani-2022-fig1.jpg",
+   "reader": "bars",
+   "given": "the plot area, two ticks",
+   "options": {
+    "plot_area": [
+     [
+      946,
+      826,
+      1896,
+      1092
+     ]
+    ],
+    "y_ref": [
+     [
+      1089,
+      0
+     ],
+     [
+      826.8,
+      200
+     ]
+    ]
+   },
+   "held_out": true,
+   "summary": "24/24 bars within 1%, error 0.16% (worst 0.39%), error bars 22/24 (0.15%)",
+   "score": 24,
+   "of": 24,
+   "seconds": 10.7,
+   "details": {
+    "known": 24,
+    "found": 24,
+    "pairs": [
+     [
+      "bar 1",
+      88.93333333333334,
+      88.8634630053391
+     ],
+     [
+      "bar 2",
+      51.03448275862069,
+      50.41001099470782
+     ],
+     [
+      "bar 3",
+      24.6,
+      24.44161212144195
+     ],
+     [
+      "bar 4",
+      118.36666666666666,
+      117.84897025171585
+     ],
+     [
+      "bar 5",
+      85.65217391304348,
+      85.0495804729211
+     ],
+     [
+      "bar 6",
+      43.32142857142857,
+      42.759759293358684
+     ],
+     [
+      "bar 7",
+      41.44827586206897,
+      41.25635538457607
+     ],
+     [
+      "bar 8",
+      85.83333333333333,
+      85.81235697940463
+     ],
+     [
+      "bar 9",
+      56.708333333333336,
+      56.48678009242667
+     ],
+     [
+      "bar 10",
+      37.172413793103445,
+      36.64591983472144
+     ],
+     [
+      "bar 11",
+      134.6,
+      134.29426110309066
+     ],
+     [
+      "bar 12",
+      70.54166666666667,
+      70.19319978040346
+     ],
+     [
+      "bar 13",
+      44.22222222222222,
+      44.28343841994979
+     ],
+     [
+      "bar 14",
+      85.48148148148148,
+      84.70695024224074
+     ],
+     [
+      "bar 15",
+      77.6923076923077,
+      77.09587556910242
+     ],
+     [
+      "bar 16",
+      52.25,
+      51.96079745900033
+     ],
+     [
+      "bar 17",
+      28.346153846153847,
+      28.296848183638076
+     ],
+     [
+      "bar 18",
+      133.1304347826087,
+      132.78856430228268
+     ],
+     [
+      "bar 19",
+      63.8,
+      63.34277166836466
+     ],
+     [
+      "bar 20",
+      35.95238095238095,
+      35.87858082227865
+     ],
+     [
+      "bar 21",
+      128.0,
+      127.43222304285223
+     ],
+     [
+      "bar 22",
+      79.86666666666666,
+      79.71014492753591
+     ],
+     [
+      "bar 23",
+      34.8,
+      34.37522346967921
+     ],
+     [
+      "bar 24",
+      44.5,
+      44.303399383521196
+     ]
+    ],
+    "within": 24,
+    "median": 0.1619023443088352,
+    "worst": 0.3872656196203721,
+    "errbars_known": 24,
+    "errbars_found": 22,
+    "errbar_median": 0.15279391223862504,
+    "errbar_worst": 1.8183730390480042
+   },
+   "warnings": [
+    "The x axis of the plot is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: 1 patch(es) of a bar colour do not reach the baseline and were left out (a legend, perhaps).",
+    "Panel 1: 22 error bar(s) show only beyond the end of the bar (the other half is hidden by the bar, or not drawn); error_high is where they end, and error_low is the bar's end."
+   ]
+  },
+  "andreani-3A-nothing": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": true,
+   "summary": "120/165 dots (+29 extra), y error 0.14% (worst 2.91%)",
+   "score": 120,
+   "of": 165,
+   "seconds": 4.6,
+   "details": {
+    "known": 165,
+    "found": 149,
+    "matched": 120,
+    "extra": 29,
+    "columns": {
+     "sleep lost, first time": "18 of 23 (found 18)",
+     "sleep lost, second time": "20 of 32 (found 26)",
+     "baseline sleep, first time": "13 of 23 (found 13)",
+     "baseline sleep, second time": "25 of 32 (found 37)",
+     "sleep gain, first time": "17 of 23 (found 22)",
+     "sleep gain, second time": "27 of 32 (found 33)"
+    },
+    "y_median": 0.13617577924368618,
+    "y_worst": 2.9064179138920565
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: a legend was found inside the plot area (x 606-792, y 178-282) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 2: a legend was found inside the plot area (x 1404-1589, y 189-299) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 611-791, y 1210-1306) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 4: a legend was found inside the plot area (x 1404-1628, y 1216-1323) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 1: 150 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 2: 62 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 134 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: 80 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "andreani-3B-nothing": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": true,
+   "summary": "77/108 dots, y error 0.09% (worst 2.14%)",
+   "score": 77,
+   "of": 108,
+   "seconds": 4.6,
+   "details": {
+    "known": 108,
+    "found": 77,
+    "matched": 77,
+    "extra": 0,
+    "columns": {
+     "sleep lost, first time": "14 of 18 (found 14)",
+     "sleep lost, second time": "9 of 18 (found 9)",
+     "baseline sleep, first time": "13 of 18 (found 13)",
+     "baseline sleep, second time": "12 of 18 (found 12)",
+     "sleep gain, first time": "14 of 18 (found 14)",
+     "sleep gain, second time": "15 of 18 (found 15)"
+    },
+    "y_median": 0.08705453049847733,
+    "y_worst": 2.1426679273343012
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: a legend was found inside the plot area (x 606-792, y 178-282) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 2: a legend was found inside the plot area (x 1404-1589, y 189-299) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 611-791, y 1210-1306) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 4: a legend was found inside the plot area (x 1404-1628, y 1216-1323) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 1: 150 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 2: 62 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 134 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: 80 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "andreani-3C-nothing": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": true,
+   "summary": "114/180 dots (+27 extra), y error 0.15% (worst 2.92%)",
+   "score": 114,
+   "of": 180,
+   "seconds": 4.6,
+   "details": {
+    "known": 180,
+    "found": 141,
+    "matched": 114,
+    "extra": 27,
+    "columns": {
+     "sleep lost, first time": "16 of 25 (found 18)",
+     "sleep lost, second time": "8 of 35 (found 12)",
+     "baseline sleep, first time": "17 of 25 (found 20)",
+     "baseline sleep, second time": "33 of 35 (found 46)",
+     "sleep gain, first time": "21 of 25 (found 21)",
+     "sleep gain, second time": "19 of 35 (found 24)"
+    },
+    "y_median": 0.14568534650356924,
+    "y_worst": 2.9157416022327993
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: a legend was found inside the plot area (x 606-792, y 178-282) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 2: a legend was found inside the plot area (x 1404-1589, y 189-299) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 611-791, y 1210-1306) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 4: a legend was found inside the plot area (x 1404-1628, y 1216-1323) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 1: 150 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 2: 62 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 134 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: 80 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "andreani-3D-nothing": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "nothing",
+   "options": {},
+   "held_out": true,
+   "summary": "37/44 dots (+11 extra), y error 0.14% (worst 2.94%)",
+   "score": 37,
+   "of": 44,
+   "seconds": 4.6,
+   "details": {
+    "known": 44,
+    "found": 88,
+    "matched": 37,
+    "extra": 11,
+    "columns": {
+     "sleep lost, first time": "11 of 15 (found 11)",
+     "sleep lost, second time": "not compared (found 18)",
+     "baseline sleep, first time": "13 of 15 (found 13)",
+     "baseline sleep, second time": "13 of 14 (found 24)",
+     "sleep gain, first time": "not compared (found 9)",
+     "sleep gain, second time": "not compared (found 13)"
+    },
+    "y_median": 0.13689918218076969,
+    "y_worst": 2.9379860055022107
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: a legend was found inside the plot area (x 606-792, y 178-282) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 2: a legend was found inside the plot area (x 1404-1589, y 189-299) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 611-791, y 1210-1306) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 4: a legend was found inside the plot area (x 1404-1628, y 1216-1323) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 1: 150 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 2: 62 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 134 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: 80 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "andreani-3A-colours": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "the colours",
+   "options": {
+    "colours": [
+     "#636dac",
+     "#ec4739"
+    ]
+   },
+   "held_out": true,
+   "summary": "129/165 dots (+24 extra), y error 0.22% (worst 2.82%)",
+   "score": 129,
+   "of": 165,
+   "seconds": 3.3,
+   "details": {
+    "known": 165,
+    "found": 153,
+    "matched": 129,
+    "extra": 24,
+    "columns": {
+     "sleep lost, first time": "17 of 23 (found 17)",
+     "sleep lost, second time": "23 of 32 (found 29)",
+     "baseline sleep, first time": "15 of 23 (found 16)",
+     "baseline sleep, second time": "27 of 32 (found 38)",
+     "sleep gain, first time": "18 of 23 (found 20)",
+     "sleep gain, second time": "29 of 32 (found 33)"
+    },
+    "y_median": 0.21834155202159877,
+    "y_worst": 2.824434499335311
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: a legend was found inside the plot area (x 606-792, y 178-282) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 2: a legend was found inside the plot area (x 1404-1589, y 189-299) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 611-791, y 1210-1306) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 4: a legend was found inside the plot area (x 1404-1628, y 1216-1323) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 1: 146 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 2: 74 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 165 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: 62 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "andreani-3B-colours": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "the colours",
+   "options": {
+    "colours": [
+     "#636dac",
+     "#ec4739"
+    ]
+   },
+   "held_out": true,
+   "summary": "78/108 dots (+8 extra), y error 0.10% (worst 2.14%)",
+   "score": 78,
+   "of": 108,
+   "seconds": 3.3,
+   "details": {
+    "known": 108,
+    "found": 86,
+    "matched": 78,
+    "extra": 8,
+    "columns": {
+     "sleep lost, first time": "13 of 18 (found 13)",
+     "sleep lost, second time": "10 of 18 (found 16)",
+     "baseline sleep, first time": "13 of 18 (found 13)",
+     "baseline sleep, second time": "16 of 18 (found 16)",
+     "sleep gain, first time": "15 of 18 (found 15)",
+     "sleep gain, second time": "11 of 18 (found 13)"
+    },
+    "y_median": 0.1029651770602058,
+    "y_worst": 2.142527885529063
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: a legend was found inside the plot area (x 606-792, y 178-282) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 2: a legend was found inside the plot area (x 1404-1589, y 189-299) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 611-791, y 1210-1306) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 4: a legend was found inside the plot area (x 1404-1628, y 1216-1323) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 1: 146 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 2: 74 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 165 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: 62 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "andreani-3C-colours": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "the colours",
+   "options": {
+    "colours": [
+     "#636dac",
+     "#ec4739"
+    ]
+   },
+   "held_out": true,
+   "summary": "141/180 dots (+34 extra), y error 0.18% (worst 2.77%)",
+   "score": 141,
+   "of": 180,
+   "seconds": 3.3,
+   "details": {
+    "known": 180,
+    "found": 175,
+    "matched": 141,
+    "extra": 34,
+    "columns": {
+     "sleep lost, first time": "16 of 25 (found 19)",
+     "sleep lost, second time": "28 of 35 (found 35)",
+     "baseline sleep, first time": "17 of 25 (found 23)",
+     "baseline sleep, second time": "33 of 35 (found 43)",
+     "sleep gain, first time": "21 of 25 (found 21)",
+     "sleep gain, second time": "26 of 35 (found 34)"
+    },
+    "y_median": 0.18210909114532114,
+    "y_worst": 2.766689055791801
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: a legend was found inside the plot area (x 606-792, y 178-282) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 2: a legend was found inside the plot area (x 1404-1589, y 189-299) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 611-791, y 1210-1306) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 4: a legend was found inside the plot area (x 1404-1628, y 1216-1323) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 1: 146 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 2: 74 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 165 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: 62 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  },
+  "andreani-3D-colours": {
+   "figure": "andreani-2022-fig3.jpg",
+   "reader": "points",
+   "given": "the colours",
+   "options": {
+    "colours": [
+     "#636dac",
+     "#ec4739"
+    ]
+   },
+   "held_out": true,
+   "summary": "38/44 dots (+4 extra), y error 0.15% (worst 2.94%)",
+   "score": 38,
+   "of": 44,
+   "seconds": 3.3,
+   "details": {
+    "known": 44,
+    "found": 82,
+    "matched": 38,
+    "extra": 4,
+    "columns": {
+     "sleep lost, first time": "12 of 15 (found 12)",
+     "sleep lost, second time": "not compared (found 16)",
+     "baseline sleep, first time": "13 of 15 (found 13)",
+     "baseline sleep, second time": "13 of 14 (found 17)",
+     "sleep gain, first time": "not compared (found 10)",
+     "sleep gain, second time": "not compared (found 14)"
+    },
+    "y_median": 0.14874593171026618,
+    "y_worst": 2.943819487406188
+   },
+   "warnings": [
+    "The x axis of panels 1, 2, 3 and 4 is not calibrated (no numeric scale could be read from its labels); the output has x_pixel and x_norm_0_to_1 but no x_value. Give x_min and x_max, or x_ref.",
+    "Panel 1: a legend was found inside the plot area (x 606-792, y 178-282) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 2: a legend was found inside the plot area (x 1404-1589, y 189-299) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 3: a legend was found inside the plot area (x 611-791, y 1210-1306) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 4: a legend was found inside the plot area (x 1404-1628, y 1216-1323) and left out. If that is not a legend, pass legend='keep'.",
+    "Panel 1: 146 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 2: 74 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 3: 165 points were in blobs of overlapping markers and were separated by their size; check them on the overlay.",
+    "Panel 4: 62 points were in blobs of overlapping markers and were separated by their size; check them on the overlay."
+   ]
+  }
+ }
+}

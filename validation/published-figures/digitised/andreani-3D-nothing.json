@@ -1,0 +1,19 @@
+{
+ "case": "andreani-3D-nothing",
+ "known": "andreani-3D",
+ "given": "nothing",
+ "parts": [
+  {
+   "box": [
+    1392.0,
+    1184.0,
+    1911.0,
+    1756.0
+   ],
+   "series": null,
+   "panel_id": 4,
+   "x_calibrated": false,
+   "y_calibrated": true
+  }
+ ]
+}

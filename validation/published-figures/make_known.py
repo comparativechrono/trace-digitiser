@@ -178,6 +178,12 @@ def andreani():
             i += 1
         out[f"andreani-3{panel}"] = {f"{c}, {t}": cols.get(f"{c}, {t}", [])
                                      for c in cats for t in ("first time", "second time")}
+    # In panel 3D three columns are not drawn from the values in the sheet: the means drawn over their dots (69.5,
+    # 92.3 and 88.4 min, read off the figure) are not those of the sheet's values (84.6, 124.7 and 123.7), while the
+    # other three columns of 3D, and all of 3A-C, agree to within 2 min. Those columns are kept as columns (so that
+    # the dots found are split into the right columns) but not compared (None).
+    for name in ("sleep lost, second time", "sleep gain, first time", "sleep gain, second time"):
+        out["andreani-3D"][name] = None
     return out
 
 
@@ -188,4 +194,5 @@ if __name__ == "__main__":
     (HERE / "known.json").write_text(json.dumps(known, indent=1, ensure_ascii=False) + "\n")
     for k, v in known.items():
         parts = v.values() if isinstance(v, dict) else [v]
-        print(f"{k:24s}", " + ".join(str(len(s["x"]) if isinstance(s, dict) else len(s)) for s in parts))
+        print(f"{k:24s}", " + ".join(
+            "-" if s is None else str(len(s["x"]) if isinstance(s, dict) else len(s)) for s in parts))

@@ -706,7 +706,30 @@ def _panel_from_frame(frame: Frame, source: str) -> dict:
         "tick_cols": _dedupe_positions(anchors_x),
         "score": 10.0 + len(frame.gridlines_h),
         "source": source,
+        "stack_cuts": list(frame.stack_cuts),
     }
+
+
+def split_stack(rgb: np.ndarray, panel: dict) -> list[dict]:
+    """The plots stacked in *panel*, one for each stretch between the lines in its ``stack_cuts`` (see
+    :func:`trace_digitiser.frames._find_stack_cuts`), each with its own gridlines and tick marks."""
+    cuts = panel.get("stack_cuts") or []
+    if not cuts:
+        return [panel]
+    dark = darkness_map(rgb)
+    sat = _saturation(rgb)
+    e = panel["edges"]
+    edges = [e["top"]] + list(cuts) + [e["bottom"]]
+    out = []
+    for a, b in zip(edges, edges[1:]):
+        frame = Frame(
+            left=e["left"], right=e["right"], top=a, bottom=b, has_right=panel.get("has_right", True),
+            line_thickness=int(panel.get("line_thickness", 1)), source="stacked",
+        )
+        _add_gridlines_and_ticks(frame, dark, sat)
+        sub = _panel_from_frame(frame, panel.get("source", "axis_lines") + "_stacked")
+        out.append(sub)
+    return out
 
 
 def _dedupe_positions(values: list[float], tol: float = 1.5) -> list[float]:

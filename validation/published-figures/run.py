@@ -106,8 +106,7 @@ CASES = [
     _case("leypunskiy-1C-nothing", L1, "points", "nothing", "points", "leypunskiy-1C"),
     _case("leypunskiy-1C-colour", L1, "points", "the colour", "points", "leypunskiy-1C",
           {"colours": ["#e91f28"]}),
-    _case("leypunskiy-2B-nothing", L2, "lines", "nothing", "curves", "leypunskiy-2B",
-          parts=[(BOX["leypunskiy-2B"], None)]),
+    _case("leypunskiy-2B-nothing", L2, "lines", "nothing", "curves", "leypunskiy-2B", parts=L2B_PARTS),
     _case("leypunskiy-2B-areas", L2, "lines", "the plot areas", "curves", "leypunskiy-2B",
           {"plot_area": L2B_AREAS}, L2B_PARTS),
     _case("leypunskiy-2B-areas-colour", L2, "lines", "the plot areas, the line's colour", "curves", "leypunskiy-2B",
@@ -350,7 +349,7 @@ def compare_dots(found, known, yspan):
     """The dots of a dot plot ({column: [value, ...]}, columns left to right) against those found: the coloured
     marks found are split into the columns at the widest gaps between them, then paired by value in each column."""
     columns = list(known.items())
-    n_known = sum(len(v) for _, v in columns)
+    n_known = sum(len(v) for _, v in columns if v is not None)  # (a column whose values are not those drawn: None)
     d = found.dropna(subset=["y_value"]) if len(found) else found
     if len(d):  # the dots are coloured; the marks of the means and error bars drawn over them are black
         rgb = np.array([[int(c[i:i + 2], 16) for i in (1, 3, 5)] for c in d["colour"]])
@@ -361,16 +360,49 @@ def compare_dots(found, known, yspan):
     xs = d["x_pixel"].to_numpy(float)
     cuts = sorted(int(g) + 1 for g in np.argsort(-np.diff(xs))[: len(columns) - 1])
     errs, per = [], {}
+    left_out = 0
     for (name, values), idx in zip(columns, np.split(np.arange(len(xs)), cuts)):
+        if values is None:
+            left_out += len(idx)
+            per[name] = f"not compared (found {len(idx)})"
+            continue
         vals, got = np.asarray(values, float), d.iloc[idx]["y_value"].to_numpy(float)
         ri, ci = assignment(np.abs(vals[:, None] - got[None, :]) / yspan)
         ok = np.abs(vals[ri] - got[ci]) / yspan <= DOT_TOL
         errs += [float(v) for v in np.abs(vals[ri] - got[ci])[ok] / yspan * 100]
         per[name] = f"{int(ok.sum())} of {len(vals)} (found {len(got)})"
-    out.update(matched=len(errs), extra=int(len(d)) - len(errs), columns=per)
+    out.update(matched=len(errs), extra=int(len(d)) - left_out - len(errs), columns=per)
     if errs:
         out.update(y_median=float(np.median(errs)), y_worst=float(np.max(errs)))
     return out
+
+
+# ------------------------------------------------------------------------------------------- what was read
+KEEP = ["panel_id", "series", "colour", "x_pixel", "y_pixel", "x_value", "y_value", "value", "shared",
+        "interpolated", "y_error_low", "y_error_high", "error_low", "error_high"]
+
+
+def save_digitised(case, run, folder):
+    """What a case read in the plots it compares: <case>.csv (the values) and <case>.json (which panel was compared
+    with each part of the known values, and whether its axes were read), for drawing them beside the known values
+    (paper/figures.py, S2 Fig)."""
+    folder.mkdir(parents=True, exist_ok=True)
+    parts, ids = [], set()
+    for box, names in case["parts"]:
+        p = None if "error" in run else pick(run["panels"], box)
+        parts.append({"box": [float(v) for v in box], "series": names,
+                      "panel_id": None if p is None else int(p["panel_id"]),
+                      "x_calibrated": p is not None and _calibrated(p, "x"),
+                      "y_calibrated": p is not None and _calibrated(p, "y")})
+        if p is not None:
+            ids.add(int(p["panel_id"]))
+    data = run.get("data")
+    if data is None or not len(data) or "panel_id" not in data:
+        data = pd.DataFrame(columns=["panel_id"])
+    data = data[data["panel_id"].isin(ids)]
+    data[[c for c in KEEP if c in data]].to_csv(folder / f"{case['name']}.csv", index=False, float_format="%.6g")
+    info = {"case": case["name"], "known": case["known"], "given": case["given"], "parts": parts}
+    (folder / f"{case['name']}.json").write_text(json.dumps(info, indent=1) + "\n")
 
 
 # ------------------------------------------------------------------------------------------------- a case
@@ -380,7 +412,7 @@ NEEDED = {"points": ["x_value", "y_value"], "curves": ["x_value", "y_value"], "b
 def _size(kind, part):
     if kind in ("curves", "bars"):
         return len(part)
-    return sum(len(v) for v in part.values())
+    return sum(len(v) for v in part.values() if v is not None)
 
 
 def evaluate(case, run, known):
@@ -534,6 +566,9 @@ def main(argv=None):
     ap.add_argument("--results", type=Path, help="show results saved before (with --json) instead of reading")
     ap.add_argument("--markdown", action="store_true", help="print the results as a Markdown table")
     ap.add_argument("--out", type=Path, help="write each run's files, and its overlay, in a folder in this one")
+    ap.add_argument("--digitised", type=Path, nargs="?", const=HERE / "digitised",
+                    help="save what each case read in the plots it compares, as a CSV and a JSON file, in this folder "
+                         "(digitised/ if no folder is given)")
     ap.add_argument("--list", action="store_true", help="list the cases and stop")
     args = ap.parse_args(argv)
     cases = [c for c in CASES if not args.names or any(c["name"].startswith(n) for n in args.names)]
@@ -565,6 +600,8 @@ def main(argv=None):
                 runs[key] = read(c["reader"], c["figure"], c["options"], out_dir)
             run = runs[key]
             details, summary, score, total = evaluate(c, run, known)
+            if args.digitised:
+                save_digitised(c, run, args.digitised)
             results[c["name"]] = {"figure": c["figure"], "reader": c["reader"], "given": c["given"],
                                   "options": c["options"], "held_out": c["held_out"], "summary": summary,
                                   "score": int(score), "of": int(total), "seconds": round(run["seconds"], 1),

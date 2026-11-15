@@ -1,8 +1,20 @@
 {
- "X-activity male": [],
- "X-activity female": [],
- "Ambulatory male": [],
- "Ambulatory female": [],
- "Z-activity male": [],
- "Z-activity female": []
+ "X-activity male": [
+  "Panel 1: a legend was found inside the plot area (x 1369-1524, y 140-244) and left out. If that is not a legend, pass legend='keep'."
+ ],
+ "X-activity female": [
+  "Panel 1: a legend was found inside the plot area (x 1365-1520, y 715-826) and left out. If that is not a legend, pass legend='keep'."
+ ],
+ "Ambulatory male": [
+  "Panel 1: a legend was found inside the plot area (x 1367-1522, y 1435-1546) and left out. If that is not a legend, pass legend='keep'."
+ ],
+ "Ambulatory female": [
+  "Panel 1: a legend was found inside the plot area (x 1371-1526, y 2048-2159) and left out. If that is not a legend, pass legend='keep'."
+ ],
+ "Z-activity male": [
+  "Panel 1: a legend was found inside the plot area (x 1347-1502, y 2744-2855) and left out. If that is not a legend, pass legend='keep'."
+ ],
+ "Z-activity female": [
+  "Panel 1: a legend was found inside the plot area (x 1349-1504, y 3361-3472) and left out. If that is not a legend, pass legend='keep'."
+ ]
 }

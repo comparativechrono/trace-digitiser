@@ -1,0 +1,19 @@
+{
+ "case": "andreani-3B-nothing",
+ "known": "andreani-3B",
+ "given": "nothing",
+ "parts": [
+  {
+   "box": [
+    1386.0,
+    151.0,
+    1925.0,
+    728.0
+   ],
+   "series": null,
+   "panel_id": 2,
+   "x_calibrated": false,
+   "y_calibrated": true
+  }
+ ]
+}

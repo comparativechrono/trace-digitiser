@@ -18,6 +18,17 @@ and the project uses [semantic versioning](https://semver.org/).
   cosinor reach the same verdict for all 29 series, the share of activity in
   the dark phase is within 0.05 for 27 of 29. For all 18, what the papers say
   about their traces is checked against them. Not part of the package.
+- **A test of dense traces**
+  ([`validation/dense-traces`](https://github.com/comparativechrono/trace-digitiser/tree/main/validation/dense-traces)):
+  nine real activity records, kept every minute or every 5 minutes, drawn as
+  a week across a few hundred pixels (so that each pixel column is a stroke
+  from the lowest to the highest sample within it) and read back. Averaged
+  within each hour, `center_estimate` (the midpoint of each column) puts the
+  acrophase within 0.36 h of the record's (median) and reads the level 1.19
+  times too high; `upper_envelope` times the rhythm as well but reads the
+  level about twice too high. Every column statistic but the lower envelope
+  understates the share of activity in the dark phase. Not part of the
+  package.
 
 ## [2.2.0] - 2026-11-15
 

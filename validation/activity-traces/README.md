@@ -255,7 +255,7 @@ acrophase, by under 0.2 h), except the cosinor amplitudes of the Ube3a mice, rea
 
 Periods are another matter for the shorter records. Over records of 60 h or more the Lomb–Scargle period of the read
 trace is within 0.5 h of the data's (median absolute difference 0.08 h). Over the seven series of 37–49 h it differs
-by 0.3–8 h: two days do not fix a period, and the peak of a periodogram over them moves with small changes.
+by 0.25–8 h: two days do not fix a period, and the peak of a periodogram over them moves with small changes.
 
 ## What the figures themselves do
 

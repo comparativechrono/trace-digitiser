@@ -246,11 +246,11 @@ details, case by case.
 tests the use the package was written for: rhythm analysis of activity traces digitised from papers. It holds 57
 traces of mouse and rat activity over days from 18 open-access papers found by a literature search. For the 29
 series whose authors published the numbers behind them, the same rhythm analysis is run on the trace as read and on
-the authors' series: the Lomb–Scargle periodogram, the 24-h cosinor and (on the 22 records long enough for it) the
+the authors' series: the Lomb–Scargle periodogram, the 24-h cosinor and (on the 10 records long enough for it) the
 chi-square periodogram reach the same verdict on every series, the share of activity in the dark phase agrees to
 within 0.05 for 27, and the acrophase to within 1 h for 28. For all 18
-papers, what the authors say about their traces is checked against them: 46 of 53 statements are borne out, and
-where the authors' numbers can decide, the trace and the numbers agree on 21 of 22.
+papers, what the authors say about their traces is checked against them: 47 of 53 statements are borne out, and
+where the authors' numbers can decide, the trace and the numbers agree on all 22.
 
 **Dense traces.**
 [`validation/dense-traces`](https://github.com/comparativechrono/trace-digitiser/tree/main/validation/dense-traces)

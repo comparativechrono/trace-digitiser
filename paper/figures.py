@@ -667,6 +667,7 @@ def s4_fig(out):
     comp = pd.read_csv(AT / "results" / "comparisons.csv")
     comp = comp[comp["true_cos_p"].notna()]
     papers = pd.read_csv(AT / "papers.csv").set_index("pmcid")
+    cases = {c["id"]: c for c in json.loads((AT / "cases.json").read_text())}
     order = {p: i for i, p in enumerate(papers.index)}
     comp = comp.assign(_o=comp.pmcid.map(order)).sort_values(["_o", "panel", "series"])
     fig = plt.figure(figsize=(7.5, 8.75))
@@ -680,6 +681,12 @@ def s4_fig(out):
         ax = fig.add_axes([left + col * (w + gx), top - (row + 1) * hcell + 0.03, w, hcell - 0.052])
         s = sampled[(sampled.case == c.case) & (sampled.panel == c.panel) & (sampled.series == c.series)]
         s = s.sort_values("x")
+        if cases[c.case].get("reference"):
+            # the figure's line is a fit to the authors' values (its markers): the fit is the series compared, and
+            # the values it is fitted to are shown as dots
+            t = pd.read_csv(AT / cases[c.case]["truth"])
+            t = t[(t.panel == c.panel) & (t.series == c.series)]
+            ax.plot(t.x, t.y, ls="none", marker="o", ms=1.6, mfc=KNOWN_C, mec="none", alpha=0.45)
         ax.plot(s.x, s.original, color=KNOWN_C, lw=1.0)
         ax.plot(s.x, s.digitised, color=READ_C, lw=0.8)
         span = float(s.x.max() - s.x.min()) if len(s) else 24.0

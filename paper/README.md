@@ -28,8 +28,9 @@ python paper/si_tables.py paper/out paper/out
 
 `figures.py --workbench` and `tables.py --workbench` need a checkout of
 [digitiser-workbench](https://github.com/comparativechrono/digitiser-workbench), whose
-`data/examples/hearn-whitmore-2026` holds the figures of validation 1 and the values they show; without it, S1 Fig
-and Table 1 are left out. The figures use Liberation Sans (metrically the same as Arial) where it is installed.
+`data/examples/hearn-whitmore-2026` holds the figures of validation 1 and the values they show, and whose
+`python/dwb` has the comparison (`known.py`) and the reading of narrow peaks at their tips (`lines.py`, the
+workbench's *Peaks* option, used for Fig 3a); without it, S1 Fig and Table 1 are left out. The figures use Liberation Sans (metrically the same as Arial) where it is installed.
 
 The figure of Lopatina et al. (2014) that Fig 1 and S6 Fig show is reproduced under its CC BY licence, as are all
 the figures and records in `validation`; see each folder's README for the sources.

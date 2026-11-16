@@ -3,7 +3,7 @@
  "image": "../figures/PMC11741586-fig3.png",
  "source": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0312794.g003",
  "reader": "lines",
- "notes": "Fig 3B (actigraphy counts, thousands per 3-h bin, mean and SEM of 11 rats) over baseline days B4-B6 (blue) and withdrawal days W2-W8 (red), laid end to end with no numeric x axis. x is taken as hours along the plotted record: the dark shading of the first and last days starts at ZT12 (12 h and 228 h); the colour clicked is each mean line's. The y labels could not be read inside this plot area, so two y ticks are given (0 and 5, as describe_figure read them on the whole figure).",
+ "notes": "Fig 3B (actigraphy counts, thousands per 3-h bin, mean and SEM of 11 rats) over baseline days B4-B6 (blue) and withdrawal days W2-W8 (red), laid end to end with no numeric x axis. x is taken as hours along the plotted record: the dark shading of the first and last days starts at ZT12 (12 h and 228 h); the colour clicked is the baseline's mean line, and for withdrawal the outline of its diamond markers (#ff0000): the diamonds, filled grey or white, hide the dark red mean line where each mean is, so the line's colour reads only between them, and the middle of each diamond's outline is the mean itself. (The baseline's circles are outlined in the colour of its line.) The y labels could not be read inside this plot area, so two y ticks are given (0 and 5, as describe_figure read them on the whole figure).",
  "time": {
   "unit": "h",
   "dark_start_h": 12,
@@ -31,7 +31,7 @@
    ],
    "series": {
     "baseline": "#0202ff",
-    "withdrawal": "#801818"
+    "withdrawal": "#ff0000"
    },
    "y_ref": [
     [

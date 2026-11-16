@@ -649,6 +649,17 @@ def s3_fig(out):
 
 # ---- S4 Fig: Validation 3, every series with data
 
+def panel_figure(figure, panel):
+    """The figure a panel is in, from a paper's list of figures ("Fig 2b, 2f") and the panel's name ("f LMA"): the
+    part whose letter is the panel's, or the first."""
+    parts = [s.strip() for s in str(figure).split(",")]
+    letter = str(panel).strip()[:1].lower()
+    for s in parts:
+        if s[-1:].lower() == letter:
+            return s if s.startswith("Fig") else f"Fig {s}"
+    return parts[0]
+
+
 def s4_fig(out):
     """Validation 3: each of the 29 series with deposited data, digitised and as the authors' data give it, at the
     authors' time points; grouped by paper, in the order of S1 Table."""
@@ -677,7 +688,7 @@ def s4_fig(out):
         style(ax)
         ax.tick_params(labelsize=5.5, length=2, pad=1.5)
         p = papers.loc[c.pmcid]
-        ax.text(0.0, 1.04, f"{p.first_author} {p.year} ({p.figure.split(',')[0]}): {c.panel}, {c.series}",
+        ax.text(0.0, 1.04, f"{p.first_author} {p.year} ({panel_figure(p.figure, c.panel)}): {c.panel}, {c.series}",
                 transform=ax.transAxes, fontsize=5.8, va="bottom", ha="left", color=INK)
         ax.text(1.0, 1.04, f"r = {c.r:.2f}", transform=ax.transAxes, fontsize=5.8, va="bottom", ha="right", color=MUTED)
         if k + ncol >= len(comp):

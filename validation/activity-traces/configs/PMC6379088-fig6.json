@@ -3,7 +3,7 @@
  "image": "../figures/PMC6379088-fig6.jpg",
  "source": "https://iiif.elifesciences.org/lax:43400%2Felife-43400-fig6-v2.tif/full/full/0/default.jpg",
  "reader": "lines",
- "notes": "Top trace of Fig 6A (LMA, movements per hour; the Waking and TDW traces below share the x axis and are left out by the plot area). Each group is a mean line inside a shaded SEM band whose edges are drawn in the same colour; the colour clicked is the mean line's. The x labels sit under the bottom trace, outside this plot area, so two x ticks are given (24 h and 72 h, as read by describe_figure on the whole figure). The legend inside the plot area is excluded.",
+ "notes": "Top trace of Fig 6A (LMA, movements per hour; the Waking and TDW traces below share the x axis and are left out by the plot area). Each group is a mean line inside a shaded SEM band whose edges are drawn in the same colour; the colour clicked is the mean line's: for KO a green sampled from the trace (#00c000), as describe_figure's swatch (#2ca12c) is a blend of the line and the lighter band and reads the band's edges and middle alike. The x labels sit under the bottom trace, outside this plot area, so two x ticks are given (24 h and 72 h, as read by describe_figure on the whole figure). The legend inside the plot area is excluded.",
  "time": {
   "unit": "h",
   "dark_start_h": 12,
@@ -21,7 +21,7 @@
    ],
    "series": {
     "WT": "#231f20",
-    "KO": "#2ca12c"
+    "KO": "#00c000"
    },
    "x_ref": [
     [

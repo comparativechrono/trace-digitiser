@@ -3,7 +3,7 @@
  "image": "../figures/PMC8257250-fig4.jpg",
  "source": "https://iiif.elifesciences.org/lax:62928%2Felife-62928-fig4-v2.tif/full/full/0/default.jpg",
  "reader": "lines",
- "notes": "Fig 4D (locomotor activity, beam breaks per hour, mean and SEM of each group, drawn as markers joined by lines). Axes read by the package; colours as describe_figure lists them.",
+ "notes": "Fig 4D (locomotor activity, beam breaks per hour, mean and SEM of each group, drawn as markers joined by lines). Axes read by the package; colours sampled from the markers (black, #101010; red, #f01040): describe_figure's swatches (#5d5d5c, #df5a6f) are blends with the grey error bars and the paper, and the grey one leaves out the black markers and line altogether.",
  "time": {
   "unit": "h",
   "dark_start_h": 12,
@@ -20,8 +20,8 @@
     1059
    ],
    "series": {
-    "Control": "#5d5d5c",
-    "TDCA/valine": "#df5a6f"
+    "Control": "#101010",
+    "TDCA/valine": "#f01040"
    }
   }
  ]

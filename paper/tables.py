@@ -46,7 +46,7 @@ OWN = [
     ("figure-2", "Fig 2: double-plotted birthogram, 59 years by 24 months, with dots", "rows",
      dict(row_values=list(range(1955, 2014)), bins=24, dots="black", row_spacing_value=1.1),
      "row years; 24 columns; dot colour; row spacing"),
-    ("figure-3a", "Fig 3a: two stacked spectra", "lines", dict(), "nothing"),
+    ("figure-3a", "Fig 3a: two stacked spectra", "lines", dict(peaks="tips"), "peaks read at their tips"),
     ("figure-3b", "Fig 3b: polar plot with one dot per year (peak phase)", "polar",
      dict(colours=["#1f77b4"], r_ref=[(5, 1955), (250, 2005)]), "dot colour; two rings and their years"),
     ("figure-3c", "Fig 3c: forest plot (dots with horizontal confidence intervals)", "points", dict(), "nothing"),
@@ -56,28 +56,39 @@ OWN = [
 ]
 
 
+def workbench_module(workbench, name):
+    """One module of the workbench's own Python (python/dwb), on its own: its python/ folder also holds a stand-in for
+    pytesseract, which must not be imported in place of the real one."""
+    spec = importlib.util.spec_from_file_location(name, Path(workbench) / "python" / "dwb" / f"{name}.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def read_own(workbench):
-    """Each figure of Hearn & Whitmore (2026) read as Table 1 says: (figure, what, kind, given, data, seconds)."""
+    """Each figure of Hearn & Whitmore (2026) read as Table 1 says: (figure, what, kind, given, data, seconds).
+    peaks="tips" is the workbench's own option for lines, done after reading (dwb.lines.peaks_at_tips)."""
     import trace_digitiser as td
 
     examples = Path(workbench) / "data" / "examples" / "hearn-whitmore-2026"
     reader = {"lines": td.digitise, "points": td.digitise_points, "bars": td.digitise_bars, "rows": td.digitise_rows,
               "heatmap": td.digitise_heatmap, "polar": td.digitise_polar}
     for figure, what, kind, options, given in OWN:
+        options = dict(options)
+        tips = options.pop("peaks", None) == "tips"
         t = time.time()
         with warnings.catch_warnings():
             warnings.simplefilter("ignore")
             r = reader[kind](str(examples / f"{figure}.png"), write_outputs=False, **options)
+            if tips:
+                r.trace_data = workbench_module(workbench, "lines").peaks_at_tips(r)
         yield figure, what, kind, given, (r.trace_data if kind == "lines" else r.data), time.time() - t
 
 
 def own_figures(workbench):
     examples = Path(workbench) / "data" / "examples" / "hearn-whitmore-2026"
     os.environ["DWB_EXAMPLES"] = str(examples)
-    # known.py on its own: the workbench's python/ folder also holds a stand-in for pytesseract
-    spec = importlib.util.spec_from_file_location("known", Path(workbench) / "python" / "dwb" / "known.py")
-    known = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(known)
+    known = workbench_module(workbench, "known")
     rows = []
     for figure, what, kind, given, data, seconds in read_own(workbench):
         c = known.compare(figure, data, kind)

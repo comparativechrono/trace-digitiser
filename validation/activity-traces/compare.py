@@ -5,8 +5,10 @@
 CASES.json lists the figures: {id, pmcid, group, tools, digitised (CSV from digitise_case.py), truth (CSV from
 truth.py, or null), time: {dark_start_h, light_dark, bin_h, fixed_period}, and optionally panel_time (per-panel
 overrides of time, e.g. no dark_start_h under constant conditions), panels and series (which to analyse),
-conditions (a label per panel)}. For a figure with data the digitised
-trace is read at the x of each original value; without, at regular steps of bin_h across the trace.
+conditions (a label per panel), and drawn (per panel: where the figure draws each original value, when that is not at
+its own time - see drawn_at)}. For a figure with data the digitised trace is read where the figure draws each original
+value (at its x, unless drawn says otherwise), and both are analysed at the original x; without data, at regular
+steps of bin_h across the trace.
 
 Writes, in OUT_DIR:
   series_metrics.csv  every analysis of every series (digitised, and original where there is one)
@@ -105,6 +107,24 @@ def aligned(g, xs, ytrue, half, max_lag=2.0, step=0.05):
     return best
 
 
+def drawn_at(rule, xs):
+    """Where the figure draws each original value, by its x (h), under *rule*: None (at x itself); "shift D" (at
+    x + D: a figure that draws each hour's mean at the end of its hour, where the data label it by its middle);
+    "spread A B C D" (the values at A..B drawn evenly from C to D, and those outside not drawn: nan). The rule is
+    read off the figure itself - where its markers, error bars or vertices lie - not fitted to the data."""
+    xs = np.asarray(xs, float)
+    if not rule:
+        return xs
+    kind, *nums = rule.split()
+    v = [float(n) for n in nums]
+    if kind == "shift":
+        return xs + v[0]
+    if kind == "spread":
+        a, b, c, d = v
+        return np.where((xs >= a - 1e-9) & (xs <= b + 1e-9), c + (xs - a) * (d - c) / (b - a), np.nan)
+    raise ValueError(f"unknown rule for where values are drawn: {rule}")
+
+
 def grid(g, tm, span=None):
     """The times at which a series without data is read: every bin_h hours (from bin_offset_h) across span, or
     across the trace as read."""
@@ -153,7 +173,12 @@ def main(cases_path, val_dir, out_dir):
             else:
                 xs = grid(g, tm, span)
                 ytrue = None
-            ydig = sample(g, xs, half) if len(g) > 1 else np.full(len(xs), np.nan)
+            # the trace is read where the figure draws each value (nan where it does not draw it)
+            xd = drawn_at(c.get("drawn", {}).get(panel), xs) if ytrue is not None else xs
+            ydig = np.full(len(xs), np.nan)
+            if len(g) > 1:
+                ok_x = np.isfinite(xd)
+                ydig[ok_x] = sample(g, xd[ok_x], half)
             for i, xv in enumerate(xs):
                 sampled_rows.append({"case": c["id"], "pmcid": c["pmcid"], "panel": panel, "series": series,
                                      "x": float(xv), "digitised": float(ydig[i]),
@@ -183,7 +208,8 @@ def main(cases_path, val_dir, out_dir):
                 row.update(n_values=int(ok.sum()), mae_pct=float(err.mean() / rng * 100),
                            mdae_pct=float(np.median(err) / rng * 100),
                            r=float(np.corrcoef(ydig[ok], ytrue[ok])[0, 1]) if ok.sum() > 2 else np.nan)
-                r_al, lag, mae_al = aligned(g, xs, ytrue, half)
+                drawn_ok = np.isfinite(xd)
+                r_al, lag, mae_al = aligned(g, xd[drawn_ok], ytrue[drawn_ok], half)
                 row.update(best_lag_h=lag, r_aligned=float(r_al), mae_aligned_pct=float(mae_al / rng * 100))
                 row.update({f"true_{k}": a_true.get(k) for k in KEYS})
                 per = a_true.get("cos_period", 24.0)

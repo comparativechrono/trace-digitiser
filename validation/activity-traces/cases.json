@@ -27,7 +27,10 @@
    "bin_h": 1,
    "fixed_period": 24
   },
-  "note": "Fig 2f: the 43 plotted hourly means are the source data's ZT3-ZT45, spread evenly across an axis bar labelled 0-48 h (found by counting the plotted points); read against the printed axis they sit up to 2.3 h from their hours. Fig 2b: 37 points over ZT12-50.6, within 0.6 h of their hours.",
+  "note": "Fig 2f: the 43 plotted hourly means are the source data's ZT3-ZT45, drawn evenly from 0.78 h to 46.86 h of the axis bar labelled 0-48 h (where the first and last of its error bars stand); read against the printed axis they sit up to 2.3 h from their hours, so each is read where it is drawn (drawn). Fig 2b: 37 points over ZT12-50.6, within 0.6 h of their hours.",
+  "drawn": {
+   "f LMA": "spread 3 45 0.78 46.86"
+  },
   "config": "configs/PMC10082796-fig2.json"
  },
  {
@@ -43,7 +46,10 @@
    "bin_h": 1,
    "fixed_period": 24
   },
-  "note": "Each hour's mean is drawn at the end of its hour (the data label it at its middle), so the figure runs 0.5 h behind the data's own times. KO: the edges of the SEM band are drawn in the colour of the mean line, so the reading wanders between them.",
+  "note": "Each hour's mean is drawn at the end of its hour (the data label it at its middle), so each is read where it is drawn, 0.5 h after its time (drawn). KO: the edges of the SEM band are drawn in the colour of the mean line; the colour taken is the mean line's own, sampled from the trace.",
+  "drawn": {
+   "A LMA": "shift 0.5"
+  },
   "config": "configs/PMC6379088-fig6.json"
  },
  {

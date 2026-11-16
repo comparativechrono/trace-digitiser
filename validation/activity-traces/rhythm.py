@@ -62,13 +62,16 @@ def lomb_scargle(t, y):
     return float(periods[i]), z, float(min(1.0, max(0.0, fap)))
 
 
-def chi_square(t, y, dt):
+def chi_square(t, y, dt, record=None):
     """Sokolove-Bushell chi-square periodogram over the whole-bin periods in 18-30 h: the period with the largest Qp
     above the critical value (alpha 0.05), and that excess; rhythmic if any Qp exceeds its critical value. Values
     are folded by their time, over the whole cycles of the record, so a missing value leaves a gap rather than
-    shifting the rest; with none missing this is Qp = K N sum (M_h - M)^2 / sum (X_i - M)^2."""
-    i = np.rint((t - t[0]) / dt).astype(int)
-    span = int(i[-1]) + 1
+    shifting the rest; with none missing this is Qp = K N sum (M_h - M)^2 / sum (X_i - M)^2. *record*: the times
+    of the first and last bins of the whole record, missing values included (a missing first or last value is a gap,
+    too, not a shorter record); by default those of the values given."""
+    t0, t1 = record if record is not None else (t[0], t[-1])
+    i = np.rint((t - t0) / dt).astype(int)
+    span = int(np.rint((t1 - t0) / dt)) + 1
     best = (float("nan"), -np.inf, float("nan"))
     for pb in range(max(2, int(math.ceil(BAND[0] / dt))), int(math.floor(BAND[1] / dt)) + 1):
         k = span // pb
@@ -189,17 +192,22 @@ def daily(t, y, dark_start=None, period=24.0, start=None):
 
 def analyse(t, y, dark_start=None, fixed_period=None):
     """Everything, for one series. fixed_period: fit the cosinor at this period (24 h under LD); otherwise at the
-    Lomb-Scargle peak."""
+    Lomb-Scargle peak. The record runs from the first to the last of the times *t*, whether or not each has a value:
+    a value missing at either end is a gap in it, as one missing in the middle is."""
+    tt = np.asarray(t, float)
+    tt = tt[np.isfinite(tt)]
     t, y, dt = regular(t, y)
-    out = {"n": int(len(y)), "bin_h": dt, "span_h": float(t[-1] - t[0] + dt) if len(t) else 0.0}
+    record = (float(tt.min()), float(tt.max())) if len(tt) else None
+    out = {"n": int(len(y)), "bin_h": dt,
+           "span_h": float(record[1] - record[0] + dt) if len(t) and record else 0.0}
     if len(t) > 1 and np.isfinite(dt) and dt > 0:
-        out["missing"] = int(np.rint((t[-1] - t[0]) / dt)) + 1 - len(t)
+        out["missing"] = int(np.rint((record[1] - record[0]) / dt)) + 1 - len(t)
     if len(y) < 8 or not np.isfinite(dt) or dt <= 0:
         out["error"] = "too short"
         return out
     out["fft_period"], out["fft_power_share"] = fft_period(t, y, dt)
     out["ls_period"], out["ls_power"], out["ls_fap"] = lomb_scargle(t, y)
-    out["chi_period"], out["chi_excess"], out["chi_qp"] = chi_square(t, y, dt)
+    out["chi_period"], out["chi_excess"], out["chi_qp"] = chi_square(t, y, dt, record)
     per = fixed_period or out["ls_period"]
     c = cosinor(t, y, per)
     out.update({f"cos_{k}": v for k, v in c.items()})

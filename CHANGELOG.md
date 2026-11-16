@@ -24,7 +24,37 @@ and the project uses [semantic versioning](https://semver.org/).
   marks above.
 - `paper/tables.py`: Table 1 reads Fig 1a of Hearn and Whitmore (2026) with
   only what is not data left out, as the workbench's walkthrough now does: the
-  legend for the blue line, nothing for the green line in the inset.
+  legend for the blue line, nothing for the green line in the inset; and Fig 3a
+  with its narrow peaks read at their tips (the workbench's new *Peaks*
+  option), which brings its spikes to their known heights.
+- `validation/activity-traces`: each value is read where the figure draws it.
+  Two figures draw their points away from the authors' times - Hoekstra et
+  al. (2019) each hour's mean at the end of its hour, Park et al. (2023) Fig 2f
+  43 hours spread along an axis of 48 - and `cases.json` now says where
+  (`drawn`, found from the figures' own error bars), so they are compared
+  like with like (r 0.99, against 0.56-0.85 at the authors' times; siControl
+  of Fig 2f, whose file values lie off the drawn line at a few hours, 0.86).
+- `validation/activity-traces`: three colours taken from the traces
+  themselves, where the swatch was a blend that read something else: Quante et
+  al.'s black controls (the grey swatch left out the black markers), Hoekstra
+  et al.'s green mean line, and the red outline of Gulledge et al.'s
+  withdrawal diamonds, which hide the mean line at each mean (r 0.88 -> 1.00).
+  Over the 29 series with data the median r is 0.97 (0.95 before) and the
+  median error 5.4% of the range (5.9%); 2.2.0, read the same way, gives the
+  same.
+- `validation/activity-traces/README.md`: Sayler & Hammond's lines are LOWESS
+  fits to the hourly means, which are drawn as markers, and those means are
+  not quite the deposited file's; said so, with the figures' other
+  differences from their files.
+
+### Fixed
+
+- `validation/activity-traces/rhythm.py`: the chi-square periodogram folds a
+  record over its whole length, so that a value missing at either end is a
+  gap, as one in the middle is, rather than a record a cycle shorter. (Cirbp
+  WT, whose last hour is drawn at the edge of the plot, now agrees with the
+  data: Q_p 36.8 read, 36.6 from the data, against 35.2.) The CD157 analysis
+  is unchanged.
 
 ## [2.3.0] - 2026-11-15
 

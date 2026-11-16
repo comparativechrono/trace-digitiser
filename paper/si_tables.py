@@ -31,11 +31,7 @@ S = {
                  "rhythm measures from the digitised trace and from the data (dark-phase share; 24-h cosinor "
                  "acrophase in hours from the start of the record, and the difference between the two; amplitude "
                  "ratio, digitised to original; Lomb-Scargle period); and the results of the three tests of "
-                 "rhythmicity (the chi-square periodogram only for records of 60 h or more). The lines of Sayler and "
-                 "Hammond (2025) are LOWESS fits drawn through markers at the hourly means: for these 12 series the "
-                 "authors' series is the same fit to their hourly means (7 means in each window, the window with "
-                 "which the figure's own markers best reproduce its lines), and both series are compared half way "
-                 "between the hourly time points, where only the line is drawn, so that each record spans 59 h.",
+                 "rhythmicity (the chi-square periodogram only for records of 60 h or more).",
                  [("Series", "s2_table_series.csv")],
                  "validation/activity-traces/results/comparisons.csv"),
     "S3_Table": ("S3 Table. Statements in the papers and their tests.",
@@ -46,8 +42,7 @@ S = {
                  "intervals), order, ratio or value (a reported number, within the tolerance given in claims.json), "
                  "rhythmic (chi-square periodogram, or Lomb-Scargle periodogram for records shorter than 60 h), "
                  "nocturnal (dark-phase mean higher than light-phase mean), period, and rel_drop (relative "
-                 "decrease). For Sayler and Hammond (2025), whose lines are LOWESS fits, the results from the data "
-                 "are from the same fit to the authors' hourly means (S2 Table).",
+                 "decrease).",
                  [("Statements", "s3_table_claims.csv")],
                  "validation/activity-traces/claims.json and results/claims_checked.csv"),
     "S4_Table": ("S4 Table. Analyses of the CD157 figure.",

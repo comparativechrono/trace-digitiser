@@ -19,7 +19,6 @@ From the repository, with trace-digitiser 2.3.0 installed and pandas, openpyxl, 
 ```bash
 python validation/published-figures/run.py --digitised      # validation 2, keeping what each case read
 python validation/activity-traces/run.py --keep-readings    # the validation set's results
-python validation/activity-traces/lowess_window.py          # the LOWESS window of Sayler & Hammond's lines
 python validation/activity-traces/cd157.py                  # the CD157 re-analysis
 python validation/dense-traces/run.py                       # the dense-trace test (validation 4)
 python paper/figures.py paper/out --workbench PATH/TO/digitiser-workbench

@@ -12,8 +12,6 @@
    "bin_h": 1,
    "fixed_period": 24
   },
-  "reference": "lowess 7 between",
-  "note": "The lines are LOWESS fits to the hourly means, which are drawn as markers (the legend: 'LOWESS curve fits to the data using a 20-point smoothing window'). The reference is the same fit to the authors' hourly means - Prism's LOWESS, a straight line over the 7 nearest means with tricube weights, no robustness passes; the window that best rebuilds the drawn lines from the figure's own markers - read half way between the markers, where only the line is drawn (reference).",
   "config": "configs/PMC12370043-fig2.json"
  },
  {

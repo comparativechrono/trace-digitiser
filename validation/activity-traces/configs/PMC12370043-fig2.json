@@ -3,7 +3,7 @@
  "image": "../figures/PMC12370043-fig2.png",
  "source": "https://journals.plos.org/plosone/article/figure/image?size=large&id=10.1371/journal.pone.0323853.g002",
  "reader": "lines",
- "notes": "Fig 2: X-activity, ambulatory and Z-activity (rearing) beam breaks of male and female WT and KO mice. The markers are the hourly group means over 60 h, with their SEM; the lines, in the markers' colours, are LOWESS fits to them (a 20-point window, the legend says; the window that gives the drawn lines from the figure's own markers is 7 means: lowess_window.py). A plot area is drawn round each of the six panels; colours are describe_figure's swatches for each panel; axes read by the package. The markers overlap too much for the points reader, so the line reader reads each colour: the fitted line, and with it parts of the markers and error bars it passes through. So the trace is compared half way between the markers, where only the line is drawn, with the same fit to the authors' means (cases.json, reference).",
+ "notes": "Fig 2: X-activity, ambulatory and Z-activity (rearing) beam breaks of male and female WT and KO mice. The markers are the hourly group means over 60 h, with their SEM; the lines, in the markers' colours, are LOWESS fits to them (20-point window, as the legend says). A plot area is drawn round each of the six panels; colours are describe_figure's swatches for each panel; axes read by the package. The markers overlap too much for the points reader, so the line reader reads each colour: the fitted line, and with it parts of the markers and error bars it passes through.",
  "time": {
   "unit": "h",
   "dark_start_h": 0,

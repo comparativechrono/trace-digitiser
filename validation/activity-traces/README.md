@@ -24,17 +24,16 @@ not in the package.
 ## In short
 
 * **Values.** For the 29 series with data the trace as read correlates with the authors' series with a median
-  r of 0.97, and differs from it by a median of 5.4% of its range (each value read where the figure draws it: two
+  r of 0.97, and differs from it by a median of 5.1% of its range (each value read where the figure draws it: two
   figures draw their points away from the authors' times, below). Twelve of the series are Sayler & Hammond's, whose
   lines are LOWESS fits to the hourly means and whose means are not quite those of the deposited file (below); for
   the other 17 the median r is 0.99 and the median error 2.6%.
 * **Rhythmic or not.** Run on the trace as read and on the authors' series, the Lomb–Scargle periodogram and the
   24-h cosinor give the same answer for all 29 series, and the chi-square periodogram for all 22 long enough for it.
-  Cut into whole days, the 24-h cosinor gives the same answer for 68 of 69 days; on the other, read from 18 of its
-  24 hours, the trace makes the day look rhythmic (p 0.003) where the data fall short of it (p 0.08).
+  Cut into whole days, the 24-h cosinor gives the same answer for all 71 days.
 * **Rhythm measures.** The share of activity falling in the dark phase is within 0.05 of the authors' for 27 of 29
   series (largest difference 0.07); the 24-h acrophase is within 1 h for 28 of 29 (the one that is not is drawn at
-  2.5 px an hour); the cosinor amplitude is within 0.8–1.25 times the authors' for 22 of 29 (five of the seven that
+  2.5 px an hour); the cosinor amplitude is within 0.8–1.25 times the authors' for 23 of 29 (five of the six that
   are not are Sayler & Hammond's fitted lines).
 * **What the papers say.** Of 53 statements about the traces that a trace can test, the traces as read support
   46. In the papers with data the trace and the authors' series give the same verdict on 21 of 22 statements —
@@ -81,6 +80,7 @@ python validation/activity-traces/cd157.py                # the CD157 figure, fr
 | `claims.json`, `claims.py` | the statements in the papers about their traces, and how each is checked |
 | `summarise.py`, `tables.py`, `summary_figure.py` | the agreement tables, the tables below and the figure above |
 | `plot_case.py` | one figure's traces as read drawn over the authors' series, for looking at |
+| `figure_check.py` | each trace as read set against the line drawn in its figure, without the authors' data, and drawn over it |
 | `cd157.py` → `results/cd157*` | the CD157 figure read from both copies and analysed ([below](#the-cd157-figure)); the four values of every column in `digitised/*-columns.csv` |
 | `run.py` | all of the above, in order |
 | `search/` | the search and screening that found the papers |
@@ -169,8 +169,28 @@ The line reader returns one value per pixel column. Each trace is then read at t
 (for the papers with data) or at regular steps (1 h, or 2 h or 3 h where the figure is drawn that coarsely), as the
 median of the columns within a fifth of a step of each time. Where a figure draws its values away from their times
 (two do: below), each is read where the figure draws it - found from the figure itself, where its markers or error
-bars stand - and the two series are then analysed at the authors' times. Two rules, fixed before the claims were checked, decide
-what counts as read:
+bars stand - and the two series are then analysed at the authors' times.
+
+Each reading is then drawn over its figure and checked, trace by trace, against the line drawn
+(`figure_check.py`: how far each column and each value taken lies from a pixel of the trace's colour, and the
+picture), without the authors' data. Where a reading strays from the line, that trace is read again with settings
+of its own, as a user of the workbench would choose them (`traces` in a panel's configuration; `digitise_case.py`
+says what each setting does), in one run or in several runs over stretches of the trace. Two figures needed it:
+
+* Park et al. 2023, Fig 2b and 2f: each point has a one-sided error bar rising from it, in the colour of its line.
+  For a black or grey line the reader leaves such bars out, but for a coloured one the middle of each column is half
+  way up the bar; so the coloured series are read at the bottom of each column (`"estimate": "lower"`), which is the
+  point itself (less half the line's thickness).
+* Quante et al. 2021, Fig 4D: where the treated group's red markers and error bars cross the black control line, the
+  reader, given black, lets whole stretches go (a third of the columns). Those stretches are read again, each in a
+  run of its own over it and 40 px either side, with the colour of the trace's own pixels (#130c0d, which is not
+  quite grey, and so is read without the reader's filter for gridlines) and the axis lines left out; the hourly
+  values read rise from 85 of 120 to 102.
+
+The other 53 traces are left as first read: on them the reading already keeps to the line, or what is left is the
+figure's - markers that hide one another, lines a pixel or two apart, or values a few pixels high (below).
+
+Two rules, fixed before the claims were checked, decide what counts as read:
 
 * A column where the reader saw no pixel of the trace, and filled the value in from its neighbours, is left out:
   a stretch the reader lost (behind another series, say) is missing, not a straight line.
@@ -211,13 +231,13 @@ shading or bar), or, for one rat under shifting light, the schedule drawn beside
 | Sayler & Hammond 2025, Z-activity male | KO | 0.90 | 12.0 | -0.05 | 0.90 | 0.70 / 0.69 | +0.07 | 0.80 | yes/yes/yes; yes/yes/yes |
 | Sayler & Hammond 2025, Z-activity male | WT | 0.94 | 6.0 | -0.20 | 0.94 | 0.67 / 0.70 | +0.39 | 0.89 | yes/yes/yes; yes/yes/yes |
 | Park et al. 2023, b LMA | Control | 0.97 | 5.7 | -0.20 | 0.98 | 0.66 / 0.65 | -0.70 | 1.21 | –/yes/yes; –/yes/yes |
-| Park et al. 2023, b LMA | FK866 3.3mg/kg | 0.95 | 6.0 | -0.05 | 0.96 | 0.57 / 0.56 | +0.06 | 1.26 | –/yes/yes; –/yes/yes |
-| Park et al. 2023, b LMA | FK866 8mg/kg | 0.87 | 10.2 | +0.10 | 0.88 | 0.52 / 0.53 | -0.60 | 1.19 | –/yes/yes; –/yes/yes |
+| Park et al. 2023, b LMA | FK866 3.3mg/kg | 0.95 | 5.1 | -0.05 | 0.96 | 0.58 / 0.56 | +0.24 | 1.14 | –/yes/yes; –/yes/yes |
+| Park et al. 2023, b LMA | FK866 8mg/kg | 0.89 | 9.3 | +0.10 | 0.89 | 0.52 / 0.53 | -0.24 | 1.06 | –/yes/yes; –/yes/yes |
 | Park et al. 2023, f LMA | siControl | 0.86 | 12.4 | -0.20 | 0.90 | 0.70 / 0.71 | -0.41 | 0.98 | –/yes/yes; –/yes/yes |
-| Park et al. 2023, f LMA | siNampt | 0.99 | 4.2 | -0.10 | 0.99 | 0.53 / 0.52 | +0.05 | 1.04 | –/yes/yes; –/yes/yes |
+| Park et al. 2023, f LMA | siNampt | 0.99 | 3.4 | -0.10 | 1.00 | 0.54 / 0.52 | +0.18 | 0.91 | –/yes/yes; –/yes/yes |
 | Hoekstra et al. 2019, A LMA | KO | 0.99 | 1.9 | +0.15 | 1.00 | 0.76 / 0.77 | +0.10 | 1.01 | yes/yes/yes; yes/yes/yes |
 | Hoekstra et al. 2019, A LMA | WT | 0.99 | 1.7 | +0.15 | 1.00 | 0.67 / 0.67 | -0.24 | 1.04 | yes/yes/yes; yes/yes/yes |
-| Quante et al. 2021, D LMA | Control | 0.97 | 2.6 | +0.30 | 0.98 | 0.61 / 0.61 | +0.23 | 0.96 | yes/yes/yes; yes/yes/yes |
+| Quante et al. 2021, D LMA | Control | 0.98 | 2.6 | +0.30 | 0.98 | 0.59 / 0.61 | +0.01 | 0.97 | yes/yes/yes; yes/yes/yes |
 | Quante et al. 2021, D LMA | TDCA/valine | 0.98 | 2.3 | +0.45 | 0.98 | 0.60 / 0.60 | -0.29 | 1.01 | yes/yes/yes; yes/yes/yes |
 | Endo et al. 2018, b activity | GH | 1.00 | 1.1 | +0.05 | 1.00 | 0.81 / 0.81 | -0.05 | 1.01 | yes/yes/yes; yes/yes/yes |
 | Endo et al. 2018, b activity | SI | 1.00 | 0.2 | +0.00 | 1.00 | 0.84 / 0.84 | +0.02 | 1.00 | yes/yes/yes; yes/yes/yes |
@@ -234,22 +254,23 @@ there. Dark share is the share of the day's activity falling in the dark phase. 
 trace's cosinor amplitude over the data's. Rhythmic: yes or no from each test, for the trace as read and then for the
 data (– where the record is too short for the chi-square periodogram).
 
-| Rhythmic? | series | read and data agree | read only | data only | neither |
+| Rhythmic? | series | both rhythmic | read only | data only | neither |
 |---|---|---|---|---|---|
-| chi-square periodogram (records ≥ 60 h) | 22 | 21 | 0 | 1 | 0 |
+| chi-square periodogram (records ≥ 60 h) | 22 | 22 | 0 | 0 | 0 |
 | Lomb–Scargle periodogram | 29 | 29 | 0 | 0 | 0 |
 | 24-h cosinor | 29 | 29 | 0 | 0 | 0 |
-| 24-h cosinor, each whole day | 70 days | 60 | 5 | 1 | 4 |
+| 24-h cosinor, each whole day | 71 days | 61 | 0 | 0 | 10 |
 
 The chi-square periodogram gives the same answer for all 22 series long enough for it. (Cirbp WT, whose last hour is
 drawn at the edge of the plot and not read, is the closest call: Q<sub>p</sub> at 24 h 36.8 read, 36.6 from the data,
-against a critical value of 35.2.) The one day that the two call differently is a day of Quante et al.'s controls,
-whose markers the other group's markers and error bars overlap: read from the 18 of its 24 hours where the reader
-saw the trace, the day looks rhythmic (p 0.003), where the data fall short of it (p 0.08). The oxycodone rats' withdrawal days, each read from eight 3-h
-values, come within 0.02 of the data's p on every day.
+against a critical value of 35.2.) Each day is analysed where at least 18 of its 24 hours are read. With the stretches
+of Quante et al.'s control trace read again (above), two more of its days qualify, and the one day the two used to call
+differently, read from 18 of its hours, is read from 21 and, like the data, falls short of significance (p 0.053 read,
+0.077 from the data): the cosinor gives the same answer for all 71 days. The oxycodone rats' withdrawal days, each read
+from eight 3-h values, come within 0.02 of the data's p on every day.
 
 For 16 pairs of series in the same panel (WT and KO, say), the trace as read and the data agree on which has the
-higher dark-phase mean in 14, the higher light-phase mean in 14, the larger cosinor amplitude in 13 and the later
+higher dark-phase mean in 14, the higher light-phase mean in 15, the larger cosinor amplitude in 13 and the later
 acrophase in 14. The pairs they disagree on differ in the data by about 10% or less in that measure (or, for the
 acrophase, by under 0.2 h), except the cosinor amplitudes of the Ube3a mice, read at 2.5 px an hour (24%).
 
@@ -299,12 +320,12 @@ periodogram, or Lomb–Scargle for short records), *nocturnal* (dark-phase mean 
 | Male KO mice were less active than male WT mice (Z-activity). | Sayler & Hammond 2025, Fig 2 | compare | mean: 149.5 vs 302.6 | ✓ | mean: 193.9 vs 297.5 | ✓ |
 | Rearing (Z-activity) in male KO mice was about 40% lower than in WT. | Sayler & Hammond 2025, Fig 2 | ratio | mean ratio 0.49 | ✗ | mean ratio 0.65 | ✓ |
 | The decrease in activity was not seen in female KO mice. | Sayler & Hammond 2025, Fig 2 | not testable: absence of a significant difference | | – | | – |
-| FK866 blunted the night-time rise in LMA, more so at the higher dose. | Park et al. 2023, Fig 2b | order | night_minus_day: 1727 > 633.1 > 128.5 | ✓ | night_minus_day: 1545 > 529.9 > 244.3 | ✓ |
-| Blocking plasma eNAMPT (FK866 3.3mg/kg) abrogates the circadian rhythm of LMA. | Park et al. 2023, Fig 2b | rhythmic | Lomb-Scargle: rhythmic (LS period 20.5 h, FAP 0.00022) | ✗ | Lomb-Scargle: rhythmic (LS period 19.6 h, FAP 0.000231) | ✗ |
-| Blocking plasma eNAMPT (FK866 8mg/kg) abrogates the circadian rhythm of LMA. | Park et al. 2023, Fig 2b | rhythmic | Lomb-Scargle: rhythmic (LS period 25.3 h, FAP 0.000576) | ✗ | Lomb-Scargle: rhythmic (LS period 19.9 h, FAP 0.0174) | ✗ |
-| Blocking plasma eNAMPT (siNampt) abrogates the circadian rhythm of LMA. | Park et al. 2023, Fig 2f | rhythmic | Lomb-Scargle: rhythmic (LS period 21.1 h, FAP 0.0147) | ✗ | Lomb-Scargle: rhythmic (LS period 21.9 h, FAP 0.0129) | ✗ |
-| siNampt abolished the nocturnal rise in LMA. | Park et al. 2023, Fig 2f | nocturnal | dark mean 569.7, light mean 503.1 (dark share 0.54) | ✗ | dark mean 482.5, light mean 436.6 (dark share 0.55) | ✗ |
-| The night-time rise in LMA was smaller with siNampt than with siControl. | Park et al. 2023, Fig 2f | compare | night_minus_day: 66.59 vs 1341 | ✓ | night_minus_day: 45.88 vs 1261 | ✓ |
+| FK866 blunted the night-time rise in LMA, more so at the higher dose. | Park et al. 2023, Fig 2b | order | night_minus_day: 1727 > 675.3 > 173 | ✓ | night_minus_day: 1545 > 529.9 > 244.3 | ✓ |
+| Blocking plasma eNAMPT (FK866 3.3mg/kg) abrogates the circadian rhythm of LMA. | Park et al. 2023, Fig 2b | rhythmic | Lomb-Scargle: rhythmic (LS period 20.6 h, FAP 0.000177) | ✗ | Lomb-Scargle: rhythmic (LS period 19.6 h, FAP 0.000231) | ✗ |
+| Blocking plasma eNAMPT (FK866 8mg/kg) abrogates the circadian rhythm of LMA. | Park et al. 2023, Fig 2b | rhythmic | Lomb-Scargle: rhythmic (LS period 23.8 h, FAP 0.000748) | ✗ | Lomb-Scargle: rhythmic (LS period 19.9 h, FAP 0.0174) | ✗ |
+| Blocking plasma eNAMPT (siNampt) abrogates the circadian rhythm of LMA. | Park et al. 2023, Fig 2f | rhythmic | Lomb-Scargle: rhythmic (LS period 19.9 h, FAP 0.0126) | ✗ | Lomb-Scargle: rhythmic (LS period 21.9 h, FAP 0.0129) | ✗ |
+| siNampt abolished the nocturnal rise in LMA. | Park et al. 2023, Fig 2f | nocturnal | dark mean 471.6, light mean 404.3 (dark share 0.55) | ✗ | dark mean 482.5, light mean 436.6 (dark share 0.55) | ✗ |
+| The night-time rise in LMA was smaller with siNampt than with siControl. | Park et al. 2023, Fig 2f | compare | night_minus_day: 67.33 vs 1341 | ✓ | night_minus_day: 45.88 vs 1261 | ✓ |
 | Cirbp KO mice were more active than WT in the dark phase (baseline days). | Hoekstra et al. 2019, Fig 6A | compare | dark_mean: 112.2 vs 63.13 | ✓ | dark_mean: 112.9 vs 63.93 | ✓ |
 | WT movements in the 6 h after dark onset (ZT12-18) were 463.8 (mean of the baseline days). | Hoekstra et al. 2019, Fig 6A | value | 474.8 (reported 463.8) | ✓ | 483.5 (reported 463.8) | ✓ |
 | KO movements in the 6 h after dark onset (ZT12-18) were 801.8 (mean of the baseline days). | Hoekstra et al. 2019, Fig 6A | value | 880.2 (reported 801.8) | ✓ | 891.4 (reported 801.8) | ✓ |
@@ -475,13 +496,12 @@ A short account, for adapting:
 > 2.3.0, given only what a user of the browser workbench gives (a plot area, the series' colours and, where an
 > axis's labels could not be read, two ticks), and analysed with the same code as the series rebuilt from the
 > authors' data. For the 29 series with data, the digitised trace correlated with the original with a median r of
-> 0.95 (median absolute error 5.9% of the series' range); the Lomb–Scargle periodogram and the 24-h cosinor reached
-> the same verdict on rhythmicity for all 29 series and the chi-square periodogram for 21 of 22; the share of
-> activity in the dark phase was within 0.05 for 27 of 29 and the 24-h acrophase within 1 h for 27 of 29, the
-> exceptions coming from figures that place their points away from their times or are drawn at 2.5 pixels per hour.
-> Of 22 testable statements in the papers with data, the digitised and original series gave the same verdict on 21
-> (17 supported by both; 4 rejected by both), and of 31 in the papers without data the digitised traces supported
-> 29. Digitisation therefore reproduced the rhythm-level conclusions that the original data support, including where
+> 0.97 (median absolute error 5.1% of the series' range); the Lomb–Scargle periodogram and the 24-h cosinor reached
+> the same verdict on rhythmicity for all 29 series and the chi-square periodogram for all 22 long enough for it;
+> the share of activity in the dark phase was within 0.05 for 27 of 29 and the 24-h acrophase within 1 h for 28 of
+> 29, the exception coming from a figure drawn at 2.5 pixels per hour. Of 22 testable statements in the papers with
+> data, the digitised and original series gave the same verdict on 21 (17 supported by both; 4 rejected by both),
+> and of 31 in the papers without data the digitised traces supported 29. Digitisation therefore reproduced the rhythm-level conclusions that the original data support, including where
 > those data do not support the authors' own statements.
 
 ## Sources and licences

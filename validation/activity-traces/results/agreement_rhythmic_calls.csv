@@ -2,4 +2,4 @@ unit,test,n,both_rhythmic,dig_only,orig_only,neither,agreement
 series,chi-square periodogram (records >= 60 h),22,22,0,0,0,1.0
 series,Lomb-Scargle (FAP < 0.05),29,29,0,0,0,1.0
 series,cosinor at 24 h (zero-amplitude F test),29,29,0,0,0,1.0
-day,"cosinor at 24 h, each whole day",69,60,1,0,8,0.9855072463768116
+day,"cosinor at 24 h, each whole day",71,61,0,0,10,1.0

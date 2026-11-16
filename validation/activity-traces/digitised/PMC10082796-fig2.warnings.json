@@ -1,7 +1,11 @@
 {
  "b LMA": [
   "Panel 1: the y-axis scale was read from 5 of 6 tick labels (100, 80, 40, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
-  "Panel 1 trace 1: 29% of columns had no trace pixels and were interpolated."
+  "Panel 1 trace 1: 29% of columns had no trace pixels and were interpolated.",
+  "FK866 3.3mg/kg: Panel 1: the y-axis scale was read from 5 of 6 tick labels (100, 80, 40, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+  "FK866 3.3mg/kg: Panel 1 trace 2: 29% of columns had no trace pixels and were interpolated.",
+  "FK866 8mg/kg: Panel 1: the y-axis scale was read from 5 of 6 tick labels (100, 80, 40, 20, 0). Confidence in it is medium: check those values against the figure, or give y_min and y_max.",
+  "FK866 8mg/kg: Panel 1 trace 2: 29% of columns had no trace pixels and were interpolated."
  ],
  "f LMA": []
 }

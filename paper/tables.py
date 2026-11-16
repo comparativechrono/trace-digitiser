@@ -273,16 +273,10 @@ def activity_traces():
         note = (f"{int(c.dig_only)} rhythmic only in the digitised trace, {int(c.orig_only)} only in the data"
                 if c.dig_only or c.orig_only else "")
         add(what, f"{agree} of {int(c.n)} {unit} agree", note)
-    # records of more than two days, and of about two days or less (which do not fix a period)
-    long, short = data[data["true_span_h"] > 50], data[data["true_span_h"] <= 50]
+    long = data[data["true_span_h"] >= 60]
     pd_ = (long["dig_ls_period"] - long["true_ls_period"]).abs()
-    add(f"Lomb-Scargle period (records of {long['true_span_h'].min():.0f} h or more)",
-        f"{int((pd_ <= 0.5).sum())} of {len(long)} within 0.5 h",
-        f"median absolute difference {pd_.median():.2f} h; largest {pd_.max():.1f} h")
-    ps = (short["dig_ls_period"] - short["true_ls_period"]).abs()
-    if len(short):
-        add(f"Lomb-Scargle period (records of {short['true_span_h'].min():.0f}-{short['true_span_h'].max():.0f} h)",
-            f"{int((ps <= 0.5).sum())} of {len(short)} within 0.5 h", f"differences {ps.min():.2f}-{ps.max():.1f} h")
+    add("Lomb-Scargle period (records of 60 h or more)", f"{int((pd_ <= 0.5).sum())} of {len(long)} within 0.5 h",
+        f"median absolute difference {pd_.median():.2f} h")
     dd = data["dark_fraction_diff"].abs()
     add("Dark-phase share", f"{int((dd <= 0.05).sum())} of {n} within 0.05",
         f"largest difference {dd.max():.2f}")

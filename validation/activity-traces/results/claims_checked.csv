@@ -1,8 +1,8 @@
 id,pmcid,case,figure,where,claim,type,group,tools,testable,why_untestable,supported_by_digitised,digitised_found,supported_by_original,original_found
-PMC12370043-1,PMC12370043,PMC12370043-fig2,Fig 2,Results,Male KO mice were less active than male WT mice (X-activity).,compare,data,True,True,,True,mean: 1210 vs 1402,True,mean: 1244 vs 1382
-PMC12370043-2,PMC12370043,PMC12370043-fig2,Fig 2,Results,Male KO mice were less active than male WT mice (Ambulatory).,compare,data,True,True,,True,mean: 593.2 vs 705.7,True,mean: 637.5 vs 745.3
-PMC12370043-3,PMC12370043,PMC12370043-fig2,Fig 2,Results,Male KO mice were less active than male WT mice (Z-activity).,compare,data,True,True,,True,mean: 152.1 vs 300.6,True,mean: 193.5 vs 296.4
-PMC12370043-4,PMC12370043,PMC12370043-fig2,Fig 2,Results,Rearing (Z-activity) in male KO mice was about 40% lower than in WT.,ratio,data,True,True,,True,mean ratio 0.51,True,mean ratio 0.65
+PMC12370043-1,PMC12370043,PMC12370043-fig2,Fig 2,Results,Male KO mice were less active than male WT mice (X-activity).,compare,data,True,True,,True,mean: 1210 vs 1419,True,mean: 1248 vs 1386
+PMC12370043-2,PMC12370043,PMC12370043-fig2,Fig 2,Results,Male KO mice were less active than male WT mice (Ambulatory).,compare,data,True,True,,True,mean: 586.6 vs 709.2,True,mean: 639.1 vs 747.2
+PMC12370043-3,PMC12370043,PMC12370043-fig2,Fig 2,Results,Male KO mice were less active than male WT mice (Z-activity).,compare,data,True,True,,True,mean: 149.5 vs 302.6,True,mean: 193.9 vs 297.5
+PMC12370043-4,PMC12370043,PMC12370043-fig2,Fig 2,Results,Rearing (Z-activity) in male KO mice was about 40% lower than in WT.,ratio,data,True,True,,False,mean ratio 0.49,True,mean ratio 0.65
 PMC12370043-5,PMC12370043,PMC12370043-fig2,Fig 2,Results,The decrease in activity was not seen in female KO mice.,untestable,data,True,False,absence of a significant difference,,,,
 PMC10082796-1,PMC10082796,PMC10082796-fig2,Fig 2b,Results,"FK866 blunted the night-time rise in LMA, more so at the higher dose.",order,data,True,True,,True,night_minus_day: 1727 > 633.1 > 128.5,True,night_minus_day: 1545 > 529.9 > 244.3
 PMC10082796-2,PMC10082796,PMC10082796-fig2,Fig 2b,Legend title,Blocking plasma eNAMPT (FK866 3.3mg/kg) abrogates the circadian rhythm of LMA.,rhythmic,data,True,True,,False,"Lomb-Scargle: rhythmic (LS period 20.5 h, FAP 0.00022)",False,"Lomb-Scargle: rhythmic (LS period 19.6 h, FAP 0.000231)"

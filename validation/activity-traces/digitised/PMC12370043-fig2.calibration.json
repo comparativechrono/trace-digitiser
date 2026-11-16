@@ -1,0 +1,38 @@
+{
+ "X-activity male": {
+  "a": -8.771929824561402,
+  "b": 4842.105263157894,
+  "log": false,
+  "y_scale": 1.0
+ },
+ "X-activity female": {
+  "a": -8.771929824561415,
+  "b": 10087.719298245624,
+  "log": false,
+  "y_scale": 1.0
+ },
+ "Ambulatory male": {
+  "a": -4.393659540032493,
+  "b": 8130.030701564728,
+  "log": false,
+  "y_scale": 1.0
+ },
+ "Ambulatory female": {
+  "a": -4.3878835114158115,
+  "b": 10829.297853922555,
+  "log": false,
+  "y_scale": 1.0
+ },
+ "Z-activity male": {
+  "a": -1.863928041607463,
+  "b": 5925.428286541165,
+  "log": false,
+  "y_scale": 1.0
+ },
+ "Z-activity female": {
+  "a": -1.8639280416074624,
+  "b": 7029.2464727811,
+  "log": false,
+  "y_scale": 1.0
+ }
+}

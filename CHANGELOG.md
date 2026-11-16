@@ -8,6 +8,22 @@ and the project uses [semantic versioning](https://semver.org/).
 
 ### Added
 
+- `validation/activity-traces/figure_check.py`: each trace as read set
+  against the line drawn in its figure, without the authors' data - how far
+  each column, and each value the analysis takes, lies from a pixel of the
+  trace's colour - and drawn over the figure. `digitise_case.py` can now read a
+  series on its own, in one run or several over stretches of it, with the
+  workbench's options for lines (`traces` in a panel's configuration: the
+  colour clicked, other colours clicked with it, boxes left out, peaks at
+  their tips, and which column of the reader's table is taken), and saves each
+  panel's calibration for the check. Every trace of Validation 3 was checked
+  so; two figures were read again. Park et al.'s coloured series, whose
+  one-sided error bars rise from each point, are read at the bottom of each
+  column; Quante et al.'s black control trace, where the red group crosses it,
+  is read again over the stretches it lost, with the colour of its own
+  pixels (85 of its 120 hourly values read before, 102 now). The median error
+  over the 29 series with data is 5.1% of the range (5.4% before), and the
+  daily cosinor agrees on all 71 days (68 of 69 before).
 - Two cases in `validation/published-figures` read Pearl and Reed's figure 3
   with the marks a workbench user would add when the first reading shows
   stray marks: for the dots, the frame as the plot area, the printed equation

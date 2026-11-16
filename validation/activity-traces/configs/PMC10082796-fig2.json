@@ -34,6 +34,26 @@
     "Control": "#595757",
     "FK866 3.3mg/kg": "#df6017",
     "FK866 8mg/kg": "#00d11f"
+   },
+   "traces": {
+    "FK866 3.3mg/kg": [
+     {
+      "also": [
+       "#595757",
+       "#00d11f"
+      ],
+      "estimate": "lower"
+     }
+    ],
+    "FK866 8mg/kg": [
+     {
+      "also": [
+       "#595757",
+       "#df6017"
+      ],
+      "estimate": "lower"
+     }
+    ]
    }
   },
   {
@@ -58,6 +78,16 @@
    "series": {
     "siControl": "#595757",
     "siNampt": "#254d9c"
+   },
+   "traces": {
+    "siNampt": [
+     {
+      "also": [
+       "#595757"
+      ],
+      "estimate": "lower"
+     }
+    ]
    }
   }
  ]

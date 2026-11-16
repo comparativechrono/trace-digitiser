@@ -5,10 +5,11 @@
 CASES.json lists the figures: {id, pmcid, group, tools, digitised (CSV from digitise_case.py), truth (CSV from
 truth.py, or null), time: {dark_start_h, light_dark, bin_h, fixed_period}, and optionally panel_time (per-panel
 overrides of time, e.g. no dark_start_h under constant conditions), panels and series (which to analyse),
-conditions (a label per panel), and drawn (per panel: where the figure draws each original value, when that is not at
-its own time - see drawn_at)}. For a figure with data the digitised trace is read where the figure draws each original
-value (at its x, unless drawn says otherwise), and both are analysed at the original x; without data, at regular
-steps of bin_h across the trace.
+conditions (a label per panel), drawn (per panel: where the figure draws each original value, when that is not at
+its own time - see drawn_at), and reference (when the figure's line is a fit to the original values rather than the
+values themselves: the same fit, and where it is compared - see reference)}. For a figure with data the digitised
+trace is read where the figure draws each original value (at its x, unless drawn says otherwise), and both are
+analysed at the original x; without data, at regular steps of bin_h across the trace.
 
 Writes, in OUT_DIR:
   series_metrics.csv  every analysis of every series (digitised, and original where there is one)
@@ -107,6 +108,52 @@ def aligned(g, xs, ytrue, half, max_lag=2.0, step=0.05):
     return best
 
 
+def lowess(x, y, at, k, robust=0):
+    """LOWESS (Cleveland 1979), the smoother Prism draws: at each x0 a straight line fitted to the k values nearest
+    x0, weighted by the tricube of their distance over that of the k-th; then, if *robust*, that many reweightings of
+    the values by the bisquare of their residuals. Values that are missing are left out."""
+    x, y = np.asarray(x, float), np.asarray(y, float)
+    ok = np.isfinite(x) & np.isfinite(y)
+    x, y = x[ok], y[ok]
+    if len(x) < 3:
+        return np.full(len(np.atleast_1d(at)), np.nan)
+    k = min(int(k), len(x))
+    rw = np.ones(len(x))
+
+    def fit(x0):
+        d = np.abs(x - x0)
+        h = max(float(np.sort(d)[k - 1]), 1e-9) * 1.000001
+        w = np.clip(1 - (d / h) ** 3, 0, None) ** 3 * rw
+        if w.sum() <= 0:
+            return np.nan
+        xm, ym = (w * x).sum() / w.sum(), (w * y).sum() / w.sum()
+        sxx = (w * (x - xm) ** 2).sum()
+        b = (w * (x - xm) * (y - ym)).sum() / sxx if sxx > 0 else 0.0
+        return ym + b * (x0 - xm)
+
+    for _ in range(int(robust)):
+        res = y - np.array([fit(x0) for x0 in x])
+        s = np.median(np.abs(res))
+        u = res / (6 * s) if s > 0 else np.zeros_like(res)
+        rw = np.where(np.abs(u) < 1, (1 - u ** 2) ** 2, 0.0)
+    return np.array([fit(x0) for x0 in np.atleast_1d(np.asarray(at, float))])
+
+
+def reference(rule, xs, ys):
+    """The authors' series as the figure's line shows it, under *rule*: None (the values themselves, at their times);
+    "lowess K between" (a figure whose line is a LOWESS fit to the plotted values, drawn through markers that stand
+    at those values: the same fit to the authors' values, with a window of K of them and no robustness passes, half
+    way between their times, where only the line is drawn; the window is the one with which the figure's own
+    markers best give its lines - lowess_window.py). Returns (times, values)."""
+    if not rule:
+        return xs, ys
+    kind, *rest = rule.split()
+    if kind == "lowess":
+        mid = xs[:-1] + np.diff(xs) / 2 if "between" in rest else xs
+        return mid, lowess(xs, ys, mid, int(rest[0]))
+    raise ValueError(f"unknown reference rule: {rule}")
+
+
 def drawn_at(rule, xs):
     """Where the figure draws each original value, by its x (h), under *rule*: None (at x itself); "shift D" (at
     x + D: a figure that draws each hour's mean at the end of its hour, where the data label it by its middle);
@@ -169,7 +216,7 @@ def main(cases_path, val_dir, out_dir):
             span = seg_range or c.get("x_range", {}).get(f"{panel}|{series}") or c.get("x_range", {}).get(panel)
             if truth is not None:
                 tt = truth[(truth.panel == panel) & (truth.series == series)].sort_values("x")
-                xs, ytrue = tt["x"].to_numpy(float), tt["y"].to_numpy(float)
+                xs, ytrue = reference(c.get("reference"), tt["x"].to_numpy(float), tt["y"].to_numpy(float))
             else:
                 xs = grid(g, tm, span)
                 ytrue = None

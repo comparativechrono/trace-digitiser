@@ -42,10 +42,28 @@ and the project uses [semantic versioning](https://semver.org/).
   Over the 29 series with data the median r is 0.97 (0.95 before) and the
   median error 5.4% of the range (5.9%); 2.2.0, read the same way, gives the
   same.
-- `validation/activity-traces/README.md`: Sayler & Hammond's lines are LOWESS
-  fits to the hourly means, which are drawn as markers, and those means are
-  not quite the deposited file's; said so, with the figures' other
-  differences from their files.
+- `validation/activity-traces`: Sayler & Hammond's lines are LOWESS fits drawn
+  through markers at the hourly means, so their trace is now compared with
+  the same fit to the authors' means (`reference` in `cases.json`;
+  `compare.lowess`), half way between the markers, where only the line is
+  drawn. The window, 7 means with no robustness passes, is the one with which
+  the figure's own markers best give its lines (median difference 2.3% of
+  the range, against 10.7% for the 20 points the legend gives);
+  `lowess_window.py` finds it, and sets the markers against the file's means.
+  The twelve series agree with r 0.85-1.00 (0.77-0.98 read at the hours
+  against the means); what is left is where the means plotted are not the
+  file's. Over the 29 series with data the median r is now 0.98 and the
+  median error 4.5%, and the trace and the data give the same verdict on all
+  22 statements in the papers with data (the rearing of Slc43a3 KO mice now
+  49% below WT read, within the 30-50% tested). Compared between the markers,
+  these records are 59 h, short of the chi-square periodogram's 60. 2.2.0,
+  read the same way, reads the legend in each of the figure's panels, which
+  lies between two markers, as trace, and gives a median r of 0.95.
+- `validation/activity-traces/README.md`: the figures' differences from their
+  files, Sayler & Hammond's among them, set out; the table of rhythmic calls
+  brought up to date.
+- `paper/figures.py`: S4 Fig shows, with Sayler & Hammond's fitted lines, the
+  hourly means they are fitted to.
 
 ### Fixed
 

@@ -8,6 +8,11 @@ and the project uses [semantic versioning](https://semver.org/).
 
 ### Added
 
+- `paper/`: the two published versions of the CD157 figure are named for
+  where they come from - PubMed Central's and the journal website's, which
+  differ in resolution - in Fig 3 (whose key now gives the versions by
+  marker; the genotypes are given by colour in panel C) and in S4 and S5
+  Tables, in place of "copies".
 - `validation/activity-traces/figure_check.py`: each trace as read set
   against the line drawn in its figure, without the authors' data - how far
   each column, and each value the analysis takes, lies from a pixel of the

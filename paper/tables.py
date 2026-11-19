@@ -411,8 +411,8 @@ READING = {"primary": "primary", "as read": "without exclusions", "bins on the h
            "bottom": "lower envelope"}
 STATISTIC = {"midpoint": "midpoint", "mean": "column mean", "mean of pixels": "column mean", "top": "upper envelope",
              "bottom": "lower envelope"}
-COPY = {"PMC copy (630 x 597 px)": "PubMed Central copy (630 x 597 px)",
-        "journal copy (397 x 376 px)": "journal copy (397 x 376 px)"}
+COPY = {"PMC copy (630 x 597 px)": "PubMed Central version (630 x 597 px)",
+        "journal copy (397 x 376 px)": "journal website version (397 x 376 px)"}
 
 
 def _names(df):
@@ -420,7 +420,7 @@ def _names(df):
     for col, names in (("reading", READING), ("statistic", STATISTIC), ("copy", COPY)):
         if col in df:
             df[col] = df[col].map(lambda v, n=names: n.get(v, v))
-    return df
+    return df.rename(columns={"copy": "version of the figure"})
 
 
 def s4_cd157():
@@ -440,7 +440,7 @@ def s5_dense():
             "mean_true", "mean_read", "acrophase_true_h", "acrophase_read_h", "acrophase_error_h",
             "daily_acrophase_max_abs_error_h", "dark_start_h", "dark_share_true", "dark_share_read",
             "dark_share_error", "y_max", "colour_clicked", "image"]
-    size = {"PMC-sized": "PubMed Central copy", "journal-sized": "journal copy"}
+    size = {"PMC-sized": "as the PubMed Central version", "journal-sized": "as the journal website version"}
     r = _names(r[keep]).assign(size=lambda x: x["size"].map(size))
     pr = _names(pr).assign(size=lambda x: x["size"].map(size))
     return _names(sm), r, pr

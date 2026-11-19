@@ -63,7 +63,7 @@ python validation/activity-traces/run.py                  # read every figure ag
 python validation/activity-traces/run.py --keep-readings  # analyse the readings already in digitised/
 python validation/activity-traces/run.py --overlays DIR   # also keep the package's overlay of each figure
 python validation/activity-traces/tables.py               # the tables below, from results/
-python validation/activity-traces/cd157.py                # the CD157 figure, from both copies (after run.py)
+python validation/activity-traces/cd157.py                # the CD157 figure, both versions (after run.py)
 ```
 
 | File | What it holds |
@@ -81,7 +81,7 @@ python validation/activity-traces/cd157.py                # the CD157 figure, fr
 | `summarise.py`, `tables.py`, `summary_figure.py` | the agreement tables, the tables below and the figure above |
 | `plot_case.py` | one figure's traces as read drawn over the authors' series, for looking at |
 | `figure_check.py` | each trace as read set against the line drawn in its figure, without the authors' data, and drawn over it |
-| `cd157.py` → `results/cd157*` | the CD157 figure read from both copies and analysed ([below](#the-cd157-figure)); the four values of every column in `digitised/*-columns.csv` |
+| `cd157.py` → `results/cd157*` | the CD157 figure read from both its published versions (PMC's and the journal's) and analysed ([below](#the-cd157-figure)); the four values of every column in `digitised/*-columns.csv` |
 | `run.py` | all of the above, in order |
 | `search/` | the search and screening that found the papers |
 
@@ -403,11 +403,11 @@ from the figure it is 40% over the whole week, as the paper says, but 52% by nig
 
 ## The CD157 figure
 
-`cd157.py` reads the figure the submission analysed, Lopatina et al. 2014, Fig 4, from both copies: PMC's
-(630 × 597 px, the validation case above) and the journal's smaller one (397 × 376 px, the copy the submission
-digitised). Each genotype's trace is read as hourly values over the 168 h from the first lights-off (20:45, by the
-legend; the figure's labels begin with night 1) and analysed as every series above is, over the whole week and day by
-day.
+`cd157.py` reads the figure the submission analysed, Lopatina et al. 2014, Fig 4, from both its published versions,
+which differ in resolution: PMC's (630 × 597 px, the validation case above) and the journal website's smaller one
+(397 × 376 px, the version the submission digitised). Each genotype's trace is read as hourly values over the 168 h
+from the first lights-off (20:45, by the legend; the figure's labels begin with night 1) and analysed as every
+series above is, over the whole week and day by day.
 
 The figure is a dense trace: its record is much finer than the image, so each pixel column is a vertical stroke from
 the lowest to the highest sample within it (18 min of record per column in PMC's copy, 29 min in the journal's). The

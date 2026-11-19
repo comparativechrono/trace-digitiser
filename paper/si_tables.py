@@ -46,8 +46,9 @@ S = {
                  [("Statements", "s3_table_claims.csv")],
                  "validation/activity-traces/claims.json and results/claims_checked.csv"),
     "S4_Table": ("S4 Table. Analyses of the CD157 figure.",
-                 "Fig 4 of Lopatina et al. (2014), digitised from the PubMed Central copy (630 x 597 px) and the "
-                 "journal copy (397 x 376 px), each analysed in seven ways. Primary: the gridlines, the sides of the "
+                 "Fig 4 of Lopatina et al. (2014) is published in two versions, which differ in resolution: the "
+                 "image in PubMed Central (630 x 597 px) and a smaller one on the journal's website (397 x 376 px). "
+                 "Both were digitised, and each was analysed in seven ways. Primary: the gridlines, the sides of the "
                  "frame and the band of axis labels excluded from panel B; the midpoint (median) of the trace pixels "
                  "in each pixel column; hourly values calculated as the mean of the columns within each hour from "
                  "lights-off. Without exclusions: as primary, but with no regions excluded (as in Validation 3). "
@@ -67,7 +68,8 @@ S = {
                  "Nine activity records (home-cage activity and wheel running of three mice each in 5-min bins, and "
                  "the mean of each group of three, from Hirano et al. (2026); and the activity of one mouse in 1-min "
                  "bins over two days, from Hoekstra et al. (2019)), each plotted in the same way as Fig 4 of Lopatina "
-                 "et al. (2014), at the sizes of its two copies and in two colours, and then digitised. Four values "
+                 "et al. (2014), at the sizes of its two published versions (PubMed Central's, 630 x 597 px, and "
+                 "the journal website's, 397 x 376 px) and in two colours, and then digitised. Four values "
                  "were taken from each pixel column (upper envelope, midpoint, column mean and lower envelope), "
                  "averaged within each hour and compared with the hourly means of the record. Summary: medians, "
                  "ranges and 90th percentiles over the 36 images and over the 112 pairs of 7-day records plotted in "

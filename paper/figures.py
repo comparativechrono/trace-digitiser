@@ -195,8 +195,8 @@ GENO_LABEL = {"CD157+/+": "CD157$^{+/+}$", "CD157-/-": "CD157$^{−/−}$"}
 
 def fig3(out):
     """The CD157 re-analysis: each genotype's digitised trace (each pixel column from its lowest to its highest trace
-    pixel) with its hourly values, the mean day, and the acrophase and dark-phase share of each day, from both copies
-    of the figure."""
+    pixel) with its hourly values, the mean day, and the acrophase and dark-phase share of each day, from both
+    published versions of the figure: PubMed Central's and the smaller one on the journal's website."""
     case = cd157.COPIES[next(iter(cd157.COPIES))]["left out"]
     cols = cd157.columns(case)
     read = cd157.series(case)
@@ -252,8 +252,7 @@ def fig3(out):
                 g = days[(days["copy"] == copy) & (days.genotype == name)].sort_values("day")
                 filled = marker == "o"
                 ax.plot(g.day + (-0.12 if filled else 0.12), g[col], marker=marker, ms=4.2, lw=0,
-                        color=colours[name], mfc=colours[name] if filled else "white", mec=colours[name], mew=1.0,
-                        label=f"{GENO_LABEL[name]} ({'PMC' if filled else 'journal'})")
+                        color=colours[name], mfc=colours[name] if filled else "white", mec=colours[name], mew=1.0)
         ax.set_ylim(*ylim)
         if j == 0:
             ax.set_yticks([0, 6, 12, 18, 24])
@@ -263,9 +262,13 @@ def fig3(out):
         ax.set_ylabel(ylab)
         style(ax)
         letter(ax, "DE"[j])
-        if j == 0:
-            ax.legend(frameon=False, loc="upper center", ncol=2, fontsize=6.2, handletextpad=0.1,
-                      columnspacing=0.6, borderaxespad=0.2)
+        if j == 0:  # the genotypes are told by colour (panel C); the two versions of the figure, by marker
+            versions = [matplotlib.lines.Line2D([], [], marker="o", ms=4.2, lw=0, color=INK, mfc=INK, mec=INK,
+                                                label="PubMed Central version"),
+                        matplotlib.lines.Line2D([], [], marker="s", ms=4.2, lw=0, color=INK, mfc="white", mec=INK,
+                                                mew=1.0, label="Journal website version")]
+            ax.legend(handles=versions, frameon=False, loc="upper center", ncol=1, fontsize=6.4,
+                      handletextpad=0.2, borderaxespad=0.2)
     save(fig, out, "Fig3")
 
 
